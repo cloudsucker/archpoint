@@ -1,0 +1,1750 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Widget</class>
+ <widget class="QWidget" name="Widget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>957</width>
+    <height>697</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>600</width>
+    <height>400</height>
+   </size>
+  </property>
+  <property name="font">
+   <font>
+    <family>Rubik</family>
+    <pointsize>10</pointsize>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>Widget</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout">
+   <property name="spacing">
+    <number>0</number>
+   </property>
+   <property name="leftMargin">
+    <number>0</number>
+   </property>
+   <property name="topMargin">
+    <number>0</number>
+   </property>
+   <property name="rightMargin">
+    <number>0</number>
+   </property>
+   <property name="bottomMargin">
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QGroupBox" name="groupBox_main">
+     <property name="title">
+      <string/>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <property name="leftMargin">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QGroupBox" name="groupBox_pagesAndSettings">
+        <property name="minimumSize">
+         <size>
+          <width>170</width>
+          <height>0</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>200</width>
+          <height>16777215</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Rubik</family>
+          <pointsize>9</pointsize>
+         </font>
+        </property>
+        <property name="title">
+         <string/>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QLabel" name="label_appLogo">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>60</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Rubik</family>
+             <pointsize>20</pointsize>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>&lt;APP LOGO&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="groupBox_pages">
+           <property name="title">
+            <string/>
+           </property>
+           <property name="flat">
+            <bool>true</bool>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_3">
+            <item>
+             <widget class="QPushButton" name="pushButton_pageCalibration">
+              <property name="font">
+               <font>
+                <family>Rubik</family>
+                <pointsize>12</pointsize>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>Калибровка</string>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+              <property name="checked">
+               <bool>true</bool>
+              </property>
+              <property name="autoExclusive">
+               <bool>true</bool>
+              </property>
+              <property name="default">
+               <bool>false</bool>
+              </property>
+              <property name="flat">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_pageProcess">
+              <property name="font">
+               <font>
+                <family>Rubik</family>
+                <pointsize>12</pointsize>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>Обработка</string>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+              <property name="checked">
+               <bool>false</bool>
+              </property>
+              <property name="autoExclusive">
+               <bool>true</bool>
+              </property>
+              <property name="flat">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <spacer name="verticalSpacer_underPages">
+           <property name="orientation">
+            <enum>Qt::Orientation::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QGroupBox" name="groupBox_settingsAndTheme">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>50</height>
+            </size>
+           </property>
+           <property name="title">
+            <string/>
+           </property>
+           <property name="flat">
+            <bool>true</bool>
+           </property>
+           <property name="checkable">
+            <bool>false</bool>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <property name="leftMargin">
+             <number>3</number>
+            </property>
+            <property name="topMargin">
+             <number>3</number>
+            </property>
+            <property name="rightMargin">
+             <number>3</number>
+            </property>
+            <property name="bottomMargin">
+             <number>3</number>
+            </property>
+            <item>
+             <widget class="QPushButton" name="pushButton_settings">
+              <property name="font">
+               <font>
+                <family>Rubik</family>
+                <pointsize>8</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>НАСТРОЙКИ</string>
+              </property>
+              <property name="flat">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_themeToggle">
+              <property name="font">
+               <font>
+                <family>Rubik</family>
+                <pointsize>8</pointsize>
+               </font>
+              </property>
+              <property name="text">
+               <string>ТЕМА</string>
+              </property>
+              <property name="flat">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="groupBox_workspace">
+        <property name="font">
+         <font>
+          <family>Rubik</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+        <property name="title">
+         <string/>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_7">
+         <item>
+          <widget class="QStackedWidget" name="stackedWidget_workSpace">
+           <property name="lineWidth">
+            <number>0</number>
+           </property>
+           <property name="currentIndex">
+            <number>3</number>
+           </property>
+           <widget class="QWidget" name="page_calibrationChoice">
+            <layout class="QGridLayout" name="gridLayout_3">
+             <item row="1" column="0">
+              <widget class="QGroupBox" name="groupBox_calibration_options">
+               <property name="title">
+                <string/>
+               </property>
+               <property name="flat">
+                <bool>true</bool>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_2">
+                <item row="0" column="0">
+                 <widget class="QGroupBox" name="groupBox_calibration_from_file">
+                  <property name="title">
+                   <string/>
+                  </property>
+                  <layout class="QVBoxLayout" name="verticalLayout_4">
+                   <item>
+                    <widget class="QLabel" name="label_calibration_from_file_title">
+                     <property name="font">
+                      <font>
+                       <family>Rubik</family>
+                       <pointsize>14</pointsize>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Загрузить из файла</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="label_calibration_from_file_icon">
+                     <property name="font">
+                      <font>
+                       <family>Rubik</family>
+                       <pointsize>20</pointsize>
+                       <bold>false</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>&lt;ICON&gt;</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="pushButton_calibration_from_file">
+                     <property name="font">
+                      <font>
+                       <family>Rubik</family>
+                       <pointsize>12</pointsize>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Выбрать</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="QGroupBox" name="groupBox_calibration_start">
+                  <property name="title">
+                   <string/>
+                  </property>
+                  <layout class="QVBoxLayout" name="verticalLayout_5">
+                   <item>
+                    <widget class="QLabel" name="label_calibration_start_title">
+                     <property name="font">
+                      <font>
+                       <family>Rubik</family>
+                       <pointsize>14</pointsize>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Запустить калибровку</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="label_calibration_start_icon">
+                     <property name="font">
+                      <font>
+                       <family>Rubik</family>
+                       <pointsize>20</pointsize>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>&lt;ICON&gt;</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="pushButton_calibration_start">
+                     <property name="font">
+                      <font>
+                       <family>Rubik</family>
+                       <pointsize>12</pointsize>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Запустить</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item row="1" column="0" colspan="2">
+                 <widget class="QGroupBox" name="groupBox_calibration_skip">
+                  <property name="title">
+                   <string/>
+                  </property>
+                  <layout class="QVBoxLayout" name="verticalLayout_6">
+                   <item>
+                    <widget class="QLabel" name="label_calibration_skip_title">
+                     <property name="font">
+                      <font>
+                       <family>Rubik</family>
+                       <pointsize>14</pointsize>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Пропустить калибровку</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="label_calibration_skip_text">
+                     <property name="text">
+                      <string>Без прохождения калибровки качество обработки может значительно снизиться.</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="label_calibration_skip_icon">
+                     <property name="font">
+                      <font>
+                       <family>Rubik</family>
+                       <pointsize>20</pointsize>
+                       <italic>false</italic>
+                       <bold>false</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>&lt;ICON&gt;</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="pushButton_calibration_skip">
+                     <property name="text">
+                      <string>Пропустить</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item row="2" column="0">
+              <spacer name="verticalSpacer_calibrationChoiceOptionsBottom">
+               <property name="orientation">
+                <enum>Qt::Orientation::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item row="0" column="0">
+              <spacer name="verticalSpacer_calibrationChoiceOptionsTop">
+               <property name="orientation">
+                <enum>Qt::Orientation::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QWidget" name="page_processingChoiceProject">
+            <layout class="QVBoxLayout" name="verticalLayout_19">
+             <item>
+              <spacer name="verticalSpacer_processingProjectOptionsTop">
+               <property name="orientation">
+                <enum>Qt::Orientation::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QGroupBox" name="groupBox_processingProjectOptions">
+               <property name="title">
+                <string/>
+               </property>
+               <property name="flat">
+                <bool>true</bool>
+               </property>
+               <layout class="QHBoxLayout" name="horizontalLayout_6">
+                <item>
+                 <widget class="QGroupBox" name="groupBox_newProject">
+                  <property name="title">
+                   <string/>
+                  </property>
+                  <layout class="QVBoxLayout" name="verticalLayout_8">
+                   <item>
+                    <widget class="QLabel" name="label_newProjectTitle">
+                     <property name="font">
+                      <font>
+                       <family>Rubik</family>
+                       <pointsize>14</pointsize>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Новый проект</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="label_newProjectIcon">
+                     <property name="font">
+                      <font>
+                       <family>Rubik</family>
+                       <pointsize>20</pointsize>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>&lt;ICON&gt;</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="pushButton_newProject">
+                     <property name="font">
+                      <font>
+                       <family>Rubik</family>
+                       <pointsize>12</pointsize>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Создать</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QGroupBox" name="groupBox_chooseProject">
+                  <property name="title">
+                   <string/>
+                  </property>
+                  <layout class="QVBoxLayout" name="verticalLayout_7">
+                   <item>
+                    <widget class="QLabel" name="label_chooseProjectTitle">
+                     <property name="font">
+                      <font>
+                       <family>Rubik</family>
+                       <pointsize>14</pointsize>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Выбрать проект</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="label_chooseProjectIcon">
+                     <property name="font">
+                      <font>
+                       <family>Rubik</family>
+                       <pointsize>20</pointsize>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>&lt;ICON&gt;</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="pushButton_chooseProject">
+                     <property name="font">
+                      <font>
+                       <family>Rubik</family>
+                       <pointsize>12</pointsize>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Выбрать</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <spacer name="verticalSpacer_processingProjectOptionsBottom">
+               <property name="orientation">
+                <enum>Qt::Orientation::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QWidget" name="page_processingNewProjectCreating">
+            <layout class="QVBoxLayout" name="verticalLayout_20">
+             <item>
+              <widget class="QGroupBox" name="groupBox_newProjectCreatingMain">
+               <property name="font">
+                <font>
+                 <family>Rubik</family>
+                 <pointsize>14</pointsize>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="title">
+                <string>Создание проекта</string>
+               </property>
+               <property name="flat">
+                <bool>true</bool>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_2">
+                <item>
+                 <widget class="QLabel" name="label_newProjectCreatingNameFieldTitle">
+                  <property name="font">
+                   <font>
+                    <family>Rubik</family>
+                    <pointsize>12</pointsize>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Название проекта</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="lineEdit_newProjectCreatingNameField">
+                  <property name="font">
+                   <font>
+                    <family>Rubik</family>
+                    <pointsize>8</pointsize>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="maxLength">
+                   <number>40</number>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_newProjectCreatingPathFieldTitle">
+                  <property name="font">
+                   <font>
+                    <family>Rubik</family>
+                    <pointsize>12</pointsize>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Путь к проекту</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QGroupBox" name="groupBox_newProjectCreatingPath">
+                  <property name="title">
+                   <string/>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_8">
+                   <property name="spacing">
+                    <number>6</number>
+                   </property>
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
+                   <item>
+                    <widget class="QLineEdit" name="lineEdit_newProjectCreatingPathField">
+                     <property name="font">
+                      <font>
+                       <family>Rubik</family>
+                       <pointsize>8</pointsize>
+                       <bold>false</bold>
+                      </font>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="pushButton_newProjectCreatingPathChoose">
+                     <property name="font">
+                      <font>
+                       <family>Rubik</family>
+                       <pointsize>8</pointsize>
+                       <bold>false</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Выбрать</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="verticalSpacer_newProjectCreatingUnderParameters">
+                  <property name="orientation">
+                   <enum>Qt::Orientation::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QGroupBox" name="groupBox_newProjectCreatingSubmitField">
+                  <property name="title">
+                   <string/>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_9">
+                   <item>
+                    <spacer name="horizontalSpacer_newProjectCreating_createButtonLeft">
+                     <property name="orientation">
+                      <enum>Qt::Orientation::Horizontal</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>602</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="pushButton_newProjectCreatingSubmit">
+                     <property name="font">
+                      <font>
+                       <family>Rubik</family>
+                       <pointsize>12</pointsize>
+                       <bold>false</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Создать</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QWidget" name="page_processingProcess">
+            <layout class="QVBoxLayout" name="verticalLayout_21">
+             <item>
+              <widget class="QGroupBox" name="groupBox_processingProcessMain">
+               <property name="title">
+                <string/>
+               </property>
+               <property name="flat">
+                <bool>true</bool>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_22">
+                <item>
+                 <widget class="QGroupBox" name="groupBox_imagesPath">
+                  <property name="title">
+                   <string/>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                  <layout class="QVBoxLayout" name="verticalLayout_23">
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
+                   <item>
+                    <widget class="QLabel" name="label_imagesDirectoryFieldTitle">
+                     <property name="text">
+                      <string>Путь к изображениям</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QGroupBox" name="groupBox">
+                     <property name="title">
+                      <string/>
+                     </property>
+                     <property name="flat">
+                      <bool>true</bool>
+                     </property>
+                     <layout class="QHBoxLayout" name="horizontalLayout_11">
+                      <property name="leftMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="topMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="rightMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="bottomMargin">
+                       <number>0</number>
+                      </property>
+                      <item>
+                       <widget class="QLineEdit" name="lineEdit_imagesDirectoryField">
+                        <property name="font">
+                         <font>
+                          <family>Rubik</family>
+                          <pointsize>8</pointsize>
+                          <bold>false</bold>
+                         </font>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QPushButton" name="pushButton_imagesDirectoryChoose">
+                        <property name="font">
+                         <font>
+                          <family>Rubik</family>
+                          <pointsize>8</pointsize>
+                         </font>
+                        </property>
+                        <property name="text">
+                         <string>Выбрать</string>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="pushButton_processingStart">
+                  <property name="font">
+                   <font>
+                    <family>Rubik</family>
+                    <pointsize>12</pointsize>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Запустить обработку</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QGraphicsView" name="graphicsView_dotsVisualization"/>
+                </item>
+                <item>
+                 <widget class="QProgressBar" name="progressBar_processingProgressBar">
+                  <property name="font">
+                   <font>
+                    <family>Rubik</family>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="value">
+                   <number>24</number>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QTextBrowser" name="textBrowser_processingLogs">
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>120</height>
+                   </size>
+                  </property>
+                  <property name="html">
+                   <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Rubik'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;logging information...&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;starting some process&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;fatal error, 404 not found :)&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QGroupBox" name="groupBox_exportOptions">
+                  <property name="title">
+                   <string/>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_10">
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
+                   <item>
+                    <widget class="QPushButton" name="pushButton_exportAsDotsCloud">
+                     <property name="text">
+                      <string>Экспорт облака точек</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <spacer name="horizontalSpacer_exportOptions_buttonsBetween">
+                     <property name="orientation">
+                      <enum>Qt::Orientation::Horizontal</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>374</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="pushButton_exportAsObjectFile">
+                     <property name="text">
+                      <string>Экспорт объекта</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QWidget" name="page_calibrationSteps_1_3">
+            <layout class="QVBoxLayout" name="verticalLayout_13">
+             <item>
+              <widget class="QGroupBox" name="groupBox_calibrationSteps_1_3_main">
+               <property name="font">
+                <font>
+                 <family>Rubik</family>
+                 <pointsize>14</pointsize>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="title">
+                <string>Подготовка к калибровке</string>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_9">
+                <item>
+                 <widget class="QGroupBox" name="groupBox_calibrationPreparingStep1">
+                  <property name="font">
+                   <font>
+                    <family>Rubik</family>
+                    <pointsize>12</pointsize>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="title">
+                   <string>Шаг 1. Распечатайте шаблон калибровки.</string>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                  <layout class="QVBoxLayout" name="verticalLayout_11">
+                   <item>
+                    <widget class="QLabel" name="label_calibrationPreparingStep1_info">
+                     <property name="font">
+                      <font>
+                       <family>Rubik</family>
+                       <pointsize>9</pointsize>
+                       <bold>false</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Шаблон нужен для настройки камеры</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <spacer name="verticalSpacer_calibrationPreparingStep_1">
+                     <property name="orientation">
+                      <enum>Qt::Orientation::Vertical</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>20</width>
+                       <height>40</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QGroupBox" name="groupBox_calibrationPreparingStep2">
+                  <property name="font">
+                   <font>
+                    <family>Rubik</family>
+                    <pointsize>12</pointsize>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="title">
+                   <string>Шаг 2. Включите освещение и подготовьте камеру.</string>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                  <layout class="QVBoxLayout" name="verticalLayout_12">
+                   <item>
+                    <widget class="QLabel" name="label_calibrationPreparingStep2_info">
+                     <property name="font">
+                      <font>
+                       <family>Rubik</family>
+                       <pointsize>9</pointsize>
+                       <bold>false</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Освещение должно быть равномерным.</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <spacer name="verticalSpacer_calibrationPreparingStep_2">
+                     <property name="orientation">
+                      <enum>Qt::Orientation::Vertical</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>20</width>
+                       <height>40</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QGroupBox" name="groupBox_calibrationPreparingStep3">
+                  <property name="font">
+                   <font>
+                    <family>Rubik</family>
+                    <pointsize>12</pointsize>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="title">
+                   <string>Шаг 3. Отснимите материал</string>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                  <layout class="QVBoxLayout" name="verticalLayout_10">
+                   <item>
+                    <widget class="QLabel" name="label_calibrationPreparingStep3_info">
+                     <property name="font">
+                      <font>
+                       <family>Rubik</family>
+                       <pointsize>9</pointsize>
+                       <bold>false</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Сделайте минимум 20 изображний шаблона с разных сторон. Старайтесь соблюдать одинаковое расстояние
+от камеры до шаблона. После подготовки материала сформируйте единый датает и нажмите кнопку для перехода к
+следующему этапу.</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <spacer name="verticalSpacer_calibrationPreparingStep_3">
+                     <property name="orientation">
+                      <enum>Qt::Orientation::Vertical</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>20</width>
+                       <height>59</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="verticalSpacer_underSteps">
+                  <property name="orientation">
+                   <enum>Qt::Orientation::Vertical</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>20</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+                <item>
+                 <widget class="QGroupBox" name="groupBox_calibrationStartFromPreparing">
+                  <property name="title">
+                   <string/>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_4">
+                   <item>
+                    <spacer name="horizontalSpacer_calibrationStartFromPreparing">
+                     <property name="orientation">
+                      <enum>Qt::Orientation::Horizontal</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>494</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="pushButton_calibrationStartFromPreparing">
+                     <property name="font">
+                      <font>
+                       <family>Rubik</family>
+                       <pointsize>12</pointsize>
+                       <bold>false</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Запустить калибровку</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QWidget" name="page_calibrationSteps_4">
+            <layout class="QVBoxLayout" name="verticalLayout_15">
+             <item>
+              <widget class="QGroupBox" name="groupBox_calibrationSteps_4">
+               <property name="font">
+                <font>
+                 <family>Rubik</family>
+                 <pointsize>14</pointsize>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="title">
+                <string>Калибровка</string>
+               </property>
+               <property name="flat">
+                <bool>true</bool>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_14">
+                <item>
+                 <widget class="QGroupBox" name="groupBox_calibrationImagesFilePathField">
+                  <property name="font">
+                   <font>
+                    <family>Rubik</family>
+                    <pointsize>12</pointsize>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="title">
+                   <string>Путь к изображениям</string>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_12">
+                   <item>
+                    <widget class="QLineEdit" name="lineEdit_calibrationFilePath">
+                     <property name="font">
+                      <font>
+                       <family>Rubik</family>
+                       <pointsize>9</pointsize>
+                       <bold>true</bold>
+                      </font>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="pushButton_setCalibrationFilePath">
+                     <property name="font">
+                      <font>
+                       <family>Rubik</family>
+                       <pointsize>9</pointsize>
+                       <bold>false</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Выбрать</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="pushButton_calibrationStart">
+                  <property name="font">
+                   <font>
+                    <family>Rubik</family>
+                    <pointsize>12</pointsize>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Запустить калибровку</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QGraphicsView" name="graphicsView_calibrationView">
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>0</height>
+                   </size>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QProgressBar" name="progressBar_calibrationProgress">
+                  <property name="font">
+                   <font>
+                    <family>Rubik</family>
+                    <pointsize>10</pointsize>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="value">
+                   <number>24</number>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QTextBrowser" name="textBrowser_calibrationLogs">
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>120</height>
+                   </size>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Rubik</family>
+                    <pointsize>12</pointsize>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="html">
+                   <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Rubik'; font-size:12pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;&amp;lt;PROCESSING LOGS HERE&amp;gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;process started...&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;some exception skipped&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;it's all going on, keep calm&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt;&quot;&gt;deleting windows...&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QWidget" name="page_calibrationSteps_5_done">
+            <layout class="QVBoxLayout" name="verticalLayout_17">
+             <item>
+              <widget class="QGroupBox" name="groupBox_calibrationSteps_5_doneMain">
+               <property name="font">
+                <font>
+                 <family>Rubik</family>
+                 <pointsize>14</pointsize>
+                 <bold>true</bold>
+                </font>
+               </property>
+               <property name="title">
+                <string>Калибровка завершена!</string>
+               </property>
+               <property name="flat">
+                <bool>true</bool>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_16">
+                <item>
+                 <widget class="QLabel" name="label_calibrationSteps_5_done_resultsTitle">
+                  <property name="font">
+                   <font>
+                    <family>Rubik</family>
+                    <pointsize>12</pointsize>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Полученная информация:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QTextBrowser" name="textBrowser_calibrationResultsData">
+                  <property name="html">
+                   <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;meta charset=&quot;utf-8&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+hr { height: 1px; border-width: 0; }
+li.unchecked::marker { content: &quot;\2610&quot;; }
+li.checked::marker { content: &quot;\2612&quot;; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Rubik'; font-size:14pt; font-weight:700; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:400;&quot;&gt;Модель камеры: Sony A5&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:9pt; font-weight:400;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;table border=&quot;0&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; border-collapse:collapse;&quot; width=&quot;100%&quot; cellspacing=&quot;2&quot; cellpadding=&quot;0&quot; bgcolor=&quot;#ffffff&quot;&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Максимальное разрешение&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;6000 x 4000&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Другие разрешения&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;6000 x 3376, 4240 x 2832, 4240 x 2400, 3008 x 2000, 3008 x 1688&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Соотношение сторон изображения ш:в&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;3:2, 16:9&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Эффективные пиксели&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;24 мегапикселей&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Фотодекторы&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;25 мегапикселей&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Размер матрицы&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;APS-C (23,5 x 15,6 мм)&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Тип матрицы&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;CMOS&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Процессор&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Bionz X&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td colspan=&quot;2&quot; bgcolor=&quot;#cbcbcb&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#cbcbcb;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; color:#535353;&quot;&gt;Изображение&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;ISO&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Авто, 100-25600 (51200 с Шумоподавлением при многокадровой съемке)&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Пресеты баланса белого&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;10&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Настраиваемый баланс белого&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Да&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Стабилизация изображения&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Нет&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Несжатый формат&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;RAW&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td colspan=&quot;2&quot; bgcolor=&quot;#cbcbcb&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#cbcbcb;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; color:#535353;&quot;&gt;Оптика и фокусировка&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Автофокус&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Контрастная детекция (матрица);&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Фазовая детекция;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Мульти-зона;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Центр;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Трекинг;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Выбор точки;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Единичный;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Слежение;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Распознавание лиц;&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Live View&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Цифровой зум&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Да(2X)&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Ручная фокусировка&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Да&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Количество точек фокусировки&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;179&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Байонет&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Sony E&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Множитель фокусного расстояния&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;1,5×&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td colspan=&quot;2&quot; bgcolor=&quot;#cbcbcb&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#cbcbcb;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; color:#535353;&quot;&gt;Дисплей / видоискатель&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Подвижность&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Наклонный&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Размер дисплея&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;3″&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Кол-во точек дисплея&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;921 600&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Тачскрин&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Нет&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Тип дисплея&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;TFT LCD&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Live view&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Да&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Тип видоискателя&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Электронный&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Покрытие видоискателя&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;100%&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#eaeaea&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#eaeaea;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#eaeaea;&quot;&gt;Увеличение видоискателя&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;1,05×(0,7×35мм экв.)&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#eaeaea&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#eaeaea;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#eaeaea;&quot;&gt;Разрешение видоискателя&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;1 440 000&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td colspan=&quot;2&quot; bgcolor=&quot;#cbcbcb&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#cbcbcb;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; color:#535353;&quot;&gt;Фотография&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#eaeaea&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#eaeaea;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#eaeaea;&quot;&gt;Минимальная скорость затвора&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;30 сек&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#eaeaea&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#eaeaea;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#eaeaea;&quot;&gt;Максимальная скорость затвора (механический затвор)&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;1/4000 сек&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#eaeaea&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#eaeaea;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#eaeaea;&quot;&gt;Приоритет диафрагмы&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Да&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#eaeaea&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#eaeaea;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#eaeaea;&quot;&gt;Приоритет выдержки&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Да&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#eaeaea&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#eaeaea;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#eaeaea;&quot;&gt;Режим ручной экспозиции&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Да&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#eaeaea&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#eaeaea;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#eaeaea;&quot;&gt;Режимы сцены/объектов&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Да&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Встроенная вспышка&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Да&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Дальность работы вспышки&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;6м (на ISO 100)&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Внешняя вспышка&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Да (через интерфейс Multi Interface Shoe)&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#eaeaea&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#eaeaea;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#eaeaea;&quot;&gt;Серийная съемка&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;11 к/с&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#eaeaea&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#eaeaea;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#eaeaea;&quot;&gt;Таймер&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Да (2 или 10 сек, непрерывный (3-5 снимков))&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#eaeaea&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#eaeaea;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#eaeaea;&quot;&gt;Режим замера экспозиции&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Мультизонный; Центровзвешенный; Точечный&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#eaeaea&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#eaeaea;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#eaeaea;&quot;&gt;Компенсация экспозиции&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;±5 (на шагах 1/3 EV, 1/2 EV)&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#eaeaea&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#eaeaea;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#eaeaea;&quot;&gt;Брекетинг автоэкспозиции&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;±5 (3, 5 кадров на шагах 1/3 EV, 1/2 EV, 2/3 EV, 1 EV, 2 EV)&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#eaeaea&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#eaeaea;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#eaeaea;&quot;&gt;Брекетинг баланса белого&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Да&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td colspan=&quot;2&quot; bgcolor=&quot;#cbcbcb&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#cbcbcb;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; color:#535353;&quot;&gt;Видео&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Разрешение&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;1920 x 1080 (60p, 60i, 24p), 1440 x 1080 (30p, 25p), 640 x 480 (30p, 25p)&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Формат&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;MPEG-4, AVCHD&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Микрофон&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Стерео&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Динамик&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
+&lt;td bgcolor=&quot;#ffffff&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Моно&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QGroupBox" name="groupBox_calibrationSteps_5_doneContinueOptions">
+                  <property name="title">
+                   <string/>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_5">
+                   <property name="spacing">
+                    <number>0</number>
+                   </property>
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
+                   <item>
+                    <widget class="QPushButton" name="pushButton_continueWithoutSavingCalibrationResults">
+                     <property name="font">
+                      <font>
+                       <family>Rubik</family>
+                       <pointsize>12</pointsize>
+                       <bold>false</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Перейти к обработке
+без сохранения</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <spacer name="horizontalSpacer_calibrationSteps_5_buttonsBetween">
+                     <property name="orientation">
+                      <enum>Qt::Orientation::Horizontal</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>40</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="pushButton_saveCalibrationResults">
+                     <property name="font">
+                      <font>
+                       <family>Rubik</family>
+                       <pointsize>12</pointsize>
+                       <bold>false</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Сохранить</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

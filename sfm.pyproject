@@ -1,0 +1,10 @@
+{
+    "files": [
+        "ui/form.ui",
+        "widget.py",
+        "ui/ui_form.py",
+        "requirements.txt",
+        "handlers/hloc_handler.py",
+        "handlers/calibration_handler.py"
+    ]
+}
