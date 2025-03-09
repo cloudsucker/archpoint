@@ -614,6 +614,8 @@ class Ui_Widget(object):
         self.verticalLayout_14.setObjectName(u"verticalLayout_14")
         self.groupBox_calibrationImagesFilePathField = QGroupBox(self.groupBox_calibrationSteps_4)
         self.groupBox_calibrationImagesFilePathField.setObjectName(u"groupBox_calibrationImagesFilePathField")
+        self.groupBox_calibrationImagesFilePathField.setFont(font3)
+        self.groupBox_calibrationImagesFilePathField.setFlat(True)
         self.horizontalLayout_12 = QHBoxLayout(self.groupBox_calibrationImagesFilePathField)
         self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
         self.lineEdit_calibrationFilePath = QLineEdit(self.groupBox_calibrationImagesFilePathField)
@@ -634,6 +636,12 @@ class Ui_Widget(object):
 
 
         self.verticalLayout_14.addWidget(self.groupBox_calibrationImagesFilePathField)
+
+        self.pushButton_calibrationStart = QPushButton(self.groupBox_calibrationSteps_4)
+        self.pushButton_calibrationStart.setObjectName(u"pushButton_calibrationStart")
+        self.pushButton_calibrationStart.setFont(font3)
+
+        self.verticalLayout_14.addWidget(self.pushButton_calibrationStart)
 
         self.graphicsView_calibrationView = QGraphicsView(self.groupBox_calibrationSteps_4)
         self.graphicsView_calibrationView.setObjectName(u"graphicsView_calibrationView")
@@ -727,7 +735,7 @@ class Ui_Widget(object):
         self.retranslateUi(Widget)
 
         self.pushButton_pageCalibration.setDefault(False)
-        self.stackedWidget_workSpace.setCurrentIndex(5)
+        self.stackedWidget_workSpace.setCurrentIndex(3)
 
 
         QMetaObject.connectSlotsByName(Widget)
@@ -801,13 +809,17 @@ class Ui_Widget(object):
         self.label_calibrationPreparingStep1_info.setText(QCoreApplication.translate("Widget", u"\u0428\u0430\u0431\u043b\u043e\u043d \u043d\u0443\u0436\u0435\u043d \u0434\u043b\u044f \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u043a\u0430\u043c\u0435\u0440\u044b", None))
         self.groupBox_calibrationPreparingStep2.setTitle(QCoreApplication.translate("Widget", u"\u0428\u0430\u0433 2. \u0412\u043a\u043b\u044e\u0447\u0438\u0442\u0435 \u043e\u0441\u0432\u0435\u0449\u0435\u043d\u0438\u0435 \u0438 \u043f\u043e\u0434\u0433\u043e\u0442\u043e\u0432\u044c\u0442\u0435 \u043a\u0430\u043c\u0435\u0440\u0443.", None))
         self.label_calibrationPreparingStep2_info.setText(QCoreApplication.translate("Widget", u"\u041e\u0441\u0432\u0435\u0449\u0435\u043d\u0438\u0435 \u0434\u043e\u043b\u0436\u043d\u043e \u0431\u044b\u0442\u044c \u0440\u0430\u0432\u043d\u043e\u043c\u0435\u0440\u043d\u044b\u043c.", None))
-        self.groupBox_calibrationPreparingStep3.setTitle(QCoreApplication.translate("Widget", u"\u0428\u0430\u0433 3. \u041d\u0430\u0432\u0435\u0434\u0438\u0442\u0435 \u043a\u0430\u043c\u0435\u0440\u0443 \u043d\u0430 \u0440\u0430\u0441\u043f\u0435\u0447\u0430\u0442\u0430\u043d\u043d\u044b\u0439 \u0448\u0430\u0431\u043b\u043e\u043d.", None))
-        self.label_calibrationPreparingStep3_info.setText(QCoreApplication.translate("Widget", u"\u041f\u043e\u0441\u043b\u0435 \u0442\u043e\u0433\u043e, \u043a\u0430\u043a \u043d\u0430\u0432\u0435\u0434\u0451\u0442\u0435 \u043a\u0430\u043c\u0435\u0440\u0443 \u043d\u0430 \u0448\u0430\u0431\u043b\u043e\u043d - \u043d\u0430\u0436\u043c\u0438\u0442\u0435 \"\u0437\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u044c \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0443\".", None))
+        self.groupBox_calibrationPreparingStep3.setTitle(QCoreApplication.translate("Widget", u"\u0428\u0430\u0433 3. \u041e\u0442\u0441\u043d\u0438\u043c\u0438\u0442\u0435 \u043c\u0430\u0442\u0435\u0440\u0438\u0430\u043b", None))
+        self.label_calibrationPreparingStep3_info.setText(QCoreApplication.translate("Widget", u"\u0421\u0434\u0435\u043b\u0430\u0439\u0442\u0435 \u043c\u0438\u043d\u0438\u043c\u0443\u043c 20 \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u043d\u0438\u0439 \u0448\u0430\u0431\u043b\u043e\u043d\u0430 \u0441 \u0440\u0430\u0437\u043d\u044b\u0445 \u0441\u0442\u043e\u0440\u043e\u043d. \u0421\u0442\u0430\u0440\u0430\u0439\u0442\u0435\u0441\u044c \u0441\u043e\u0431\u043b\u044e\u0434\u0430\u0442\u044c \u043e\u0434\u0438\u043d\u0430\u043a\u043e\u0432\u043e\u0435 \u0440\u0430\u0441\u0441\u0442\u043e\u044f\u043d\u0438\u0435\n"
+"\u043e\u0442 \u043a\u0430\u043c\u0435\u0440\u044b \u0434\u043e \u0448\u0430\u0431\u043b\u043e\u043d\u0430. \u041f\u043e\u0441\u043b\u0435 \u043f\u043e\u0434\u0433\u043e\u0442\u043e\u0432\u043a\u0438 \u043c\u0430\u0442\u0435\u0440\u0438\u0430\u043b\u0430 \u0441\u0444\u043e\u0440\u043c\u0438\u0440\u0443\u0439\u0442\u0435 \u0435\u0434\u0438\u043d\u044b\u0439 \u0434\u0430\u0442\u0430\u0435\u0442 \u0438 \u043d\u0430\u0436\u043c\u0438\u0442\u0435 \u043a\u043d\u043e\u043f\u043a\u0443 \u0434\u043b\u044f \u043f"
+                        "\u0435\u0440\u0435\u0445\u043e\u0434\u0430 \u043a\n"
+"\u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0435\u043c\u0443 \u044d\u0442\u0430\u043f\u0443.", None))
         self.groupBox_calibrationStartFromPreparing.setTitle("")
         self.pushButton_calibrationStartFromPreparing.setText(QCoreApplication.translate("Widget", u"\u0417\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u044c \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0443", None))
         self.groupBox_calibrationSteps_4.setTitle(QCoreApplication.translate("Widget", u"\u041a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0430", None))
-        self.groupBox_calibrationImagesFilePathField.setTitle("")
+        self.groupBox_calibrationImagesFilePathField.setTitle(QCoreApplication.translate("Widget", u"\u041f\u0443\u0442\u044c \u043a \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u044f\u043c", None))
         self.pushButton_setCalibrationFilePath.setText(QCoreApplication.translate("Widget", u"\u0412\u044b\u0431\u0440\u0430\u0442\u044c", None))
+        self.pushButton_calibrationStart.setText(QCoreApplication.translate("Widget", u"\u0417\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u044c \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0443", None))
         self.textBrowser_calibrationLogs.setHtml(QCoreApplication.translate("Widget", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
