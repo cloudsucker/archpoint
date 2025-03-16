@@ -612,60 +612,60 @@ class Ui_Widget(object):
         self.groupBox_calibrationSteps_4.setFlat(True)
         self.verticalLayout_14 = QVBoxLayout(self.groupBox_calibrationSteps_4)
         self.verticalLayout_14.setObjectName(u"verticalLayout_14")
-        self.groupBox_calibrationImagesFilePathField = QGroupBox(self.groupBox_calibrationSteps_4)
-        self.groupBox_calibrationImagesFilePathField.setObjectName(u"groupBox_calibrationImagesFilePathField")
-        self.groupBox_calibrationImagesFilePathField.setFont(font3)
-        self.groupBox_calibrationImagesFilePathField.setFlat(True)
-        self.horizontalLayout_12 = QHBoxLayout(self.groupBox_calibrationImagesFilePathField)
+        self.groupBox_calibrationImagesDirectoryField = QGroupBox(self.groupBox_calibrationSteps_4)
+        self.groupBox_calibrationImagesDirectoryField.setObjectName(u"groupBox_calibrationImagesDirectoryField")
+        self.groupBox_calibrationImagesDirectoryField.setFont(font3)
+        self.groupBox_calibrationImagesDirectoryField.setFlat(True)
+        self.horizontalLayout_12 = QHBoxLayout(self.groupBox_calibrationImagesDirectoryField)
         self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
-        self.lineEdit_calibrationFilePath = QLineEdit(self.groupBox_calibrationImagesFilePathField)
-        self.lineEdit_calibrationFilePath.setObjectName(u"lineEdit_calibrationFilePath")
+        self.lineEdit_calibrationImagesDirectory = QLineEdit(self.groupBox_calibrationImagesDirectoryField)
+        self.lineEdit_calibrationImagesDirectory.setObjectName(u"lineEdit_calibrationImagesDirectory")
         font12 = QFont()
         font12.setFamilies([u"Rubik"])
         font12.setPointSize(9)
         font12.setBold(True)
-        self.lineEdit_calibrationFilePath.setFont(font12)
+        self.lineEdit_calibrationImagesDirectory.setFont(font12)
 
-        self.horizontalLayout_12.addWidget(self.lineEdit_calibrationFilePath)
+        self.horizontalLayout_12.addWidget(self.lineEdit_calibrationImagesDirectory)
 
-        self.pushButton_setCalibrationFilePath = QPushButton(self.groupBox_calibrationImagesFilePathField)
-        self.pushButton_setCalibrationFilePath.setObjectName(u"pushButton_setCalibrationFilePath")
-        self.pushButton_setCalibrationFilePath.setFont(font11)
+        self.pushButton_setCalibrationImagesDirectory = QPushButton(self.groupBox_calibrationImagesDirectoryField)
+        self.pushButton_setCalibrationImagesDirectory.setObjectName(u"pushButton_setCalibrationImagesDirectory")
+        self.pushButton_setCalibrationImagesDirectory.setFont(font11)
 
-        self.horizontalLayout_12.addWidget(self.pushButton_setCalibrationFilePath)
+        self.horizontalLayout_12.addWidget(self.pushButton_setCalibrationImagesDirectory)
 
 
-        self.verticalLayout_14.addWidget(self.groupBox_calibrationImagesFilePathField)
+        self.verticalLayout_14.addWidget(self.groupBox_calibrationImagesDirectoryField)
 
-        self.pushButton_calibrationStart = QPushButton(self.groupBox_calibrationSteps_4)
-        self.pushButton_calibrationStart.setObjectName(u"pushButton_calibrationStart")
-        self.pushButton_calibrationStart.setFont(font3)
+        self.pushButton_calibrationProcessStart = QPushButton(self.groupBox_calibrationSteps_4)
+        self.pushButton_calibrationProcessStart.setObjectName(u"pushButton_calibrationProcessStart")
+        self.pushButton_calibrationProcessStart.setFont(font3)
 
-        self.verticalLayout_14.addWidget(self.pushButton_calibrationStart)
+        self.verticalLayout_14.addWidget(self.pushButton_calibrationProcessStart)
 
-        self.graphicsView_calibrationView = QGraphicsView(self.groupBox_calibrationSteps_4)
-        self.graphicsView_calibrationView.setObjectName(u"graphicsView_calibrationView")
-        self.graphicsView_calibrationView.setMinimumSize(QSize(0, 0))
+        self.graphicsView_calibrationProcessView = QGraphicsView(self.groupBox_calibrationSteps_4)
+        self.graphicsView_calibrationProcessView.setObjectName(u"graphicsView_calibrationProcessView")
+        self.graphicsView_calibrationProcessView.setMinimumSize(QSize(0, 0))
 
-        self.verticalLayout_14.addWidget(self.graphicsView_calibrationView)
+        self.verticalLayout_14.addWidget(self.graphicsView_calibrationProcessView)
 
-        self.progressBar_calibrationProgress = QProgressBar(self.groupBox_calibrationSteps_4)
-        self.progressBar_calibrationProgress.setObjectName(u"progressBar_calibrationProgress")
+        self.progressBar_calibrationProcessProgress = QProgressBar(self.groupBox_calibrationSteps_4)
+        self.progressBar_calibrationProcessProgress.setObjectName(u"progressBar_calibrationProcessProgress")
         font13 = QFont()
         font13.setFamilies([u"Rubik"])
         font13.setPointSize(10)
         font13.setBold(False)
-        self.progressBar_calibrationProgress.setFont(font13)
-        self.progressBar_calibrationProgress.setValue(24)
+        self.progressBar_calibrationProcessProgress.setFont(font13)
+        self.progressBar_calibrationProcessProgress.setValue(24)
 
-        self.verticalLayout_14.addWidget(self.progressBar_calibrationProgress)
+        self.verticalLayout_14.addWidget(self.progressBar_calibrationProcessProgress)
 
-        self.textBrowser_calibrationLogs = QTextBrowser(self.groupBox_calibrationSteps_4)
-        self.textBrowser_calibrationLogs.setObjectName(u"textBrowser_calibrationLogs")
-        self.textBrowser_calibrationLogs.setMaximumSize(QSize(16777215, 120))
-        self.textBrowser_calibrationLogs.setFont(font3)
+        self.textBrowser_calibrationProcessLogs = QTextBrowser(self.groupBox_calibrationSteps_4)
+        self.textBrowser_calibrationProcessLogs.setObjectName(u"textBrowser_calibrationProcessLogs")
+        self.textBrowser_calibrationProcessLogs.setMaximumSize(QSize(16777215, 120))
+        self.textBrowser_calibrationProcessLogs.setFont(font3)
 
-        self.verticalLayout_14.addWidget(self.textBrowser_calibrationLogs)
+        self.verticalLayout_14.addWidget(self.textBrowser_calibrationProcessLogs)
 
 
         self.verticalLayout_15.addWidget(self.groupBox_calibrationSteps_4)
@@ -735,7 +735,7 @@ class Ui_Widget(object):
         self.retranslateUi(Widget)
 
         self.pushButton_pageCalibration.setDefault(False)
-        self.stackedWidget_workSpace.setCurrentIndex(3)
+        self.stackedWidget_workSpace.setCurrentIndex(5)
 
 
         QMetaObject.connectSlotsByName(Widget)
@@ -817,10 +817,10 @@ class Ui_Widget(object):
         self.groupBox_calibrationStartFromPreparing.setTitle("")
         self.pushButton_calibrationStartFromPreparing.setText(QCoreApplication.translate("Widget", u"\u0417\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u044c \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0443", None))
         self.groupBox_calibrationSteps_4.setTitle(QCoreApplication.translate("Widget", u"\u041a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0430", None))
-        self.groupBox_calibrationImagesFilePathField.setTitle(QCoreApplication.translate("Widget", u"\u041f\u0443\u0442\u044c \u043a \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u044f\u043c", None))
-        self.pushButton_setCalibrationFilePath.setText(QCoreApplication.translate("Widget", u"\u0412\u044b\u0431\u0440\u0430\u0442\u044c", None))
-        self.pushButton_calibrationStart.setText(QCoreApplication.translate("Widget", u"\u0417\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u044c \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0443", None))
-        self.textBrowser_calibrationLogs.setHtml(QCoreApplication.translate("Widget", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
+        self.groupBox_calibrationImagesDirectoryField.setTitle(QCoreApplication.translate("Widget", u"\u041f\u0443\u0442\u044c \u043a \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u044f\u043c", None))
+        self.pushButton_setCalibrationImagesDirectory.setText(QCoreApplication.translate("Widget", u"\u0412\u044b\u0431\u0440\u0430\u0442\u044c", None))
+        self.pushButton_calibrationProcessStart.setText(QCoreApplication.translate("Widget", u"\u0417\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u044c \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0443", None))
+        self.textBrowser_calibrationProcessLogs.setHtml(QCoreApplication.translate("Widget", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "hr { height: 1px; border-width: 0; }\n"

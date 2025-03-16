@@ -1,5 +1,4 @@
 import os
-import numpy as np
 from pathlib import Path
 
 from hloc import (
@@ -18,6 +17,9 @@ class HLOC_Handler:
         self.images = Path()
         self.outputs_path = Path()
 
+        self.pairs_dir = "pairs"
+        self.features_dir = "features"
+
         self.__sfm_pairs_filepath = ""
         self.__loc_pairs_filepath = ""
         self.__sfm_directory = ""
@@ -26,7 +28,7 @@ class HLOC_Handler:
 
         self.is_hloc_handler_initialized = False
 
-    def process_images(self, images_path: str, outputs_path: str):
+    def process_images(self, images_path: str, outputs_path: str) -> None:
         if not os.path.exists(images_path):
             raise FileNotFoundError("Директория с изображениями не найдена.")
 
@@ -41,22 +43,22 @@ class HLOC_Handler:
         self.__reconstruct()
         self.__visualize()
 
-    def __init_handler(self, outputs_path: str):
-        self.__sfm_pairs_filepath = outputs_path / "pairs-sfm.txt"
-        self.__loc_pairs_filepath = outputs_path / "pairs-loc.txt"
+    def __init_handler(self, outputs_path: str) -> None:
+        self.__sfm_pairs_filepath = outputs_path / self.pairs_dir / "pairs-sfm.txt"
+        # self.__loc_pairs_filepath = outputs_path / self.pairs_dir / "pairs-loc.txt"
         self.__sfm_directory = outputs_path / "sfm"
-        self.__features = outputs_path / "features.h5"
-        self.__matches = outputs_path / "matches.h5"
+        self.__features = outputs_path / self.features_dir / "features.h5"
+        self.__matches = outputs_path / self.features_dir / "matches.h5"
         self.__feature_conf = extract_features.confs["disk"]
         self.__matcher_conf = match_features.confs["disk+lightglue"]
         self.is_hloc_handler_initialized = True
 
-    def __get_images_references(self):
+    def __get_images_references(self) -> None:
         self.__references = [
             p.relative_to(self.images).as_posix() for p in (self.images).iterdir()
         ]
 
-    def __extract_image_features(self):
+    def __extract_image_features(self) -> None:
         extract_features.main(
             self.__feature_conf,
             self.images,
@@ -73,7 +75,7 @@ class HLOC_Handler:
             matches=self.__matches,
         )
 
-    def __reconstruct(self):
+    def __reconstruct(self) -> None:
         self.model = reconstruction.main(
             self.__sfm_directory,
             self.images,
@@ -83,7 +85,7 @@ class HLOC_Handler:
             image_list=self.__references,
         )
 
-    def __visualize(self):
+    def __visualize(self) -> None:
         fig = viz_3d.init_figure()
         viz_3d.plot_reconstruction(
             fig, self.model, color="rgba(255,0,0,0.5)", name="mapping", points_rgb=True

@@ -57,9 +57,13 @@ class Project:
             json.dump(config, f, indent=4, ensure_ascii=False)
 
     def __load_config(self, config_path: str) -> dict:
+        if not os.path.exists(config_path):
+            raise ProjectConfigurationError("Файл конфигурации проекта не найден.")
+
         with open(config_path, "r", encoding="utf-8") as f:
             config_data = json.load(f)
         self.__validate_config(config_data)
+
         return config_data
 
     def __validate_config(self, config: dict) -> None:

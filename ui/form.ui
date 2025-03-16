@@ -296,7 +296,7 @@
             <number>0</number>
            </property>
            <property name="currentIndex">
-            <number>3</number>
+            <number>5</number>
            </property>
            <widget class="QWidget" name="page_calibrationChoice">
             <layout class="QGridLayout" name="gridLayout_3">
@@ -1232,7 +1232,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_14">
                 <item>
-                 <widget class="QGroupBox" name="groupBox_calibrationImagesFilePathField">
+                 <widget class="QGroupBox" name="groupBox_calibrationImagesDirectoryField">
                   <property name="font">
                    <font>
                     <family>Rubik</family>
@@ -1248,7 +1248,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                   </property>
                   <layout class="QHBoxLayout" name="horizontalLayout_12">
                    <item>
-                    <widget class="QLineEdit" name="lineEdit_calibrationFilePath">
+                    <widget class="QLineEdit" name="lineEdit_calibrationImagesDirectory">
                      <property name="font">
                       <font>
                        <family>Rubik</family>
@@ -1259,7 +1259,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                     </widget>
                    </item>
                    <item>
-                    <widget class="QPushButton" name="pushButton_setCalibrationFilePath">
+                    <widget class="QPushButton" name="pushButton_setCalibrationImagesDirectory">
                      <property name="font">
                       <font>
                        <family>Rubik</family>
@@ -1276,7 +1276,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="pushButton_calibrationStart">
+                 <widget class="QPushButton" name="pushButton_calibrationProcessStart">
                   <property name="font">
                    <font>
                     <family>Rubik</family>
@@ -1290,7 +1290,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                  </widget>
                 </item>
                 <item>
-                 <widget class="QGraphicsView" name="graphicsView_calibrationView">
+                 <widget class="QGraphicsView" name="graphicsView_calibrationProcessView">
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
@@ -1300,7 +1300,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                  </widget>
                 </item>
                 <item>
-                 <widget class="QProgressBar" name="progressBar_calibrationProgress">
+                 <widget class="QProgressBar" name="progressBar_calibrationProcessProgress">
                   <property name="font">
                    <font>
                     <family>Rubik</family>
@@ -1314,7 +1314,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                  </widget>
                 </item>
                 <item>
-                 <widget class="QTextBrowser" name="textBrowser_calibrationLogs">
+                 <widget class="QTextBrowser" name="textBrowser_calibrationProcessLogs">
                   <property name="maximumSize">
                    <size>
                     <width>16777215</width>
