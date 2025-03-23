@@ -296,7 +296,7 @@
             <number>0</number>
            </property>
            <property name="currentIndex">
-            <number>5</number>
+            <number>3</number>
            </property>
            <widget class="QWidget" name="page_calibrationChoice">
             <layout class="QGridLayout" name="gridLayout_3">
@@ -430,8 +430,17 @@
                    </item>
                    <item>
                     <widget class="QLabel" name="label_calibration_skip_text">
+                     <property name="font">
+                      <font>
+                       <family>Rubik</family>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
                      <property name="text">
                       <string>Без прохождения калибровки качество обработки может значительно снизиться.</string>
+                     </property>
+                     <property name="wordWrap">
+                      <bool>true</bool>
                      </property>
                     </widget>
                    </item>
@@ -668,7 +677,7 @@
                   <property name="font">
                    <font>
                     <family>Rubik</family>
-                    <pointsize>8</pointsize>
+                    <pointsize>9</pointsize>
                     <bold>false</bold>
                    </font>
                   </property>
@@ -723,7 +732,7 @@
                      <property name="font">
                       <font>
                        <family>Rubik</family>
-                       <pointsize>8</pointsize>
+                       <pointsize>9</pointsize>
                        <bold>false</bold>
                       </font>
                      </property>
@@ -868,7 +877,7 @@
                         <property name="font">
                          <font>
                           <family>Rubik</family>
-                          <pointsize>8</pointsize>
+                          <pointsize>9</pointsize>
                           <bold>false</bold>
                          </font>
                         </property>
@@ -1044,6 +1053,9 @@ li.checked::marker { content: &quot;\2612&quot;; }
                      <property name="text">
                       <string>Шаблон нужен для настройки камеры</string>
                      </property>
+                     <property name="wordWrap">
+                      <bool>true</bool>
+                     </property>
                     </widget>
                    </item>
                    <item>
@@ -1088,7 +1100,10 @@ li.checked::marker { content: &quot;\2612&quot;; }
                       </font>
                      </property>
                      <property name="text">
-                      <string>Освещение должно быть равномерным.</string>
+                      <string>Освещение должно быть равномерным, постарайтесь избежать теней на шаблоне.</string>
+                     </property>
+                     <property name="wordWrap">
+                      <bool>true</bool>
                      </property>
                     </widget>
                    </item>
@@ -1134,9 +1149,10 @@ li.checked::marker { content: &quot;\2612&quot;; }
                       </font>
                      </property>
                      <property name="text">
-                      <string>Сделайте минимум 20 изображний шаблона с разных сторон. Старайтесь соблюдать одинаковое расстояние
-от камеры до шаблона. После подготовки материала сформируйте единый датает и нажмите кнопку для перехода к
-следующему этапу.</string>
+                      <string>Сделайте минимум 20 изображний шаблона с разных сторон. Старайтесь соблюдать одинаковое расстояние от камеры до шаблона. После подготовки материала сформируйте единый датает и нажмите кнопку для перехода к следующему этапу.</string>
+                     </property>
+                     <property name="wordWrap">
+                      <bool>true</bool>
                      </property>
                     </widget>
                    </item>
@@ -1253,13 +1269,66 @@ li.checked::marker { content: &quot;\2612&quot;; }
                       <font>
                        <family>Rubik</family>
                        <pointsize>9</pointsize>
-                       <bold>true</bold>
+                       <bold>false</bold>
                       </font>
                      </property>
                     </widget>
                    </item>
                    <item>
                     <widget class="QPushButton" name="pushButton_setCalibrationImagesDirectory">
+                     <property name="font">
+                      <font>
+                       <family>Rubik</family>
+                       <pointsize>9</pointsize>
+                       <bold>false</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Выбрать</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QGroupBox" name="groupBox_calibrationImagesDirectoryFieldSecondCamera">
+                  <property name="enabled">
+                   <bool>true</bool>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <family>Rubik</family>
+                    <pointsize>12</pointsize>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="title">
+                   <string>Путь к изображениям со второй камеры (стереокалибровка)</string>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                  <property name="checkable">
+                   <bool>true</bool>
+                  </property>
+                  <property name="checked">
+                   <bool>false</bool>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_13">
+                   <item>
+                    <widget class="QLineEdit" name="lineEdit_calibrationImagesDirectorySecondCamera">
+                     <property name="font">
+                      <font>
+                       <family>Rubik</family>
+                       <pointsize>9</pointsize>
+                       <bold>false</bold>
+                      </font>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="pushButton_setCalibrationImagesDirectorySecondCamera">
                      <property name="font">
                       <font>
                        <family>Rubik</family>
@@ -1391,273 +1460,7 @@ hr { height: 1px; border-width: 0; }
 li.unchecked::marker { content: &quot;\2610&quot;; }
 li.checked::marker { content: &quot;\2612&quot;; }
 &lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Rubik'; font-size:14pt; font-weight:700; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:400;&quot;&gt;Модель камеры: Sony A5&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:9pt; font-weight:400;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;table border=&quot;0&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; border-collapse:collapse;&quot; width=&quot;100%&quot; cellspacing=&quot;2&quot; cellpadding=&quot;0&quot; bgcolor=&quot;#ffffff&quot;&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Максимальное разрешение&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;6000 x 4000&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Другие разрешения&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;6000 x 3376, 4240 x 2832, 4240 x 2400, 3008 x 2000, 3008 x 1688&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Соотношение сторон изображения ш:в&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;3:2, 16:9&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Эффективные пиксели&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;24 мегапикселей&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Фотодекторы&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;25 мегапикселей&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Размер матрицы&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;APS-C (23,5 x 15,6 мм)&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Тип матрицы&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;CMOS&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Процессор&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Bionz X&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td colspan=&quot;2&quot; bgcolor=&quot;#cbcbcb&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#cbcbcb;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; color:#535353;&quot;&gt;Изображение&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;ISO&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Авто, 100-25600 (51200 с Шумоподавлением при многокадровой съемке)&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Пресеты баланса белого&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;10&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Настраиваемый баланс белого&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Да&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Стабилизация изображения&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Нет&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Несжатый формат&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;RAW&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td colspan=&quot;2&quot; bgcolor=&quot;#cbcbcb&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#cbcbcb;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; color:#535353;&quot;&gt;Оптика и фокусировка&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Автофокус&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Контрастная детекция (матрица);&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Фазовая детекция;&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Мульти-зона;&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Центр;&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Трекинг;&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Выбор точки;&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Единичный;&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Слежение;&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Распознавание лиц;&lt;/span&gt;&lt;/p&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Live View&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Цифровой зум&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Да(2X)&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Ручная фокусировка&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Да&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Количество точек фокусировки&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;179&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Байонет&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Sony E&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Множитель фокусного расстояния&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;1,5×&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td colspan=&quot;2&quot; bgcolor=&quot;#cbcbcb&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#cbcbcb;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; color:#535353;&quot;&gt;Дисплей / видоискатель&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Подвижность&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Наклонный&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Размер дисплея&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;3″&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Кол-во точек дисплея&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;921 600&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Тачскрин&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Нет&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Тип дисплея&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;TFT LCD&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Live view&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Да&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Тип видоискателя&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Электронный&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Покрытие видоискателя&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;100%&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#eaeaea&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#eaeaea;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#eaeaea;&quot;&gt;Увеличение видоискателя&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;1,05×(0,7×35мм экв.)&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#eaeaea&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#eaeaea;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#eaeaea;&quot;&gt;Разрешение видоискателя&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;1 440 000&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td colspan=&quot;2&quot; bgcolor=&quot;#cbcbcb&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#cbcbcb;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; color:#535353;&quot;&gt;Фотография&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#eaeaea&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#eaeaea;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#eaeaea;&quot;&gt;Минимальная скорость затвора&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;30 сек&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#eaeaea&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#eaeaea;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#eaeaea;&quot;&gt;Максимальная скорость затвора (механический затвор)&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;1/4000 сек&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#eaeaea&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#eaeaea;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#eaeaea;&quot;&gt;Приоритет диафрагмы&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Да&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#eaeaea&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#eaeaea;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#eaeaea;&quot;&gt;Приоритет выдержки&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Да&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#eaeaea&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#eaeaea;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#eaeaea;&quot;&gt;Режим ручной экспозиции&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Да&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#eaeaea&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#eaeaea;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#eaeaea;&quot;&gt;Режимы сцены/объектов&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Да&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Встроенная вспышка&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Да&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Дальность работы вспышки&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;6м (на ISO 100)&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Внешняя вспышка&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Да (через интерфейс Multi Interface Shoe)&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#eaeaea&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#eaeaea;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#eaeaea;&quot;&gt;Серийная съемка&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;11 к/с&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#eaeaea&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#eaeaea;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#eaeaea;&quot;&gt;Таймер&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Да (2 или 10 сек, непрерывный (3-5 снимков))&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#eaeaea&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#eaeaea;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#eaeaea;&quot;&gt;Режим замера экспозиции&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Мультизонный; Центровзвешенный; Точечный&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#eaeaea&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#eaeaea;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#eaeaea;&quot;&gt;Компенсация экспозиции&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;±5 (на шагах 1/3 EV, 1/2 EV)&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#eaeaea&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#eaeaea;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#eaeaea;&quot;&gt;Брекетинг автоэкспозиции&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;±5 (3, 5 кадров на шагах 1/3 EV, 1/2 EV, 2/3 EV, 1 EV, 2 EV)&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#eaeaea&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#eaeaea;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#eaeaea;&quot;&gt;Брекетинг баланса белого&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Да&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td colspan=&quot;2&quot; bgcolor=&quot;#cbcbcb&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#cbcbcb;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; color:#535353;&quot;&gt;Видео&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Разрешение&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;1920 x 1080 (60p, 60i, 24p), 1440 x 1080 (30p, 25p), 640 x 480 (30p, 25p)&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Формат&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;MPEG-4, AVCHD&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Микрофон&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Стерео&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td bgcolor=&quot;#e5e5e5&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;&quot;&gt;Динамик&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;
-&lt;td bgcolor=&quot;#ffffff&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;&quot;&gt;&lt;span style=&quot; font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;&quot;&gt;Моно&lt;/span&gt;&lt;/p&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                   </property>
                  </widget>
                 </item>

@@ -225,6 +225,8 @@ class Ui_Widget(object):
 
         self.label_calibration_skip_text = QLabel(self.groupBox_calibration_skip)
         self.label_calibration_skip_text.setObjectName(u"label_calibration_skip_text")
+        self.label_calibration_skip_text.setFont(font)
+        self.label_calibration_skip_text.setWordWrap(True)
 
         self.verticalLayout_6.addWidget(self.label_calibration_skip_text)
 
@@ -350,7 +352,7 @@ class Ui_Widget(object):
         self.lineEdit_newProjectCreatingNameField.setObjectName(u"lineEdit_newProjectCreatingNameField")
         font10 = QFont()
         font10.setFamilies([u"Rubik"])
-        font10.setPointSize(8)
+        font10.setPointSize(9)
         font10.setBold(False)
         self.lineEdit_newProjectCreatingNameField.setFont(font10)
         self.lineEdit_newProjectCreatingNameField.setMaxLength(40)
@@ -378,7 +380,11 @@ class Ui_Widget(object):
 
         self.pushButton_newProjectCreatingPathChoose = QPushButton(self.groupBox_newProjectCreatingPath)
         self.pushButton_newProjectCreatingPathChoose.setObjectName(u"pushButton_newProjectCreatingPathChoose")
-        self.pushButton_newProjectCreatingPathChoose.setFont(font10)
+        font11 = QFont()
+        font11.setFamilies([u"Rubik"])
+        font11.setPointSize(8)
+        font11.setBold(False)
+        self.pushButton_newProjectCreatingPathChoose.setFont(font11)
 
         self.horizontalLayout_8.addWidget(self.pushButton_newProjectCreatingPathChoose)
 
@@ -523,11 +529,8 @@ class Ui_Widget(object):
         self.verticalLayout_11.setObjectName(u"verticalLayout_11")
         self.label_calibrationPreparingStep1_info = QLabel(self.groupBox_calibrationPreparingStep1)
         self.label_calibrationPreparingStep1_info.setObjectName(u"label_calibrationPreparingStep1_info")
-        font11 = QFont()
-        font11.setFamilies([u"Rubik"])
-        font11.setPointSize(9)
-        font11.setBold(False)
-        self.label_calibrationPreparingStep1_info.setFont(font11)
+        self.label_calibrationPreparingStep1_info.setFont(font10)
+        self.label_calibrationPreparingStep1_info.setWordWrap(True)
 
         self.verticalLayout_11.addWidget(self.label_calibrationPreparingStep1_info)
 
@@ -546,7 +549,8 @@ class Ui_Widget(object):
         self.verticalLayout_12.setObjectName(u"verticalLayout_12")
         self.label_calibrationPreparingStep2_info = QLabel(self.groupBox_calibrationPreparingStep2)
         self.label_calibrationPreparingStep2_info.setObjectName(u"label_calibrationPreparingStep2_info")
-        self.label_calibrationPreparingStep2_info.setFont(font11)
+        self.label_calibrationPreparingStep2_info.setFont(font10)
+        self.label_calibrationPreparingStep2_info.setWordWrap(True)
 
         self.verticalLayout_12.addWidget(self.label_calibrationPreparingStep2_info)
 
@@ -565,7 +569,8 @@ class Ui_Widget(object):
         self.verticalLayout_10.setObjectName(u"verticalLayout_10")
         self.label_calibrationPreparingStep3_info = QLabel(self.groupBox_calibrationPreparingStep3)
         self.label_calibrationPreparingStep3_info.setObjectName(u"label_calibrationPreparingStep3_info")
-        self.label_calibrationPreparingStep3_info.setFont(font11)
+        self.label_calibrationPreparingStep3_info.setFont(font10)
+        self.label_calibrationPreparingStep3_info.setWordWrap(True)
 
         self.verticalLayout_10.addWidget(self.label_calibrationPreparingStep3_info)
 
@@ -620,22 +625,42 @@ class Ui_Widget(object):
         self.horizontalLayout_12.setObjectName(u"horizontalLayout_12")
         self.lineEdit_calibrationImagesDirectory = QLineEdit(self.groupBox_calibrationImagesDirectoryField)
         self.lineEdit_calibrationImagesDirectory.setObjectName(u"lineEdit_calibrationImagesDirectory")
-        font12 = QFont()
-        font12.setFamilies([u"Rubik"])
-        font12.setPointSize(9)
-        font12.setBold(True)
-        self.lineEdit_calibrationImagesDirectory.setFont(font12)
+        self.lineEdit_calibrationImagesDirectory.setFont(font10)
 
         self.horizontalLayout_12.addWidget(self.lineEdit_calibrationImagesDirectory)
 
         self.pushButton_setCalibrationImagesDirectory = QPushButton(self.groupBox_calibrationImagesDirectoryField)
         self.pushButton_setCalibrationImagesDirectory.setObjectName(u"pushButton_setCalibrationImagesDirectory")
-        self.pushButton_setCalibrationImagesDirectory.setFont(font11)
+        self.pushButton_setCalibrationImagesDirectory.setFont(font10)
 
         self.horizontalLayout_12.addWidget(self.pushButton_setCalibrationImagesDirectory)
 
 
         self.verticalLayout_14.addWidget(self.groupBox_calibrationImagesDirectoryField)
+
+        self.groupBox_calibrationImagesDirectoryFieldSecondCamera = QGroupBox(self.groupBox_calibrationSteps_4)
+        self.groupBox_calibrationImagesDirectoryFieldSecondCamera.setObjectName(u"groupBox_calibrationImagesDirectoryFieldSecondCamera")
+        self.groupBox_calibrationImagesDirectoryFieldSecondCamera.setEnabled(True)
+        self.groupBox_calibrationImagesDirectoryFieldSecondCamera.setFont(font3)
+        self.groupBox_calibrationImagesDirectoryFieldSecondCamera.setFlat(True)
+        self.groupBox_calibrationImagesDirectoryFieldSecondCamera.setCheckable(True)
+        self.groupBox_calibrationImagesDirectoryFieldSecondCamera.setChecked(False)
+        self.horizontalLayout_13 = QHBoxLayout(self.groupBox_calibrationImagesDirectoryFieldSecondCamera)
+        self.horizontalLayout_13.setObjectName(u"horizontalLayout_13")
+        self.lineEdit_calibrationImagesDirectorySecondCamera = QLineEdit(self.groupBox_calibrationImagesDirectoryFieldSecondCamera)
+        self.lineEdit_calibrationImagesDirectorySecondCamera.setObjectName(u"lineEdit_calibrationImagesDirectorySecondCamera")
+        self.lineEdit_calibrationImagesDirectorySecondCamera.setFont(font10)
+
+        self.horizontalLayout_13.addWidget(self.lineEdit_calibrationImagesDirectorySecondCamera)
+
+        self.pushButton_setCalibrationImagesDirectorySecondCamera = QPushButton(self.groupBox_calibrationImagesDirectoryFieldSecondCamera)
+        self.pushButton_setCalibrationImagesDirectorySecondCamera.setObjectName(u"pushButton_setCalibrationImagesDirectorySecondCamera")
+        self.pushButton_setCalibrationImagesDirectorySecondCamera.setFont(font10)
+
+        self.horizontalLayout_13.addWidget(self.pushButton_setCalibrationImagesDirectorySecondCamera)
+
+
+        self.verticalLayout_14.addWidget(self.groupBox_calibrationImagesDirectoryFieldSecondCamera)
 
         self.pushButton_calibrationProcessStart = QPushButton(self.groupBox_calibrationSteps_4)
         self.pushButton_calibrationProcessStart.setObjectName(u"pushButton_calibrationProcessStart")
@@ -651,11 +676,11 @@ class Ui_Widget(object):
 
         self.progressBar_calibrationProcessProgress = QProgressBar(self.groupBox_calibrationSteps_4)
         self.progressBar_calibrationProcessProgress.setObjectName(u"progressBar_calibrationProcessProgress")
-        font13 = QFont()
-        font13.setFamilies([u"Rubik"])
-        font13.setPointSize(10)
-        font13.setBold(False)
-        self.progressBar_calibrationProcessProgress.setFont(font13)
+        font12 = QFont()
+        font12.setFamilies([u"Rubik"])
+        font12.setPointSize(10)
+        font12.setBold(False)
+        self.progressBar_calibrationProcessProgress.setFont(font12)
         self.progressBar_calibrationProcessProgress.setValue(24)
 
         self.verticalLayout_14.addWidget(self.progressBar_calibrationProcessProgress)
@@ -735,7 +760,7 @@ class Ui_Widget(object):
         self.retranslateUi(Widget)
 
         self.pushButton_pageCalibration.setDefault(False)
-        self.stackedWidget_workSpace.setCurrentIndex(5)
+        self.stackedWidget_workSpace.setCurrentIndex(3)
 
 
         QMetaObject.connectSlotsByName(Widget)
@@ -808,17 +833,17 @@ class Ui_Widget(object):
         self.groupBox_calibrationPreparingStep1.setTitle(QCoreApplication.translate("Widget", u"\u0428\u0430\u0433 1. \u0420\u0430\u0441\u043f\u0435\u0447\u0430\u0442\u0430\u0439\u0442\u0435 \u0448\u0430\u0431\u043b\u043e\u043d \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0438.", None))
         self.label_calibrationPreparingStep1_info.setText(QCoreApplication.translate("Widget", u"\u0428\u0430\u0431\u043b\u043e\u043d \u043d\u0443\u0436\u0435\u043d \u0434\u043b\u044f \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u043a\u0430\u043c\u0435\u0440\u044b", None))
         self.groupBox_calibrationPreparingStep2.setTitle(QCoreApplication.translate("Widget", u"\u0428\u0430\u0433 2. \u0412\u043a\u043b\u044e\u0447\u0438\u0442\u0435 \u043e\u0441\u0432\u0435\u0449\u0435\u043d\u0438\u0435 \u0438 \u043f\u043e\u0434\u0433\u043e\u0442\u043e\u0432\u044c\u0442\u0435 \u043a\u0430\u043c\u0435\u0440\u0443.", None))
-        self.label_calibrationPreparingStep2_info.setText(QCoreApplication.translate("Widget", u"\u041e\u0441\u0432\u0435\u0449\u0435\u043d\u0438\u0435 \u0434\u043e\u043b\u0436\u043d\u043e \u0431\u044b\u0442\u044c \u0440\u0430\u0432\u043d\u043e\u043c\u0435\u0440\u043d\u044b\u043c.", None))
+        self.label_calibrationPreparingStep2_info.setText(QCoreApplication.translate("Widget", u"\u041e\u0441\u0432\u0435\u0449\u0435\u043d\u0438\u0435 \u0434\u043e\u043b\u0436\u043d\u043e \u0431\u044b\u0442\u044c \u0440\u0430\u0432\u043d\u043e\u043c\u0435\u0440\u043d\u044b\u043c, \u043f\u043e\u0441\u0442\u0430\u0440\u0430\u0439\u0442\u0435\u0441\u044c \u0438\u0437\u0431\u0435\u0436\u0430\u0442\u044c \u0442\u0435\u043d\u0435\u0439 \u043d\u0430 \u0448\u0430\u0431\u043b\u043e\u043d\u0435.", None))
         self.groupBox_calibrationPreparingStep3.setTitle(QCoreApplication.translate("Widget", u"\u0428\u0430\u0433 3. \u041e\u0442\u0441\u043d\u0438\u043c\u0438\u0442\u0435 \u043c\u0430\u0442\u0435\u0440\u0438\u0430\u043b", None))
-        self.label_calibrationPreparingStep3_info.setText(QCoreApplication.translate("Widget", u"\u0421\u0434\u0435\u043b\u0430\u0439\u0442\u0435 \u043c\u0438\u043d\u0438\u043c\u0443\u043c 20 \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u043d\u0438\u0439 \u0448\u0430\u0431\u043b\u043e\u043d\u0430 \u0441 \u0440\u0430\u0437\u043d\u044b\u0445 \u0441\u0442\u043e\u0440\u043e\u043d. \u0421\u0442\u0430\u0440\u0430\u0439\u0442\u0435\u0441\u044c \u0441\u043e\u0431\u043b\u044e\u0434\u0430\u0442\u044c \u043e\u0434\u0438\u043d\u0430\u043a\u043e\u0432\u043e\u0435 \u0440\u0430\u0441\u0441\u0442\u043e\u044f\u043d\u0438\u0435\n"
-"\u043e\u0442 \u043a\u0430\u043c\u0435\u0440\u044b \u0434\u043e \u0448\u0430\u0431\u043b\u043e\u043d\u0430. \u041f\u043e\u0441\u043b\u0435 \u043f\u043e\u0434\u0433\u043e\u0442\u043e\u0432\u043a\u0438 \u043c\u0430\u0442\u0435\u0440\u0438\u0430\u043b\u0430 \u0441\u0444\u043e\u0440\u043c\u0438\u0440\u0443\u0439\u0442\u0435 \u0435\u0434\u0438\u043d\u044b\u0439 \u0434\u0430\u0442\u0430\u0435\u0442 \u0438 \u043d\u0430\u0436\u043c\u0438\u0442\u0435 \u043a\u043d\u043e\u043f\u043a\u0443 \u0434\u043b\u044f \u043f"
-                        "\u0435\u0440\u0435\u0445\u043e\u0434\u0430 \u043a\n"
-"\u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0435\u043c\u0443 \u044d\u0442\u0430\u043f\u0443.", None))
+        self.label_calibrationPreparingStep3_info.setText(QCoreApplication.translate("Widget", u"\u0421\u0434\u0435\u043b\u0430\u0439\u0442\u0435 \u043c\u0438\u043d\u0438\u043c\u0443\u043c 20 \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u043d\u0438\u0439 \u0448\u0430\u0431\u043b\u043e\u043d\u0430 \u0441 \u0440\u0430\u0437\u043d\u044b\u0445 \u0441\u0442\u043e\u0440\u043e\u043d. \u0421\u0442\u0430\u0440\u0430\u0439\u0442\u0435\u0441\u044c \u0441\u043e\u0431\u043b\u044e\u0434\u0430\u0442\u044c \u043e\u0434\u0438\u043d\u0430\u043a\u043e\u0432\u043e\u0435 \u0440\u0430\u0441\u0441\u0442\u043e\u044f\u043d\u0438\u0435 \u043e\u0442 \u043a\u0430\u043c\u0435\u0440\u044b \u0434\u043e \u0448\u0430\u0431\u043b\u043e\u043d\u0430. \u041f\u043e\u0441\u043b\u0435 \u043f\u043e\u0434\u0433\u043e\u0442\u043e\u0432\u043a\u0438 \u043c\u0430\u0442\u0435\u0440\u0438\u0430\u043b\u0430 \u0441\u0444\u043e\u0440\u043c\u0438\u0440\u0443\u0439\u0442\u0435 \u0435\u0434\u0438\u043d\u044b\u0439 \u0434\u0430\u0442\u0430\u0435\u0442 \u0438 \u043d\u0430\u0436\u043c\u0438\u0442\u0435 \u043a\u043d\u043e\u043f\u043a\u0443 \u0434\u043b\u044f \u043f"
+                        "\u0435\u0440\u0435\u0445\u043e\u0434\u0430 \u043a \u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0435\u043c\u0443 \u044d\u0442\u0430\u043f\u0443.", None))
         self.groupBox_calibrationStartFromPreparing.setTitle("")
         self.pushButton_calibrationStartFromPreparing.setText(QCoreApplication.translate("Widget", u"\u0417\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u044c \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0443", None))
         self.groupBox_calibrationSteps_4.setTitle(QCoreApplication.translate("Widget", u"\u041a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0430", None))
         self.groupBox_calibrationImagesDirectoryField.setTitle(QCoreApplication.translate("Widget", u"\u041f\u0443\u0442\u044c \u043a \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u044f\u043c", None))
         self.pushButton_setCalibrationImagesDirectory.setText(QCoreApplication.translate("Widget", u"\u0412\u044b\u0431\u0440\u0430\u0442\u044c", None))
+        self.groupBox_calibrationImagesDirectoryFieldSecondCamera.setTitle(QCoreApplication.translate("Widget", u"\u041f\u0443\u0442\u044c \u043a \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u044f\u043c \u0441\u043e \u0432\u0442\u043e\u0440\u043e\u0439 \u043a\u0430\u043c\u0435\u0440\u044b (\u0441\u0442\u0435\u0440\u0435\u043e\u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0430)", None))
+        self.pushButton_setCalibrationImagesDirectorySecondCamera.setText(QCoreApplication.translate("Widget", u"\u0412\u044b\u0431\u0440\u0430\u0442\u044c", None))
         self.pushButton_calibrationProcessStart.setText(QCoreApplication.translate("Widget", u"\u0417\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u044c \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0443", None))
         self.textBrowser_calibrationProcessLogs.setHtml(QCoreApplication.translate("Widget", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
@@ -842,316 +867,7 @@ class Ui_Widget(object):
 "li.unchecked::marker { content: \"\\2610\"; }\n"
 "li.checked::marker { content: \"\\2612\"; }\n"
 "</style></head><body style=\" font-family:'Rubik'; font-size:14pt; font-weight:700; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:12pt; font-weight:400;\">\u041c\u043e\u0434\u0435\u043b\u044c \u043a\u0430\u043c\u0435\u0440\u044b: Sony A5</span></p>\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; font-size:9pt; font-weight:400;\"><br /></p>\n"
-"<table border=\"0\" style=\" margin-top:0px; margin-bottom:0px; m"
-                        "argin-left:0px; margin-right:0px; border-collapse:collapse;\" width=\"100%\" cellspacing=\"2\" cellpadding=\"0\" bgcolor=\"#ffffff\">\n"
-"<tr>\n"
-"<td bgcolor=\"#e5e5e5\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;\">\u041c\u0430\u043a\u0441\u0438\u043c\u0430\u043b\u044c\u043d\u043e\u0435 \u0440\u0430\u0437\u0440\u0435\u0448\u0435\u043d\u0438\u0435</span></p></td>\n"
-"<td bgcolor=\"#ffffff\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">6000 x 4000</span></p></td></tr>\n"
-"<tr>\n"
-"<td bgcolor=\"#e5e5e5\">\n"
-"<p style=\" margin-top:0px; margin-"
-                        "bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;\">\u0414\u0440\u0443\u0433\u0438\u0435 \u0440\u0430\u0437\u0440\u0435\u0448\u0435\u043d\u0438\u044f</span></p></td>\n"
-"<td bgcolor=\"#ffffff\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">6000 x 3376, 4240 x 2832, 4240 x 2400, 3008 x 2000, 3008 x 1688</span></p></td></tr>\n"
-"<tr>\n"
-"<td bgcolor=\"#e5e5e5\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:"
-                        "400; color:#535353; background-color:#e5e5e5;\">\u0421\u043e\u043e\u0442\u043d\u043e\u0448\u0435\u043d\u0438\u0435 \u0441\u0442\u043e\u0440\u043e\u043d \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u044f \u0448:\u0432</span></p></td>\n"
-"<td bgcolor=\"#ffffff\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">3:2, 16:9</span></p></td></tr>\n"
-"<tr>\n"
-"<td bgcolor=\"#e5e5e5\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;\">\u042d\u0444\u0444\u0435\u043a\u0442\u0438\u0432\u043d\u044b\u0435 \u043f\u0438\u043a\u0441\u0435\u043b\u0438</spa"
-                        "n></p></td>\n"
-"<td bgcolor=\"#ffffff\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">24 \u043c\u0435\u0433\u0430\u043f\u0438\u043a\u0441\u0435\u043b\u0435\u0439</span></p></td></tr>\n"
-"<tr>\n"
-"<td bgcolor=\"#e5e5e5\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;\">\u0424\u043e\u0442\u043e\u0434\u0435\u043a\u0442\u043e\u0440\u044b</span></p></td>\n"
-"<td bgcolor=\"#ffffff\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;\"><spa"
-                        "n style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">25 \u043c\u0435\u0433\u0430\u043f\u0438\u043a\u0441\u0435\u043b\u0435\u0439</span></p></td></tr>\n"
-"<tr>\n"
-"<td bgcolor=\"#e5e5e5\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;\">\u0420\u0430\u0437\u043c\u0435\u0440 \u043c\u0430\u0442\u0440\u0438\u0446\u044b</span></p></td>\n"
-"<td bgcolor=\"#ffffff\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">APS-C (23,5 x 15,6 \u043c\u043c)</span></p></td></tr>\n"
-"<tr>\n"
-"<td bgcolor=\"#e5e5e5\">\n"
-""
-                        "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;\">\u0422\u0438\u043f \u043c\u0430\u0442\u0440\u0438\u0446\u044b</span></p></td>\n"
-"<td bgcolor=\"#ffffff\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">CMOS</span></p></td></tr>\n"
-"<tr>\n"
-"<td bgcolor=\"#e5e5e5\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;\">\u041f\u0440"
-                        "\u043e\u0446\u0435\u0441\u0441\u043e\u0440</span></p></td>\n"
-"<td bgcolor=\"#ffffff\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">Bionz X</span></p></td></tr>\n"
-"<tr>\n"
-"<td colspan=\"2\" bgcolor=\"#cbcbcb\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#cbcbcb;\"><span style=\" font-family:'Verdana'; font-size:9pt; color:#535353;\">\u0418\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u0435</span></p></td></tr>\n"
-"<tr>\n"
-"<td bgcolor=\"#e5e5e5\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;\"><span style=\" font-family:'Verdana'; fo"
-                        "nt-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;\">ISO</span></p></td>\n"
-"<td bgcolor=\"#ffffff\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">\u0410\u0432\u0442\u043e, 100-25600 (51200 \u0441 \u0428\u0443\u043c\u043e\u043f\u043e\u0434\u0430\u0432\u043b\u0435\u043d\u0438\u0435\u043c \u043f\u0440\u0438 \u043c\u043d\u043e\u0433\u043e\u043a\u0430\u0434\u0440\u043e\u0432\u043e\u0439 \u0441\u044a\u0435\u043c\u043a\u0435)</span></p></td></tr>\n"
-"<tr>\n"
-"<td bgcolor=\"#e5e5e5\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;\">\u041f"
-                        "\u0440\u0435\u0441\u0435\u0442\u044b \u0431\u0430\u043b\u0430\u043d\u0441\u0430 \u0431\u0435\u043b\u043e\u0433\u043e</span></p></td>\n"
-"<td bgcolor=\"#ffffff\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">10</span></p></td></tr>\n"
-"<tr>\n"
-"<td bgcolor=\"#e5e5e5\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;\">\u041d\u0430\u0441\u0442\u0440\u0430\u0438\u0432\u0430\u0435\u043c\u044b\u0439 \u0431\u0430\u043b\u0430\u043d\u0441 \u0431\u0435\u043b\u043e\u0433\u043e</span></p></td>\n"
-"<td bgcolor=\"#ffffff\">\n"
-"<p style=\" margin-top:0px; margin-"
-                        "bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">\u0414\u0430</span></p></td></tr>\n"
-"<tr>\n"
-"<td bgcolor=\"#e5e5e5\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;\">\u0421\u0442\u0430\u0431\u0438\u043b\u0438\u0437\u0430\u0446\u0438\u044f \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u044f</span></p></td>\n"
-"<td bgcolor=\"#ffffff\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; colo"
-                        "r:#535353; background-color:#ffffff;\">\u041d\u0435\u0442</span></p></td></tr>\n"
-"<tr>\n"
-"<td bgcolor=\"#e5e5e5\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;\">\u041d\u0435\u0441\u0436\u0430\u0442\u044b\u0439 \u0444\u043e\u0440\u043c\u0430\u0442</span></p></td>\n"
-"<td bgcolor=\"#ffffff\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">RAW</span></p></td></tr>\n"
-"<tr>\n"
-"<td colspan=\"2\" bgcolor=\"#cbcbcb\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:1"
-                        "6px; background-color:#cbcbcb;\"><span style=\" font-family:'Verdana'; font-size:9pt; color:#535353;\">\u041e\u043f\u0442\u0438\u043a\u0430 \u0438 \u0444\u043e\u043a\u0443\u0441\u0438\u0440\u043e\u0432\u043a\u0430</span></p></td></tr>\n"
-"<tr>\n"
-"<td bgcolor=\"#e5e5e5\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;\">\u0410\u0432\u0442\u043e\u0444\u043e\u043a\u0443\u0441</span></p></td>\n"
-"<td bgcolor=\"#ffffff\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">\u041a\u043e\u043d\u0442\u0440\u0430\u0441\u0442\u043d\u0430\u044f \u0434\u0435\u0442\u0435"
-                        "\u043a\u0446\u0438\u044f (\u043c\u0430\u0442\u0440\u0438\u0446\u0430);</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">\u0424\u0430\u0437\u043e\u0432\u0430\u044f \u0434\u0435\u0442\u0435\u043a\u0446\u0438\u044f;</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">\u041c\u0443\u043b\u044c\u0442\u0438-\u0437\u043e\u043d\u0430;</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; b"
-                        "ackground-color:#ffffff;\">\u0426\u0435\u043d\u0442\u0440;</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">\u0422\u0440\u0435\u043a\u0438\u043d\u0433;</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">\u0412\u044b\u0431\u043e\u0440 \u0442\u043e\u0447\u043a\u0438;</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">\u0415\u0434\u0438\u043d\u0438\u0447"
-                        "\u043d\u044b\u0439;</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">\u0421\u043b\u0435\u0436\u0435\u043d\u0438\u0435;</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">\u0420\u0430\u0441\u043f\u043e\u0437\u043d\u0430\u0432\u0430\u043d\u0438\u0435 \u043b\u0438\u0446;</span></p>\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">Live View</span></p></td></tr>\n"
-""
-                        "<tr>\n"
-"<td bgcolor=\"#e5e5e5\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;\">\u0426\u0438\u0444\u0440\u043e\u0432\u043e\u0439 \u0437\u0443\u043c</span></p></td>\n"
-"<td bgcolor=\"#ffffff\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">\u0414\u0430(2X)</span></p></td></tr>\n"
-"<tr>\n"
-"<td bgcolor=\"#e5e5e5\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400;"
-                        " color:#535353; background-color:#e5e5e5;\">\u0420\u0443\u0447\u043d\u0430\u044f \u0444\u043e\u043a\u0443\u0441\u0438\u0440\u043e\u0432\u043a\u0430</span></p></td>\n"
-"<td bgcolor=\"#ffffff\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">\u0414\u0430</span></p></td></tr>\n"
-"<tr>\n"
-"<td bgcolor=\"#e5e5e5\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;\">\u041a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u0442\u043e\u0447\u0435\u043a \u0444\u043e\u043a\u0443\u0441\u0438\u0440\u043e\u0432\u043a\u0438</span></p></td>\n"
-"<td bgcolor=\"#ff"
-                        "ffff\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">179</span></p></td></tr>\n"
-"<tr>\n"
-"<td bgcolor=\"#e5e5e5\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;\">\u0411\u0430\u0439\u043e\u043d\u0435\u0442</span></p></td>\n"
-"<td bgcolor=\"#ffffff\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">Sony E</span></p></t"
-                        "d></tr>\n"
-"<tr>\n"
-"<td bgcolor=\"#e5e5e5\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;\">\u041c\u043d\u043e\u0436\u0438\u0442\u0435\u043b\u044c \u0444\u043e\u043a\u0443\u0441\u043d\u043e\u0433\u043e \u0440\u0430\u0441\u0441\u0442\u043e\u044f\u043d\u0438\u044f</span></p></td>\n"
-"<td bgcolor=\"#ffffff\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">1,5\u00d7</span></p></td></tr>\n"
-"<tr>\n"
-"<td colspan=\"2\" bgcolor=\"#cbcbcb\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-inden"
-                        "t:0px; line-height:16px; background-color:#cbcbcb;\"><span style=\" font-family:'Verdana'; font-size:9pt; color:#535353;\">\u0414\u0438\u0441\u043f\u043b\u0435\u0439 / \u0432\u0438\u0434\u043e\u0438\u0441\u043a\u0430\u0442\u0435\u043b\u044c</span></p></td></tr>\n"
-"<tr>\n"
-"<td bgcolor=\"#e5e5e5\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;\">\u041f\u043e\u0434\u0432\u0438\u0436\u043d\u043e\u0441\u0442\u044c</span></p></td>\n"
-"<td bgcolor=\"#ffffff\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">\u041d\u0430\u043a\u043b\u043e\u043d\u043d\u044b\u0439"
-                        "</span></p></td></tr>\n"
-"<tr>\n"
-"<td bgcolor=\"#e5e5e5\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;\">\u0420\u0430\u0437\u043c\u0435\u0440 \u0434\u0438\u0441\u043f\u043b\u0435\u044f</span></p></td>\n"
-"<td bgcolor=\"#ffffff\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">3\u2033</span></p></td></tr>\n"
-"<tr>\n"
-"<td bgcolor=\"#e5e5e5\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;\"><span style=\" font-family:'Verdana'; fo"
-                        "nt-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;\">\u041a\u043e\u043b-\u0432\u043e \u0442\u043e\u0447\u0435\u043a \u0434\u0438\u0441\u043f\u043b\u0435\u044f</span></p></td>\n"
-"<td bgcolor=\"#ffffff\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">921 600</span></p></td></tr>\n"
-"<tr>\n"
-"<td bgcolor=\"#e5e5e5\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;\">\u0422\u0430\u0447\u0441\u043a\u0440\u0438\u043d</span></p></td>\n"
-"<td bgcolor=\"#ffffff\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-r"
-                        "ight:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">\u041d\u0435\u0442</span></p></td></tr>\n"
-"<tr>\n"
-"<td bgcolor=\"#e5e5e5\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;\">\u0422\u0438\u043f \u0434\u0438\u0441\u043f\u043b\u0435\u044f</span></p></td>\n"
-"<td bgcolor=\"#ffffff\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">TFT LCD</span></p></td></tr>\n"
-"<tr>\n"
-"<td bgcolor=\"#e5e5e5\">\n"
-""
-                        "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;\">Live view</span></p></td>\n"
-"<td bgcolor=\"#ffffff\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">\u0414\u0430</span></p></td></tr>\n"
-"<tr>\n"
-"<td bgcolor=\"#e5e5e5\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;\">\u0422\u0438\u043f \u0432\u0438\u0434\u043e\u0438\u0441\u043a"
-                        "\u0430\u0442\u0435\u043b\u044f</span></p></td>\n"
-"<td bgcolor=\"#ffffff\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">\u042d\u043b\u0435\u043a\u0442\u0440\u043e\u043d\u043d\u044b\u0439</span></p></td></tr>\n"
-"<tr>\n"
-"<td bgcolor=\"#e5e5e5\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;\">\u041f\u043e\u043a\u0440\u044b\u0442\u0438\u0435 \u0432\u0438\u0434\u043e\u0438\u0441\u043a\u0430\u0442\u0435\u043b\u044f</span></p></td>\n"
-"<td bgcolor=\"#ffffff\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-bl"
-                        "ock-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">100%</span></p></td></tr>\n"
-"<tr>\n"
-"<td bgcolor=\"#eaeaea\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#eaeaea;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#eaeaea;\">\u0423\u0432\u0435\u043b\u0438\u0447\u0435\u043d\u0438\u0435 \u0432\u0438\u0434\u043e\u0438\u0441\u043a\u0430\u0442\u0435\u043b\u044f</span></p></td>\n"
-"<td bgcolor=\"#ffffff\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">1,05\u00d7(0,7\u00d735\u043c"
-                        "\u043c \u044d\u043a\u0432.)</span></p></td></tr>\n"
-"<tr>\n"
-"<td bgcolor=\"#eaeaea\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#eaeaea;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#eaeaea;\">\u0420\u0430\u0437\u0440\u0435\u0448\u0435\u043d\u0438\u0435 \u0432\u0438\u0434\u043e\u0438\u0441\u043a\u0430\u0442\u0435\u043b\u044f</span></p></td>\n"
-"<td bgcolor=\"#ffffff\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">1 440 000</span></p></td></tr>\n"
-"<tr>\n"
-"<td colspan=\"2\" bgcolor=\"#cbcbcb\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-i"
-                        "ndent:0px; line-height:16px; background-color:#cbcbcb;\"><span style=\" font-family:'Verdana'; font-size:9pt; color:#535353;\">\u0424\u043e\u0442\u043e\u0433\u0440\u0430\u0444\u0438\u044f</span></p></td></tr>\n"
-"<tr>\n"
-"<td bgcolor=\"#eaeaea\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#eaeaea;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#eaeaea;\">\u041c\u0438\u043d\u0438\u043c\u0430\u043b\u044c\u043d\u0430\u044f \u0441\u043a\u043e\u0440\u043e\u0441\u0442\u044c \u0437\u0430\u0442\u0432\u043e\u0440\u0430</span></p></td>\n"
-"<td bgcolor=\"#ffffff\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">30 \u0441\u0435"
-                        "\u043a</span></p></td></tr>\n"
-"<tr>\n"
-"<td bgcolor=\"#eaeaea\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#eaeaea;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#eaeaea;\">\u041c\u0430\u043a\u0441\u0438\u043c\u0430\u043b\u044c\u043d\u0430\u044f \u0441\u043a\u043e\u0440\u043e\u0441\u0442\u044c \u0437\u0430\u0442\u0432\u043e\u0440\u0430 (\u043c\u0435\u0445\u0430\u043d\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0437\u0430\u0442\u0432\u043e\u0440)</span></p></td>\n"
-"<td bgcolor=\"#ffffff\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">1/4000 \u0441\u0435\u043a</span></p></td></tr>\n"
-"<tr>\n"
-"<td bgcolor=\""
-                        "#eaeaea\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#eaeaea;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#eaeaea;\">\u041f\u0440\u0438\u043e\u0440\u0438\u0442\u0435\u0442 \u0434\u0438\u0430\u0444\u0440\u0430\u0433\u043c\u044b</span></p></td>\n"
-"<td bgcolor=\"#ffffff\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">\u0414\u0430</span></p></td></tr>\n"
-"<tr>\n"
-"<td bgcolor=\"#eaeaea\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#eaeaea;\"><span style=\" font-family:'Verdana'; font-size:9pt; f"
-                        "ont-weight:400; color:#535353; background-color:#eaeaea;\">\u041f\u0440\u0438\u043e\u0440\u0438\u0442\u0435\u0442 \u0432\u044b\u0434\u0435\u0440\u0436\u043a\u0438</span></p></td>\n"
-"<td bgcolor=\"#ffffff\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">\u0414\u0430</span></p></td></tr>\n"
-"<tr>\n"
-"<td bgcolor=\"#eaeaea\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#eaeaea;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#eaeaea;\">\u0420\u0435\u0436\u0438\u043c \u0440\u0443\u0447\u043d\u043e\u0439 \u044d\u043a\u0441\u043f\u043e\u0437\u0438\u0446\u0438\u0438</span></p></td>\n"
-"<td bgcolor=\"#ffffff\">\n"
-"<p "
-                        "style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">\u0414\u0430</span></p></td></tr>\n"
-"<tr>\n"
-"<td bgcolor=\"#eaeaea\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#eaeaea;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#eaeaea;\">\u0420\u0435\u0436\u0438\u043c\u044b \u0441\u0446\u0435\u043d\u044b/\u043e\u0431\u044a\u0435\u043a\u0442\u043e\u0432</span></p></td>\n"
-"<td bgcolor=\"#ffffff\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:"
-                        "400; color:#535353; background-color:#ffffff;\">\u0414\u0430</span></p></td></tr>\n"
-"<tr>\n"
-"<td bgcolor=\"#e5e5e5\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;\">\u0412\u0441\u0442\u0440\u043e\u0435\u043d\u043d\u0430\u044f \u0432\u0441\u043f\u044b\u0448\u043a\u0430</span></p></td>\n"
-"<td bgcolor=\"#ffffff\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">\u0414\u0430</span></p></td></tr>\n"
-"<tr>\n"
-"<td bgcolor=\"#e5e5e5\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0p"
-                        "x; line-height:16px; background-color:#e5e5e5;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;\">\u0414\u0430\u043b\u044c\u043d\u043e\u0441\u0442\u044c \u0440\u0430\u0431\u043e\u0442\u044b \u0432\u0441\u043f\u044b\u0448\u043a\u0438</span></p></td>\n"
-"<td bgcolor=\"#ffffff\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">6\u043c (\u043d\u0430 ISO 100)</span></p></td></tr>\n"
-"<tr>\n"
-"<td bgcolor=\"#e5e5e5\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;\">\u0412\u043d\u0435\u0448\u043d"
-                        "\u044f\u044f \u0432\u0441\u043f\u044b\u0448\u043a\u0430</span></p></td>\n"
-"<td bgcolor=\"#ffffff\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">\u0414\u0430 (\u0447\u0435\u0440\u0435\u0437 \u0438\u043d\u0442\u0435\u0440\u0444\u0435\u0439\u0441 Multi Interface Shoe)</span></p></td></tr>\n"
-"<tr>\n"
-"<td bgcolor=\"#eaeaea\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#eaeaea;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#eaeaea;\">\u0421\u0435\u0440\u0438\u0439\u043d\u0430\u044f \u0441\u044a\u0435\u043c\u043a\u0430</span></p></td>\n"
-"<td bgcolor=\"#ffffff\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0p"
-                        "x; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">11 \u043a/\u0441</span></p></td></tr>\n"
-"<tr>\n"
-"<td bgcolor=\"#eaeaea\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#eaeaea;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#eaeaea;\">\u0422\u0430\u0439\u043c\u0435\u0440</span></p></td>\n"
-"<td bgcolor=\"#ffffff\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">\u0414\u0430 (2 \u0438\u043b\u0438 10 \u0441\u0435\u043a, \u043d\u0435"
-                        "\u043f\u0440\u0435\u0440\u044b\u0432\u043d\u044b\u0439 (3-5 \u0441\u043d\u0438\u043c\u043a\u043e\u0432))</span></p></td></tr>\n"
-"<tr>\n"
-"<td bgcolor=\"#eaeaea\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#eaeaea;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#eaeaea;\">\u0420\u0435\u0436\u0438\u043c \u0437\u0430\u043c\u0435\u0440\u0430 \u044d\u043a\u0441\u043f\u043e\u0437\u0438\u0446\u0438\u0438</span></p></td>\n"
-"<td bgcolor=\"#ffffff\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">\u041c\u0443\u043b\u044c\u0442\u0438\u0437\u043e\u043d\u043d\u044b\u0439; \u0426\u0435\u043d\u0442\u0440\u043e\u0432\u0437\u0432"
-                        "\u0435\u0448\u0435\u043d\u043d\u044b\u0439; \u0422\u043e\u0447\u0435\u0447\u043d\u044b\u0439</span></p></td></tr>\n"
-"<tr>\n"
-"<td bgcolor=\"#eaeaea\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#eaeaea;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#eaeaea;\">\u041a\u043e\u043c\u043f\u0435\u043d\u0441\u0430\u0446\u0438\u044f \u044d\u043a\u0441\u043f\u043e\u0437\u0438\u0446\u0438\u0438</span></p></td>\n"
-"<td bgcolor=\"#ffffff\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">\u00b15 (\u043d\u0430 \u0448\u0430\u0433\u0430\u0445 1/3 EV, 1/2 EV)</span></p></td></tr>\n"
-"<tr>\n"
-"<td bgcolor=\"#eaeaea\">\n"
-"<p s"
-                        "tyle=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#eaeaea;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#eaeaea;\">\u0411\u0440\u0435\u043a\u0435\u0442\u0438\u043d\u0433 \u0430\u0432\u0442\u043e\u044d\u043a\u0441\u043f\u043e\u0437\u0438\u0446\u0438\u0438</span></p></td>\n"
-"<td bgcolor=\"#ffffff\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">\u00b15 (3, 5 \u043a\u0430\u0434\u0440\u043e\u0432 \u043d\u0430 \u0448\u0430\u0433\u0430\u0445 1/3 EV, 1/2 EV, 2/3 EV, 1 EV, 2 EV)</span></p></td></tr>\n"
-"<tr>\n"
-"<td bgcolor=\"#eaeaea\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-bloc"
-                        "k-indent:0; text-indent:0px; line-height:16px; background-color:#eaeaea;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#eaeaea;\">\u0411\u0440\u0435\u043a\u0435\u0442\u0438\u043d\u0433 \u0431\u0430\u043b\u0430\u043d\u0441\u0430 \u0431\u0435\u043b\u043e\u0433\u043e</span></p></td>\n"
-"<td bgcolor=\"#ffffff\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">\u0414\u0430</span></p></td></tr>\n"
-"<tr>\n"
-"<td colspan=\"2\" bgcolor=\"#cbcbcb\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#cbcbcb;\"><span style=\" font-family:'Verdana'; font-size:9pt; color:#535353;\">\u0412\u0438\u0434\u0435\u043e</span></p></td></tr"
-                        ">\n"
-"<tr>\n"
-"<td bgcolor=\"#e5e5e5\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;\">\u0420\u0430\u0437\u0440\u0435\u0448\u0435\u043d\u0438\u0435</span></p></td>\n"
-"<td bgcolor=\"#ffffff\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">1920 x 1080 (60p, 60i, 24p), 1440 x 1080 (30p, 25p), 640 x 480 (30p, 25p)</span></p></td></tr>\n"
-"<tr>\n"
-"<td bgcolor=\"#e5e5e5\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;\"><span style=\""
-                        " font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;\">\u0424\u043e\u0440\u043c\u0430\u0442</span></p></td>\n"
-"<td bgcolor=\"#ffffff\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">MPEG-4, AVCHD</span></p></td></tr>\n"
-"<tr>\n"
-"<td bgcolor=\"#e5e5e5\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;\">\u041c\u0438\u043a\u0440\u043e\u0444\u043e\u043d</span></p></td>\n"
-"<td bgcolor=\"#ffffff\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-in"
-                        "dent:0px; line-height:16px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">\u0421\u0442\u0435\u0440\u0435\u043e</span></p></td></tr>\n"
-"<tr>\n"
-"<td bgcolor=\"#e5e5e5\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#e5e5e5;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#e5e5e5;\">\u0414\u0438\u043d\u0430\u043c\u0438\u043a</span></p></td>\n"
-"<td bgcolor=\"#ffffff\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px; line-height:16px; background-color:#ffffff;\"><span style=\" font-family:'Verdana'; font-size:9pt; font-weight:400; color:#535353; background-color:#ffffff;\">\u041c\u043e\u043d\u043e</span></p></td></tr></table></body></html>", None))
+"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", None))
         self.groupBox_calibrationSteps_5_doneContinueOptions.setTitle("")
         self.pushButton_continueWithoutSavingCalibrationResults.setText(QCoreApplication.translate("Widget", u"\u041f\u0435\u0440\u0435\u0439\u0442\u0438 \u043a \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0435\n"
 "\u0431\u0435\u0437 \u0441\u043e\u0445\u0440\u0430\u043d\u0435\u043d\u0438\u044f", None))

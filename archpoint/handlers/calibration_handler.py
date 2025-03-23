@@ -12,9 +12,6 @@ class CalibrationHandler:
         self.calibration_data = {}
         self.calibration_method: CalibrationMethod = ChessboardCalibrationMethod()
 
-        self.__calibration_filename_json = "parameters.json"
-        self.__calibration_filename_npz = "parameters.npz"
-
     def get_calibration_data_as_string(self) -> str:
         calibration_data_str = ""
         for key, value in self.calibration_data.items():
@@ -27,9 +24,10 @@ class CalibrationHandler:
         return calibration_data_str
 
     def load_calibration_data(self, filepath: str) -> None:
-        if not os.path.exists(filepath) or not filepath.endswith(".npz"):
+        if not os.path.exists(filepath):
             raise FileNotFoundError("Файл калибровки не найден.")
-
+        if not filepath.endswith(".npz"):
+            raise ValueError("Имя файла калибровки должно заканчиваться на '.npz'.")
         self.calibration_data = dict(np.load(filepath))
 
     def save_calibration_data(self, filepath: str) -> None:
@@ -56,6 +54,9 @@ class CalibrationHandler:
         image_names = sorted(os.listdir(images_dir), key=len)
         return [os.path.join(images_dir, name) for name in image_names]
 
+    def set_calibration_method(self, calibration_method: "CalibrationMethod") -> None:
+        self.calibration_method = calibration_method
+
     def calibrate(self, images_path: str) -> None:
         image_paths = self.__get_image_paths_sorted(images_path)
         self.calibration_data = self.calibration_method.calibrate(image_paths)
@@ -74,7 +75,7 @@ class CalibrationMethod(ABC):
         pass
 
     @abstractmethod
-    def calibrate_stereo(self, left_image_paths: list, right_image_paths: list) -> None:
+    def calibrate_stereo(self, left_image_paths: list, right_image_paths: list) -> dict:
         pass
 
 
@@ -83,14 +84,16 @@ class ChessboardCalibrationMethod(CalibrationMethod):
         self.square_size = 30  # размер квадрата шахматного рисунка (в миллиметрах)
         self.board_size = (11, 7)  # размер доски (кол-во пересечений углов квадратов)
 
-        # TODO: add dual camera mode support
-        # self.dual_camera_mode = False
-
     def set_chessboard_sizes(self, square_size: int, board_size: tuple) -> None:
         self.square_size = square_size
         self.board_size = board_size
 
     def is_chessboard_size_correct(self, test_image_filepath: str) -> None:
+        if not os.path.exists(test_image_filepath):
+            raise FileNotFoundError(
+                "Ошибка проверки размера шахматной доски: Файл не найден."
+            )
+
         example_image = cv2.imread(test_image_filepath)
         example_image = cv2.cvtColor(example_image, cv2.COLOR_BGR2GRAY)
 
@@ -99,56 +102,90 @@ class ChessboardCalibrationMethod(CalibrationMethod):
             raise ChessboardSizeIsIncorrect("Размер шахматной доски указан неверно.")
 
     def calibrate(self, image_paths: list) -> dict:
+        if image_paths is None or len(image_paths) < 1:
+            raise ValueError("Недостаточно изображений для калибровки.")
+
         camera_parameters = {}
-        imgpoints, objpoints = self.__get_img_and_obj_points(image_paths)
+        initial_imgpoints, initial_objpoints = self.__get_img_and_obj_points(
+            image_paths
+        )
+        if len(initial_imgpoints) == 0 or len(initial_objpoints) == 0:
+            raise ValueError("Не удалось извлечь точки для калибровки.")
 
-        gray = cv2.cvtColor(cv2.imread(image_paths[0]), cv2.COLOR_BGR2GRAY)
-        gray = gray.shape[::-1]
+        image = cv2.imread(image_paths[0])
+        if image is None:
+            raise ValueError(
+                f"Ошибка калибровки: Не удалось загрузить изображение: {image_paths[0]}"
+            )
 
+        gray = cv2.cvtColor(cv2.imread(image_paths[0]), cv2.COLOR_BGR2GRAY).shape[::-1]
+        image_height, image_width = image.shape[:2]
         flags = 0
 
-        obj_points = []
+        final_objpoints = []
         for i in range(20):
-            obj_points.append(objpoints)
-        (ret, mtx, dist, rvecs, tvecs) = cv2.calibrateCamera(
-            obj_points, imgpoints, gray, None, None, flags=flags
+            final_objpoints.append(initial_objpoints)
+        (
+            retval,
+            camera_matrix,
+            distortion_coeffs,
+            rotation_vectors,
+            translation_vectors,
+        ) = cv2.calibrateCamera(
+            final_objpoints, initial_imgpoints, gray, None, None, flags=flags
         )
+        if not retval:
+            raise RuntimeError("Калибровка камеры не удалась.")
 
-        Rmtx = []
-        Tmtx = []
-        k = 0
-        for r in rvecs:
-            Rmtx.append(cv2.Rodrigues(r)[0])
-            Tmtx.append(
-                np.vstack((np.hstack((Rmtx[k], tvecs[k])), np.array([0, 0, 0, 1])))
+        rotation_matrices = []
+        transformation_matrices = []
+        for k, r in enumerate(rotation_vectors):
+            rotation_matrices.append(cv2.Rodrigues(r)[0])
+            transformation_matrices.append(
+                np.vstack(
+                    (
+                        np.hstack((rotation_matrices[k], translation_vectors[k])),
+                        np.array([0, 0, 0, 1]),
+                    )
+                )
             )
-            k += 1
 
-        img = cv2.imread(image_paths[0], 0)
-        h, w = img.shape[:2]
-        newmtx, roi = cv2.getOptimalNewCameraMatrix(mtx, dist, (w, h), 1, (w, h))
+        new_matrix, roi = cv2.getOptimalNewCameraMatrix(
+            camera_matrix,
+            distortion_coeffs,
+            (image_width, image_height),
+            1,
+            (image_width, image_height),
+        )
+        if new_matrix is None or roi is None:
+            raise RuntimeError("Ошибка получения оптимальной новой матрицы камеры.")
 
         if np.sum(roi) == 0:
-            roi = (0, 0, w - 1, h - 1)
+            roi = (0, 0, image_width - 1, image_height - 1)
 
         camera_parameters = {
             "calibration_method": self.__class__.__name__,
             "square_size": self.square_size,
             "board_size": self.board_size,
-            "object_points": objpoints,
-            "camera_matrix": mtx,
-            "distortion_coeffs": dist,
+            "object_points": initial_objpoints,
+            "camera_matrix": camera_matrix,
+            "distortion_coeffs": distortion_coeffs,
             "roi": roi,
-            "new_camera_matrix": newmtx,
-            "rotation_vectors": rvecs,
-            "rotation_matrices": Rmtx,
-            "extrinsic_parameters": Tmtx,
-            "translation_vectors": tvecs,
+            "new_camera_matrix": new_matrix,
+            "rotation_vectors": rotation_vectors,
+            "rotation_matrices": rotation_matrices,
+            "extrinsic_parameters": transformation_matrices,
+            "translation_vectors": translation_vectors,
         }
 
         return camera_parameters
 
-    def calibrate_stereo(self, left_image_paths: list, right_image_paths: list):
+    def calibrate_stereo(self, left_image_paths: list, right_image_paths: list) -> dict:
+        if not left_image_paths or not right_image_paths:
+            raise ValueError(
+                "Ошибка калибровки стереокамеры: Пути к изображениям не могут быть пустыми."
+            )
+
         dual_camera_parameters = {}
 
         left_imgpoints, left_objpoints = self.__get_img_and_obj_points(left_image_paths)
@@ -156,14 +193,16 @@ class ChessboardCalibrationMethod(CalibrationMethod):
             right_image_paths
         )
 
-        left_camera_parameters = self.calibrate(left_image_paths)
-        right_camera_parameters = self.calibrate(right_image_paths)
+        try:
+            left_camera_parameters = self.calibrate(left_image_paths)
+            right_camera_parameters = self.calibrate(right_image_paths)
+        except Exception as e:
+            raise RuntimeError(f"Ошибка при калибровке одной из камер: {e}")
 
-        k1 = left_camera_parameters["Intrinsic"]
-        d1 = left_camera_parameters["Distortion"]
-
-        k2 = right_camera_parameters["Intrinsic"]
-        d2 = right_camera_parameters["Distortion"]
+        k1 = left_camera_parameters["camera_matrix"]
+        d1 = left_camera_parameters["distortion_coeffs"]
+        k2 = right_camera_parameters["camera_matrix"]
+        d2 = right_camera_parameters["distortion_coeffs"]
 
         gray = cv2.imread(left_image_paths[0], 0)
         g = gray.shape[::-1]
@@ -188,7 +227,10 @@ class ChessboardCalibrationMethod(CalibrationMethod):
             criteria=criteria,
             flags=flags,
         )
+        if not ret:
+            raise RuntimeError("Не удалось провести стереокалибровку.")
 
+        # Составление трансформационной матрицы
         T = np.vstack((np.hstack((R, t)), np.array([0, 0, 0, 1])))
 
         dual_camera_parameters = {
@@ -198,10 +240,12 @@ class ChessboardCalibrationMethod(CalibrationMethod):
             "mean_reprojection_error": ret,
         }
 
+        # Добавление параметров левой камеры с префиксом "L_"
         for Lkey in left_camera_parameters.keys():
             name = "L_" + str(Lkey)
             dual_camera_parameters[name] = left_camera_parameters[Lkey]
 
+        # Добавление параметров правой камеры с префиксом "R_"
         for Rkey in right_camera_parameters.keys():
             name = "R_" + str(Rkey)
             dual_camera_parameters[name] = right_camera_parameters[Rkey]
@@ -214,10 +258,10 @@ class ChessboardCalibrationMethod(CalibrationMethod):
         imgp = np.array(imgpoints)
         imgp = imgp.reshape((imgp.shape[0], imgp.shape[1], imgp.shape[3]))
         objp = np.array(objpoints)
-        K = np.array(camera_parameters["Intrinsic"])
-        D = np.array(camera_parameters["Distortion"])
-        R = np.array(camera_parameters["RotVektor"])
-        T = np.array(camera_parameters["TransVektor"])
+        K = np.array(camera_parameters["camera_matrix"])
+        D = np.array(camera_parameters["distortion_coeffs"])
+        R = np.array(camera_parameters["rotation_vectors"])
+        T = np.array(camera_parameters["translation_vectors"])
         N = imgp.shape[0]
 
         imgpNew = []
@@ -271,6 +315,40 @@ class ChessboardCalibrationMethod(CalibrationMethod):
                 imgpoints.append(refined)
 
         return imgpoints
+
+
+class CalibrationRoomCalibrationMethod(CalibrationMethod):
+    def __init__(self):
+        self.points: list[list[int, int]] = []
+
+    def calibrate(self, image_paths: list) -> dict:
+        # TODO: Реализовать логику калибровки
+        pass
+
+    def calibrate_stereo(self, left_image_paths: list, right_image_paths: list) -> dict:
+        # TODO: Реализовать логику калибровки для режима двух камер.
+        pass
+
+    def add_point(self, point: list[int, int]) -> None:
+        if len(point) != 2:
+            raise ValueError("Точка должна быть списком с двумя значениями координат.")
+        self.points.append(point)
+
+    def remove_last_point(self) -> list[list[int, int]]:
+        if len(self.points) < 1:
+            raise ValueError("Удаление точки невозможно. Нет точек.")
+        self.points.pop()
+        return self.points
+
+    def remove_point(self, point_index: int) -> list[list[int, int]]:
+        if point_index < 0 or point_index >= len(self.points):
+            raise ValueError(
+                f"Индекс точки должен быть в диапазоне от 0 до {len(self.points) - 1}."
+            )
+        if len(self.points < 1):
+            raise ValueError("Удаление точки невозможно. Нет точек.")
+        self.points.pop(point_index)
+        return self.points
 
 
 class ChessboardSizeIsIncorrect(Exception):

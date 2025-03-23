@@ -1,0 +1,46 @@
+QWidget {
+    background-color: #f0f0f0;
+    color: #2c2c2c;
+    font-family: "Segoe UI", sans-serif;
+    font-size: 14px;
+}
+
+QPushButton {
+    background-color: #e0e0e0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px 10px;
+}
+
+QPushButton:hover {
+    background-color: #d5d5d5;
+}
+
+QPushButton:pressed {
+    background-color: #c5c5c5;
+}
+
+QLineEdit,
+QComboBox {
+    background-color: #ffffff;
+    border: 1px solid #bbb;
+    padding: 4px;
+    border-radius: 3px;
+}
+
+QScrollBar:vertical,
+QScrollBar:horizontal {
+    background-color: #e0e0e0;
+}
+
+#pushButton_settings,
+#pushButton_themeToggle {
+    background: transparent;
+    border: none;
+    color: inherit;
+    padding: 0;
+}
+#pushButton_settings:hover,
+#pushButton_themeToggle:hover {
+    text-decoration: underline;
+}

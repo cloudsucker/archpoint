@@ -3,10 +3,10 @@ import json
 import datetime
 
 
-class Project:
-    def __init__(self, name: str = "", path: str = ""):
-        self.name = name
-        self.path = path
+class ProjectHandler:
+    def __init__(self):
+        self.name = ""
+        self.path = ""
         self.is_project_initialized = False
 
         self.__config_filename = "config.json"
