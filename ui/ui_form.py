@@ -17,8 +17,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QGraphicsView, QGridLayout, QGroupBox,
     QHBoxLayout, QLabel, QLineEdit, QProgressBar,
-    QPushButton, QSizePolicy, QSpacerItem, QStackedWidget,
-    QTextBrowser, QVBoxLayout, QWidget)
+    QPushButton, QRadioButton, QSizePolicy, QSpacerItem,
+    QStackedWidget, QTextBrowser, QVBoxLayout, QWidget)
 
 class Ui_Widget(object):
     def setupUi(self, Widget):
@@ -400,6 +400,12 @@ class Ui_Widget(object):
         self.groupBox_newProjectCreatingSubmitField.setFlat(True)
         self.horizontalLayout_9 = QHBoxLayout(self.groupBox_newProjectCreatingSubmitField)
         self.horizontalLayout_9.setObjectName(u"horizontalLayout_9")
+        self.pushButton_newProjectCreatingCancel = QPushButton(self.groupBox_newProjectCreatingSubmitField)
+        self.pushButton_newProjectCreatingCancel.setObjectName(u"pushButton_newProjectCreatingCancel")
+        self.pushButton_newProjectCreatingCancel.setFont(font3)
+
+        self.horizontalLayout_9.addWidget(self.pushButton_newProjectCreatingCancel)
+
         self.horizontalSpacer_newProjectCreating_createButtonLeft = QSpacerItem(602, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout_9.addItem(self.horizontalSpacer_newProjectCreating_createButtonLeft)
@@ -423,43 +429,31 @@ class Ui_Widget(object):
         self.verticalLayout_21.setObjectName(u"verticalLayout_21")
         self.groupBox_processingProcessMain = QGroupBox(self.page_processingProcess)
         self.groupBox_processingProcessMain.setObjectName(u"groupBox_processingProcessMain")
+        self.groupBox_processingProcessMain.setFont(font6)
         self.groupBox_processingProcessMain.setFlat(True)
         self.verticalLayout_22 = QVBoxLayout(self.groupBox_processingProcessMain)
         self.verticalLayout_22.setObjectName(u"verticalLayout_22")
-        self.groupBox_imagesPath = QGroupBox(self.groupBox_processingProcessMain)
-        self.groupBox_imagesPath.setObjectName(u"groupBox_imagesPath")
-        self.groupBox_imagesPath.setFlat(True)
-        self.verticalLayout_23 = QVBoxLayout(self.groupBox_imagesPath)
-        self.verticalLayout_23.setObjectName(u"verticalLayout_23")
-        self.verticalLayout_23.setContentsMargins(0, 0, 0, 0)
-        self.label_imagesDirectoryFieldTitle = QLabel(self.groupBox_imagesPath)
-        self.label_imagesDirectoryFieldTitle.setObjectName(u"label_imagesDirectoryFieldTitle")
-
-        self.verticalLayout_23.addWidget(self.label_imagesDirectoryFieldTitle)
-
-        self.groupBox = QGroupBox(self.groupBox_imagesPath)
-        self.groupBox.setObjectName(u"groupBox")
-        self.groupBox.setFlat(True)
-        self.horizontalLayout_11 = QHBoxLayout(self.groupBox)
+        self.groupBox_processPathSetter_Field = QGroupBox(self.groupBox_processingProcessMain)
+        self.groupBox_processPathSetter_Field.setObjectName(u"groupBox_processPathSetter_Field")
+        self.groupBox_processPathSetter_Field.setFont(font3)
+        self.groupBox_processPathSetter_Field.setFlat(True)
+        self.horizontalLayout_11 = QHBoxLayout(self.groupBox_processPathSetter_Field)
         self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
         self.horizontalLayout_11.setContentsMargins(0, 0, 0, 0)
-        self.lineEdit_imagesDirectoryField = QLineEdit(self.groupBox)
+        self.lineEdit_imagesDirectoryField = QLineEdit(self.groupBox_processPathSetter_Field)
         self.lineEdit_imagesDirectoryField.setObjectName(u"lineEdit_imagesDirectoryField")
         self.lineEdit_imagesDirectoryField.setFont(font10)
 
         self.horizontalLayout_11.addWidget(self.lineEdit_imagesDirectoryField)
 
-        self.pushButton_imagesDirectoryChoose = QPushButton(self.groupBox)
+        self.pushButton_imagesDirectoryChoose = QPushButton(self.groupBox_processPathSetter_Field)
         self.pushButton_imagesDirectoryChoose.setObjectName(u"pushButton_imagesDirectoryChoose")
-        self.pushButton_imagesDirectoryChoose.setFont(font4)
+        self.pushButton_imagesDirectoryChoose.setFont(font11)
 
         self.horizontalLayout_11.addWidget(self.pushButton_imagesDirectoryChoose)
 
 
-        self.verticalLayout_23.addWidget(self.groupBox)
-
-
-        self.verticalLayout_22.addWidget(self.groupBox_imagesPath)
+        self.verticalLayout_22.addWidget(self.groupBox_processPathSetter_Field)
 
         self.pushButton_processingStart = QPushButton(self.groupBox_processingProcessMain)
         self.pushButton_processingStart.setObjectName(u"pushButton_processingStart")
@@ -474,7 +468,11 @@ class Ui_Widget(object):
 
         self.progressBar_processingProgressBar = QProgressBar(self.groupBox_processingProcessMain)
         self.progressBar_processingProgressBar.setObjectName(u"progressBar_processingProgressBar")
-        self.progressBar_processingProgressBar.setFont(font)
+        font12 = QFont()
+        font12.setFamilies([u"Rubik"])
+        font12.setPointSize(10)
+        font12.setBold(False)
+        self.progressBar_processingProgressBar.setFont(font12)
         self.progressBar_processingProgressBar.setValue(24)
 
         self.verticalLayout_22.addWidget(self.progressBar_processingProgressBar)
@@ -482,6 +480,7 @@ class Ui_Widget(object):
         self.textBrowser_processingLogs = QTextBrowser(self.groupBox_processingProcessMain)
         self.textBrowser_processingLogs.setObjectName(u"textBrowser_processingLogs")
         self.textBrowser_processingLogs.setMaximumSize(QSize(16777215, 120))
+        self.textBrowser_processingLogs.setFont(font3)
 
         self.verticalLayout_22.addWidget(self.textBrowser_processingLogs)
 
@@ -493,6 +492,7 @@ class Ui_Widget(object):
         self.horizontalLayout_10.setContentsMargins(0, 0, 0, 0)
         self.pushButton_exportAsDotsCloud = QPushButton(self.groupBox_exportOptions)
         self.pushButton_exportAsDotsCloud.setObjectName(u"pushButton_exportAsDotsCloud")
+        self.pushButton_exportAsDotsCloud.setFont(font3)
 
         self.horizontalLayout_10.addWidget(self.pushButton_exportAsDotsCloud)
 
@@ -502,6 +502,7 @@ class Ui_Widget(object):
 
         self.pushButton_exportAsObjectFile = QPushButton(self.groupBox_exportOptions)
         self.pushButton_exportAsObjectFile.setObjectName(u"pushButton_exportAsObjectFile")
+        self.pushButton_exportAsObjectFile.setFont(font3)
 
         self.horizontalLayout_10.addWidget(self.pushButton_exportAsObjectFile)
 
@@ -512,6 +513,26 @@ class Ui_Widget(object):
         self.verticalLayout_21.addWidget(self.groupBox_processingProcessMain)
 
         self.stackedWidget_workSpace.addWidget(self.page_processingProcess)
+        self.page_settings = QWidget()
+        self.page_settings.setObjectName(u"page_settings")
+        self.horizontalLayout_15 = QHBoxLayout(self.page_settings)
+        self.horizontalLayout_15.setObjectName(u"horizontalLayout_15")
+        self.groupBox_settingsMain = QGroupBox(self.page_settings)
+        self.groupBox_settingsMain.setObjectName(u"groupBox_settingsMain")
+        self.groupBox_settingsMain.setFont(font6)
+        self.groupBox_settingsMain.setFlat(True)
+        self.verticalLayout_18 = QVBoxLayout(self.groupBox_settingsMain)
+        self.verticalLayout_18.setObjectName(u"verticalLayout_18")
+        self.label_settingsTempText = QLabel(self.groupBox_settingsMain)
+        self.label_settingsTempText.setObjectName(u"label_settingsTempText")
+        self.label_settingsTempText.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        self.verticalLayout_18.addWidget(self.label_settingsTempText)
+
+
+        self.horizontalLayout_15.addWidget(self.groupBox_settingsMain)
+
+        self.stackedWidget_workSpace.addWidget(self.page_settings)
         self.page_calibrationSteps_1_3 = QWidget()
         self.page_calibrationSteps_1_3.setObjectName(u"page_calibrationSteps_1_3")
         self.verticalLayout_13 = QVBoxLayout(self.page_calibrationSteps_1_3)
@@ -590,6 +611,12 @@ class Ui_Widget(object):
         self.groupBox_calibrationStartFromPreparing.setFlat(True)
         self.horizontalLayout_4 = QHBoxLayout(self.groupBox_calibrationStartFromPreparing)
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
+        self.pushButton_returnToCalibrationChoice = QPushButton(self.groupBox_calibrationStartFromPreparing)
+        self.pushButton_returnToCalibrationChoice.setObjectName(u"pushButton_returnToCalibrationChoice")
+        self.pushButton_returnToCalibrationChoice.setFont(font3)
+
+        self.horizontalLayout_4.addWidget(self.pushButton_returnToCalibrationChoice)
+
         self.horizontalSpacer_calibrationStartFromPreparing = QSpacerItem(494, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout_4.addItem(self.horizontalSpacer_calibrationStartFromPreparing)
@@ -662,6 +689,28 @@ class Ui_Widget(object):
 
         self.verticalLayout_14.addWidget(self.groupBox_calibrationImagesDirectoryFieldSecondCamera)
 
+        self.groupBox_calibrationMethodChoiceField = QGroupBox(self.groupBox_calibrationSteps_4)
+        self.groupBox_calibrationMethodChoiceField.setObjectName(u"groupBox_calibrationMethodChoiceField")
+        self.groupBox_calibrationMethodChoiceField.setFont(font3)
+        self.groupBox_calibrationMethodChoiceField.setFlat(True)
+        self.horizontalLayout_14 = QHBoxLayout(self.groupBox_calibrationMethodChoiceField)
+        self.horizontalLayout_14.setObjectName(u"horizontalLayout_14")
+        self.radioButton_calibrationMethodChess = QRadioButton(self.groupBox_calibrationMethodChoiceField)
+        self.radioButton_calibrationMethodChess.setObjectName(u"radioButton_calibrationMethodChess")
+        self.radioButton_calibrationMethodChess.setFont(font10)
+        self.radioButton_calibrationMethodChess.setChecked(True)
+
+        self.horizontalLayout_14.addWidget(self.radioButton_calibrationMethodChess)
+
+        self.radioButton_calibrationMethodRoom = QRadioButton(self.groupBox_calibrationMethodChoiceField)
+        self.radioButton_calibrationMethodRoom.setObjectName(u"radioButton_calibrationMethodRoom")
+        self.radioButton_calibrationMethodRoom.setFont(font10)
+
+        self.horizontalLayout_14.addWidget(self.radioButton_calibrationMethodRoom)
+
+
+        self.verticalLayout_14.addWidget(self.groupBox_calibrationMethodChoiceField)
+
         self.pushButton_calibrationProcessStart = QPushButton(self.groupBox_calibrationSteps_4)
         self.pushButton_calibrationProcessStart.setObjectName(u"pushButton_calibrationProcessStart")
         self.pushButton_calibrationProcessStart.setFont(font3)
@@ -676,10 +725,6 @@ class Ui_Widget(object):
 
         self.progressBar_calibrationProcessProgress = QProgressBar(self.groupBox_calibrationSteps_4)
         self.progressBar_calibrationProcessProgress.setObjectName(u"progressBar_calibrationProcessProgress")
-        font12 = QFont()
-        font12.setFamilies([u"Rubik"])
-        font12.setPointSize(10)
-        font12.setBold(False)
         self.progressBar_calibrationProcessProgress.setFont(font12)
         self.progressBar_calibrationProcessProgress.setValue(24)
 
@@ -724,11 +769,11 @@ class Ui_Widget(object):
         self.horizontalLayout_5.setSpacing(0)
         self.horizontalLayout_5.setObjectName(u"horizontalLayout_5")
         self.horizontalLayout_5.setContentsMargins(0, 0, 0, 0)
-        self.pushButton_continueWithoutSavingCalibrationResults = QPushButton(self.groupBox_calibrationSteps_5_doneContinueOptions)
-        self.pushButton_continueWithoutSavingCalibrationResults.setObjectName(u"pushButton_continueWithoutSavingCalibrationResults")
-        self.pushButton_continueWithoutSavingCalibrationResults.setFont(font3)
+        self.pushButton_cancelCalibration = QPushButton(self.groupBox_calibrationSteps_5_doneContinueOptions)
+        self.pushButton_cancelCalibration.setObjectName(u"pushButton_cancelCalibration")
+        self.pushButton_cancelCalibration.setFont(font3)
 
-        self.horizontalLayout_5.addWidget(self.pushButton_continueWithoutSavingCalibrationResults)
+        self.horizontalLayout_5.addWidget(self.pushButton_cancelCalibration)
 
         self.horizontalSpacer_calibrationSteps_5_buttonsBetween = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
@@ -760,7 +805,7 @@ class Ui_Widget(object):
         self.retranslateUi(Widget)
 
         self.pushButton_pageCalibration.setDefault(False)
-        self.stackedWidget_workSpace.setCurrentIndex(3)
+        self.stackedWidget_workSpace.setCurrentIndex(4)
 
 
         QMetaObject.connectSlotsByName(Widget)
@@ -775,8 +820,8 @@ class Ui_Widget(object):
         self.pushButton_pageCalibration.setText(QCoreApplication.translate("Widget", u"\u041a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0430", None))
         self.pushButton_pageProcess.setText(QCoreApplication.translate("Widget", u"\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0430", None))
         self.groupBox_settingsAndTheme.setTitle("")
-        self.pushButton_settings.setText(QCoreApplication.translate("Widget", u"\u041d\u0410\u0421\u0422\u0420\u041e\u0419\u041a\u0418", None))
-        self.pushButton_themeToggle.setText(QCoreApplication.translate("Widget", u"\u0422\u0415\u041c\u0410", None))
+        self.pushButton_settings.setText(QCoreApplication.translate("Widget", u"\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438", None))
+        self.pushButton_themeToggle.setText(QCoreApplication.translate("Widget", u"\u0422\u0435\u043c\u0430", None))
         self.groupBox_workspace.setTitle("")
         self.groupBox_calibration_options.setTitle("")
         self.groupBox_calibration_from_file.setTitle("")
@@ -808,11 +853,10 @@ class Ui_Widget(object):
         self.groupBox_newProjectCreatingPath.setTitle("")
         self.pushButton_newProjectCreatingPathChoose.setText(QCoreApplication.translate("Widget", u"\u0412\u044b\u0431\u0440\u0430\u0442\u044c", None))
         self.groupBox_newProjectCreatingSubmitField.setTitle("")
+        self.pushButton_newProjectCreatingCancel.setText(QCoreApplication.translate("Widget", u"\u041d\u0430\u0437\u0430\u0434", None))
         self.pushButton_newProjectCreatingSubmit.setText(QCoreApplication.translate("Widget", u"\u0421\u043e\u0437\u0434\u0430\u0442\u044c", None))
-        self.groupBox_processingProcessMain.setTitle("")
-        self.groupBox_imagesPath.setTitle("")
-        self.label_imagesDirectoryFieldTitle.setText(QCoreApplication.translate("Widget", u"\u041f\u0443\u0442\u044c \u043a \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u044f\u043c", None))
-        self.groupBox.setTitle("")
+        self.groupBox_processingProcessMain.setTitle(QCoreApplication.translate("Widget", u"\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0430", None))
+        self.groupBox_processPathSetter_Field.setTitle(QCoreApplication.translate("Widget", u"\u041f\u0443\u0442\u044c \u043a \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u044f\u043c", None))
         self.pushButton_imagesDirectoryChoose.setText(QCoreApplication.translate("Widget", u"\u0412\u044b\u0431\u0440\u0430\u0442\u044c", None))
         self.pushButton_processingStart.setText(QCoreApplication.translate("Widget", u"\u0417\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u044c \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0443", None))
         self.textBrowser_processingLogs.setHtml(QCoreApplication.translate("Widget", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
@@ -829,6 +873,8 @@ class Ui_Widget(object):
         self.groupBox_exportOptions.setTitle("")
         self.pushButton_exportAsDotsCloud.setText(QCoreApplication.translate("Widget", u"\u042d\u043a\u0441\u043f\u043e\u0440\u0442 \u043e\u0431\u043b\u0430\u043a\u0430 \u0442\u043e\u0447\u0435\u043a", None))
         self.pushButton_exportAsObjectFile.setText(QCoreApplication.translate("Widget", u"\u042d\u043a\u0441\u043f\u043e\u0440\u0442 \u043e\u0431\u044a\u0435\u043a\u0442\u0430", None))
+        self.groupBox_settingsMain.setTitle(QCoreApplication.translate("Widget", u"\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438", None))
+        self.label_settingsTempText.setText(QCoreApplication.translate("Widget", u"\u0422\u0443\u0442 \u043a\u043e\u0433\u0434\u0430-\u0442\u043e \u043f\u043e\u044f\u0432\u044f\u0442\u0441\u044f \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u0441 \u0441\u043e\u0445\u0440\u0430\u043d\u0435\u043d\u0438\u0435\u043c", None))
         self.groupBox_calibrationSteps_1_3_main.setTitle(QCoreApplication.translate("Widget", u"\u041f\u043e\u0434\u0433\u043e\u0442\u043e\u0432\u043a\u0430 \u043a \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0435", None))
         self.groupBox_calibrationPreparingStep1.setTitle(QCoreApplication.translate("Widget", u"\u0428\u0430\u0433 1. \u0420\u0430\u0441\u043f\u0435\u0447\u0430\u0442\u0430\u0439\u0442\u0435 \u0448\u0430\u0431\u043b\u043e\u043d \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0438.", None))
         self.label_calibrationPreparingStep1_info.setText(QCoreApplication.translate("Widget", u"\u0428\u0430\u0431\u043b\u043e\u043d \u043d\u0443\u0436\u0435\u043d \u0434\u043b\u044f \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u043a\u0430\u043c\u0435\u0440\u044b", None))
@@ -838,12 +884,16 @@ class Ui_Widget(object):
         self.label_calibrationPreparingStep3_info.setText(QCoreApplication.translate("Widget", u"\u0421\u0434\u0435\u043b\u0430\u0439\u0442\u0435 \u043c\u0438\u043d\u0438\u043c\u0443\u043c 20 \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u043d\u0438\u0439 \u0448\u0430\u0431\u043b\u043e\u043d\u0430 \u0441 \u0440\u0430\u0437\u043d\u044b\u0445 \u0441\u0442\u043e\u0440\u043e\u043d. \u0421\u0442\u0430\u0440\u0430\u0439\u0442\u0435\u0441\u044c \u0441\u043e\u0431\u043b\u044e\u0434\u0430\u0442\u044c \u043e\u0434\u0438\u043d\u0430\u043a\u043e\u0432\u043e\u0435 \u0440\u0430\u0441\u0441\u0442\u043e\u044f\u043d\u0438\u0435 \u043e\u0442 \u043a\u0430\u043c\u0435\u0440\u044b \u0434\u043e \u0448\u0430\u0431\u043b\u043e\u043d\u0430. \u041f\u043e\u0441\u043b\u0435 \u043f\u043e\u0434\u0433\u043e\u0442\u043e\u0432\u043a\u0438 \u043c\u0430\u0442\u0435\u0440\u0438\u0430\u043b\u0430 \u0441\u0444\u043e\u0440\u043c\u0438\u0440\u0443\u0439\u0442\u0435 \u0435\u0434\u0438\u043d\u044b\u0439 \u0434\u0430\u0442\u0430\u0435\u0442 \u0438 \u043d\u0430\u0436\u043c\u0438\u0442\u0435 \u043a\u043d\u043e\u043f\u043a\u0443 \u0434\u043b\u044f \u043f"
                         "\u0435\u0440\u0435\u0445\u043e\u0434\u0430 \u043a \u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0435\u043c\u0443 \u044d\u0442\u0430\u043f\u0443.", None))
         self.groupBox_calibrationStartFromPreparing.setTitle("")
+        self.pushButton_returnToCalibrationChoice.setText(QCoreApplication.translate("Widget", u"\u041d\u0430\u0437\u0430\u0434", None))
         self.pushButton_calibrationStartFromPreparing.setText(QCoreApplication.translate("Widget", u"\u0417\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u044c \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0443", None))
         self.groupBox_calibrationSteps_4.setTitle(QCoreApplication.translate("Widget", u"\u041a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0430", None))
         self.groupBox_calibrationImagesDirectoryField.setTitle(QCoreApplication.translate("Widget", u"\u041f\u0443\u0442\u044c \u043a \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u044f\u043c", None))
         self.pushButton_setCalibrationImagesDirectory.setText(QCoreApplication.translate("Widget", u"\u0412\u044b\u0431\u0440\u0430\u0442\u044c", None))
         self.groupBox_calibrationImagesDirectoryFieldSecondCamera.setTitle(QCoreApplication.translate("Widget", u"\u041f\u0443\u0442\u044c \u043a \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u044f\u043c \u0441\u043e \u0432\u0442\u043e\u0440\u043e\u0439 \u043a\u0430\u043c\u0435\u0440\u044b (\u0441\u0442\u0435\u0440\u0435\u043e\u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0430)", None))
         self.pushButton_setCalibrationImagesDirectorySecondCamera.setText(QCoreApplication.translate("Widget", u"\u0412\u044b\u0431\u0440\u0430\u0442\u044c", None))
+        self.groupBox_calibrationMethodChoiceField.setTitle(QCoreApplication.translate("Widget", u"\u041c\u0435\u0442\u043e\u0434 \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0438", None))
+        self.radioButton_calibrationMethodChess.setText(QCoreApplication.translate("Widget", u"\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0439 (\u0448\u0430\u0445\u043c\u0430\u0442\u043d\u044b\u0439 \u0440\u0438\u0441\u0443\u043d\u043e\u043a)", None))
+        self.radioButton_calibrationMethodRoom.setText(QCoreApplication.translate("Widget", u"\u0420\u0443\u0447\u043d\u043e\u0439 (\u0440\u0443\u0447\u043d\u043e\u0435 \u0440\u0430\u0441\u043f\u043e\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u0442\u043e\u0447\u0435\u043a)", None))
         self.pushButton_calibrationProcessStart.setText(QCoreApplication.translate("Widget", u"\u0417\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u044c \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0443", None))
         self.textBrowser_calibrationProcessLogs.setHtml(QCoreApplication.translate("Widget", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
@@ -869,8 +919,7 @@ class Ui_Widget(object):
 "</style></head><body style=\" font-family:'Rubik'; font-size:14pt; font-weight:700; font-style:normal;\">\n"
 "<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>", None))
         self.groupBox_calibrationSteps_5_doneContinueOptions.setTitle("")
-        self.pushButton_continueWithoutSavingCalibrationResults.setText(QCoreApplication.translate("Widget", u"\u041f\u0435\u0440\u0435\u0439\u0442\u0438 \u043a \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0435\n"
-"\u0431\u0435\u0437 \u0441\u043e\u0445\u0440\u0430\u043d\u0435\u043d\u0438\u044f", None))
+        self.pushButton_cancelCalibration.setText(QCoreApplication.translate("Widget", u"\u041e\u0442\u043c\u0435\u043d\u0438\u0442\u044c", None))
         self.pushButton_saveCalibrationResults.setText(QCoreApplication.translate("Widget", u"\u0421\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c", None))
     # retranslateUi
 

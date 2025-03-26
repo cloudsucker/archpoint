@@ -28,10 +28,10 @@ QComboBox {
     border-radius: 3px;
 }
 
-QScrollBar:vertical,
+/* QScrollBar:vertical,
 QScrollBar:horizontal {
     background-color: #e0e0e0;
-}
+} */
 
 #pushButton_settings,
 #pushButton_themeToggle {
@@ -40,7 +40,26 @@ QScrollBar:horizontal {
     color: inherit;
     padding: 0;
 }
-#pushButton_settings:hover,
-#pushButton_themeToggle:hover {
-    text-decoration: underline;
+#groupBox_pages,
+#groupBox_settingsAndTheme,
+#groupBox_calibration_options,
+#groupBox_calibrationSteps_1_3_main,
+#groupBox_calibrationStartFromPreparing,
+#groupBox_calibrationSteps_4,
+#groupBox_calibrationImagesDirectoryField,
+#groupBox_calibrationImagesDirectoryFieldSecondCamera,
+#groupBox_calibrationMethodChoiceField,
+#groupBox_calibrationSteps_5_doneMain,
+#groupBox_calibrationSteps_5_doneContinueOptions,
+#groupBox_processingProjectOptions,
+#groupBox_newProjectCreatingMain,
+#groupBox_newProjectCreatingPath,
+#groupBox_newProjectCreatingSubmitField,
+#groupBox_processingProcessMain,
+#groupBox_processPathSetter_Field,
+#groupBox_exportOptions,
+#groupBox_settingsMain {
+    border-top: none;
+    margin-top: 10px;
+    padding-top: 20px;
 }
