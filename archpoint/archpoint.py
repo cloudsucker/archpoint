@@ -21,6 +21,8 @@ class Archpoint:
             "room": CalibrationRoomCalibrationMethod,
         }
 
+        self.images_directory = "processed_images"
+
     # PROJECT:
     def create_project(self, name: str, path: str) -> None:
         self.project_handler.create_project(name, path)
@@ -53,3 +55,36 @@ class Archpoint:
 
     def get_calibration_data_as_string(self) -> None:
         return self.calibration_handler.get_calibration_data_as_string()
+
+    def fix_images(self, images_path: str) -> None:
+        if not self.project_handler.is_project_initialized:
+            raise ProjectNotInitializedError("Проект не инициализирован.")
+
+        results_path = self.project_handler.path + "/" + self.images_directory
+        self.calibration_handler.fix_images(images_path, results_path)
+
+    def fix_stereo_images(self, left_images_path: str, right_images_path: str) -> None:
+        if not self.project_handler.is_project_initialized:
+            raise ProjectNotInitializedError("Проект не инициализирован.")
+
+        self.calibration_handler.fix_images_stereo(left_images_path, right_images_path)
+
+
+class ArchpointError(Exception):
+    """Base class for exceptions in this module."""
+
+    def __init__(self, message: str) -> None:
+        super().__init__(message)
+        self.message = message
+
+    def __str__(self) -> str:
+        return self.message
+
+
+class ProjectNotInitializedError(ArchpointError):
+    def __init__(self, message: str) -> None:
+        super().__init__(message)
+        self.message = message
+
+    def __str__(self) -> str:
+        return self.message

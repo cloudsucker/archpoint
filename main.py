@@ -113,6 +113,9 @@ class MainWindow(QMainWindow):
         self.ui.pushButton_imagesDirectoryChoose.clicked.connect(
             self.on_images_directory_choose_clicked
         )
+        self.ui.pushButton_setSecondCameraProcessingImagesDirectory.clicked.connect(
+            self.on_set_second_camera_processing_images_directory_clicked
+        )
         self.ui.pushButton_processingStart.clicked.connect(
             self.on_processing_start_clicked
         )
@@ -141,6 +144,12 @@ class MainWindow(QMainWindow):
             self.ui.stackedWidget_workSpace.setCurrentWidget(
                 self.ui.page_processingProcess
             )
+            if self.calibration_handler.is_completed():
+                self.ui.checkBox_preprocessingImages.setChecked(True)
+                self.ui.checkBox_preprocessingImages.setHidden(False)
+            else:
+                self.ui.checkBox_preprocessingImages.setChecked(False)
+                self.ui.checkBox_preprocessingImages.setHidden(True)
             return
         self.ui.stackedWidget_workSpace.setCurrentWidget(
             self.ui.page_processingChoiceProject
@@ -149,7 +158,7 @@ class MainWindow(QMainWindow):
 
     def carefully_go_to_calibration(self):
         self.update_calibration_done_page()
-        if self.calibration_handler.calibration_data:
+        if self.calibration_handler.is_completed():
             self.ui.stackedWidget_workSpace.setCurrentWidget(
                 self.ui.page_calibrationSteps_5_done
             )
@@ -157,7 +166,7 @@ class MainWindow(QMainWindow):
         self.ui.stackedWidget_workSpace.setCurrentWidget(self.ui.page_calibrationChoice)
 
     def update_calibration_done_page(self):
-        if self.calibration_handler.calibration_data:
+        if self.calibration_handler.is_completed():
             self.ui.textBrowser_calibrationResultsData.setText(
                 self.calibration_handler.get_calibration_data_as_string()
             )
@@ -189,7 +198,7 @@ class MainWindow(QMainWindow):
                     self.calibration_handler.load_calibration_data(
                         calibration_file_path
                     )
-                    if self.calibration_handler.calibration_data:
+                    if self.calibration_handler.is_completed():
 
                         # TODO: ADD CALIBRATION DATA DISPLAYING ON MAIN PAGE
                         # TO MAKE USER BE SURE ABOUT IT'S LOADING
@@ -286,7 +295,7 @@ class MainWindow(QMainWindow):
         self.carefully_go_to_processing()
 
     def on_cancel_calibration_clicked(self):
-        self.calibration_handler.calibration_data = {}
+        self.calibration_handler.clear()
         self.carefully_go_to_calibration()
 
     # PROJECT:
@@ -329,6 +338,15 @@ class MainWindow(QMainWindow):
         if images_directory and os.path.isdir(images_directory):
             self.ui.lineEdit_imagesDirectoryField.setText(images_directory)
 
+    def on_set_second_camera_processing_images_directory_clicked(self):
+        images_directory = QFileDialog.getExistingDirectory(
+            self, "Выберите директорию с изображениями второй камеры"
+        )
+        if images_directory and os.path.isdir(images_directory):
+            self.ui.lineEdit_secondCameraProcessingImagesDirectory.setText(
+                images_directory
+            )
+
     def on_processing_start_clicked(self):
         images_directory = self.ui.lineEdit_imagesDirectoryField.text()
         if not images_directory or not os.path.isdir(images_directory):
@@ -337,7 +355,36 @@ class MainWindow(QMainWindow):
             )
             return
 
-        self.hloc_handler.process_images(images_directory, self.project.path)
+        if (
+            not self.ui.checkBox_preprocessingImages.isHidden()
+            and self.ui.checkBox_preprocessingImages.isChecked()
+        ):
+            if self.ui.groupBox_secondCameraProcessingField.isEnabled():
+                images_directory_second_camera = (
+                    self.ui.lineEdit_secondCameraProcessingImagesDirectory.text()
+                )
+                if not os.path.isdir(images_directory_second_camera):
+                    QMessageBox.critical(
+                        self,
+                        "Ошибка",
+                        "Пожалуйста, укажите директорию с изображениями второй камеры.",
+                    )
+                    return
+                self.calibration_handler.fix_images_stereo(
+                    images_directory,
+                    images_directory_second_camera,
+                    self.project.path + "/processed_images",
+                    self.project.path + "/processed_images",
+                )
+            else:
+                self.calibration_handler.fix_images(
+                    images_directory, self.project.path + "/processed_images"
+                )
+
+        # TODO: UNCOMMENT THIS CODE AFTER TESTING
+        # self.hloc_handler.process_images(
+        #     self.project.path + "/processed_images", self.project.path
+        # )
 
     # THEMES & STYLES:
     def apply_styles(self):
@@ -353,40 +400,9 @@ if __name__ == "__main__":
     sys.exit(app.exec())
 
 
-# [ CRITICAL ] TODO:
-#   0. Попробовать собрать проект и удостовериться что все зависимости будут подтягиваться в исполняемый файл.
-#   1. Дописать новый класс метода калибровки по калибровочной комнате (с вручную заданными точками).
-#       1.1. Переписать методы калибровки (повысить читаемость и простоту кода).
-#   2. Реализовать обработку с данными калибровки (сейчас она не учитывается).
-#       2.1. Предварительно реализация в классе archpoint.
-#   3. Разбить GUI приложения и обработку на два процесса чтобы приложение не висло.
-#       3.1. Калибровка
-#           3.1. Добавить колбэки для логирования.
-#           3.2. Добавить колбэки для визуализации.
-#           3.3. Добавить колбэки для отображения прогресса.
-#       3.1. Обработка
-#           3.1. Добавить колбэки для логирования.
-#           3.2. Добавить колбэки для визуализации.
-#           3.3. Добавить колбэки для отображения прогресса.
-
-
-# TODO GUI:
-#   1. Добавить страницу ручной расстановки точек для нового метода калибровки по калибровочной комнате.
-#   2. Добавить визуализацию результатов обработки в приложение или делегировать процесс визуализации.
-#   3. Упростить навигацию в приложении. Добавить кнопки "Назад".
-
-
-# [ GENERAL ] TODO:
-#   - Протестировать установку проекта на другом устройстве.
-#       - Автоматизировать установку.
-#       - Написать главу "Установка" в README.md.
-#   - Добавить вывод логов в приложение и их корректное отображение.
-#   - Реализовать состояние процесса для статус-баров и их обновление / отказаться от них.
-#   - Сверстать окно настроек и написать его реализацию / отказаться от него.
-#   - Добавить сохранение настроек приложения через QSettings.
+# LITTLE BEAUTIES TODO:
+#   - Добавить кнопку "Отменить" для проекта (обработки).
 #   - При пропуске калибровки установить состояние отказа от калибровки, редиректить на страницу отказа.
-#   - Реализовать форматирование результатов калибровки и их корректное отображение.
-#   - Реализовать визуализацию результатов обработки и их корректное отображение.
 #   - Добавить отображение названия проекта после его открытия или создания на странице обработки.
 #   - Перерисововать логотип.
 #   - Добавить все иконки для кнопок.

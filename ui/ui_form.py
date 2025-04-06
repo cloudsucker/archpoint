@@ -15,10 +15,11 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QGraphicsView, QGridLayout, QGroupBox,
-    QHBoxLayout, QLabel, QLineEdit, QProgressBar,
-    QPushButton, QRadioButton, QSizePolicy, QSpacerItem,
-    QStackedWidget, QTextBrowser, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QCheckBox, QGraphicsView, QGridLayout,
+    QGroupBox, QHBoxLayout, QLabel, QLineEdit,
+    QProgressBar, QPushButton, QRadioButton, QSizePolicy,
+    QSpacerItem, QStackedWidget, QTextBrowser, QVBoxLayout,
+    QWidget)
 
 class Ui_Widget(object):
     def setupUi(self, Widget):
@@ -439,7 +440,7 @@ class Ui_Widget(object):
         self.groupBox_processPathSetter_Field.setFlat(True)
         self.horizontalLayout_11 = QHBoxLayout(self.groupBox_processPathSetter_Field)
         self.horizontalLayout_11.setObjectName(u"horizontalLayout_11")
-        self.horizontalLayout_11.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_11.setContentsMargins(9, 9, 9, 9)
         self.lineEdit_imagesDirectoryField = QLineEdit(self.groupBox_processPathSetter_Field)
         self.lineEdit_imagesDirectoryField.setObjectName(u"lineEdit_imagesDirectoryField")
         self.lineEdit_imagesDirectoryField.setFont(font10)
@@ -455,6 +456,39 @@ class Ui_Widget(object):
 
         self.verticalLayout_22.addWidget(self.groupBox_processPathSetter_Field)
 
+        self.groupBox_secondCameraProcessingField = QGroupBox(self.groupBox_processingProcessMain)
+        self.groupBox_secondCameraProcessingField.setObjectName(u"groupBox_secondCameraProcessingField")
+        self.groupBox_secondCameraProcessingField.setFont(font3)
+        self.groupBox_secondCameraProcessingField.setFlat(True)
+        self.groupBox_secondCameraProcessingField.setCheckable(True)
+        self.groupBox_secondCameraProcessingField.setChecked(False)
+        self.horizontalLayout_16 = QHBoxLayout(self.groupBox_secondCameraProcessingField)
+        self.horizontalLayout_16.setObjectName(u"horizontalLayout_16")
+        self.lineEdit_secondCameraProcessingImagesDirectory = QLineEdit(self.groupBox_secondCameraProcessingField)
+        self.lineEdit_secondCameraProcessingImagesDirectory.setObjectName(u"lineEdit_secondCameraProcessingImagesDirectory")
+        self.lineEdit_secondCameraProcessingImagesDirectory.setFont(font10)
+
+        self.horizontalLayout_16.addWidget(self.lineEdit_secondCameraProcessingImagesDirectory)
+
+        self.pushButton_setSecondCameraProcessingImagesDirectory = QPushButton(self.groupBox_secondCameraProcessingField)
+        self.pushButton_setSecondCameraProcessingImagesDirectory.setObjectName(u"pushButton_setSecondCameraProcessingImagesDirectory")
+        self.pushButton_setSecondCameraProcessingImagesDirectory.setFont(font10)
+
+        self.horizontalLayout_16.addWidget(self.pushButton_setSecondCameraProcessingImagesDirectory)
+
+
+        self.verticalLayout_22.addWidget(self.groupBox_secondCameraProcessingField)
+
+        self.checkBox_preprocessingImages = QCheckBox(self.groupBox_processingProcessMain)
+        self.checkBox_preprocessingImages.setObjectName(u"checkBox_preprocessingImages")
+        font12 = QFont()
+        font12.setFamilies([u"Rubik"])
+        font12.setPointSize(10)
+        font12.setBold(False)
+        self.checkBox_preprocessingImages.setFont(font12)
+
+        self.verticalLayout_22.addWidget(self.checkBox_preprocessingImages)
+
         self.pushButton_processingStart = QPushButton(self.groupBox_processingProcessMain)
         self.pushButton_processingStart.setObjectName(u"pushButton_processingStart")
         self.pushButton_processingStart.setFont(font3)
@@ -468,10 +502,6 @@ class Ui_Widget(object):
 
         self.progressBar_processingProgressBar = QProgressBar(self.groupBox_processingProcessMain)
         self.progressBar_processingProgressBar.setObjectName(u"progressBar_processingProgressBar")
-        font12 = QFont()
-        font12.setFamilies([u"Rubik"])
-        font12.setPointSize(10)
-        font12.setBold(False)
         self.progressBar_processingProgressBar.setFont(font12)
         self.progressBar_processingProgressBar.setValue(24)
 
@@ -805,7 +835,7 @@ class Ui_Widget(object):
         self.retranslateUi(Widget)
 
         self.pushButton_pageCalibration.setDefault(False)
-        self.stackedWidget_workSpace.setCurrentIndex(4)
+        self.stackedWidget_workSpace.setCurrentIndex(3)
 
 
         QMetaObject.connectSlotsByName(Widget)
@@ -858,6 +888,9 @@ class Ui_Widget(object):
         self.groupBox_processingProcessMain.setTitle(QCoreApplication.translate("Widget", u"\u041e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0430", None))
         self.groupBox_processPathSetter_Field.setTitle(QCoreApplication.translate("Widget", u"\u041f\u0443\u0442\u044c \u043a \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u044f\u043c", None))
         self.pushButton_imagesDirectoryChoose.setText(QCoreApplication.translate("Widget", u"\u0412\u044b\u0431\u0440\u0430\u0442\u044c", None))
+        self.groupBox_secondCameraProcessingField.setTitle(QCoreApplication.translate("Widget", u"\u041f\u0443\u0442\u044c \u043a \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u044f\u043c \u0441\u043e \u0432\u0442\u043e\u0440\u043e\u0439 \u043a\u0430\u043c\u0435\u0440\u044b (\u0440\u0435\u0436\u0438\u043c \u0441\u0442\u0435\u0440\u0435\u043e\u043a\u0430\u043c\u0435\u0440\u044b)", None))
+        self.pushButton_setSecondCameraProcessingImagesDirectory.setText(QCoreApplication.translate("Widget", u"\u0412\u044b\u0431\u0440\u0430\u0442\u044c", None))
+        self.checkBox_preprocessingImages.setText(QCoreApplication.translate("Widget", u"\u041f\u0440\u0435\u0434\u043e\u0431\u0440\u0430\u0431\u043e\u0442\u0430\u0442\u044c \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u044f \u043f\u043e \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043e\u0447\u043d\u044b\u043c \u0434\u0430\u043d\u043d\u044b\u043c", None))
         self.pushButton_processingStart.setText(QCoreApplication.translate("Widget", u"\u0417\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u044c \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0443", None))
         self.textBrowser_processingLogs.setHtml(QCoreApplication.translate("Widget", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
