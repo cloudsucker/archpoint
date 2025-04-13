@@ -1,6 +1,7 @@
 import os
 import sys
 
+from PySide6.QtCore import Qt
 from PySide6.QtWidgets import (
     QMainWindow,
     QFileDialog,
@@ -8,7 +9,11 @@ from PySide6.QtWidgets import (
     QWidget,
     QMessageBox,
     QPushButton,
+    QGraphicsScene,
+    QTableWidgetItem,
+    QGraphicsPixmapItem,
 )
+
 from PySide6.QtGui import QIcon, QPixmap
 
 # TODO: ADD THE TRAY ICON OR DELETE THIS
@@ -16,6 +21,7 @@ from PySide6.QtGui import QIcon, QPixmap
 
 from ui.ui_form import Ui_Widget
 from archpoint.handlers import ProjectHandler, HLOC_Handler, CalibrationHandler
+from archpoint.calibration_methods.room import ImageCalibrationDots
 
 
 class MainWindow(QMainWindow):
@@ -35,7 +41,9 @@ class MainWindow(QMainWindow):
         self.theme = "light"
         # self.apply_styles()
         self.adjustSize()
-        self.ui.stackedWidget_workSpace.setCurrentWidget(self.ui.page_calibrationChoice)
+        self.ui.stackedWidget_workSpace.setCurrentWidget(
+            self.ui.page_calibrationInitialChoice
+        )
 
         self.setWindowTitle("Archpoint")
         self.app_logo_icon = QIcon("static/logo_v2_black.png")
@@ -51,46 +59,75 @@ class MainWindow(QMainWindow):
 
         # ============================= BUTTON CONNECTIONS =============================
 
-        # LEFT MENU BUTTONS:
+        # LEFT MENU PAGES:
         self.ui.pushButton_pageCalibration.clicked.connect(
             self.carefully_go_to_calibration
         )
         self.ui.pushButton_pageProcess.clicked.connect(self.on_page_process_clicked)
+        # LEFT MENU SETTINGS:
         self.ui.pushButton_settings.clicked.connect(self.on_settings_clicked)
+        # LEFT MENU THEME:
         self.ui.pushButton_themeToggle.clicked.connect(self.on_theme_toggle_clicked)
 
-        # CALIBRATION BUTTONS:
-        self.ui.pushButton_calibration_from_file.clicked.connect(
-            self.on_calibration_from_file_clicked
+        # CALIBRATION INITIAL OPTIONS:
+        self.ui.pushButton_page_calibrationFromFileOptionButton.clicked.connect(
+            self.on_calibration_from_file_option_button_clicked
         )
-        self.ui.pushButton_calibration_skip.clicked.connect(
-            self.on_calibration_skip_clicked
+        self.ui.pushButton_page_calibrationSkipOptionButton.clicked.connect(
+            self.on_calibration_skip_option_button_clicked
         )
+        self.connect_navigation_button(
+            self.ui.pushButton_page_calibrationStartOptionButton,
+            self.ui.page_calibrationSteps_0_MethodSelection,
+        )
+
+        # CALIBRATION DIRECTORIES:
         self.ui.pushButton_setCalibrationImagesDirectory.clicked.connect(
             self.on_set_calibration_images_directory_clicked
         )
         self.ui.pushButton_setCalibrationImagesDirectorySecondCamera.clicked.connect(
             self.on_set_calibration_images_directory_second_camera_clicked
         )
+
+        # CALIBRATION PAGES RETURN AND NEXT BUTTONS:
         self.connect_navigation_button(
-            self.ui.pushButton_calibrationStartFromPreparing,
-            self.ui.page_calibrationSteps_4,
+            self.ui.pushButton_returnToCalibrationChoice,
+            self.ui.page_calibrationInitialChoice,
         )
         self.connect_navigation_button(
-            self.ui.pushButton_calibration_start,
-            self.ui.page_calibrationSteps_1_3,
+            self.ui.pushButton_calibrationChessboardSteps_1_3_GoToCalibration,
+            self.ui.page_calibrationSteps_4_MainPage,
         )
         self.ui.pushButton_calibrationProcessStart.clicked.connect(
             self.on_calibration_process_start_clicked
         )
         self.connect_navigation_button(
-            self.ui.pushButton_returnToCalibrationChoice, self.ui.page_calibrationChoice
+            self.ui.pushButton_calibrationChessboardSteps_1_3_ReturnToMethodSelection,
+            self.ui.page_calibrationSteps_0_MethodSelection,
+        )
+        self.connect_navigation_button(
+            self.ui.pushButton_calibrationRoomSteps_1_3_ReturnToMethodSelection,
+            self.ui.page_calibrationSteps_0_MethodSelection,
+        )
+        self.connect_navigation_button(
+            self.ui.pushButton_calibrationRoomSteps_1_3_GoToCalibration,
+            self.ui.page_calibrationSteps_4_MainPage,
+        )
+        self.ui.pushButton_calibrationSteps_4_returnToTipsButton.clicked.connect(
+            self.on_calibration_steps_4_return_to_tips_button_clicked
         )
         self.ui.pushButton_cancelCalibration.clicked.connect(
             self.on_cancel_calibration_clicked
         )
         self.ui.pushButton_saveCalibrationResults.clicked.connect(
             self.on_save_calibration_results_clicked
+        )
+        self.ui.pushButton_calibrationSteps_0_MethodManualSelectButton.clicked.connect(
+            self.on_calibration_steps_0_method_manual_select_button_clicked
+        )
+        self.connect_navigation_button(
+            self.ui.pushButton_calibrationSteps_0_MethodAutoSelectButton,
+            self.ui.page_calibrationSteps_1_3_PreparingChessboardTips,
         )
 
         # PROJECT BUTTONS:
@@ -124,7 +161,7 @@ class MainWindow(QMainWindow):
 
     def preprocess_app_images(self):
         self.ui.label_appLogo.setPixmap(self.app_logo_pixmap.scaledToHeight(155))
-        self.ui.label_calibration_from_file_icon.setPixmap(
+        self.ui.label_page_calibrationFromFileOptionIcon.setPixmap(
             QPixmap("static/file/file-black.png").scaledToHeight(70)
         )
 
@@ -163,7 +200,9 @@ class MainWindow(QMainWindow):
                 self.ui.page_calibrationSteps_5_done
             )
             return
-        self.ui.stackedWidget_workSpace.setCurrentWidget(self.ui.page_calibrationChoice)
+        self.ui.stackedWidget_workSpace.setCurrentWidget(
+            self.ui.page_calibrationInitialChoice
+        )
 
     def update_calibration_done_page(self):
         if self.calibration_handler.is_completed():
@@ -172,6 +211,52 @@ class MainWindow(QMainWindow):
             )
         else:
             self.ui.textBrowser_calibrationResultsData.clear()
+
+    def carefully_go_to_dots_creator(
+        self, images_path: str, second_camera_images_path: str | None = None
+    ):
+        if second_camera_images_path:
+            self.calibration_handler.initialize_dot_creator(
+                images_path, second_camera_images_path
+            )
+        else:
+            self.calibration_handler.initialize_dot_creator(images_path)
+
+        self.update_dots_creator()
+        self.ui.stackedWidget_workSpace.setCurrentWidget(
+            self.ui.page_calibrationSteps_5_ImageDotsCreating
+        )
+
+    def update_dots_creator(self):
+        self.room_method_images: dict[str, ImageCalibrationDots] = (
+            self.calibration_handler.calibration_method.images
+        )
+
+        for image_path, image_dots in self.room_method_images.items():
+            if image_dots.is_completed():
+                continue
+
+            self.room_method_current_image_path = image_path
+
+            image_name = os.path.basename(image_path)
+            self.ui.label_imageDotsCreator_ImageName.setText(image_name)
+
+            pixmap = QPixmap(image_path)
+            scene = QGraphicsScene()
+            scene.clear()
+
+            item = QGraphicsPixmapItem(pixmap)
+            scene.addItem(item)
+
+            self.ui.graphicsView_imageDotsCreator_ImagePreview.setScene(scene)
+            self.ui.graphicsView_imageDotsCreator_ImagePreview.setAlignment(
+                Qt.AlignCenter
+            )
+            self.ui.graphicsView_imageDotsCreator_ImagePreview.fitInView(
+                item.boundingRect(), Qt.KeepAspectRatio
+            )
+
+            return
 
     # ==================================== BUTTON HANDLERS ====================================
 
@@ -187,7 +272,7 @@ class MainWindow(QMainWindow):
         self.apply_styles()
 
     # CALIBRATION:
-    def on_calibration_from_file_clicked(self):
+    def on_calibration_from_file_option_button_clicked(self):
         calibration_file_path, _ = QFileDialog.getOpenFileName(
             self, "Выберите файл", "", ".npz files (*.npz)"
         )
@@ -240,17 +325,35 @@ class MainWindow(QMainWindow):
     def on_calibration_process_start_clicked(self):
         images_directory = self.ui.lineEdit_calibrationImagesDirectory.text()
 
+        if not images_directory:
+            QMessageBox.critical(
+                self,
+                "Ошибка",
+                "Пожалуйста, укажите директорию с изображениями.",
+            )
+            return
+
         if not os.path.exists(images_directory):
             QMessageBox.critical(
                 self,
                 "Ошибка",
                 "Пожалуйста, укажите корректную директорию с изображениями.",
             )
+            return
 
         if self.ui.groupBox_calibrationImagesDirectoryFieldSecondCamera.isChecked():
             images_directory_second_camera = (
                 self.ui.lineEdit_calibrationImagesDirectorySecondCamera.text()
             )
+
+            if not images_directory_second_camera:
+                QMessageBox.critical(
+                    self,
+                    "Ошибка",
+                    "Пожалуйста, укажите директорию с изображениями второй камеры.",
+                )
+                return
+
             if not os.path.exists(images_directory_second_camera):
                 QMessageBox.critical(
                     self,
@@ -258,11 +361,22 @@ class MainWindow(QMainWindow):
                     "Пожалуйста, укажите корректную директорию с изображениями второй камеры.",
                 )
                 return
-            self.calibration_handler.calibrate_stereo(
-                images_directory, images_directory_second_camera
-            )
+
+            if self.calibration_handler.get_calibration_method() == "room":
+                self.carefully_go_to_dots_creator(
+                    images_directory, images_directory_second_camera
+                )
+                return
+            elif self.calibration_handler.get_calibration_method() == "chessboard":
+                self.calibration_handler.calibrate_stereo(
+                    images_directory, images_directory_second_camera
+                )
         else:
-            self.calibration_handler.calibrate(images_directory)
+            if self.calibration_handler.get_calibration_method() == "room":
+                self.carefully_go_to_dots_creator(images_directory)
+                return
+            elif self.calibration_handler.get_calibration_method() == "chessboard":
+                self.calibration_handler.calibrate(images_directory)
 
         # TODO: ADD CALIBRATION LOGGING LOGIC
         # TODO: ADD PROCESSING IMAGES DISPLAYING
@@ -291,12 +405,34 @@ class MainWindow(QMainWindow):
                     self, "Ошибка", f"Произошла ошибка при сохранении данных: {e}"
                 )
 
-    def on_calibration_skip_clicked(self):
+    def on_calibration_skip_option_button_clicked(self):
         self.carefully_go_to_processing()
 
     def on_cancel_calibration_clicked(self):
         self.calibration_handler.clear()
         self.carefully_go_to_calibration()
+
+    def on_calibration_steps_0_method_manual_select_button_clicked(self):
+        self.calibration_handler.set_calibration_method("room")
+        self.ui.stackedWidget_workSpace.setCurrentWidget(
+            self.ui.page_calibrationSteps_1_3_PreparingRoomTips
+        )
+
+    def on_calibration_steps_0_method_auto_select_button_clicked(self):
+        self.calibration_handler.set_calibration_method("chessboard")
+        self.ui.stackedWidget_workSpace.setCurrentWidget(
+            self.ui.page_calibrationSteps_1_3_PreparingChessboardTips
+        )
+
+    def on_calibration_steps_4_return_to_tips_button_clicked(self):
+        if self.calibration_handler.get_calibration_method() == "room":
+            self.ui.stackedWidget_workSpace.setCurrentWidget(
+                self.ui.page_calibrationSteps_1_3_PreparingRoomTips
+            )
+        elif self.calibration_handler.get_calibration_method() == "chessboard":
+            self.ui.stackedWidget_workSpace.setCurrentWidget(
+                self.ui.page_calibrationSteps_1_3_PreparingChessboardTips
+            )
 
     # PROJECT:
     def on_choose_project_clicked(self):

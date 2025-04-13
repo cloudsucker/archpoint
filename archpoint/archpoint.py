@@ -1,8 +1,6 @@
 from archpoint.handlers import ProjectHandler, HLOC_Handler, CalibrationHandler
-from archpoint.handlers.calibration_handler import (
-    ChessboardCalibrationMethod,
-    CalibrationRoomCalibrationMethod,
-)
+from archpoint.calibration_methods import ChessboardCalibrationMethod
+from archpoint.calibration_methods import CalibrationRoomCalibrationMethod
 
 
 class Archpoint:

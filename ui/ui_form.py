@@ -16,10 +16,10 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QCheckBox, QGraphicsView, QGridLayout,
-    QGroupBox, QHBoxLayout, QLabel, QLineEdit,
-    QProgressBar, QPushButton, QRadioButton, QSizePolicy,
-    QSpacerItem, QStackedWidget, QTextBrowser, QVBoxLayout,
-    QWidget)
+    QGroupBox, QHBoxLayout, QHeaderView, QLabel,
+    QLineEdit, QProgressBar, QPushButton, QSizePolicy,
+    QSpacerItem, QStackedWidget, QTableWidget, QTableWidgetItem,
+    QTextBrowser, QVBoxLayout, QWidget)
 
 class Ui_Widget(object):
     def setupUi(self, Widget):
@@ -144,124 +144,220 @@ class Ui_Widget(object):
         self.stackedWidget_workSpace = QStackedWidget(self.groupBox_workspace)
         self.stackedWidget_workSpace.setObjectName(u"stackedWidget_workSpace")
         self.stackedWidget_workSpace.setLineWidth(0)
-        self.page_calibrationChoice = QWidget()
-        self.page_calibrationChoice.setObjectName(u"page_calibrationChoice")
-        self.gridLayout_3 = QGridLayout(self.page_calibrationChoice)
+        self.page_calibrationInitialChoice = QWidget()
+        self.page_calibrationInitialChoice.setObjectName(u"page_calibrationInitialChoice")
+        self.gridLayout_3 = QGridLayout(self.page_calibrationInitialChoice)
         self.gridLayout_3.setObjectName(u"gridLayout_3")
-        self.groupBox_calibration_options = QGroupBox(self.page_calibrationChoice)
-        self.groupBox_calibration_options.setObjectName(u"groupBox_calibration_options")
-        self.groupBox_calibration_options.setFlat(True)
-        self.gridLayout_2 = QGridLayout(self.groupBox_calibration_options)
+        self.groupBox_page_calibrationInitialChoiceOptions = QGroupBox(self.page_calibrationInitialChoice)
+        self.groupBox_page_calibrationInitialChoiceOptions.setObjectName(u"groupBox_page_calibrationInitialChoiceOptions")
+        self.groupBox_page_calibrationInitialChoiceOptions.setFlat(True)
+        self.gridLayout_2 = QGridLayout(self.groupBox_page_calibrationInitialChoiceOptions)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
-        self.groupBox_calibration_from_file = QGroupBox(self.groupBox_calibration_options)
-        self.groupBox_calibration_from_file.setObjectName(u"groupBox_calibration_from_file")
-        self.verticalLayout_4 = QVBoxLayout(self.groupBox_calibration_from_file)
+        self.groupBox_page_calibrationFromFileOptionField = QGroupBox(self.groupBox_page_calibrationInitialChoiceOptions)
+        self.groupBox_page_calibrationFromFileOptionField.setObjectName(u"groupBox_page_calibrationFromFileOptionField")
+        self.verticalLayout_4 = QVBoxLayout(self.groupBox_page_calibrationFromFileOptionField)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
-        self.label_calibration_from_file_title = QLabel(self.groupBox_calibration_from_file)
-        self.label_calibration_from_file_title.setObjectName(u"label_calibration_from_file_title")
+        self.label_page_calibrationFromFileOptionTitle = QLabel(self.groupBox_page_calibrationFromFileOptionField)
+        self.label_page_calibrationFromFileOptionTitle.setObjectName(u"label_page_calibrationFromFileOptionTitle")
         font6 = QFont()
         font6.setFamilies([u"Rubik"])
         font6.setPointSize(14)
         font6.setBold(True)
-        self.label_calibration_from_file_title.setFont(font6)
+        self.label_page_calibrationFromFileOptionTitle.setFont(font6)
 
-        self.verticalLayout_4.addWidget(self.label_calibration_from_file_title)
+        self.verticalLayout_4.addWidget(self.label_page_calibrationFromFileOptionTitle)
 
-        self.label_calibration_from_file_icon = QLabel(self.groupBox_calibration_from_file)
-        self.label_calibration_from_file_icon.setObjectName(u"label_calibration_from_file_icon")
+        self.label_page_calibrationFromFileOptionIcon = QLabel(self.groupBox_page_calibrationFromFileOptionField)
+        self.label_page_calibrationFromFileOptionIcon.setObjectName(u"label_page_calibrationFromFileOptionIcon")
         font7 = QFont()
         font7.setFamilies([u"Rubik"])
         font7.setPointSize(20)
         font7.setBold(False)
-        self.label_calibration_from_file_icon.setFont(font7)
+        self.label_page_calibrationFromFileOptionIcon.setFont(font7)
 
-        self.verticalLayout_4.addWidget(self.label_calibration_from_file_icon)
+        self.verticalLayout_4.addWidget(self.label_page_calibrationFromFileOptionIcon)
 
-        self.pushButton_calibration_from_file = QPushButton(self.groupBox_calibration_from_file)
-        self.pushButton_calibration_from_file.setObjectName(u"pushButton_calibration_from_file")
-        self.pushButton_calibration_from_file.setFont(font5)
+        self.pushButton_page_calibrationFromFileOptionButton = QPushButton(self.groupBox_page_calibrationFromFileOptionField)
+        self.pushButton_page_calibrationFromFileOptionButton.setObjectName(u"pushButton_page_calibrationFromFileOptionButton")
+        self.pushButton_page_calibrationFromFileOptionButton.setFont(font5)
 
-        self.verticalLayout_4.addWidget(self.pushButton_calibration_from_file)
+        self.verticalLayout_4.addWidget(self.pushButton_page_calibrationFromFileOptionButton)
 
 
-        self.gridLayout_2.addWidget(self.groupBox_calibration_from_file, 0, 0, 1, 1)
+        self.gridLayout_2.addWidget(self.groupBox_page_calibrationFromFileOptionField, 0, 0, 1, 1)
 
-        self.groupBox_calibration_start = QGroupBox(self.groupBox_calibration_options)
-        self.groupBox_calibration_start.setObjectName(u"groupBox_calibration_start")
-        self.verticalLayout_5 = QVBoxLayout(self.groupBox_calibration_start)
+        self.groupBox_page_0_calibrationStartOptionField = QGroupBox(self.groupBox_page_calibrationInitialChoiceOptions)
+        self.groupBox_page_0_calibrationStartOptionField.setObjectName(u"groupBox_page_0_calibrationStartOptionField")
+        self.verticalLayout_5 = QVBoxLayout(self.groupBox_page_0_calibrationStartOptionField)
         self.verticalLayout_5.setObjectName(u"verticalLayout_5")
-        self.label_calibration_start_title = QLabel(self.groupBox_calibration_start)
-        self.label_calibration_start_title.setObjectName(u"label_calibration_start_title")
-        self.label_calibration_start_title.setFont(font6)
+        self.label_page_calibrationStartOptionTitle = QLabel(self.groupBox_page_0_calibrationStartOptionField)
+        self.label_page_calibrationStartOptionTitle.setObjectName(u"label_page_calibrationStartOptionTitle")
+        self.label_page_calibrationStartOptionTitle.setFont(font6)
 
-        self.verticalLayout_5.addWidget(self.label_calibration_start_title)
+        self.verticalLayout_5.addWidget(self.label_page_calibrationStartOptionTitle)
 
-        self.label_calibration_start_icon = QLabel(self.groupBox_calibration_start)
-        self.label_calibration_start_icon.setObjectName(u"label_calibration_start_icon")
+        self.label_page_calibrationStartOptionIcon = QLabel(self.groupBox_page_0_calibrationStartOptionField)
+        self.label_page_calibrationStartOptionIcon.setObjectName(u"label_page_calibrationStartOptionIcon")
         font8 = QFont()
         font8.setFamilies([u"Rubik"])
         font8.setPointSize(20)
-        self.label_calibration_start_icon.setFont(font8)
+        self.label_page_calibrationStartOptionIcon.setFont(font8)
 
-        self.verticalLayout_5.addWidget(self.label_calibration_start_icon)
+        self.verticalLayout_5.addWidget(self.label_page_calibrationStartOptionIcon)
 
-        self.pushButton_calibration_start = QPushButton(self.groupBox_calibration_start)
-        self.pushButton_calibration_start.setObjectName(u"pushButton_calibration_start")
-        self.pushButton_calibration_start.setFont(font5)
+        self.pushButton_page_calibrationStartOptionButton = QPushButton(self.groupBox_page_0_calibrationStartOptionField)
+        self.pushButton_page_calibrationStartOptionButton.setObjectName(u"pushButton_page_calibrationStartOptionButton")
+        self.pushButton_page_calibrationStartOptionButton.setFont(font5)
 
-        self.verticalLayout_5.addWidget(self.pushButton_calibration_start)
+        self.verticalLayout_5.addWidget(self.pushButton_page_calibrationStartOptionButton)
 
 
-        self.gridLayout_2.addWidget(self.groupBox_calibration_start, 0, 1, 1, 1)
+        self.gridLayout_2.addWidget(self.groupBox_page_0_calibrationStartOptionField, 0, 1, 1, 1)
 
-        self.groupBox_calibration_skip = QGroupBox(self.groupBox_calibration_options)
-        self.groupBox_calibration_skip.setObjectName(u"groupBox_calibration_skip")
-        self.verticalLayout_6 = QVBoxLayout(self.groupBox_calibration_skip)
+        self.groupBox_page_calibrationSkipOptionField = QGroupBox(self.groupBox_page_calibrationInitialChoiceOptions)
+        self.groupBox_page_calibrationSkipOptionField.setObjectName(u"groupBox_page_calibrationSkipOptionField")
+        self.verticalLayout_6 = QVBoxLayout(self.groupBox_page_calibrationSkipOptionField)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
-        self.label_calibration_skip_title = QLabel(self.groupBox_calibration_skip)
-        self.label_calibration_skip_title.setObjectName(u"label_calibration_skip_title")
-        self.label_calibration_skip_title.setFont(font6)
+        self.label_page_calibrationSkipOptionTitle = QLabel(self.groupBox_page_calibrationSkipOptionField)
+        self.label_page_calibrationSkipOptionTitle.setObjectName(u"label_page_calibrationSkipOptionTitle")
+        self.label_page_calibrationSkipOptionTitle.setFont(font6)
 
-        self.verticalLayout_6.addWidget(self.label_calibration_skip_title)
+        self.verticalLayout_6.addWidget(self.label_page_calibrationSkipOptionTitle)
 
-        self.label_calibration_skip_text = QLabel(self.groupBox_calibration_skip)
-        self.label_calibration_skip_text.setObjectName(u"label_calibration_skip_text")
-        self.label_calibration_skip_text.setFont(font)
-        self.label_calibration_skip_text.setWordWrap(True)
+        self.label_page_calibrationSkipOptionText = QLabel(self.groupBox_page_calibrationSkipOptionField)
+        self.label_page_calibrationSkipOptionText.setObjectName(u"label_page_calibrationSkipOptionText")
+        self.label_page_calibrationSkipOptionText.setFont(font)
+        self.label_page_calibrationSkipOptionText.setWordWrap(True)
 
-        self.verticalLayout_6.addWidget(self.label_calibration_skip_text)
+        self.verticalLayout_6.addWidget(self.label_page_calibrationSkipOptionText)
 
-        self.label_calibration_skip_icon = QLabel(self.groupBox_calibration_skip)
-        self.label_calibration_skip_icon.setObjectName(u"label_calibration_skip_icon")
+        self.label_page_calibrationSkipOptionIcon = QLabel(self.groupBox_page_calibrationSkipOptionField)
+        self.label_page_calibrationSkipOptionIcon.setObjectName(u"label_page_calibrationSkipOptionIcon")
         font9 = QFont()
         font9.setFamilies([u"Rubik"])
         font9.setPointSize(20)
         font9.setBold(False)
         font9.setItalic(False)
-        self.label_calibration_skip_icon.setFont(font9)
+        self.label_page_calibrationSkipOptionIcon.setFont(font9)
 
-        self.verticalLayout_6.addWidget(self.label_calibration_skip_icon)
+        self.verticalLayout_6.addWidget(self.label_page_calibrationSkipOptionIcon)
 
-        self.pushButton_calibration_skip = QPushButton(self.groupBox_calibration_skip)
-        self.pushButton_calibration_skip.setObjectName(u"pushButton_calibration_skip")
+        self.pushButton_page_calibrationSkipOptionButton = QPushButton(self.groupBox_page_calibrationSkipOptionField)
+        self.pushButton_page_calibrationSkipOptionButton.setObjectName(u"pushButton_page_calibrationSkipOptionButton")
 
-        self.verticalLayout_6.addWidget(self.pushButton_calibration_skip)
-
-
-        self.gridLayout_2.addWidget(self.groupBox_calibration_skip, 1, 0, 1, 2)
+        self.verticalLayout_6.addWidget(self.pushButton_page_calibrationSkipOptionButton)
 
 
-        self.gridLayout_3.addWidget(self.groupBox_calibration_options, 1, 0, 1, 1)
+        self.gridLayout_2.addWidget(self.groupBox_page_calibrationSkipOptionField, 1, 0, 1, 2)
 
-        self.verticalSpacer_calibrationChoiceOptionsBottom = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
-        self.gridLayout_3.addItem(self.verticalSpacer_calibrationChoiceOptionsBottom, 2, 0, 1, 1)
+        self.gridLayout_3.addWidget(self.groupBox_page_calibrationInitialChoiceOptions, 1, 0, 1, 1)
 
-        self.verticalSpacer_calibrationChoiceOptionsTop = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+        self.verticalSpacer_page_calibrationChoiceOptionsBottom = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
-        self.gridLayout_3.addItem(self.verticalSpacer_calibrationChoiceOptionsTop, 0, 0, 1, 1)
+        self.gridLayout_3.addItem(self.verticalSpacer_page_calibrationChoiceOptionsBottom, 2, 0, 1, 1)
 
-        self.stackedWidget_workSpace.addWidget(self.page_calibrationChoice)
+        self.verticalSpacer_page_calibrationChoiceOptionsTop = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.gridLayout_3.addItem(self.verticalSpacer_page_calibrationChoiceOptionsTop, 0, 0, 1, 1)
+
+        self.stackedWidget_workSpace.addWidget(self.page_calibrationInitialChoice)
+        self.page_calibrationSteps_0_MethodSelection = QWidget()
+        self.page_calibrationSteps_0_MethodSelection.setObjectName(u"page_calibrationSteps_0_MethodSelection")
+        self.verticalLayout_23 = QVBoxLayout(self.page_calibrationSteps_0_MethodSelection)
+        self.verticalLayout_23.setObjectName(u"verticalLayout_23")
+        self.groupBox_calibrationSteps_0_MethodSelectionMain = QGroupBox(self.page_calibrationSteps_0_MethodSelection)
+        self.groupBox_calibrationSteps_0_MethodSelectionMain.setObjectName(u"groupBox_calibrationSteps_0_MethodSelectionMain")
+        self.groupBox_calibrationSteps_0_MethodSelectionMain.setFont(font3)
+        self.verticalLayout_24 = QVBoxLayout(self.groupBox_calibrationSteps_0_MethodSelectionMain)
+        self.verticalLayout_24.setObjectName(u"verticalLayout_24")
+        self.verticalSpacer_calibrationSteps_0_MethodSelectionTop = QSpacerItem(20, 192, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_24.addItem(self.verticalSpacer_calibrationSteps_0_MethodSelectionTop)
+
+        self.groupBox_calibrationSteps_0_CalibrationMethodsSelectionField = QGroupBox(self.groupBox_calibrationSteps_0_MethodSelectionMain)
+        self.groupBox_calibrationSteps_0_CalibrationMethodsSelectionField.setObjectName(u"groupBox_calibrationSteps_0_CalibrationMethodsSelectionField")
+        self.groupBox_calibrationSteps_0_CalibrationMethodsSelectionField.setFlat(True)
+        self.horizontalLayout_17 = QHBoxLayout(self.groupBox_calibrationSteps_0_CalibrationMethodsSelectionField)
+        self.horizontalLayout_17.setObjectName(u"horizontalLayout_17")
+        self.groupBox_calibrationSteps_0_MethodAutoField = QGroupBox(self.groupBox_calibrationSteps_0_CalibrationMethodsSelectionField)
+        self.groupBox_calibrationSteps_0_MethodAutoField.setObjectName(u"groupBox_calibrationSteps_0_MethodAutoField")
+        self.verticalLayout_26 = QVBoxLayout(self.groupBox_calibrationSteps_0_MethodAutoField)
+        self.verticalLayout_26.setObjectName(u"verticalLayout_26")
+        self.label_calibrationSteps_0_MethodAutoTitle = QLabel(self.groupBox_calibrationSteps_0_MethodAutoField)
+        self.label_calibrationSteps_0_MethodAutoTitle.setObjectName(u"label_calibrationSteps_0_MethodAutoTitle")
+        self.label_calibrationSteps_0_MethodAutoTitle.setFont(font6)
+
+        self.verticalLayout_26.addWidget(self.label_calibrationSteps_0_MethodAutoTitle)
+
+        self.label_calibrationSteps_0_MethodAutoIcon = QLabel(self.groupBox_calibrationSteps_0_MethodAutoField)
+        self.label_calibrationSteps_0_MethodAutoIcon.setObjectName(u"label_calibrationSteps_0_MethodAutoIcon")
+        self.label_calibrationSteps_0_MethodAutoIcon.setFont(font3)
+
+        self.verticalLayout_26.addWidget(self.label_calibrationSteps_0_MethodAutoIcon)
+
+        self.pushButton_calibrationSteps_0_MethodAutoSelectButton = QPushButton(self.groupBox_calibrationSteps_0_MethodAutoField)
+        self.pushButton_calibrationSteps_0_MethodAutoSelectButton.setObjectName(u"pushButton_calibrationSteps_0_MethodAutoSelectButton")
+        self.pushButton_calibrationSteps_0_MethodAutoSelectButton.setFont(font3)
+
+        self.verticalLayout_26.addWidget(self.pushButton_calibrationSteps_0_MethodAutoSelectButton)
+
+
+        self.horizontalLayout_17.addWidget(self.groupBox_calibrationSteps_0_MethodAutoField)
+
+        self.groupBox_calibrationSteps_0_MethodManualField = QGroupBox(self.groupBox_calibrationSteps_0_CalibrationMethodsSelectionField)
+        self.groupBox_calibrationSteps_0_MethodManualField.setObjectName(u"groupBox_calibrationSteps_0_MethodManualField")
+        self.verticalLayout_25 = QVBoxLayout(self.groupBox_calibrationSteps_0_MethodManualField)
+        self.verticalLayout_25.setObjectName(u"verticalLayout_25")
+        self.label_calibrationSteps_0_MethodManualTitle = QLabel(self.groupBox_calibrationSteps_0_MethodManualField)
+        self.label_calibrationSteps_0_MethodManualTitle.setObjectName(u"label_calibrationSteps_0_MethodManualTitle")
+        self.label_calibrationSteps_0_MethodManualTitle.setFont(font6)
+
+        self.verticalLayout_25.addWidget(self.label_calibrationSteps_0_MethodManualTitle)
+
+        self.label_calibrationSteps_0_MethodManualIcon = QLabel(self.groupBox_calibrationSteps_0_MethodManualField)
+        self.label_calibrationSteps_0_MethodManualIcon.setObjectName(u"label_calibrationSteps_0_MethodManualIcon")
+        self.label_calibrationSteps_0_MethodManualIcon.setFont(font3)
+
+        self.verticalLayout_25.addWidget(self.label_calibrationSteps_0_MethodManualIcon)
+
+        self.pushButton_calibrationSteps_0_MethodManualSelectButton = QPushButton(self.groupBox_calibrationSteps_0_MethodManualField)
+        self.pushButton_calibrationSteps_0_MethodManualSelectButton.setObjectName(u"pushButton_calibrationSteps_0_MethodManualSelectButton")
+        self.pushButton_calibrationSteps_0_MethodManualSelectButton.setFont(font3)
+
+        self.verticalLayout_25.addWidget(self.pushButton_calibrationSteps_0_MethodManualSelectButton)
+
+
+        self.horizontalLayout_17.addWidget(self.groupBox_calibrationSteps_0_MethodManualField)
+
+
+        self.verticalLayout_24.addWidget(self.groupBox_calibrationSteps_0_CalibrationMethodsSelectionField)
+
+        self.verticalSpacer_calibrationSteps_0_MethodSelectionBottom = QSpacerItem(20, 192, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_24.addItem(self.verticalSpacer_calibrationSteps_0_MethodSelectionBottom)
+
+        self.groupBox_calibrationSteps_0_MethodSelectionMainButtonsField = QGroupBox(self.groupBox_calibrationSteps_0_MethodSelectionMain)
+        self.groupBox_calibrationSteps_0_MethodSelectionMainButtonsField.setObjectName(u"groupBox_calibrationSteps_0_MethodSelectionMainButtonsField")
+        self.groupBox_calibrationSteps_0_MethodSelectionMainButtonsField.setFlat(True)
+        self.horizontalLayout_14 = QHBoxLayout(self.groupBox_calibrationSteps_0_MethodSelectionMainButtonsField)
+        self.horizontalLayout_14.setObjectName(u"horizontalLayout_14")
+        self.pushButton_returnToCalibrationChoice = QPushButton(self.groupBox_calibrationSteps_0_MethodSelectionMainButtonsField)
+        self.pushButton_returnToCalibrationChoice.setObjectName(u"pushButton_returnToCalibrationChoice")
+
+        self.horizontalLayout_14.addWidget(self.pushButton_returnToCalibrationChoice)
+
+        self.horizontalSpacer_calibrationSteps_0_MethodSelectionMainButtonsSpacer = QSpacerItem(602, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_14.addItem(self.horizontalSpacer_calibrationSteps_0_MethodSelectionMainButtonsSpacer)
+
+
+        self.verticalLayout_24.addWidget(self.groupBox_calibrationSteps_0_MethodSelectionMainButtonsField)
+
+
+        self.verticalLayout_23.addWidget(self.groupBox_calibrationSteps_0_MethodSelectionMain)
+
+        self.stackedWidget_workSpace.addWidget(self.page_calibrationSteps_0_MethodSelection)
         self.page_processingChoiceProject = QWidget()
         self.page_processingChoiceProject.setObjectName(u"page_processingChoiceProject")
         self.verticalLayout_19 = QVBoxLayout(self.page_processingChoiceProject)
@@ -563,16 +659,16 @@ class Ui_Widget(object):
         self.horizontalLayout_15.addWidget(self.groupBox_settingsMain)
 
         self.stackedWidget_workSpace.addWidget(self.page_settings)
-        self.page_calibrationSteps_1_3 = QWidget()
-        self.page_calibrationSteps_1_3.setObjectName(u"page_calibrationSteps_1_3")
-        self.verticalLayout_13 = QVBoxLayout(self.page_calibrationSteps_1_3)
+        self.page_calibrationSteps_1_3_PreparingChessboardTips = QWidget()
+        self.page_calibrationSteps_1_3_PreparingChessboardTips.setObjectName(u"page_calibrationSteps_1_3_PreparingChessboardTips")
+        self.verticalLayout_13 = QVBoxLayout(self.page_calibrationSteps_1_3_PreparingChessboardTips)
         self.verticalLayout_13.setObjectName(u"verticalLayout_13")
-        self.groupBox_calibrationSteps_1_3_main = QGroupBox(self.page_calibrationSteps_1_3)
-        self.groupBox_calibrationSteps_1_3_main.setObjectName(u"groupBox_calibrationSteps_1_3_main")
-        self.groupBox_calibrationSteps_1_3_main.setFont(font6)
-        self.verticalLayout_9 = QVBoxLayout(self.groupBox_calibrationSteps_1_3_main)
+        self.groupBox_calibrationSteps_1_3_PreparingChessboardTipsMain = QGroupBox(self.page_calibrationSteps_1_3_PreparingChessboardTips)
+        self.groupBox_calibrationSteps_1_3_PreparingChessboardTipsMain.setObjectName(u"groupBox_calibrationSteps_1_3_PreparingChessboardTipsMain")
+        self.groupBox_calibrationSteps_1_3_PreparingChessboardTipsMain.setFont(font6)
+        self.verticalLayout_9 = QVBoxLayout(self.groupBox_calibrationSteps_1_3_PreparingChessboardTipsMain)
         self.verticalLayout_9.setObjectName(u"verticalLayout_9")
-        self.groupBox_calibrationPreparingStep1 = QGroupBox(self.groupBox_calibrationSteps_1_3_main)
+        self.groupBox_calibrationPreparingStep1 = QGroupBox(self.groupBox_calibrationSteps_1_3_PreparingChessboardTipsMain)
         self.groupBox_calibrationPreparingStep1.setObjectName(u"groupBox_calibrationPreparingStep1")
         self.groupBox_calibrationPreparingStep1.setFont(font3)
         self.groupBox_calibrationPreparingStep1.setFlat(True)
@@ -592,7 +688,7 @@ class Ui_Widget(object):
 
         self.verticalLayout_9.addWidget(self.groupBox_calibrationPreparingStep1)
 
-        self.groupBox_calibrationPreparingStep2 = QGroupBox(self.groupBox_calibrationSteps_1_3_main)
+        self.groupBox_calibrationPreparingStep2 = QGroupBox(self.groupBox_calibrationSteps_1_3_PreparingChessboardTipsMain)
         self.groupBox_calibrationPreparingStep2.setObjectName(u"groupBox_calibrationPreparingStep2")
         self.groupBox_calibrationPreparingStep2.setFont(font3)
         self.groupBox_calibrationPreparingStep2.setFlat(True)
@@ -612,7 +708,7 @@ class Ui_Widget(object):
 
         self.verticalLayout_9.addWidget(self.groupBox_calibrationPreparingStep2)
 
-        self.groupBox_calibrationPreparingStep3 = QGroupBox(self.groupBox_calibrationSteps_1_3_main)
+        self.groupBox_calibrationPreparingStep3 = QGroupBox(self.groupBox_calibrationSteps_1_3_PreparingChessboardTipsMain)
         self.groupBox_calibrationPreparingStep3.setObjectName(u"groupBox_calibrationPreparingStep3")
         self.groupBox_calibrationPreparingStep3.setFont(font3)
         self.groupBox_calibrationPreparingStep3.setFlat(True)
@@ -632,43 +728,144 @@ class Ui_Widget(object):
 
         self.verticalLayout_9.addWidget(self.groupBox_calibrationPreparingStep3)
 
-        self.verticalSpacer_underSteps = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+        self.verticalSpacer_underChessboardSteps = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
 
-        self.verticalLayout_9.addItem(self.verticalSpacer_underSteps)
+        self.verticalLayout_9.addItem(self.verticalSpacer_underChessboardSteps)
 
-        self.groupBox_calibrationStartFromPreparing = QGroupBox(self.groupBox_calibrationSteps_1_3_main)
-        self.groupBox_calibrationStartFromPreparing.setObjectName(u"groupBox_calibrationStartFromPreparing")
-        self.groupBox_calibrationStartFromPreparing.setFlat(True)
-        self.horizontalLayout_4 = QHBoxLayout(self.groupBox_calibrationStartFromPreparing)
+        self.groupBox_calibrationSteps_1_3_ButtonsField = QGroupBox(self.groupBox_calibrationSteps_1_3_PreparingChessboardTipsMain)
+        self.groupBox_calibrationSteps_1_3_ButtonsField.setObjectName(u"groupBox_calibrationSteps_1_3_ButtonsField")
+        self.groupBox_calibrationSteps_1_3_ButtonsField.setFlat(True)
+        self.horizontalLayout_4 = QHBoxLayout(self.groupBox_calibrationSteps_1_3_ButtonsField)
         self.horizontalLayout_4.setObjectName(u"horizontalLayout_4")
-        self.pushButton_returnToCalibrationChoice = QPushButton(self.groupBox_calibrationStartFromPreparing)
-        self.pushButton_returnToCalibrationChoice.setObjectName(u"pushButton_returnToCalibrationChoice")
-        self.pushButton_returnToCalibrationChoice.setFont(font3)
+        self.pushButton_calibrationChessboardSteps_1_3_ReturnToMethodSelection = QPushButton(self.groupBox_calibrationSteps_1_3_ButtonsField)
+        self.pushButton_calibrationChessboardSteps_1_3_ReturnToMethodSelection.setObjectName(u"pushButton_calibrationChessboardSteps_1_3_ReturnToMethodSelection")
+        self.pushButton_calibrationChessboardSteps_1_3_ReturnToMethodSelection.setFont(font3)
 
-        self.horizontalLayout_4.addWidget(self.pushButton_returnToCalibrationChoice)
+        self.horizontalLayout_4.addWidget(self.pushButton_calibrationChessboardSteps_1_3_ReturnToMethodSelection)
 
-        self.horizontalSpacer_calibrationStartFromPreparing = QSpacerItem(494, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        self.horizontalSpacer_calibrationSteps_1_3_ButtonSpacer = QSpacerItem(494, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
-        self.horizontalLayout_4.addItem(self.horizontalSpacer_calibrationStartFromPreparing)
+        self.horizontalLayout_4.addItem(self.horizontalSpacer_calibrationSteps_1_3_ButtonSpacer)
 
-        self.pushButton_calibrationStartFromPreparing = QPushButton(self.groupBox_calibrationStartFromPreparing)
-        self.pushButton_calibrationStartFromPreparing.setObjectName(u"pushButton_calibrationStartFromPreparing")
-        self.pushButton_calibrationStartFromPreparing.setFont(font3)
+        self.pushButton_calibrationChessboardSteps_1_3_GoToCalibration = QPushButton(self.groupBox_calibrationSteps_1_3_ButtonsField)
+        self.pushButton_calibrationChessboardSteps_1_3_GoToCalibration.setObjectName(u"pushButton_calibrationChessboardSteps_1_3_GoToCalibration")
+        self.pushButton_calibrationChessboardSteps_1_3_GoToCalibration.setFont(font3)
 
-        self.horizontalLayout_4.addWidget(self.pushButton_calibrationStartFromPreparing)
-
-
-        self.verticalLayout_9.addWidget(self.groupBox_calibrationStartFromPreparing)
+        self.horizontalLayout_4.addWidget(self.pushButton_calibrationChessboardSteps_1_3_GoToCalibration)
 
 
-        self.verticalLayout_13.addWidget(self.groupBox_calibrationSteps_1_3_main)
+        self.verticalLayout_9.addWidget(self.groupBox_calibrationSteps_1_3_ButtonsField)
 
-        self.stackedWidget_workSpace.addWidget(self.page_calibrationSteps_1_3)
-        self.page_calibrationSteps_4 = QWidget()
-        self.page_calibrationSteps_4.setObjectName(u"page_calibrationSteps_4")
-        self.verticalLayout_15 = QVBoxLayout(self.page_calibrationSteps_4)
+
+        self.verticalLayout_13.addWidget(self.groupBox_calibrationSteps_1_3_PreparingChessboardTipsMain)
+
+        self.stackedWidget_workSpace.addWidget(self.page_calibrationSteps_1_3_PreparingChessboardTips)
+        self.page_calibrationSteps_1_3_PreparingRoomTips = QWidget()
+        self.page_calibrationSteps_1_3_PreparingRoomTips.setObjectName(u"page_calibrationSteps_1_3_PreparingRoomTips")
+        self.verticalLayout_33 = QVBoxLayout(self.page_calibrationSteps_1_3_PreparingRoomTips)
+        self.verticalLayout_33.setObjectName(u"verticalLayout_33")
+        self.groupBox_calibrationSteps_1_3_PreparingRoomTipsMain = QGroupBox(self.page_calibrationSteps_1_3_PreparingRoomTips)
+        self.groupBox_calibrationSteps_1_3_PreparingRoomTipsMain.setObjectName(u"groupBox_calibrationSteps_1_3_PreparingRoomTipsMain")
+        self.groupBox_calibrationSteps_1_3_PreparingRoomTipsMain.setFont(font6)
+        self.verticalLayout_29 = QVBoxLayout(self.groupBox_calibrationSteps_1_3_PreparingRoomTipsMain)
+        self.verticalLayout_29.setObjectName(u"verticalLayout_29")
+        self.groupBox_calibrationPreparingRoomTipsStep_1 = QGroupBox(self.groupBox_calibrationSteps_1_3_PreparingRoomTipsMain)
+        self.groupBox_calibrationPreparingRoomTipsStep_1.setObjectName(u"groupBox_calibrationPreparingRoomTipsStep_1")
+        self.groupBox_calibrationPreparingRoomTipsStep_1.setFont(font3)
+        self.groupBox_calibrationPreparingRoomTipsStep_1.setFlat(True)
+        self.verticalLayout_30 = QVBoxLayout(self.groupBox_calibrationPreparingRoomTipsStep_1)
+        self.verticalLayout_30.setObjectName(u"verticalLayout_30")
+        self.label_calibrationPreparingRoomTipsStep1_Info = QLabel(self.groupBox_calibrationPreparingRoomTipsStep_1)
+        self.label_calibrationPreparingRoomTipsStep1_Info.setObjectName(u"label_calibrationPreparingRoomTipsStep1_Info")
+        self.label_calibrationPreparingRoomTipsStep1_Info.setFont(font10)
+        self.label_calibrationPreparingRoomTipsStep1_Info.setWordWrap(True)
+
+        self.verticalLayout_30.addWidget(self.label_calibrationPreparingRoomTipsStep1_Info)
+
+        self.verticalSpacer_calibrationPreparingRoomTipsStep_1 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_30.addItem(self.verticalSpacer_calibrationPreparingRoomTipsStep_1)
+
+
+        self.verticalLayout_29.addWidget(self.groupBox_calibrationPreparingRoomTipsStep_1)
+
+        self.groupBox_calibrationPreparingRoomTipsStep_2 = QGroupBox(self.groupBox_calibrationSteps_1_3_PreparingRoomTipsMain)
+        self.groupBox_calibrationPreparingRoomTipsStep_2.setObjectName(u"groupBox_calibrationPreparingRoomTipsStep_2")
+        self.groupBox_calibrationPreparingRoomTipsStep_2.setFont(font3)
+        self.groupBox_calibrationPreparingRoomTipsStep_2.setFlat(True)
+        self.verticalLayout_31 = QVBoxLayout(self.groupBox_calibrationPreparingRoomTipsStep_2)
+        self.verticalLayout_31.setObjectName(u"verticalLayout_31")
+        self.label_calibrationPreparingRoomTipsStep2_Info = QLabel(self.groupBox_calibrationPreparingRoomTipsStep_2)
+        self.label_calibrationPreparingRoomTipsStep2_Info.setObjectName(u"label_calibrationPreparingRoomTipsStep2_Info")
+        self.label_calibrationPreparingRoomTipsStep2_Info.setFont(font10)
+        self.label_calibrationPreparingRoomTipsStep2_Info.setWordWrap(True)
+
+        self.verticalLayout_31.addWidget(self.label_calibrationPreparingRoomTipsStep2_Info)
+
+        self.verticalSpacer_calibrationPreparingRoomTipsStep_2 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_31.addItem(self.verticalSpacer_calibrationPreparingRoomTipsStep_2)
+
+
+        self.verticalLayout_29.addWidget(self.groupBox_calibrationPreparingRoomTipsStep_2)
+
+        self.groupBox_calibrationPreparingRoomTipsStep_3 = QGroupBox(self.groupBox_calibrationSteps_1_3_PreparingRoomTipsMain)
+        self.groupBox_calibrationPreparingRoomTipsStep_3.setObjectName(u"groupBox_calibrationPreparingRoomTipsStep_3")
+        self.groupBox_calibrationPreparingRoomTipsStep_3.setFont(font3)
+        self.groupBox_calibrationPreparingRoomTipsStep_3.setFlat(True)
+        self.verticalLayout_32 = QVBoxLayout(self.groupBox_calibrationPreparingRoomTipsStep_3)
+        self.verticalLayout_32.setObjectName(u"verticalLayout_32")
+        self.label_calibrationPreparingRoomTipsStep3_Info = QLabel(self.groupBox_calibrationPreparingRoomTipsStep_3)
+        self.label_calibrationPreparingRoomTipsStep3_Info.setObjectName(u"label_calibrationPreparingRoomTipsStep3_Info")
+        self.label_calibrationPreparingRoomTipsStep3_Info.setFont(font10)
+        self.label_calibrationPreparingRoomTipsStep3_Info.setWordWrap(True)
+
+        self.verticalLayout_32.addWidget(self.label_calibrationPreparingRoomTipsStep3_Info)
+
+        self.verticalSpacer_calibrationPreparingRoomTipsStep_3 = QSpacerItem(20, 59, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_32.addItem(self.verticalSpacer_calibrationPreparingRoomTipsStep_3)
+
+
+        self.verticalLayout_29.addWidget(self.groupBox_calibrationPreparingRoomTipsStep_3)
+
+        self.verticalSpacer_calibrationRoomTipsUnderSteps = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_29.addItem(self.verticalSpacer_calibrationRoomTipsUnderSteps)
+
+        self.groupBox_calibrationRoomTipsSteps_1_3_ButtonsField = QGroupBox(self.groupBox_calibrationSteps_1_3_PreparingRoomTipsMain)
+        self.groupBox_calibrationRoomTipsSteps_1_3_ButtonsField.setObjectName(u"groupBox_calibrationRoomTipsSteps_1_3_ButtonsField")
+        self.groupBox_calibrationRoomTipsSteps_1_3_ButtonsField.setFlat(True)
+        self.horizontalLayout_19 = QHBoxLayout(self.groupBox_calibrationRoomTipsSteps_1_3_ButtonsField)
+        self.horizontalLayout_19.setObjectName(u"horizontalLayout_19")
+        self.pushButton_calibrationRoomSteps_1_3_ReturnToMethodSelection = QPushButton(self.groupBox_calibrationRoomTipsSteps_1_3_ButtonsField)
+        self.pushButton_calibrationRoomSteps_1_3_ReturnToMethodSelection.setObjectName(u"pushButton_calibrationRoomSteps_1_3_ReturnToMethodSelection")
+        self.pushButton_calibrationRoomSteps_1_3_ReturnToMethodSelection.setFont(font3)
+
+        self.horizontalLayout_19.addWidget(self.pushButton_calibrationRoomSteps_1_3_ReturnToMethodSelection)
+
+        self.horizontalSpacer_calibrationRoomSteps_1_3_ButtonSpacer = QSpacerItem(494, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_19.addItem(self.horizontalSpacer_calibrationRoomSteps_1_3_ButtonSpacer)
+
+        self.pushButton_calibrationRoomSteps_1_3_GoToCalibration = QPushButton(self.groupBox_calibrationRoomTipsSteps_1_3_ButtonsField)
+        self.pushButton_calibrationRoomSteps_1_3_GoToCalibration.setObjectName(u"pushButton_calibrationRoomSteps_1_3_GoToCalibration")
+        self.pushButton_calibrationRoomSteps_1_3_GoToCalibration.setFont(font3)
+
+        self.horizontalLayout_19.addWidget(self.pushButton_calibrationRoomSteps_1_3_GoToCalibration)
+
+
+        self.verticalLayout_29.addWidget(self.groupBox_calibrationRoomTipsSteps_1_3_ButtonsField)
+
+
+        self.verticalLayout_33.addWidget(self.groupBox_calibrationSteps_1_3_PreparingRoomTipsMain)
+
+        self.stackedWidget_workSpace.addWidget(self.page_calibrationSteps_1_3_PreparingRoomTips)
+        self.page_calibrationSteps_4_MainPage = QWidget()
+        self.page_calibrationSteps_4_MainPage.setObjectName(u"page_calibrationSteps_4_MainPage")
+        self.verticalLayout_15 = QVBoxLayout(self.page_calibrationSteps_4_MainPage)
         self.verticalLayout_15.setObjectName(u"verticalLayout_15")
-        self.groupBox_calibrationSteps_4 = QGroupBox(self.page_calibrationSteps_4)
+        self.groupBox_calibrationSteps_4 = QGroupBox(self.page_calibrationSteps_4_MainPage)
         self.groupBox_calibrationSteps_4.setObjectName(u"groupBox_calibrationSteps_4")
         self.groupBox_calibrationSteps_4.setFont(font6)
         self.groupBox_calibrationSteps_4.setFlat(True)
@@ -719,28 +916,6 @@ class Ui_Widget(object):
 
         self.verticalLayout_14.addWidget(self.groupBox_calibrationImagesDirectoryFieldSecondCamera)
 
-        self.groupBox_calibrationMethodChoiceField = QGroupBox(self.groupBox_calibrationSteps_4)
-        self.groupBox_calibrationMethodChoiceField.setObjectName(u"groupBox_calibrationMethodChoiceField")
-        self.groupBox_calibrationMethodChoiceField.setFont(font3)
-        self.groupBox_calibrationMethodChoiceField.setFlat(True)
-        self.horizontalLayout_14 = QHBoxLayout(self.groupBox_calibrationMethodChoiceField)
-        self.horizontalLayout_14.setObjectName(u"horizontalLayout_14")
-        self.radioButton_calibrationMethodChess = QRadioButton(self.groupBox_calibrationMethodChoiceField)
-        self.radioButton_calibrationMethodChess.setObjectName(u"radioButton_calibrationMethodChess")
-        self.radioButton_calibrationMethodChess.setFont(font10)
-        self.radioButton_calibrationMethodChess.setChecked(True)
-
-        self.horizontalLayout_14.addWidget(self.radioButton_calibrationMethodChess)
-
-        self.radioButton_calibrationMethodRoom = QRadioButton(self.groupBox_calibrationMethodChoiceField)
-        self.radioButton_calibrationMethodRoom.setObjectName(u"radioButton_calibrationMethodRoom")
-        self.radioButton_calibrationMethodRoom.setFont(font10)
-
-        self.horizontalLayout_14.addWidget(self.radioButton_calibrationMethodRoom)
-
-
-        self.verticalLayout_14.addWidget(self.groupBox_calibrationMethodChoiceField)
-
         self.pushButton_calibrationProcessStart = QPushButton(self.groupBox_calibrationSteps_4)
         self.pushButton_calibrationProcessStart.setObjectName(u"pushButton_calibrationProcessStart")
         self.pushButton_calibrationProcessStart.setFont(font3)
@@ -767,10 +942,88 @@ class Ui_Widget(object):
 
         self.verticalLayout_14.addWidget(self.textBrowser_calibrationProcessLogs)
 
+        self.groupBox_calibrationSteps_4_ButtonField = QGroupBox(self.groupBox_calibrationSteps_4)
+        self.groupBox_calibrationSteps_4_ButtonField.setObjectName(u"groupBox_calibrationSteps_4_ButtonField")
+        self.groupBox_calibrationSteps_4_ButtonField.setFlat(True)
+        self.horizontalLayout_18 = QHBoxLayout(self.groupBox_calibrationSteps_4_ButtonField)
+        self.horizontalLayout_18.setObjectName(u"horizontalLayout_18")
+        self.pushButton_calibrationSteps_4_returnToTipsButton = QPushButton(self.groupBox_calibrationSteps_4_ButtonField)
+        self.pushButton_calibrationSteps_4_returnToTipsButton.setObjectName(u"pushButton_calibrationSteps_4_returnToTipsButton")
+        self.pushButton_calibrationSteps_4_returnToTipsButton.setFont(font3)
+
+        self.horizontalLayout_18.addWidget(self.pushButton_calibrationSteps_4_returnToTipsButton)
+
+        self.horizontalSpacer_calibrationSteps_4_ButtonSpacer = QSpacerItem(602, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_18.addItem(self.horizontalSpacer_calibrationSteps_4_ButtonSpacer)
+
+
+        self.verticalLayout_14.addWidget(self.groupBox_calibrationSteps_4_ButtonField)
+
 
         self.verticalLayout_15.addWidget(self.groupBox_calibrationSteps_4)
 
-        self.stackedWidget_workSpace.addWidget(self.page_calibrationSteps_4)
+        self.stackedWidget_workSpace.addWidget(self.page_calibrationSteps_4_MainPage)
+        self.page_calibrationSteps_5_ImageDotsCreating = QWidget()
+        self.page_calibrationSteps_5_ImageDotsCreating.setObjectName(u"page_calibrationSteps_5_ImageDotsCreating")
+        self.verticalLayout_27 = QVBoxLayout(self.page_calibrationSteps_5_ImageDotsCreating)
+        self.verticalLayout_27.setObjectName(u"verticalLayout_27")
+        self.groupBox_ImageDotsCreatorField = QGroupBox(self.page_calibrationSteps_5_ImageDotsCreating)
+        self.groupBox_ImageDotsCreatorField.setObjectName(u"groupBox_ImageDotsCreatorField")
+        self.verticalLayout_28 = QVBoxLayout(self.groupBox_ImageDotsCreatorField)
+        self.verticalLayout_28.setObjectName(u"verticalLayout_28")
+        self.label_imageDotsCreator_ImageName = QLabel(self.groupBox_ImageDotsCreatorField)
+        self.label_imageDotsCreator_ImageName.setObjectName(u"label_imageDotsCreator_ImageName")
+
+        self.verticalLayout_28.addWidget(self.label_imageDotsCreator_ImageName)
+
+        self.graphicsView_imageDotsCreator_ImagePreview = QGraphicsView(self.groupBox_ImageDotsCreatorField)
+        self.graphicsView_imageDotsCreator_ImagePreview.setObjectName(u"graphicsView_imageDotsCreator_ImagePreview")
+
+        self.verticalLayout_28.addWidget(self.graphicsView_imageDotsCreator_ImagePreview)
+
+        self.groupBox = QGroupBox(self.groupBox_ImageDotsCreatorField)
+        self.groupBox.setObjectName(u"groupBox")
+        self.groupBox.setFlat(True)
+        self.horizontalLayout_20 = QHBoxLayout(self.groupBox)
+        self.horizontalLayout_20.setObjectName(u"horizontalLayout_20")
+        self.pushButton = QPushButton(self.groupBox)
+        self.pushButton.setObjectName(u"pushButton")
+        self.pushButton.setFont(font)
+
+        self.horizontalLayout_20.addWidget(self.pushButton)
+
+        self.horizontalSpacer = QSpacerItem(505, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_20.addItem(self.horizontalSpacer)
+
+        self.pushButton_2 = QPushButton(self.groupBox)
+        self.pushButton_2.setObjectName(u"pushButton_2")
+        self.pushButton_2.setFont(font)
+
+        self.horizontalLayout_20.addWidget(self.pushButton_2)
+
+
+        self.verticalLayout_28.addWidget(self.groupBox)
+
+        self.tableWidget_imageDotsCreator_DotsData = QTableWidget(self.groupBox_ImageDotsCreatorField)
+        if (self.tableWidget_imageDotsCreator_DotsData.columnCount() < 3):
+            self.tableWidget_imageDotsCreator_DotsData.setColumnCount(3)
+        __qtablewidgetitem = QTableWidgetItem()
+        self.tableWidget_imageDotsCreator_DotsData.setHorizontalHeaderItem(0, __qtablewidgetitem)
+        __qtablewidgetitem1 = QTableWidgetItem()
+        self.tableWidget_imageDotsCreator_DotsData.setHorizontalHeaderItem(1, __qtablewidgetitem1)
+        __qtablewidgetitem2 = QTableWidgetItem()
+        self.tableWidget_imageDotsCreator_DotsData.setHorizontalHeaderItem(2, __qtablewidgetitem2)
+        self.tableWidget_imageDotsCreator_DotsData.setObjectName(u"tableWidget_imageDotsCreator_DotsData")
+        self.tableWidget_imageDotsCreator_DotsData.setMaximumSize(QSize(16777215, 150))
+
+        self.verticalLayout_28.addWidget(self.tableWidget_imageDotsCreator_DotsData)
+
+
+        self.verticalLayout_27.addWidget(self.groupBox_ImageDotsCreatorField)
+
+        self.stackedWidget_workSpace.addWidget(self.page_calibrationSteps_5_ImageDotsCreating)
         self.page_calibrationSteps_5_done = QWidget()
         self.page_calibrationSteps_5_done.setObjectName(u"page_calibrationSteps_5_done")
         self.verticalLayout_17 = QVBoxLayout(self.page_calibrationSteps_5_done)
@@ -835,7 +1088,7 @@ class Ui_Widget(object):
         self.retranslateUi(Widget)
 
         self.pushButton_pageCalibration.setDefault(False)
-        self.stackedWidget_workSpace.setCurrentIndex(3)
+        self.stackedWidget_workSpace.setCurrentIndex(9)
 
 
         QMetaObject.connectSlotsByName(Widget)
@@ -853,20 +1106,32 @@ class Ui_Widget(object):
         self.pushButton_settings.setText(QCoreApplication.translate("Widget", u"\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438", None))
         self.pushButton_themeToggle.setText(QCoreApplication.translate("Widget", u"\u0422\u0435\u043c\u0430", None))
         self.groupBox_workspace.setTitle("")
-        self.groupBox_calibration_options.setTitle("")
-        self.groupBox_calibration_from_file.setTitle("")
-        self.label_calibration_from_file_title.setText(QCoreApplication.translate("Widget", u"\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044c \u0438\u0437 \u0444\u0430\u0439\u043b\u0430", None))
-        self.label_calibration_from_file_icon.setText(QCoreApplication.translate("Widget", u"<ICON>", None))
-        self.pushButton_calibration_from_file.setText(QCoreApplication.translate("Widget", u"\u0412\u044b\u0431\u0440\u0430\u0442\u044c", None))
-        self.groupBox_calibration_start.setTitle("")
-        self.label_calibration_start_title.setText(QCoreApplication.translate("Widget", u"\u0417\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u044c \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0443", None))
-        self.label_calibration_start_icon.setText(QCoreApplication.translate("Widget", u"<ICON>", None))
-        self.pushButton_calibration_start.setText(QCoreApplication.translate("Widget", u"\u0417\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u044c", None))
-        self.groupBox_calibration_skip.setTitle("")
-        self.label_calibration_skip_title.setText(QCoreApplication.translate("Widget", u"\u041f\u0440\u043e\u043f\u0443\u0441\u0442\u0438\u0442\u044c \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0443", None))
-        self.label_calibration_skip_text.setText(QCoreApplication.translate("Widget", u"\u0411\u0435\u0437 \u043f\u0440\u043e\u0445\u043e\u0436\u0434\u0435\u043d\u0438\u044f \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0438 \u043a\u0430\u0447\u0435\u0441\u0442\u0432\u043e \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0438 \u043c\u043e\u0436\u0435\u0442 \u0437\u043d\u0430\u0447\u0438\u0442\u0435\u043b\u044c\u043d\u043e \u0441\u043d\u0438\u0437\u0438\u0442\u044c\u0441\u044f.", None))
-        self.label_calibration_skip_icon.setText(QCoreApplication.translate("Widget", u"<ICON>", None))
-        self.pushButton_calibration_skip.setText(QCoreApplication.translate("Widget", u"\u041f\u0440\u043e\u043f\u0443\u0441\u0442\u0438\u0442\u044c", None))
+        self.groupBox_page_calibrationInitialChoiceOptions.setTitle("")
+        self.groupBox_page_calibrationFromFileOptionField.setTitle("")
+        self.label_page_calibrationFromFileOptionTitle.setText(QCoreApplication.translate("Widget", u"\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044c \u0438\u0437 \u0444\u0430\u0439\u043b\u0430", None))
+        self.label_page_calibrationFromFileOptionIcon.setText(QCoreApplication.translate("Widget", u"<ICON>", None))
+        self.pushButton_page_calibrationFromFileOptionButton.setText(QCoreApplication.translate("Widget", u"\u0412\u044b\u0431\u0440\u0430\u0442\u044c", None))
+        self.groupBox_page_0_calibrationStartOptionField.setTitle("")
+        self.label_page_calibrationStartOptionTitle.setText(QCoreApplication.translate("Widget", u"\u0417\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u044c \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0443", None))
+        self.label_page_calibrationStartOptionIcon.setText(QCoreApplication.translate("Widget", u"<ICON>", None))
+        self.pushButton_page_calibrationStartOptionButton.setText(QCoreApplication.translate("Widget", u"\u0417\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u044c", None))
+        self.groupBox_page_calibrationSkipOptionField.setTitle("")
+        self.label_page_calibrationSkipOptionTitle.setText(QCoreApplication.translate("Widget", u"\u041f\u0440\u043e\u043f\u0443\u0441\u0442\u0438\u0442\u044c \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0443", None))
+        self.label_page_calibrationSkipOptionText.setText(QCoreApplication.translate("Widget", u"\u0411\u0435\u0437 \u043f\u0440\u043e\u0445\u043e\u0436\u0434\u0435\u043d\u0438\u044f \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0438 \u043a\u0430\u0447\u0435\u0441\u0442\u0432\u043e \u043e\u0431\u0440\u0430\u0431\u043e\u0442\u043a\u0438 \u043c\u043e\u0436\u0435\u0442 \u0437\u043d\u0430\u0447\u0438\u0442\u0435\u043b\u044c\u043d\u043e \u0441\u043d\u0438\u0437\u0438\u0442\u044c\u0441\u044f.", None))
+        self.label_page_calibrationSkipOptionIcon.setText(QCoreApplication.translate("Widget", u"<ICON>", None))
+        self.pushButton_page_calibrationSkipOptionButton.setText(QCoreApplication.translate("Widget", u"\u041f\u0440\u043e\u043f\u0443\u0441\u0442\u0438\u0442\u044c", None))
+        self.groupBox_calibrationSteps_0_MethodSelectionMain.setTitle(QCoreApplication.translate("Widget", u"\u0412\u044b\u0431\u043e\u0440 \u043c\u0435\u0442\u043e\u0434\u0430 \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0438", None))
+        self.groupBox_calibrationSteps_0_CalibrationMethodsSelectionField.setTitle("")
+        self.groupBox_calibrationSteps_0_MethodAutoField.setTitle("")
+        self.label_calibrationSteps_0_MethodAutoTitle.setText(QCoreApplication.translate("Widget", u"\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0439", None))
+        self.label_calibrationSteps_0_MethodAutoIcon.setText(QCoreApplication.translate("Widget", u"<ICON>", None))
+        self.pushButton_calibrationSteps_0_MethodAutoSelectButton.setText(QCoreApplication.translate("Widget", u"\u0412\u044b\u0431\u0440\u0430\u0442\u044c", None))
+        self.groupBox_calibrationSteps_0_MethodManualField.setTitle("")
+        self.label_calibrationSteps_0_MethodManualTitle.setText(QCoreApplication.translate("Widget", u"\u0420\u0443\u0447\u043d\u043e\u0439", None))
+        self.label_calibrationSteps_0_MethodManualIcon.setText(QCoreApplication.translate("Widget", u"<ICON>", None))
+        self.pushButton_calibrationSteps_0_MethodManualSelectButton.setText(QCoreApplication.translate("Widget", u"\u0412\u044b\u0431\u0440\u0430\u0442\u044c", None))
+        self.groupBox_calibrationSteps_0_MethodSelectionMainButtonsField.setTitle("")
+        self.pushButton_returnToCalibrationChoice.setText(QCoreApplication.translate("Widget", u"\u041d\u0430\u0437\u0430\u0434", None))
         self.groupBox_processingProjectOptions.setTitle("")
         self.groupBox_newProject.setTitle("")
         self.label_newProjectTitle.setText(QCoreApplication.translate("Widget", u"\u041d\u043e\u0432\u044b\u0439 \u043f\u0440\u043e\u0435\u043a\u0442", None))
@@ -908,25 +1173,35 @@ class Ui_Widget(object):
         self.pushButton_exportAsObjectFile.setText(QCoreApplication.translate("Widget", u"\u042d\u043a\u0441\u043f\u043e\u0440\u0442 \u043e\u0431\u044a\u0435\u043a\u0442\u0430", None))
         self.groupBox_settingsMain.setTitle(QCoreApplication.translate("Widget", u"\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438", None))
         self.label_settingsTempText.setText(QCoreApplication.translate("Widget", u"\u0422\u0443\u0442 \u043a\u043e\u0433\u0434\u0430-\u0442\u043e \u043f\u043e\u044f\u0432\u044f\u0442\u0441\u044f \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u0441 \u0441\u043e\u0445\u0440\u0430\u043d\u0435\u043d\u0438\u0435\u043c", None))
-        self.groupBox_calibrationSteps_1_3_main.setTitle(QCoreApplication.translate("Widget", u"\u041f\u043e\u0434\u0433\u043e\u0442\u043e\u0432\u043a\u0430 \u043a \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0435", None))
-        self.groupBox_calibrationPreparingStep1.setTitle(QCoreApplication.translate("Widget", u"\u0428\u0430\u0433 1. \u0420\u0430\u0441\u043f\u0435\u0447\u0430\u0442\u0430\u0439\u0442\u0435 \u0448\u0430\u0431\u043b\u043e\u043d \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0438.", None))
-        self.label_calibrationPreparingStep1_info.setText(QCoreApplication.translate("Widget", u"\u0428\u0430\u0431\u043b\u043e\u043d \u043d\u0443\u0436\u0435\u043d \u0434\u043b\u044f \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u043a\u0430\u043c\u0435\u0440\u044b", None))
+        self.groupBox_calibrationSteps_1_3_PreparingChessboardTipsMain.setTitle(QCoreApplication.translate("Widget", u"\u041f\u043e\u0434\u0433\u043e\u0442\u043e\u0432\u043a\u0430 \u043a \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u043e\u0439 \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0435", None))
+        self.groupBox_calibrationPreparingStep1.setTitle(QCoreApplication.translate("Widget", u"\u0428\u0430\u0433 1. \u0420\u0430\u0441\u043f\u0435\u0447\u0430\u0442\u0430\u0439\u0442\u0435 \u0448\u0430\u0445\u043c\u0430\u0442\u043d\u044b\u0439 \u0448\u0430\u0431\u043b\u043e\u043d \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0438.", None))
+        self.label_calibrationPreparingStep1_info.setText(QCoreApplication.translate("Widget", u"\u0428\u0430\u0445\u043c\u0430\u0442\u043d\u044b\u0439 \u0448\u0430\u0431\u043b\u043e\u043d \u043d\u0443\u0436\u0435\u043d \u0434\u043b\u044f \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u043e\u0433\u043e \u043f\u043e\u043b\u0443\u0447\u0435\u043d\u0438\u044f \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u043e\u0432 \u043a\u0430\u043c\u0435\u0440\u044b.", None))
         self.groupBox_calibrationPreparingStep2.setTitle(QCoreApplication.translate("Widget", u"\u0428\u0430\u0433 2. \u0412\u043a\u043b\u044e\u0447\u0438\u0442\u0435 \u043e\u0441\u0432\u0435\u0449\u0435\u043d\u0438\u0435 \u0438 \u043f\u043e\u0434\u0433\u043e\u0442\u043e\u0432\u044c\u0442\u0435 \u043a\u0430\u043c\u0435\u0440\u0443.", None))
         self.label_calibrationPreparingStep2_info.setText(QCoreApplication.translate("Widget", u"\u041e\u0441\u0432\u0435\u0449\u0435\u043d\u0438\u0435 \u0434\u043e\u043b\u0436\u043d\u043e \u0431\u044b\u0442\u044c \u0440\u0430\u0432\u043d\u043e\u043c\u0435\u0440\u043d\u044b\u043c, \u043f\u043e\u0441\u0442\u0430\u0440\u0430\u0439\u0442\u0435\u0441\u044c \u0438\u0437\u0431\u0435\u0436\u0430\u0442\u044c \u0442\u0435\u043d\u0435\u0439 \u043d\u0430 \u0448\u0430\u0431\u043b\u043e\u043d\u0435.", None))
         self.groupBox_calibrationPreparingStep3.setTitle(QCoreApplication.translate("Widget", u"\u0428\u0430\u0433 3. \u041e\u0442\u0441\u043d\u0438\u043c\u0438\u0442\u0435 \u043c\u0430\u0442\u0435\u0440\u0438\u0430\u043b", None))
-        self.label_calibrationPreparingStep3_info.setText(QCoreApplication.translate("Widget", u"\u0421\u0434\u0435\u043b\u0430\u0439\u0442\u0435 \u043c\u0438\u043d\u0438\u043c\u0443\u043c 20 \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u043d\u0438\u0439 \u0448\u0430\u0431\u043b\u043e\u043d\u0430 \u0441 \u0440\u0430\u0437\u043d\u044b\u0445 \u0441\u0442\u043e\u0440\u043e\u043d. \u0421\u0442\u0430\u0440\u0430\u0439\u0442\u0435\u0441\u044c \u0441\u043e\u0431\u043b\u044e\u0434\u0430\u0442\u044c \u043e\u0434\u0438\u043d\u0430\u043a\u043e\u0432\u043e\u0435 \u0440\u0430\u0441\u0441\u0442\u043e\u044f\u043d\u0438\u0435 \u043e\u0442 \u043a\u0430\u043c\u0435\u0440\u044b \u0434\u043e \u0448\u0430\u0431\u043b\u043e\u043d\u0430. \u041f\u043e\u0441\u043b\u0435 \u043f\u043e\u0434\u0433\u043e\u0442\u043e\u0432\u043a\u0438 \u043c\u0430\u0442\u0435\u0440\u0438\u0430\u043b\u0430 \u0441\u0444\u043e\u0440\u043c\u0438\u0440\u0443\u0439\u0442\u0435 \u0435\u0434\u0438\u043d\u044b\u0439 \u0434\u0430\u0442\u0430\u0435\u0442 \u0438 \u043d\u0430\u0436\u043c\u0438\u0442\u0435 \u043a\u043d\u043e\u043f\u043a\u0443 \u0434\u043b\u044f \u043f"
-                        "\u0435\u0440\u0435\u0445\u043e\u0434\u0430 \u043a \u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0435\u043c\u0443 \u044d\u0442\u0430\u043f\u0443.", None))
-        self.groupBox_calibrationStartFromPreparing.setTitle("")
-        self.pushButton_returnToCalibrationChoice.setText(QCoreApplication.translate("Widget", u"\u041d\u0430\u0437\u0430\u0434", None))
-        self.pushButton_calibrationStartFromPreparing.setText(QCoreApplication.translate("Widget", u"\u0417\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u044c \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0443", None))
+        self.label_calibrationPreparingStep3_info.setText(QCoreApplication.translate("Widget", u"\u0420\u0435\u043a\u043e\u043c\u0435\u043d\u0434\u0443\u0435\u0442\u0441\u044f \u0441\u0434\u0435\u043b\u0430\u0442\u044c \u043c\u0438\u043d\u0438\u043c\u0443\u043c 20 \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u043d\u0438\u0439 \u0448\u0430\u0431\u043b\u043e\u043d\u0430 \u0441 \u0440\u0430\u0437\u043d\u044b\u0445 \u0441\u0442\u043e\u0440\u043e\u043d.\n"
+"\u0421\u0442\u0430\u0440\u0430\u0439\u0442\u0435\u0441\u044c \u0441\u043e\u0431\u043b\u044e\u0434\u0430\u0442\u044c \u043e\u0434\u0438\u043d\u0430\u043a\u043e\u0432\u043e\u0435 \u0440\u0430\u0441\u0441\u0442\u043e\u044f\u043d\u0438\u0435 \u043e\u0442 \u043a\u0430\u043c\u0435\u0440\u044b \u0434\u043e \u0448\u0430\u0431\u043b\u043e\u043d\u0430. \u041f\u043e\u0441\u043b\u0435 \u043f\u043e\u0434\u0433\u043e\u0442\u043e\u0432\u043a\u0438 \u043c\u0430\u0442\u0435\u0440\u0438\u0430\u043b\u0430 \u0441\u0444\u043e\u0440\u043c\u0438\u0440\u0443\u0439\u0442\u0435 \u0435\u0434\u0438\u043d\u044b\u0439 \u0434\u0430\u0442\u0430c\u0435\u0442 (\u0434\u043b\u044f \u043a\u0430\u0436"
+                        "\u0434\u043e\u0439 \u043a\u0430\u043c\u0435\u0440\u044b - \u0441\u0432\u043e\u044f \u0434\u0438\u0440\u0435\u043a\u0442\u043e\u0440\u0438\u044f \u0441 \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u044f\u043c\u0438).\n"
+"\n"
+"\u041f\u043e\u0441\u043b\u0435 \u043f\u043e\u0434\u0433\u043e\u0442\u043e\u0432\u043a\u0438 \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u0439 \u043d\u0430\u0436\u043c\u0438\u0442\u0435 \u043a\u043d\u043e\u043f\u043a\u0443 \u0434\u043b\u044f \u043f\u0435\u0440\u0435\u0445\u043e\u0434\u0430 \u043a \u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0435\u043c\u0443 \u044d\u0442\u0430\u043f\u0443.", None))
+        self.groupBox_calibrationSteps_1_3_ButtonsField.setTitle("")
+        self.pushButton_calibrationChessboardSteps_1_3_ReturnToMethodSelection.setText(QCoreApplication.translate("Widget", u"\u041d\u0430\u0437\u0430\u0434", None))
+        self.pushButton_calibrationChessboardSteps_1_3_GoToCalibration.setText(QCoreApplication.translate("Widget", u"\u041f\u0435\u0440\u0435\u0439\u0442\u0438 \u043a \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0435", None))
+        self.groupBox_calibrationSteps_1_3_PreparingRoomTipsMain.setTitle(QCoreApplication.translate("Widget", u"\u041f\u043e\u0434\u0433\u043e\u0442\u043e\u0432\u043a\u0430 \u043a \u0440\u0443\u0447\u043d\u043e\u0439 \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0435", None))
+        self.groupBox_calibrationPreparingRoomTipsStep_1.setTitle(QCoreApplication.translate("Widget", u"\u0428\u0430\u0433 1. \u041e\u0442\u0441\u043d\u0438\u043c\u0438\u0442\u0435 \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043e\u0447\u043d\u044b\u0439 \u043c\u0430\u0442\u0435\u0440\u0438\u0430\u043b", None))
+        self.label_calibrationPreparingRoomTipsStep1_Info.setText(QCoreApplication.translate("Widget", u"\u0412 \u0434\u0430\u043d\u043d\u043e\u043c \u0440\u0435\u0436\u0438\u043c\u0435 \u0432 \u0432\u0438\u0434\u0435 \u0448\u0430\u0431\u043b\u043e\u043d\u0430 \u0432\u044b\u0441\u0442\u0443\u043f\u0430\u0435\u0442 \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043e\u0447\u043d\u0430\u044f \u043a\u043e\u043c\u043d\u0430\u0442\u0430. \u0420\u0435\u043a\u043e\u043c\u0435\u043d\u0434\u0443\u0435\u0442\u0441\u044f \u0441\u043d\u044f\u0442\u044c \u0441\u0434\u0435\u043b\u0430\u0442\u044c \u043c\u0438\u043d\u0438\u043c\u0443\u043c 20 \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u0439 \u0438 \u0441\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u0442\u0430\u0431\u043b\u0438\u0446\u0443 \u0432\u043d\u0443\u0442\u0440\u0435\u043d\u043d\u0438\u0445 \u043a\u043e\u043e\u0440\u0434\u0438\u043d\u0430\u0442 \u0442\u043e\u0447\u0435\u043a.", None))
+        self.groupBox_calibrationPreparingRoomTipsStep_2.setTitle(QCoreApplication.translate("Widget", u"\u0428\u0430\u0433 2. \u0420\u0430\u0437\u043c\u0435\u0442\u044c\u0442\u0435 \u0442\u043e\u0447\u043a\u0438 \u043d\u0430 \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u044f\u0445", None))
+        self.label_calibrationPreparingRoomTipsStep2_Info.setText(QCoreApplication.translate("Widget", u"\u041f\u043e\u0441\u043b\u0435 \u043f\u043e\u0434\u0433\u043e\u0442\u043e\u0432\u043a\u0438 \u043c\u0430\u0442\u0435\u0440\u0438\u0430\u043b\u0430 \u043d\u0430 \u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0438\u0445 \u044d\u0442\u0430\u043f\u0430\u0445 \u0432\u0430\u043c \u0431\u0443\u0434\u0435\u0442 \u043f\u0440\u0435\u0434\u043b\u043e\u0436\u0435\u043d\u043e \u0440\u0430\u0437\u043c\u0435\u0442\u0438\u0442\u044c \u0432\u0440\u0443\u0447\u043d\u0443\u044e \u0442\u043e\u0447\u043a\u0438 \u043d\u0430 \u043f\u043e\u0434\u0433\u043e\u0442\u043e\u0432\u043b\u0435\u043d\u043d\u044b\u0445 \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u044f\u0445. \u041f\u043e\u0441\u0442\u0430\u0440\u0430\u0439\u0442\u0435\u0441\u044c \u0441\u0434\u0435\u043b\u0430\u0442\u044c \u044d\u0442\u043e \u043c\u0430\u043a\u0441\u0438\u043c\u0430\u043b\u044c\u043d\u043e \u0442\u043e\u0447\u043d\u043e.", None))
+        self.groupBox_calibrationPreparingRoomTipsStep_3.setTitle(QCoreApplication.translate("Widget", u"\u0428\u0430\u0433 3. \u0412\u043d\u0435\u0441\u0438\u0442\u0435 \u043d\u043e\u043c\u0435\u0440\u0430 \u0442\u043e\u0447\u0435\u043a \u0432 \u0442\u0430\u0431\u043b\u0438\u0446\u0443", None))
+        self.label_calibrationPreparingRoomTipsStep3_Info.setText(QCoreApplication.translate("Widget", u"\u041f\u043e\u0441\u043b\u0435 \u0440\u0430\u0437\u043c\u0435\u0442\u043a\u0438 \u0442\u043e\u0447\u0435\u043a \u043d\u0430 \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u044f\u0445 \u0431\u0443\u0434\u0435\u0442 \u043d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u043e \u0432\u043d\u0435\u0441\u0442\u0438 \u0432 \u0442\u0430\u0431\u043b\u0438\u0446\u0443 (\u0438\u043b\u0438 \u043e\u0442\u043a\u0440\u044b\u0442\u044c \u0443\u0436\u0435 \u0433\u043e\u0442\u043e\u0432\u0443\u044e) \u0441 \u0441\u043e\u043f\u043e\u0441\u0442\u0430\u0432\u043b\u0435\u043d\u0438\u0435\u043c \u0443\u043d\u0438\u043a\u0430\u043b\u044c\u043d\u044b\u0445 \u0438\u0434\u0435\u043d\u0442\u0438\u0444\u0438\u043a\u0430\u0442\u043e\u0440\u043e\u0432 \u0442\u043e\u0447\u0435\u043a \u043d\u0430 \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u044f\u0445 \u0438 \u0438\u0445 \u0432\u043d\u0443\u0442\u0440\u0435\u043d\u043d\u0438\u0445 \u043a\u043e\u043e\u0440\u0434\u0438\u043d\u0430\u0442.", None))
+        self.groupBox_calibrationRoomTipsSteps_1_3_ButtonsField.setTitle("")
+        self.pushButton_calibrationRoomSteps_1_3_ReturnToMethodSelection.setText(QCoreApplication.translate("Widget", u"\u041d\u0430\u0437\u0430\u0434", None))
+        self.pushButton_calibrationRoomSteps_1_3_GoToCalibration.setText(QCoreApplication.translate("Widget", u"\u041f\u0435\u0440\u0435\u0439\u0442\u0438 \u043a \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0435", None))
         self.groupBox_calibrationSteps_4.setTitle(QCoreApplication.translate("Widget", u"\u041a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0430", None))
         self.groupBox_calibrationImagesDirectoryField.setTitle(QCoreApplication.translate("Widget", u"\u041f\u0443\u0442\u044c \u043a \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u044f\u043c", None))
         self.pushButton_setCalibrationImagesDirectory.setText(QCoreApplication.translate("Widget", u"\u0412\u044b\u0431\u0440\u0430\u0442\u044c", None))
         self.groupBox_calibrationImagesDirectoryFieldSecondCamera.setTitle(QCoreApplication.translate("Widget", u"\u041f\u0443\u0442\u044c \u043a \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u044f\u043c \u0441\u043e \u0432\u0442\u043e\u0440\u043e\u0439 \u043a\u0430\u043c\u0435\u0440\u044b (\u0441\u0442\u0435\u0440\u0435\u043e\u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0430)", None))
         self.pushButton_setCalibrationImagesDirectorySecondCamera.setText(QCoreApplication.translate("Widget", u"\u0412\u044b\u0431\u0440\u0430\u0442\u044c", None))
-        self.groupBox_calibrationMethodChoiceField.setTitle(QCoreApplication.translate("Widget", u"\u041c\u0435\u0442\u043e\u0434 \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0438", None))
-        self.radioButton_calibrationMethodChess.setText(QCoreApplication.translate("Widget", u"\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0438\u0439 (\u0448\u0430\u0445\u043c\u0430\u0442\u043d\u044b\u0439 \u0440\u0438\u0441\u0443\u043d\u043e\u043a)", None))
-        self.radioButton_calibrationMethodRoom.setText(QCoreApplication.translate("Widget", u"\u0420\u0443\u0447\u043d\u043e\u0439 (\u0440\u0443\u0447\u043d\u043e\u0435 \u0440\u0430\u0441\u043f\u043e\u043b\u043e\u0436\u0435\u043d\u0438\u0435 \u0442\u043e\u0447\u0435\u043a)", None))
         self.pushButton_calibrationProcessStart.setText(QCoreApplication.translate("Widget", u"\u0417\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u044c \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0443", None))
         self.textBrowser_calibrationProcessLogs.setHtml(QCoreApplication.translate("Widget", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
@@ -941,6 +1216,19 @@ class Ui_Widget(object):
                         "ze:9pt;\">some exception skipped</span></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt;\">it's all going on, keep calm</span></p>\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:9pt;\">deleting windows...</span></p></body></html>", None))
+        self.groupBox_calibrationSteps_4_ButtonField.setTitle("")
+        self.pushButton_calibrationSteps_4_returnToTipsButton.setText(QCoreApplication.translate("Widget", u"\u041d\u0430\u0437\u0430\u0434", None))
+        self.groupBox_ImageDotsCreatorField.setTitle(QCoreApplication.translate("Widget", u"\u0420\u0430\u0437\u043c\u0435\u0442\u043a\u0430 \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u0439", None))
+        self.label_imageDotsCreator_ImageName.setText(QCoreApplication.translate("Widget", u"<<image name>>", None))
+        self.groupBox.setTitle("")
+        self.pushButton.setText(QCoreApplication.translate("Widget", u"\u041f\u0440\u0435\u0434\u044b\u0434\u0443\u0449\u0435\u0435", None))
+        self.pushButton_2.setText(QCoreApplication.translate("Widget", u"\u0421\u043b\u0435\u0434\u0443\u044e\u0449\u0435\u0435", None))
+        ___qtablewidgetitem = self.tableWidget_imageDotsCreator_DotsData.horizontalHeaderItem(0)
+        ___qtablewidgetitem.setText(QCoreApplication.translate("Widget", u"ID \u0442\u043e\u0447\u043a\u0438", None));
+        ___qtablewidgetitem1 = self.tableWidget_imageDotsCreator_DotsData.horizontalHeaderItem(1)
+        ___qtablewidgetitem1.setText(QCoreApplication.translate("Widget", u"X", None));
+        ___qtablewidgetitem2 = self.tableWidget_imageDotsCreator_DotsData.horizontalHeaderItem(2)
+        ___qtablewidgetitem2.setText(QCoreApplication.translate("Widget", u"Y", None));
         self.groupBox_calibrationSteps_5_doneMain.setTitle(QCoreApplication.translate("Widget", u"\u041a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0430 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u0430!", None))
         self.label_calibrationSteps_5_done_resultsTitle.setText(QCoreApplication.translate("Widget", u"\u041f\u043e\u043b\u0443\u0447\u0435\u043d\u043d\u0430\u044f \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044f:", None))
         self.textBrowser_calibrationResultsData.setHtml(QCoreApplication.translate("Widget", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
