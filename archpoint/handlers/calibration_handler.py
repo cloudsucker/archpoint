@@ -99,7 +99,7 @@ class CalibrationHandler:
     def initialize_dots_creator(
         self, images_path: list, second_camera_images_path: str | None = None
     ):
-        if not isinstance(self.calibration_method.__class__, RoomCalibrationMethod):
+        if not isinstance(self.calibration_method, RoomCalibrationMethod):
             raise ValueError("Метод калибровки не поддерживает создание точек.")
 
         if second_camera_images_path:
