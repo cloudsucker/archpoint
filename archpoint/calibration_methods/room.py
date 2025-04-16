@@ -141,9 +141,7 @@ class RoomImageDotsEditor:
     def is_completed(self) -> bool:
         self.__self_check()
         # TODO: Прописать полную реализацию проверки завершенности
-        if len(self.image_points) < 4:
-            return False
-        return True
+        return len(self.image_points) >= 4
 
     def __self_check(self) -> None:
         if len(self.image_points) != len(self.points_true_coords):
