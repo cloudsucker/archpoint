@@ -114,10 +114,7 @@ class RoomImagesManager:
 
     def is_completed(self) -> bool:
         self.__self_check()
-        for image in self.images:
-            if not image.is_completed():
-                return False
-        return True
+        return all(image.is_completed() for image in self.images)
 
     def clear(self) -> None:
         self.images.clear()
