@@ -209,7 +209,6 @@ class RoomImageDotsEditor:
         self.history.clear()
 
     def clear(self) -> None:
-        self.image_path = ""
         self.image_points.clear()
         self.points_true_coords.clear()
         self.clear_history()
