@@ -91,9 +91,7 @@ class RoomImagesManager:
 
     def __is_index_valid(self, index: int) -> bool:
         self.__self_check()
-        if index < 0 or index >= len(self.images):
-            return False
-        return True
+        return index >= 0 and index < len(self.images)
 
     def get_previous_image(self) -> "RoomImageDotsEditor":
         if self.__is_index_valid(self.current_image_index - 1):
