@@ -1,6 +1,6 @@
 from archpoint.handlers import ProjectHandler, HLOC_Handler, CalibrationHandler
 from archpoint.calibration_methods import ChessboardCalibrationMethod
-from archpoint.calibration_methods import CalibrationRoomCalibrationMethod
+from archpoint.calibration_methods import RoomCalibrationMethod
 
 
 class Archpoint:
@@ -16,7 +16,7 @@ class Archpoint:
 
         self.calibration_methods = {
             "chessboard": ChessboardCalibrationMethod,
-            "room": CalibrationRoomCalibrationMethod,
+            "room": RoomCalibrationMethod,
         }
 
         self.images_directory = "processed_images"
