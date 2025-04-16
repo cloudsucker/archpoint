@@ -21,7 +21,7 @@ from PySide6.QtGui import QIcon, QPixmap
 
 from ui.ui_form import Ui_Widget
 from archpoint.handlers import ProjectHandler, HLOC_Handler, CalibrationHandler
-from archpoint.calibration_methods.room import ImageCalibrationDots
+from archpoint.calibration_methods.room import RoomImageDotsEditor
 
 
 class MainWindow(QMainWindow):
@@ -216,11 +216,11 @@ class MainWindow(QMainWindow):
         self, images_path: str, second_camera_images_path: str | None = None
     ):
         if second_camera_images_path:
-            self.calibration_handler.initialize_dot_creator(
+            self.calibration_handler.initialize_dots_creator(
                 images_path, second_camera_images_path
             )
         else:
-            self.calibration_handler.initialize_dot_creator(images_path)
+            self.calibration_handler.initialize_dots_creator(images_path)
 
         self.update_dots_creator()
         self.ui.stackedWidget_workSpace.setCurrentWidget(
@@ -228,7 +228,7 @@ class MainWindow(QMainWindow):
         )
 
     def update_dots_creator(self):
-        self.room_method_images: dict[str, ImageCalibrationDots] = (
+        self.room_method_images: dict[str, RoomImageDotsEditor] = (
             self.calibration_handler.calibration_method.images
         )
 
@@ -362,20 +362,20 @@ class MainWindow(QMainWindow):
                 )
                 return
 
-            if self.calibration_handler.get_calibration_method() == "room":
+            if self.calibration_handler.get_calibration_method_name() == "room":
                 self.carefully_go_to_dots_creator(
                     images_directory, images_directory_second_camera
                 )
                 return
-            elif self.calibration_handler.get_calibration_method() == "chessboard":
+            elif self.calibration_handler.get_calibration_method_name() == "chessboard":
                 self.calibration_handler.calibrate_stereo(
                     images_directory, images_directory_second_camera
                 )
         else:
-            if self.calibration_handler.get_calibration_method() == "room":
+            if self.calibration_handler.get_calibration_method_name() == "room":
                 self.carefully_go_to_dots_creator(images_directory)
                 return
-            elif self.calibration_handler.get_calibration_method() == "chessboard":
+            elif self.calibration_handler.get_calibration_method_name() == "chessboard":
                 self.calibration_handler.calibrate(images_directory)
 
         # TODO: ADD CALIBRATION LOGGING LOGIC
@@ -425,11 +425,11 @@ class MainWindow(QMainWindow):
         )
 
     def on_calibration_steps_4_return_to_tips_button_clicked(self):
-        if self.calibration_handler.get_calibration_method() == "room":
+        if self.calibration_handler.get_calibration_method_name() == "room":
             self.ui.stackedWidget_workSpace.setCurrentWidget(
                 self.ui.page_calibrationSteps_1_3_PreparingRoomTips
             )
-        elif self.calibration_handler.get_calibration_method() == "chessboard":
+        elif self.calibration_handler.get_calibration_method_name() == "chessboard":
             self.ui.stackedWidget_workSpace.setCurrentWidget(
                 self.ui.page_calibrationSteps_1_3_PreparingChessboardTips
             )

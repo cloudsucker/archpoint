@@ -4,19 +4,19 @@ import numpy as np
 
 from archpoint.calibration_methods.abstract import CalibrationMethodAbstract
 from archpoint.calibration_methods.chessboard import ChessboardCalibrationMethod
-from archpoint.calibration_methods.room import CalibrationRoomCalibrationMethod
+from archpoint.calibration_methods.room import RoomCalibrationMethod
 
 
 class CalibrationHandler:
     def __init__(self):
         self.calibration_data = {}
-        self.calibration_method: CalibrationMethodAbstract = (
+        self.calibration_method: ChessboardCalibrationMethod | RoomCalibrationMethod = (
             ChessboardCalibrationMethod()
         )
 
         self.calibration_methods = {
             "chessboard": ChessboardCalibrationMethod,
-            "room": CalibrationRoomCalibrationMethod,
+            "room": RoomCalibrationMethod,
         }
 
     def is_completed(self) -> bool:
@@ -89,17 +89,17 @@ class CalibrationHandler:
         self.calibration_method = self.calibration_methods[calibration_method]()
         self.clear()
 
-    def get_calibration_method(self) -> str:
+    def get_calibration_method_name(self) -> str:
         return list(self.calibration_methods.keys())[
             list(self.calibration_methods.values()).index(
                 self.calibration_method.__class__
             )
         ]
 
-    def initialize_dot_creator(
+    def initialize_dots_creator(
         self, images_path: list, second_camera_images_path: str | None = None
     ):
-        if not isinstance(self.calibration_method, CalibrationRoomCalibrationMethod):
+        if not isinstance(self.calibration_method.__class__, RoomCalibrationMethod):
             raise ValueError("Метод калибровки не поддерживает создание точек.")
 
         if second_camera_images_path:
