@@ -68,10 +68,7 @@ class RoomCalibrationMethod(CalibrationMethodAbstract):
         return imgpoints, np.array(objpoints)
 
     def is_completed(self) -> bool:
-        for image in self.images_manager.images:
-            if not image.is_completed():
-                return False
-        return True
+        return all(image.is_completed() for image in self.images_manager.images)
 
 
 class RoomImagesManager:
