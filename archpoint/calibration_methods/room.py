@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import os
 import cv2
 import numpy as np
@@ -90,22 +92,22 @@ class RoomImagesManager:
         self.__self_check()
         return index >= 0 and index < len(self.images)
 
-    def get_previous_image(self) -> "RoomImageDotsEditor":
+    def get_previous_image(self) -> RoomImageDotsEditor:
         if self.__is_index_valid(self.current_image_index - 1):
             self.current_image_index -= 1
             return self.images[self.current_image_index]
 
-    def get_next_image(self) -> "RoomImageDotsEditor":
+    def get_next_image(self) -> RoomImageDotsEditor:
         if self.__is_index_valid(self.current_image_index + 1):
             self.current_image_index += 1
             return self.images[self.current_image_index]
 
-    def get_image_by_image_path(self, image_path: str) -> "RoomImageDotsEditor" | None:
+    def get_image_by_image_path(self, image_path: str) -> RoomImageDotsEditor | None:
         for image in self.images:
             if image.image_path == image_path:
                 return image
 
-    def get_image_by_index(self, index: int) -> "RoomImageDotsEditor" | None:
+    def get_image_by_index(self, index: int) -> RoomImageDotsEditor | None:
         if self.__is_index_valid(index):
             return self.images[index]
 
