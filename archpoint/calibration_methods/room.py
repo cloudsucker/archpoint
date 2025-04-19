@@ -142,7 +142,8 @@ class RoomImageDotsEditor:
         self.history: list[HistoryEntry] = []
 
     def is_completed(self) -> bool:
-        self.__self_check()
+        if len(self.image_points) != len(self.points_true_coords):
+            return False
         # TODO: Прописать полную реализацию проверки завершенности
         return len(self.image_points) >= 4
 
