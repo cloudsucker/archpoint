@@ -14,19 +14,19 @@ class HistoryEntry(TypedDict):
     Attributes:
         id (str): Уникальный идентификатор точки.
         method (str): Тип операции "add", "edit", "remove".
-        old_point (list[float] | None): Старые координаты точки на изображении.
-        new_point (list[float] | None): Новые координаты точки на изображении.
+        old_point (tuple[float, float] | None): Старые координаты точки на изображении.
+        new_point (tuple[float, float] | None): Новые координаты точки на изображении.
     """
 
     id: str
     method: str
-    old_point: list[float] | None
-    new_point: list[float] | None
+    old_point: tuple[float, float] | None
+    new_point: tuple[float, float] | None
 
 
 class RoomCalibrationMethod(CalibrationMethodAbstract):
     def __init__(self):
-        self.images_manager = RoomImagesManager()
+        self.images_handler = RoomImagesHandler()
 
     def calibrate(self, image_paths: list) -> dict:
         if not image_paths:
@@ -63,22 +63,22 @@ class RoomCalibrationMethod(CalibrationMethodAbstract):
         imgpoints = []
         objpoints = []
 
-        for image in self.images_manager.images:
+        for image in self.images_handler.images:
             imgpoints.append(image.get_points_list())
             objpoints.append(image.get_points_true_coords_list())
 
         return imgpoints, np.array(objpoints)
 
     def is_completed(self) -> bool:
-        return all(image.is_completed() for image in self.images_manager.images)
+        return all(image.is_completed() for image in self.images_handler.images)
 
 
-class RoomImagesManager:
+class RoomImagesHandler:
     def __init__(self):
         self.images: list[RoomImageDotsEditor] = []
         self.current_image_index = 0
 
-    def initialize_manager(self, image_paths: list) -> None:
+    def initialize_manager(self, image_paths: list[str]) -> None:
         for image_path in image_paths:
             self.images.append(RoomImageDotsEditor(image_path))
 
