@@ -237,15 +237,14 @@ class AppRouter(AbstractGUIManager):
                 self.calibration_manager.handler.calibrate_stereo(
                     images_directory, images_directory_second_camera
                 )
-        else:
-            if self.calibration_manager.handler.get_calibration_method_name() == "room":
-                self.go_to_dots_creator(images_directory)
-                return
-            elif (
-                self.calibration_manager.handler.get_calibration_method_name()
-                == "chessboard"
-            ):
-                self.calibration_manager.handler.calibrate(images_directory)
+        elif self.calibration_manager.handler.get_calibration_method_name() == "room":
+            self.go_to_dots_creator(images_directory)
+            return
+        elif (
+            self.calibration_manager.handler.get_calibration_method_name()
+            == "chessboard"
+        ):
+            self.calibration_manager.handler.calibrate(images_directory)
 
         # TODO: ADD CALIBRATION LOGGING LOGIC
         # TODO: ADD PROCESSING IMAGES DISPLAYING
