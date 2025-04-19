@@ -982,29 +982,29 @@ class Ui_Widget(object):
 
         self.verticalLayout_28.addWidget(self.graphicsView_imageDotsCreator_ImagePreview)
 
-        self.groupBox = QGroupBox(self.groupBox_ImageDotsCreatorField)
-        self.groupBox.setObjectName(u"groupBox")
-        self.groupBox.setFlat(True)
-        self.horizontalLayout_20 = QHBoxLayout(self.groupBox)
+        self.groupBox_imageDotsCreator_ButtonsField = QGroupBox(self.groupBox_ImageDotsCreatorField)
+        self.groupBox_imageDotsCreator_ButtonsField.setObjectName(u"groupBox_imageDotsCreator_ButtonsField")
+        self.groupBox_imageDotsCreator_ButtonsField.setFlat(True)
+        self.horizontalLayout_20 = QHBoxLayout(self.groupBox_imageDotsCreator_ButtonsField)
         self.horizontalLayout_20.setObjectName(u"horizontalLayout_20")
-        self.pushButton = QPushButton(self.groupBox)
-        self.pushButton.setObjectName(u"pushButton")
-        self.pushButton.setFont(font)
+        self.pushButton_imageDotsCreator_getPreviousImage = QPushButton(self.groupBox_imageDotsCreator_ButtonsField)
+        self.pushButton_imageDotsCreator_getPreviousImage.setObjectName(u"pushButton_imageDotsCreator_getPreviousImage")
+        self.pushButton_imageDotsCreator_getPreviousImage.setFont(font)
 
-        self.horizontalLayout_20.addWidget(self.pushButton)
+        self.horizontalLayout_20.addWidget(self.pushButton_imageDotsCreator_getPreviousImage)
 
-        self.horizontalSpacer = QSpacerItem(505, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+        self.horizontalSpacer_imageDotsCreator_betweenButtons = QSpacerItem(505, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
-        self.horizontalLayout_20.addItem(self.horizontalSpacer)
+        self.horizontalLayout_20.addItem(self.horizontalSpacer_imageDotsCreator_betweenButtons)
 
-        self.pushButton_2 = QPushButton(self.groupBox)
-        self.pushButton_2.setObjectName(u"pushButton_2")
-        self.pushButton_2.setFont(font)
+        self.pushButton_imageDotsCreator_getNextImage = QPushButton(self.groupBox_imageDotsCreator_ButtonsField)
+        self.pushButton_imageDotsCreator_getNextImage.setObjectName(u"pushButton_imageDotsCreator_getNextImage")
+        self.pushButton_imageDotsCreator_getNextImage.setFont(font)
 
-        self.horizontalLayout_20.addWidget(self.pushButton_2)
+        self.horizontalLayout_20.addWidget(self.pushButton_imageDotsCreator_getNextImage)
 
 
-        self.verticalLayout_28.addWidget(self.groupBox)
+        self.verticalLayout_28.addWidget(self.groupBox_imageDotsCreator_ButtonsField)
 
         self.tableWidget_imageDotsCreator_DotsData = QTableWidget(self.groupBox_ImageDotsCreatorField)
         if (self.tableWidget_imageDotsCreator_DotsData.columnCount() < 3):
@@ -1220,9 +1220,9 @@ class Ui_Widget(object):
         self.pushButton_calibrationSteps_4_returnToTipsButton.setText(QCoreApplication.translate("Widget", u"\u041d\u0430\u0437\u0430\u0434", None))
         self.groupBox_ImageDotsCreatorField.setTitle(QCoreApplication.translate("Widget", u"\u0420\u0430\u0437\u043c\u0435\u0442\u043a\u0430 \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u0439", None))
         self.label_imageDotsCreator_ImageName.setText(QCoreApplication.translate("Widget", u"<<image name>>", None))
-        self.groupBox.setTitle("")
-        self.pushButton.setText(QCoreApplication.translate("Widget", u"\u041f\u0440\u0435\u0434\u044b\u0434\u0443\u0449\u0435\u0435", None))
-        self.pushButton_2.setText(QCoreApplication.translate("Widget", u"\u0421\u043b\u0435\u0434\u0443\u044e\u0449\u0435\u0435", None))
+        self.groupBox_imageDotsCreator_ButtonsField.setTitle("")
+        self.pushButton_imageDotsCreator_getPreviousImage.setText(QCoreApplication.translate("Widget", u"\u041f\u0440\u0435\u0434\u044b\u0434\u0443\u0449\u0435\u0435", None))
+        self.pushButton_imageDotsCreator_getNextImage.setText(QCoreApplication.translate("Widget", u"\u0421\u043b\u0435\u0434\u0443\u044e\u0449\u0435\u0435", None))
         ___qtablewidgetitem = self.tableWidget_imageDotsCreator_DotsData.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("Widget", u"ID \u0442\u043e\u0447\u043a\u0438", None));
         ___qtablewidgetitem1 = self.tableWidget_imageDotsCreator_DotsData.horizontalHeaderItem(1)
