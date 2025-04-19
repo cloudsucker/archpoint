@@ -2,7 +2,6 @@ import os
 import cv2
 import numpy as np
 
-from archpoint.calibration_methods.abstract import CalibrationMethodAbstract
 from archpoint.calibration_methods.chessboard import ChessboardCalibrationMethod
 from archpoint.calibration_methods.room import RoomCalibrationMethod
 
@@ -105,10 +104,10 @@ class CalibrationHandler:
         if second_camera_images_path:
             first_images = self.__get_image_paths_sorted(images_path[0])
             second_images = self.__get_image_paths_sorted(second_camera_images_path)
-            self.calibration_method.initialize_dot_creator(first_images, second_images)
+            self.calibration_method.initialize(first_images, second_images)
             return
         image_paths = self.__get_image_paths_sorted(images_path)
-        self.calibration_method.initialize_dot_creator(image_paths)
+        self.calibration_method.initialize(image_paths)
 
     def calibrate(self, images_path: str) -> None:
         self.__init_calibration_data(stereo_mode=False)

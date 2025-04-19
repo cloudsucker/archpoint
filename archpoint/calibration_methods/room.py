@@ -28,6 +28,9 @@ class RoomCalibrationMethod(CalibrationMethodAbstract):
     def __init__(self):
         self.images_handler = RoomImagesHandler()
 
+    def initialize(self, image_paths: list[str]) -> None:
+        self.images_handler.initialize(image_paths)
+
     def calibrate(self, image_paths: list) -> dict:
         if not image_paths:
             raise ValueError("Недостаточно изображений для калибровки.")
@@ -78,7 +81,7 @@ class RoomImagesHandler:
         self.images: list[RoomImageDotsEditor] = []
         self.current_image_index = 0
 
-    def initialize_manager(self, image_paths: list[str]) -> None:
+    def initialize(self, image_paths: list[str]) -> None:
         for image_path in image_paths:
             self.images.append(RoomImageDotsEditor(image_path))
 
