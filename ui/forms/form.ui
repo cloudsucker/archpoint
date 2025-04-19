@@ -2035,7 +2035,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                  <widget class="QGraphicsView" name="graphicsView_imageDotsCreator_ImagePreview"/>
                 </item>
                 <item>
-                 <widget class="QGroupBox" name="groupBox">
+                 <widget class="QGroupBox" name="groupBox_imageDotsCreator_ButtonsField">
                   <property name="title">
                    <string/>
                   </property>
@@ -2044,7 +2044,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                   </property>
                   <layout class="QHBoxLayout" name="horizontalLayout_20">
                    <item>
-                    <widget class="QPushButton" name="pushButton">
+                    <widget class="QPushButton" name="pushButton_imageDotsCreator_getPreviousImage">
                      <property name="font">
                       <font>
                        <family>Rubik</family>
@@ -2057,7 +2057,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                     </widget>
                    </item>
                    <item>
-                    <spacer name="horizontalSpacer">
+                    <spacer name="horizontalSpacer_imageDotsCreator_betweenButtons">
                      <property name="orientation">
                       <enum>Qt::Orientation::Horizontal</enum>
                      </property>
@@ -2070,7 +2070,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                     </spacer>
                    </item>
                    <item>
-                    <widget class="QPushButton" name="pushButton_2">
+                    <widget class="QPushButton" name="pushButton_imageDotsCreator_getNextImage">
                      <property name="font">
                       <font>
                        <family>Rubik</family>

@@ -187,8 +187,6 @@ class ChessboardCalibrationMethod(CalibrationMethodAbstract):
             name = "R_" + str(Rkey)
             dual_camera_parameters[name] = right_camera_parameters[Rkey]
 
-        print(dual_camera_parameters)
-
         return dual_camera_parameters
 
     def calculate_errors(

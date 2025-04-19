@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import os
 import cv2
 import numpy as np
@@ -12,19 +14,22 @@ class HistoryEntry(TypedDict):
     Attributes:
         id (str): Уникальный идентификатор точки.
         method (str): Тип операции "add", "edit", "remove".
-        old_point (list[float] | None): Старые координаты точки на изображении.
-        new_point (list[float] | None): Новые координаты точки на изображении.
+        old_point (tuple[float, float] | None): Старые координаты точки на изображении.
+        new_point (tuple[float, float] | None): Новые координаты точки на изображении.
     """
 
     id: str
     method: str
-    old_point: list[float] | None
-    new_point: list[float] | None
+    old_point: tuple[float, float] | None
+    new_point: tuple[float, float] | None
 
 
 class RoomCalibrationMethod(CalibrationMethodAbstract):
     def __init__(self):
-        self.images_manager = RoomImagesManager()
+        self.images_handler = RoomImagesHandler()
+
+    def initialize(self, image_paths: list[str]) -> None:
+        self.images_handler.initialize(image_paths)
 
     def calibrate(self, image_paths: list) -> dict:
         if not image_paths:
@@ -61,22 +66,22 @@ class RoomCalibrationMethod(CalibrationMethodAbstract):
         imgpoints = []
         objpoints = []
 
-        for image in self.images_manager.images:
+        for image in self.images_handler.images:
             imgpoints.append(image.get_points_list())
             objpoints.append(image.get_points_true_coords_list())
 
         return imgpoints, np.array(objpoints)
 
     def is_completed(self) -> bool:
-        return all(image.is_completed() for image in self.images_manager.images)
+        return all(image.is_completed() for image in self.images_handler.images)
 
 
-class RoomImagesManager:
+class RoomImagesHandler:
     def __init__(self):
         self.images: list[RoomImageDotsEditor] = []
         self.current_image_index = 0
 
-    def initialize_manager(self, image_paths: list) -> None:
+    def initialize(self, image_paths: list[str]) -> None:
         for image_path in image_paths:
             self.images.append(RoomImageDotsEditor(image_path))
 
@@ -90,22 +95,25 @@ class RoomImagesManager:
         self.__self_check()
         return index >= 0 and index < len(self.images)
 
-    def get_previous_image(self) -> "RoomImageDotsEditor":
+    def get_previous_image(self) -> RoomImageDotsEditor:
         if self.__is_index_valid(self.current_image_index - 1):
             self.current_image_index -= 1
             return self.images[self.current_image_index]
 
-    def get_next_image(self) -> "RoomImageDotsEditor":
+    def get_current_image(self) -> RoomImageDotsEditor:
+        return self.images[self.current_image_index]
+
+    def get_next_image(self) -> RoomImageDotsEditor | None:
         if self.__is_index_valid(self.current_image_index + 1):
             self.current_image_index += 1
             return self.images[self.current_image_index]
 
-    def get_image_by_image_path(self, image_path: str) -> "RoomImageDotsEditor" | None:
+    def get_image_by_image_path(self, image_path: str) -> RoomImageDotsEditor | None:
         for image in self.images:
             if image.image_path == image_path:
                 return image
 
-    def get_image_by_index(self, index: int) -> "RoomImageDotsEditor" | None:
+    def get_image_by_index(self, index: int) -> RoomImageDotsEditor | None:
         if self.__is_index_valid(index):
             return self.images[index]
 
@@ -125,6 +133,7 @@ class RoomImageDotsEditor:
                 f"Изображение по указанному пути {image_path} не существует."
             )
         self.image_path = image_path
+        self.image_name = os.path.basename(image_path).split(".")[0]
         self.image_points: dict[str, tuple[float, float]] = {}
 
         # TODO: У нас разве не трёхмерные точки должны быть в points_true_coords ???
