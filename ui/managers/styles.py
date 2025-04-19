@@ -23,6 +23,7 @@ class StylesManager:
                 "Ошибка",
                 f"Файл стилей {path} не найден.",
             )
+            return
 
         with open(path, "r") as f:
             self.main_window.window().setStyleSheet(f.read())
