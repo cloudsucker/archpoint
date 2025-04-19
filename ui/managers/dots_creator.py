@@ -65,7 +65,6 @@ class DotsCreatorManager(AbstractGUIManager):
             self.update()
 
     def __on_get_previous_image_clicked(self):
-        previous_image = self.images_handler.get_previous_image()
-        if previous_image:
+        if previous_image := self.images_handler.get_previous_image():
             self.current_image = previous_image
             self.update()
