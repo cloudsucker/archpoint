@@ -100,7 +100,10 @@ class RoomImagesHandler:
             self.current_image_index -= 1
             return self.images[self.current_image_index]
 
-    def get_next_image(self) -> RoomImageDotsEditor:
+    def get_current_image(self) -> RoomImageDotsEditor:
+        return self.images[self.current_image_index]
+
+    def get_next_image(self) -> RoomImageDotsEditor | None:
         if self.__is_index_valid(self.current_image_index + 1):
             self.current_image_index += 1
             return self.images[self.current_image_index]
@@ -130,6 +133,7 @@ class RoomImageDotsEditor:
                 f"Изображение по указанному пути {image_path} не существует."
             )
         self.image_path = image_path
+        self.image_name = os.path.basename(image_path).split(".")[0]
         self.image_points: dict[str, tuple[float, float]] = {}
 
         # TODO: У нас разве не трёхмерные точки должны быть в points_true_coords ???

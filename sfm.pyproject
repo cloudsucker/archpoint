@@ -3,6 +3,6 @@
         "main.py",
         "ui/forms/form.ui",
         "ui/forms/ui_form.py",
-        "requirements.txt",
+        "requirements.txt"
     ]
 }
