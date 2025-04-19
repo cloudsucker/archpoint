@@ -60,8 +60,7 @@ class DotsCreatorManager(AbstractGUIManager):
         )
 
     def __on_get_next_image_clicked(self):
-        next_image = self.images_handler.get_next_image()
-        if next_image:
+        if next_image := self.images_handler.get_next_image():
             self.current_image = next_image
             self.update()
 
