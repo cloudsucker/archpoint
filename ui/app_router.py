@@ -97,9 +97,9 @@ class AppRouter(AbstractGUIManager):
             self.ui.stackedWidget_workSpace.setCurrentWidget(
                 self.ui.page_calibrationSteps_5_ImageDotsCreating
             )
-        else:
-            # TODO: ЗАПУСКАТЬ КАЛИБРОВКУ ЕСЛИ РАЗМЕТКА ИЗОБРАЖЕНИЙ ЗАВЕРШЕНА
-            pass
+        # else:
+        #    TODO: ЗАПУСКАТЬ КАЛИБРОВКУ ЕСЛИ РАЗМЕТКА ИЗОБРАЖЕНИЙ ЗАВЕРШЕНА
+        #    pass
 
     def __connect_buttons(self):
         # LEFT MENU BUTTONS
@@ -113,7 +113,7 @@ class AppRouter(AbstractGUIManager):
             # FROM FILE
             self.__on_calibration_from_file_option_button_clicked
         )
-        self.connect_navigation_button(
+        self.connect_button(
             # START
             self.ui.pushButton_page_calibrationStartOptionButton,
             self.ui.page_calibrationSteps_0_MethodSelection,

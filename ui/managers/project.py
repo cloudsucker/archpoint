@@ -18,21 +18,20 @@ class ProjectManager(AbstractGUIManager):
         self.__connect_buttons()
 
     def __connect_buttons(self):
-        # PROJECT INITAL OPTIONS PAGE -> NEW PROJECT CREATING PAGE
-        self.connect_navigation_button(
+        self.connect_button(
+            # PROJECT INITAL OPTIONS PAGE -> NEW PROJECT CREATING PAGE
             self.ui.pushButton_newProject,
             self.ui.page_processingNewProjectCreating,
         )
-
-        # NEW PROJECT CREATING PAGE -> PROJECT INITAL OPTIONS PAGE
-        self.connect_navigation_button(
+        self.connect_button(
+            # NEW PROJECT CREATING PAGE -> PROJECT INITAL OPTIONS PAGE
             self.ui.pushButton_newProjectCreatingCancel,
             self.ui.page_processingChoiceProject,
         )
-
-        # NEW PROJECT PATH CHOOSING
-        self.ui.pushButton_newProjectCreatingPathChoose.clicked.connect(
-            self.__on_new_project_creating_path_choose_clicked
+        self.connect_button(
+            # NEW PROJECT PATH CHOOSING
+            self.ui.pushButton_newProjectCreatingPathChoose,
+            self.__on_new_project_creating_path_choose_clicked,
         )
 
     def __on_new_project_creating_path_choose_clicked(self):

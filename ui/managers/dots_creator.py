@@ -48,13 +48,15 @@ class DotsCreatorManager(AbstractGUIManager):
         self.ui.label_imageDotsCreator_ImageName.setText(self.current_image.image_name)
 
     def __connect_buttons(self):
-        # NEXT IMAGE
-        self.ui.pushButton_imageDotsCreator_getNextImage.clicked.connect(
-            self.__on_get_next_image_clicked
+        self.connect_button(
+            # NEXT IMAGE
+            self.ui.pushButton_imageDotsCreator_getNextImage,
+            self.__on_get_next_image_clicked,
         )
-        # PREVIOUS IMAGE
-        self.ui.pushButton_imageDotsCreator_getPreviousImage.clicked.connect(
-            self.__on_get_previous_image_clicked
+        self.connect_button(
+            # PREVIOUS IMAGE
+            self.ui.pushButton_imageDotsCreator_getPreviousImage,
+            self.__on_get_previous_image_clicked,
         )
 
     def __on_get_next_image_clicked(self):

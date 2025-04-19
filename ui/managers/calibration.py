@@ -26,60 +26,66 @@ class CalibrationManager(AbstractGUIManager):
             self.ui.textBrowser_calibrationResultsData.clear()
 
     def __connect_buttons(self):
-        # SET IMAGES DIRECTORY
-        self.ui.pushButton_setCalibrationImagesDirectory.clicked.connect(
-            self.__on_set_calibration_images_directory_clicked
+        self.connect_button(
+            # SET IMAGES DIRECTORY
+            self.ui.pushButton_setCalibrationImagesDirectory,
+            self.__on_set_calibration_images_directory_clicked,
         )
-        # SET SECOND IMAGES DIRECTORY (STEREO MODE)
-        self.ui.pushButton_setCalibrationImagesDirectorySecondCamera.clicked.connect(
-            self.__on_set_calibration_images_directory_second_camera_clicked
+        self.connect_button(
+            # SET SECOND IMAGES DIRECTORY (STEREO MODE)
+            self.ui.pushButton_setCalibrationImagesDirectorySecondCamera,
+            self.__on_set_calibration_images_directory_second_camera_clicked,
         )
 
-        # RETURN -> TO CALIBRATION INITIAL OPTIONS CHOICE
-        self.connect_navigation_button(
+        self.connect_button(
+            # RETURN -> TO CALIBRATION INITIAL OPTIONS CHOICE
             self.ui.pushButton_returnToCalibrationChoice,
             self.ui.page_calibrationInitialChoice,
         )
 
-        # FROM (CHESSBOARD METHOD) TIPS -> TO MAIN PAGE
-        self.connect_navigation_button(
+        self.connect_button(
+            # FROM (CHESSBOARD METHOD) TIPS -> TO MAIN PAGE
             self.ui.pushButton_calibrationChessboardSteps_1_3_GoToCalibration,
             self.ui.page_calibrationSteps_4_MainPage,
         )
-        # FROM (CHESSBOARD METHOD) -> RETURN TO METHOD SELECTION
-        self.connect_navigation_button(
+        self.connect_button(
+            # FROM (CHESSBOARD METHOD) -> RETURN TO METHOD SELECTION
             self.ui.pushButton_calibrationChessboardSteps_1_3_ReturnToMethodSelection,
             self.ui.page_calibrationSteps_0_MethodSelection,
         )
 
-        # FROM (ROOM METHOD) TIPS -> TO MAIN PAGE
-        self.connect_navigation_button(
+        self.connect_button(
+            # FROM (ROOM METHOD) TIPS -> TO MAIN PAGE
             self.ui.pushButton_calibrationRoomSteps_1_3_GoToCalibration,
             self.ui.page_calibrationSteps_4_MainPage,
         )
-        # FROM (ROOM METHOD) -> RETURN TO METHOD SELECTION
-        self.connect_navigation_button(
+        self.connect_button(
+            # FROM (ROOM METHOD) -> RETURN TO METHOD SELECTION
             self.ui.pushButton_calibrationRoomSteps_1_3_ReturnToMethodSelection,
             self.ui.page_calibrationSteps_0_MethodSelection,
         )
 
-        # FROM CALIBRATION_MAIN_PAGE -> TO (ABSTRACT METHOD TIPS)
-        self.ui.pushButton_calibrationSteps_4_returnToTipsButton.clicked.connect(
-            self.__on_calibration_steps_4_return_to_tips_button_clicked
+        self.connect_button(
+            # FROM CALIBRATION_MAIN_PAGE -> TO (ABSTRACT METHOD TIPS)
+            self.ui.pushButton_calibrationSteps_4_returnToTipsButton,
+            self.__on_calibration_steps_4_return_to_tips_button_clicked,
         )
 
-        # SAVE CALIBRATION RESULTS
-        self.ui.pushButton_saveCalibrationResults.clicked.connect(
-            self.__on_save_calibration_results_clicked
+        self.connect_button(
+            # SAVE CALIBRATION RESULTS
+            self.ui.pushButton_saveCalibrationResults,
+            self.__on_save_calibration_results_clicked,
         )
 
-        # METHOD SELECTION (ROOM METHOD CHOOSED)
-        self.ui.pushButton_calibrationSteps_0_MethodManualSelectButton.clicked.connect(
-            self.__on_calibration_steps_0_method_manual_select_button_clicked
+        self.connect_button(
+            # METHOD SELECTION (ROOM METHOD CHOOSED)
+            self.ui.pushButton_calibrationSteps_0_MethodManualSelectButton,
+            self.__on_calibration_steps_0_method_manual_select_button_clicked,
         )
-        # METHOD SELECTION (CHESSBOARD METHOD CHOOSED)
-        self.ui.pushButton_calibrationSteps_0_MethodAutoSelectButton.clicked.connect(
-            self.__on_calibration_steps_0_method_auto_select_button_clicked
+        self.connect_button(
+            # METHOD SELECTION (CHESSBOARD METHOD CHOOSED)
+            self.ui.pushButton_calibrationSteps_0_MethodAutoSelectButton,
+            self.__on_calibration_steps_0_method_auto_select_button_clicked,
         )
 
     def __on_set_calibration_images_directory_clicked(self):

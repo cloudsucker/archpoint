@@ -15,13 +15,15 @@ class ProcessingManager(AbstractGUIManager):
         self.__connect_buttons()
 
     def __connect_buttons(self):
-        # SET IMAGES DIRECTORY
-        self.ui.pushButton_imagesDirectoryChoose.clicked.connect(
-            self.__on_images_directory_choose_clicked
+        self.connect_button(
+            # SET IMAGES DIRECTORY
+            self.ui.pushButton_imagesDirectoryChoose,
+            self.__on_images_directory_choose_clicked,
         )
-        # SET SECOND IMAGES DIRECTORY (STEREO MODE)
-        self.ui.pushButton_setSecondCameraProcessingImagesDirectory.clicked.connect(
-            self.__on_set_second_camera_processing_images_directory_clicked
+        self.connect_button(
+            # SET SECOND IMAGES DIRECTORY (STEREO MODE)
+            self.ui.pushButton_setSecondCameraProcessingImagesDirectory,
+            self.__on_set_second_camera_processing_images_directory_clicked,
         )
 
     def __on_images_directory_choose_clicked(self):
