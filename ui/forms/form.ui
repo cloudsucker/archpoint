@@ -2023,63 +2023,75 @@ li.checked::marker { content: &quot;\2612&quot;; }
                <property name="title">
                 <string>Разметка изображений</string>
                </property>
-               <layout class="QVBoxLayout" name="verticalLayout_28">
+               <layout class="QHBoxLayout" name="horizontalLayout_21">
                 <item>
-                 <widget class="QLabel" name="label_imageDotsCreator_ImageName">
-                  <property name="text">
-                   <string>&lt;&lt;image name&gt;&gt;</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QGraphicsView" name="graphicsView_imageDotsCreator_ImagePreview"/>
-                </item>
-                <item>
-                 <widget class="QGroupBox" name="groupBox_imageDotsCreator_ButtonsField">
+                 <widget class="QGroupBox" name="groupBox_dotsCreatorImagePreviewField">
                   <property name="title">
                    <string/>
                   </property>
                   <property name="flat">
                    <bool>true</bool>
                   </property>
-                  <layout class="QHBoxLayout" name="horizontalLayout_20">
+                  <layout class="QVBoxLayout" name="verticalLayout_34">
                    <item>
-                    <widget class="QPushButton" name="pushButton_imageDotsCreator_getPreviousImage">
-                     <property name="font">
-                      <font>
-                       <family>Rubik</family>
-                       <pointsize>10</pointsize>
-                      </font>
-                     </property>
+                    <widget class="QLabel" name="label_imageDotsCreator_ImageName">
                      <property name="text">
-                      <string>Предыдущее</string>
+                      <string>&lt;&lt;image name&gt;&gt;</string>
                      </property>
                     </widget>
                    </item>
                    <item>
-                    <spacer name="horizontalSpacer_imageDotsCreator_betweenButtons">
-                     <property name="orientation">
-                      <enum>Qt::Orientation::Horizontal</enum>
-                     </property>
-                     <property name="sizeHint" stdset="0">
-                      <size>
-                       <width>505</width>
-                       <height>20</height>
-                      </size>
-                     </property>
-                    </spacer>
+                    <widget class="QGraphicsView" name="graphicsView_imageDotsCreator_ImagePreview"/>
                    </item>
                    <item>
-                    <widget class="QPushButton" name="pushButton_imageDotsCreator_getNextImage">
-                     <property name="font">
-                      <font>
-                       <family>Rubik</family>
-                       <pointsize>10</pointsize>
-                      </font>
+                    <widget class="QGroupBox" name="groupBox_imageDotsCreator_ButtonsField">
+                     <property name="title">
+                      <string/>
                      </property>
-                     <property name="text">
-                      <string>Следующее</string>
+                     <property name="flat">
+                      <bool>true</bool>
                      </property>
+                     <layout class="QHBoxLayout" name="horizontalLayout_20">
+                      <item>
+                       <widget class="QPushButton" name="pushButton_imageDotsCreator_getPreviousImage">
+                        <property name="font">
+                         <font>
+                          <family>Rubik</family>
+                          <pointsize>10</pointsize>
+                         </font>
+                        </property>
+                        <property name="text">
+                         <string>Предыдущее</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <spacer name="horizontalSpacer_imageDotsCreator_betweenButtons">
+                        <property name="orientation">
+                         <enum>Qt::Orientation::Horizontal</enum>
+                        </property>
+                        <property name="sizeHint" stdset="0">
+                         <size>
+                          <width>505</width>
+                          <height>20</height>
+                         </size>
+                        </property>
+                       </spacer>
+                      </item>
+                      <item>
+                       <widget class="QPushButton" name="pushButton_imageDotsCreator_getNextImage">
+                        <property name="font">
+                         <font>
+                          <family>Rubik</family>
+                          <pointsize>10</pointsize>
+                         </font>
+                        </property>
+                        <property name="text">
+                         <string>Следующее</string>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
                     </widget>
                    </item>
                   </layout>
@@ -2087,15 +2099,21 @@ li.checked::marker { content: &quot;\2612&quot;; }
                 </item>
                 <item>
                  <widget class="QTableWidget" name="tableWidget_imageDotsCreator_DotsData">
-                  <property name="maximumSize">
-                   <size>
-                    <width>16777215</width>
-                    <height>150</height>
-                   </size>
+                  <property name="font">
+                   <font>
+                    <family>Rubik</family>
+                    <pointsize>10</pointsize>
+                   </font>
                   </property>
+                  <attribute name="horizontalHeaderDefaultSectionSize">
+                   <number>40</number>
+                  </attribute>
+                  <attribute name="verticalHeaderDefaultSectionSize">
+                   <number>20</number>
+                  </attribute>
                   <column>
                    <property name="text">
-                    <string>ID точки</string>
+                    <string>ID</string>
                    </property>
                   </column>
                   <column>

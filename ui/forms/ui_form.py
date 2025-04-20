@@ -970,19 +970,24 @@ class Ui_Widget(object):
         self.verticalLayout_27.setObjectName(u"verticalLayout_27")
         self.groupBox_ImageDotsCreatorField = QGroupBox(self.page_calibrationSteps_5_ImageDotsCreating)
         self.groupBox_ImageDotsCreatorField.setObjectName(u"groupBox_ImageDotsCreatorField")
-        self.verticalLayout_28 = QVBoxLayout(self.groupBox_ImageDotsCreatorField)
-        self.verticalLayout_28.setObjectName(u"verticalLayout_28")
-        self.label_imageDotsCreator_ImageName = QLabel(self.groupBox_ImageDotsCreatorField)
+        self.horizontalLayout_21 = QHBoxLayout(self.groupBox_ImageDotsCreatorField)
+        self.horizontalLayout_21.setObjectName(u"horizontalLayout_21")
+        self.groupBox_dotsCreatorImagePreviewField = QGroupBox(self.groupBox_ImageDotsCreatorField)
+        self.groupBox_dotsCreatorImagePreviewField.setObjectName(u"groupBox_dotsCreatorImagePreviewField")
+        self.groupBox_dotsCreatorImagePreviewField.setFlat(True)
+        self.verticalLayout_34 = QVBoxLayout(self.groupBox_dotsCreatorImagePreviewField)
+        self.verticalLayout_34.setObjectName(u"verticalLayout_34")
+        self.label_imageDotsCreator_ImageName = QLabel(self.groupBox_dotsCreatorImagePreviewField)
         self.label_imageDotsCreator_ImageName.setObjectName(u"label_imageDotsCreator_ImageName")
 
-        self.verticalLayout_28.addWidget(self.label_imageDotsCreator_ImageName)
+        self.verticalLayout_34.addWidget(self.label_imageDotsCreator_ImageName)
 
-        self.graphicsView_imageDotsCreator_ImagePreview = QGraphicsView(self.groupBox_ImageDotsCreatorField)
+        self.graphicsView_imageDotsCreator_ImagePreview = QGraphicsView(self.groupBox_dotsCreatorImagePreviewField)
         self.graphicsView_imageDotsCreator_ImagePreview.setObjectName(u"graphicsView_imageDotsCreator_ImagePreview")
 
-        self.verticalLayout_28.addWidget(self.graphicsView_imageDotsCreator_ImagePreview)
+        self.verticalLayout_34.addWidget(self.graphicsView_imageDotsCreator_ImagePreview)
 
-        self.groupBox_imageDotsCreator_ButtonsField = QGroupBox(self.groupBox_ImageDotsCreatorField)
+        self.groupBox_imageDotsCreator_ButtonsField = QGroupBox(self.groupBox_dotsCreatorImagePreviewField)
         self.groupBox_imageDotsCreator_ButtonsField.setObjectName(u"groupBox_imageDotsCreator_ButtonsField")
         self.groupBox_imageDotsCreator_ButtonsField.setFlat(True)
         self.horizontalLayout_20 = QHBoxLayout(self.groupBox_imageDotsCreator_ButtonsField)
@@ -1004,7 +1009,10 @@ class Ui_Widget(object):
         self.horizontalLayout_20.addWidget(self.pushButton_imageDotsCreator_getNextImage)
 
 
-        self.verticalLayout_28.addWidget(self.groupBox_imageDotsCreator_ButtonsField)
+        self.verticalLayout_34.addWidget(self.groupBox_imageDotsCreator_ButtonsField)
+
+
+        self.horizontalLayout_21.addWidget(self.groupBox_dotsCreatorImagePreviewField)
 
         self.tableWidget_imageDotsCreator_DotsData = QTableWidget(self.groupBox_ImageDotsCreatorField)
         if (self.tableWidget_imageDotsCreator_DotsData.columnCount() < 3):
@@ -1016,9 +1024,11 @@ class Ui_Widget(object):
         __qtablewidgetitem2 = QTableWidgetItem()
         self.tableWidget_imageDotsCreator_DotsData.setHorizontalHeaderItem(2, __qtablewidgetitem2)
         self.tableWidget_imageDotsCreator_DotsData.setObjectName(u"tableWidget_imageDotsCreator_DotsData")
-        self.tableWidget_imageDotsCreator_DotsData.setMaximumSize(QSize(16777215, 150))
+        self.tableWidget_imageDotsCreator_DotsData.setFont(font)
+        self.tableWidget_imageDotsCreator_DotsData.horizontalHeader().setDefaultSectionSize(40)
+        self.tableWidget_imageDotsCreator_DotsData.verticalHeader().setDefaultSectionSize(20)
 
-        self.verticalLayout_28.addWidget(self.tableWidget_imageDotsCreator_DotsData)
+        self.horizontalLayout_21.addWidget(self.tableWidget_imageDotsCreator_DotsData)
 
 
         self.verticalLayout_27.addWidget(self.groupBox_ImageDotsCreatorField)
@@ -1219,12 +1229,13 @@ class Ui_Widget(object):
         self.groupBox_calibrationSteps_4_ButtonField.setTitle("")
         self.pushButton_calibrationSteps_4_returnToTipsButton.setText(QCoreApplication.translate("Widget", u"\u041d\u0430\u0437\u0430\u0434", None))
         self.groupBox_ImageDotsCreatorField.setTitle(QCoreApplication.translate("Widget", u"\u0420\u0430\u0437\u043c\u0435\u0442\u043a\u0430 \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u0439", None))
+        self.groupBox_dotsCreatorImagePreviewField.setTitle("")
         self.label_imageDotsCreator_ImageName.setText(QCoreApplication.translate("Widget", u"<<image name>>", None))
         self.groupBox_imageDotsCreator_ButtonsField.setTitle("")
         self.pushButton_imageDotsCreator_getPreviousImage.setText(QCoreApplication.translate("Widget", u"\u041f\u0440\u0435\u0434\u044b\u0434\u0443\u0449\u0435\u0435", None))
         self.pushButton_imageDotsCreator_getNextImage.setText(QCoreApplication.translate("Widget", u"\u0421\u043b\u0435\u0434\u0443\u044e\u0449\u0435\u0435", None))
         ___qtablewidgetitem = self.tableWidget_imageDotsCreator_DotsData.horizontalHeaderItem(0)
-        ___qtablewidgetitem.setText(QCoreApplication.translate("Widget", u"ID \u0442\u043e\u0447\u043a\u0438", None));
+        ___qtablewidgetitem.setText(QCoreApplication.translate("Widget", u"ID", None));
         ___qtablewidgetitem1 = self.tableWidget_imageDotsCreator_DotsData.horizontalHeaderItem(1)
         ___qtablewidgetitem1.setText(QCoreApplication.translate("Widget", u"X", None));
         ___qtablewidgetitem2 = self.tableWidget_imageDotsCreator_DotsData.horizontalHeaderItem(2)
