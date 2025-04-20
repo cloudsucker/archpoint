@@ -10,11 +10,11 @@ class StylesManager:
 
         self.main_window.adjustSize()
 
-    def switch_theme(self):
+    def switch_theme(self) -> None:
         self.theme = "dark" if self.theme == "light" else "light"
         self.__apply_styles()
 
-    def __apply_styles(self):
+    def __apply_styles(self) -> None:
         path = f"static/styles/{self.theme}.css"
 
         if not os.path.exists(path):

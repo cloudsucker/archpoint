@@ -18,7 +18,7 @@ class ImagesManager(AbstractGUIManager):
 
         self.preprocess_app_images()
 
-    def preprocess_app_images(self):
+    def preprocess_app_images(self) -> None:
         self.main_window.setWindowIcon(self.app_logo_icon)
         self.ui.label_appLogo.setPixmap(self.app_logo_pixmap.scaledToHeight(155))
 
@@ -29,7 +29,7 @@ class ImagesManager(AbstractGUIManager):
         # self.main_window.tray_icon.setIcon(self.app_logo_icon)
         # self.main_window.tray_icon.setVisible(True)
 
-    def __preprocess_calibration_images(self):
+    def __preprocess_calibration_images(self) -> None:
         self.ui.label_page_calibrationFromFileOptionIcon.setPixmap(
             QPixmap("static/file/file-black.png").scaledToHeight(70)
         )

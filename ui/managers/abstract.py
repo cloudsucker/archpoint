@@ -11,10 +11,12 @@ class AbstractGUIManager:
         self.ui = ui
 
     @abstractmethod
-    def __connect_buttons(self):
+    def __connect_buttons(self) -> None:
         pass
 
-    def connect_button(self, button: QPushButton, target: Union[QWidget, Callable]):
+    def connect_button(
+        self, button: QPushButton, target: Union[QWidget, Callable]
+    ) -> None:
         """Метод для связки навигационных кнопок и целевых виджетов."""
         if not button or not target:
             return

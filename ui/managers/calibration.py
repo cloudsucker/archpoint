@@ -17,7 +17,7 @@ class CalibrationManager(AbstractGUIManager):
 
         self.__connect_buttons()
 
-    def update_calibration_done_page(self):
+    def update_calibration_done_page(self) -> None:
         if self.handler.is_completed():
             self.ui.textBrowser_calibrationResultsData.setText(
                 self.handler.get_calibration_data_as_string()
@@ -25,7 +25,7 @@ class CalibrationManager(AbstractGUIManager):
         else:
             self.ui.textBrowser_calibrationResultsData.clear()
 
-    def __connect_buttons(self):
+    def __connect_buttons(self) -> None:
         self.connect_button(
             # SET IMAGES DIRECTORY
             self.ui.pushButton_setCalibrationImagesDirectory,
@@ -88,7 +88,7 @@ class CalibrationManager(AbstractGUIManager):
             self.__on_calibration_steps_0_method_auto_select_button_clicked,
         )
 
-    def __on_set_calibration_images_directory_clicked(self):
+    def __on_set_calibration_images_directory_clicked(self) -> None:
         calibration_images_directory = QFileDialog.getExistingDirectory(
             self.main_window, "Выберите директорию с изображениями"
         )
@@ -96,7 +96,7 @@ class CalibrationManager(AbstractGUIManager):
             calibration_images_directory
         )
 
-    def __on_set_calibration_images_directory_second_camera_clicked(self):
+    def __on_set_calibration_images_directory_second_camera_clicked(self) -> None:
         calibration_images_directory_second_camera = QFileDialog.getExistingDirectory(
             self.main_window, "Выберите директорию с изображениями второй камеры"
         )
@@ -104,7 +104,7 @@ class CalibrationManager(AbstractGUIManager):
             calibration_images_directory_second_camera
         )
 
-    def __on_save_calibration_results_clicked(self):
+    def __on_save_calibration_results_clicked(self) -> None:
         calibration_results_file_path, _ = QFileDialog.getSaveFileName(
             self.main_window,
             "Сохранить результаты калибровки",
@@ -129,19 +129,19 @@ class CalibrationManager(AbstractGUIManager):
                     f"Произошла ошибка при сохранении данных: {e}",
                 )
 
-    def __on_calibration_steps_0_method_manual_select_button_clicked(self):
+    def __on_calibration_steps_0_method_manual_select_button_clicked(self) -> None:
         self.handler.set_calibration_method("room")
         self.ui.stackedWidget_workSpace.setCurrentWidget(
             self.ui.page_calibrationSteps_1_3_PreparingRoomTips
         )
 
-    def __on_calibration_steps_0_method_auto_select_button_clicked(self):
+    def __on_calibration_steps_0_method_auto_select_button_clicked(self) -> None:
         self.handler.set_calibration_method("chessboard")
         self.ui.stackedWidget_workSpace.setCurrentWidget(
             self.ui.page_calibrationSteps_1_3_PreparingChessboardTips
         )
 
-    def __on_calibration_steps_4_return_to_tips_button_clicked(self):
+    def __on_calibration_steps_4_return_to_tips_button_clicked(self) -> None:
         if self.handler.get_calibration_method_name() == "room":
             self.ui.stackedWidget_workSpace.setCurrentWidget(
                 self.ui.page_calibrationSteps_1_3_PreparingRoomTips

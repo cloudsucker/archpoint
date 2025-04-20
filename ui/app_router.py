@@ -47,7 +47,7 @@ class AppRouter(AbstractGUIManager):
 
         self.__connect_buttons()
 
-    def go_to_calibration(self):
+    def go_to_calibration(self) -> None:
         """Метод для корректного перехода к этапу калибровки.
         Проверяет состояние калибровки и переходит к соответствующему виджету."""
         self.calibration_manager.update_calibration_done_page()
@@ -60,7 +60,7 @@ class AppRouter(AbstractGUIManager):
             self.ui.page_calibrationInitialChoice
         )
 
-    def go_to_processing(self):
+    def go_to_processing(self) -> None:
         if self.project_manager.handler.is_project_initialized:
             self.ui.stackedWidget_workSpace.setCurrentWidget(
                 self.ui.page_processingProcess
@@ -77,18 +77,18 @@ class AppRouter(AbstractGUIManager):
         )
         self.ui.pushButton_pageProcess.setChecked(True)
 
-    def go_to_settings(self):
+    def go_to_settings(self) -> None:
         self.ui.stackedWidget_workSpace.setCurrentWidget(self.ui.page_settings)
 
     def go_to_dots_creator(
         self, images_path: str, second_camera_images_path: str | None = None
-    ):
+    ) -> None:
         if second_camera_images_path:
-            self.calibration_manager.handler.initialize_dots_creator(
+            self.calibration_manager.handler.initialize_room_images_handler(
                 images_path, second_camera_images_path
             )
         else:
-            self.calibration_manager.handler.initialize_dots_creator(images_path)
+            self.calibration_manager.handler.initialize_room_images_handler(images_path)
 
         self.dots_creator_manager.preprocess_dots_creator_page(
             self.calibration_manager.handler.calibration_method.images_handler
@@ -101,7 +101,7 @@ class AppRouter(AbstractGUIManager):
         #    TODO: ЗАПУСКАТЬ КАЛИБРОВКУ ЕСЛИ РАЗМЕТКА ИЗОБРАЖЕНИЙ ЗАВЕРШЕНА
         #    pass
 
-    def __connect_buttons(self):
+    def __connect_buttons(self) -> None:
         # LEFT MENU BUTTONS
         self.ui.pushButton_pageCalibration.clicked.connect(self.go_to_calibration)
         self.ui.pushButton_pageProcess.clicked.connect(self.go_to_processing)
@@ -146,10 +146,10 @@ class AppRouter(AbstractGUIManager):
             self.__on_processing_start_clicked
         )
 
-    def __on_theme_toggle_clicked(self):
+    def __on_theme_toggle_clicked(self) -> None:
         self.styles_manager.switch_theme()
 
-    def __on_calibration_from_file_option_button_clicked(self):
+    def __on_calibration_from_file_option_button_clicked(self) -> None:
         calibration_file_path, _ = QFileDialog.getOpenFileName(
             self.main_window, "Выберите файл", "", ".npz files (*.npz)"
         )
@@ -185,7 +185,7 @@ class AppRouter(AbstractGUIManager):
                     "Пожалуйста, выберите файл с расширением .npz.",
                 )
 
-    def __on_calibration_process_start_clicked(self):
+    def __on_calibration_process_start_clicked(self) -> None:
         images_directory = self.ui.lineEdit_calibrationImagesDirectory.text()
 
         if not images_directory:
@@ -251,11 +251,11 @@ class AppRouter(AbstractGUIManager):
 
         self.go_to_calibration()
 
-    def __on_cancel_calibration_clicked(self):
+    def __on_cancel_calibration_clicked(self) -> None:
         self.calibration_manager.handler.clear()
         self.go_to_calibration()
 
-    def __on_choose_project_clicked(self):
+    def __on_choose_project_clicked(self) -> None:
         project_path = QFileDialog.getExistingDirectory(
             self.main_window, "Выберите директорию проекта"
         )
@@ -268,7 +268,7 @@ class AppRouter(AbstractGUIManager):
                     self.main_window, "Ошибка", f"Ошибка открытия проекта: {e}"
                 )
 
-    def __on_new_project_creating_submit_clicked(self):
+    def __on_new_project_creating_submit_clicked(self) -> None:
         project_name = self.ui.lineEdit_newProjectCreatingNameField.text()
         project_path = self.ui.lineEdit_newProjectCreatingPathField.text()
 
@@ -285,7 +285,7 @@ class AppRouter(AbstractGUIManager):
                 self.main_window, "Ошибка", f"Ошибка создания проекта: {e}"
             )
 
-    def __on_processing_start_clicked(self):
+    def __on_processing_start_clicked(self) -> None:
         images_directory = self.ui.lineEdit_imagesDirectoryField.text()
         if not images_directory or not os.path.isdir(images_directory):
             QMessageBox.critical(

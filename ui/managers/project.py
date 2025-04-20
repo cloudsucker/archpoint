@@ -17,7 +17,7 @@ class ProjectManager(AbstractGUIManager):
 
         self.__connect_buttons()
 
-    def __connect_buttons(self):
+    def __connect_buttons(self) -> None:
         self.connect_button(
             # PROJECT INITAL OPTIONS PAGE -> NEW PROJECT CREATING PAGE
             self.ui.pushButton_newProject,
@@ -34,7 +34,7 @@ class ProjectManager(AbstractGUIManager):
             self.__on_new_project_creating_path_choose_clicked,
         )
 
-    def __on_new_project_creating_path_choose_clicked(self):
+    def __on_new_project_creating_path_choose_clicked(self) -> None:
         project_path = QFileDialog.getExistingDirectory(
             self.main_window, "Выберите папку проекта"
         )
