@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 import os
-import cv2
+import json
 import numpy as np
 from typing import TypedDict
 
@@ -164,29 +164,33 @@ class RoomImageDotsEditor:
             {"id": id, "method": method, "old_point": old_point, "new_point": new_point}
         )
 
+    def __validate_dot(self, id: str, point: tuple[float, float]) -> None:
+        if not id:
+            raise InvalidDotId("Не указан идентификатор точки.")
+        if len(point) != 2:
+            raise InvalidDotFormat(
+                "Точка должна быть списком с двумя значениями координат."
+            )
+        if point[0] < 0 or point[1] < 0:
+            raise InvalidDotCoordinates(
+                "Координаты точки не могут быть отрицательными."
+            )
+
     def add_point(self, id: str, point: tuple[float, float]) -> None:
+        self.__validate_dot(id, point)
         if id in self.image_points.keys():
             raise DotWithTheSameIdAlreadyExists(
                 f"Точка с указанным идентификатором {id} уже существует."
             )
 
-        if len(point) != 2:
-            raise InvalidDotFormat(
-                "Точка должна быть списком с двумя значениями координат."
-            )
-
         self.__update_history(id, "add", None, point)
         self.image_points[id] = point
 
-    def edit_point(self, id: str, point: list[int, int]) -> None:
+    def edit_point(self, id: str, point: tuple[float, float]) -> None:
+        self.__validate_dot(id, point)
         if id not in self.image_points.keys():
             raise DotWithCurrentIdNotFound(
                 f"Точка с указанным идентификатором {id} не найдена."
-            )
-
-        if len(point) != 2:
-            raise InvalidDotFormat(
-                "Точка должна быть списком с двумя значениями координат."
             )
 
         self.__update_history(id, "edit", self.image_points[id], point)
@@ -241,6 +245,23 @@ class RoomImageDotsEditor:
     def set_points_true_coords(self, points: dict[str, tuple[float, float]]) -> None:
         self.points_true_coords = points
 
+    def save_points_to_file(self) -> None:
+        filename = f"{os.path.basename(self.image_path).split(".")[0]}.json"
+        filepath = os.path.join(os.path.dirname(self.image_path), filename)
+
+        with open(filepath, "w") as file:
+            json.dump(self.image_points, file)
+
+    def load_points_from_file(self) -> None:
+        filename = f"{os.path.basename(self.image_path).split('.')[0]}.json"
+        filepath = os.path.join(os.path.dirname(self.image_path), filename)
+
+        if not os.path.exists(filepath):
+            return
+
+        with open(filepath, "r") as file:
+            self.image_points = json.load(file)
+
 
 class DotsHistoryIsEmpty(Exception):
     pass
@@ -262,7 +283,15 @@ class SomeImagesHaveNoDots(Exception):
     pass
 
 
+class InvalidDotId(Exception):
+    pass
+
+
 class InvalidDotFormat(Exception):
+    pass
+
+
+class InvalidDotCoordinates(Exception):
     pass
 
 
