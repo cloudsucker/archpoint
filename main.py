@@ -33,14 +33,12 @@ class MainWindow(QMainWindow):
         self.hloc_handler = HLOC_Handler()
 
         # MANAGERS
-        self.calibration_manager = CalibrationManager(
-            self.ui, self, self.calibration_handler
-        )
-        self.dots_creator_manager = DotsCreatorManager(self.ui, self)
-        self.images_manager = ImagesManager(self.ui, self)
-        self.processing_manager = ProcessingManager(self.ui, self, self.hloc_handler)
-        self.project_manager = ProjectManager(self.ui, self, self.project_handler)
-        self.settings_manager = SettingsManager(self.ui)
+        self.calibration_manager = CalibrationManager(self, self.calibration_handler)
+        self.dots_creator_manager = DotsCreatorManager(self)
+        self.images_manager = ImagesManager(self)
+        self.processing_manager = ProcessingManager(self, self.hloc_handler)
+        self.project_manager = ProjectManager(self, self.project_handler)
+        self.settings_manager = SettingsManager(self)
         self.styles_manager = StylesManager(self)
 
         # APP ROUTER

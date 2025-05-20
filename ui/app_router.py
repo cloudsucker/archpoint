@@ -21,7 +21,7 @@ class AppRouter(AbstractGUIManager):
     def __init__(
         self,
         ui: Ui_Widget,
-        main_window: QMainWindow,
+        window: QMainWindow,
         calibration_manager: CalibrationManager,
         dots_creator_manager: DotsCreatorManager,
         images_manager: ImagesManager,
@@ -31,7 +31,7 @@ class AppRouter(AbstractGUIManager):
         styles_manager: StylesManager,
     ):
         self.ui = ui
-        self.main_window = main_window
+        self.window = window
         self.calibration_manager = calibration_manager
         self.dots_creator_manager = dots_creator_manager
         self.images_manager = images_manager
@@ -151,7 +151,7 @@ class AppRouter(AbstractGUIManager):
 
     def __on_calibration_from_file_option_button_clicked(self) -> None:
         calibration_file_path, _ = QFileDialog.getOpenFileName(
-            self.main_window, "Выберите файл", "", ".npz files (*.npz)"
+            self.window, "Выберите файл", "", ".npz files (*.npz)"
         )
 
         if calibration_file_path and os.path.exists(calibration_file_path):
@@ -168,19 +168,19 @@ class AppRouter(AbstractGUIManager):
                         self.go_to_calibration()
                     else:
                         QMessageBox.critical(
-                            self.main_window,
+                            self.window,
                             "Ошибка",
                             "Ошибка загрузки данных из файла калибровки.",
                         )
                 except Exception as e:
                     QMessageBox.critical(
-                        self.main_window,
+                        self.window,
                         "Ошибка",
                         f"Произошла ошибка при загрузке данных: {e}",
                     )
             else:
                 QMessageBox.warning(
-                    self.main_window,
+                    self.window,
                     "Неверный формат",
                     "Пожалуйста, выберите файл с расширением .npz.",
                 )
@@ -190,7 +190,7 @@ class AppRouter(AbstractGUIManager):
 
         if not images_directory:
             QMessageBox.critical(
-                self.main_window,
+                self.window,
                 "Ошибка",
                 "Пожалуйста, укажите директорию с изображениями.",
             )
@@ -198,7 +198,7 @@ class AppRouter(AbstractGUIManager):
 
         if not os.path.exists(images_directory):
             QMessageBox.critical(
-                self.main_window,
+                self.window,
                 "Ошибка",
                 "Пожалуйста, укажите корректную директорию с изображениями.",
             )
@@ -211,7 +211,7 @@ class AppRouter(AbstractGUIManager):
 
             if not images_directory_second_camera:
                 QMessageBox.critical(
-                    self.main_window,
+                    self.window,
                     "Ошибка",
                     "Пожалуйста, укажите директорию с изображениями второй камеры.",
                 )
@@ -219,7 +219,7 @@ class AppRouter(AbstractGUIManager):
 
             if not os.path.exists(images_directory_second_camera):
                 QMessageBox.critical(
-                    self.main_window,
+                    self.window,
                     "Ошибка",
                     "Пожалуйста, укажите корректную директорию с изображениями второй камеры.",
                 )
@@ -257,7 +257,7 @@ class AppRouter(AbstractGUIManager):
 
     def __on_choose_project_clicked(self) -> None:
         project_path = QFileDialog.getExistingDirectory(
-            self.main_window, "Выберите директорию проекта"
+            self.window, "Выберите директорию проекта"
         )
         if project_path and os.path.isdir(project_path):
             try:
@@ -265,7 +265,7 @@ class AppRouter(AbstractGUIManager):
                 self.go_to_processing()
             except Exception as e:
                 QMessageBox.critical(
-                    self.main_window, "Ошибка", f"Ошибка открытия проекта: {e}"
+                    self.window, "Ошибка", f"Ошибка открытия проекта: {e}"
                 )
 
     def __on_new_project_creating_submit_clicked(self) -> None:
@@ -274,22 +274,20 @@ class AppRouter(AbstractGUIManager):
 
         if not project_name or not project_path:
             QMessageBox.critical(
-                self.main_window, "Ошибка", "Пожалуйста, укажите имя проекта и путь."
+                self.window, "Ошибка", "Пожалуйста, укажите имя проекта и путь."
             )
             return
         try:
             self.project_manager.handler.create_project(project_name, project_path)
             self.go_to_processing()
         except Exception as e:
-            QMessageBox.critical(
-                self.main_window, "Ошибка", f"Ошибка создания проекта: {e}"
-            )
+            QMessageBox.critical(self.window, "Ошибка", f"Ошибка создания проекта: {e}")
 
     def __on_processing_start_clicked(self) -> None:
         images_directory = self.ui.lineEdit_imagesDirectoryField.text()
         if not images_directory or not os.path.isdir(images_directory):
             QMessageBox.critical(
-                self.main_window,
+                self.window,
                 "Ошибка",
                 "Пожалуйста, укажите директорию с изображениями.",
             )
@@ -305,7 +303,7 @@ class AppRouter(AbstractGUIManager):
                 )
                 if not os.path.isdir(images_directory_second_camera):
                     QMessageBox.critical(
-                        self.main_window,
+                        self.window,
                         "Ошибка",
                         "Пожалуйста, укажите директорию с изображениями второй камеры.",
                     )

@@ -1,19 +1,17 @@
 from PySide6.QtGui import QPixmap
 from PySide6.QtCore import Qt, QPointF
 from PySide6.QtWidgets import QLayout, QTableWidgetItem
-from PySide6.QtWidgets import QMainWindow, QGraphicsScene, QGraphicsPixmapItem
+from PySide6.QtWidgets import QGraphicsScene, QGraphicsPixmapItem
 
 from archpoint.calibration_methods.room import RoomImagesHandler, RoomImageDotsEditor
 
 from ui.custom_widgets.custom_view import CustomGraphicsView
-from ui.forms.ui_form import Ui_Widget
-from ui.managers.abstract import AbstractGUIManager
+from ui.managers.abstract import AbstractWindow, AbstractGUIManager
 
 
 class DotsCreatorManager(AbstractGUIManager):
-    def __init__(self, ui: Ui_Widget, main_window: QMainWindow):
-        self.ui = ui
-        self.main_window = main_window
+    def __init__(self, window: AbstractWindow):
+        self.window: AbstractWindow = window
         self.images_handler: RoomImagesHandler | None = None
         self.current_image: RoomImageDotsEditor | None = None
 
@@ -28,7 +26,7 @@ class DotsCreatorManager(AbstractGUIManager):
         self.update()
 
     def __replace_graphic_view_on_custom(self) -> None:
-        original_view = self.ui.graphicsView_imageDotsCreator_ImagePreview
+        original_view = self.window.ui.graphicsView_imageDotsCreator_ImagePreview
         parent_layout: QLayout = original_view.parentWidget().layout()
 
         self.view = CustomGraphicsView()
@@ -65,46 +63,48 @@ class DotsCreatorManager(AbstractGUIManager):
             text.setPos(x + 5, y - 10)
 
     def __show_current_image_name(self):
-        self.ui.label_imageDotsCreator_ImageName.setText(self.current_image.image_name)
+        self.window.ui.label_imageDotsCreator_ImageName.setText(
+            self.current_image.image_name
+        )
 
     def __initialize_dots_table(self):
-        self.ui.tableWidget_imageDotsCreator_DotsData.setRowCount(0)
-        self.ui.tableWidget_imageDotsCreator_DotsData.setColumnCount(3)
-        self.ui.tableWidget_imageDotsCreator_DotsData.setHorizontalHeaderLabels(
+        self.window.ui.tableWidget_imageDotsCreator_DotsData.setRowCount(0)
+        self.window.ui.tableWidget_imageDotsCreator_DotsData.setColumnCount(3)
+        self.window.ui.tableWidget_imageDotsCreator_DotsData.setHorizontalHeaderLabels(
             ["ID", "X", "Y"]
         )
 
     def __update_dots_table(self):
         points = self.current_image.image_points
-        self.ui.tableWidget_imageDotsCreator_DotsData.setRowCount(len(points))
-        self.ui.tableWidget_imageDotsCreator_DotsData.setColumnCount(3)
-        self.ui.tableWidget_imageDotsCreator_DotsData.setHorizontalHeaderLabels(
+        self.window.ui.tableWidget_imageDotsCreator_DotsData.setRowCount(len(points))
+        self.window.ui.tableWidget_imageDotsCreator_DotsData.setColumnCount(3)
+        self.window.ui.tableWidget_imageDotsCreator_DotsData.setHorizontalHeaderLabels(
             ["ID", "X", "Y"]
         )
 
         for row, (dot_name, dot_data) in enumerate(points.items()):
-            self.ui.tableWidget_imageDotsCreator_DotsData.setItem(
+            self.window.ui.tableWidget_imageDotsCreator_DotsData.setItem(
                 row, 0, QTableWidgetItem(dot_name)
             )
-            self.ui.tableWidget_imageDotsCreator_DotsData.setItem(
+            self.window.ui.tableWidget_imageDotsCreator_DotsData.setItem(
                 row, 1, QTableWidgetItem(str(dot_data[0]))
             )
-            self.ui.tableWidget_imageDotsCreator_DotsData.setItem(
+            self.window.ui.tableWidget_imageDotsCreator_DotsData.setItem(
                 row, 2, QTableWidgetItem(str(dot_data[1]))
             )
 
-        self.ui.tableWidget_imageDotsCreator_DotsData.resizeColumnsToContents()
-        self.ui.tableWidget_imageDotsCreator_DotsData.resizeRowsToContents()
+        self.window.ui.tableWidget_imageDotsCreator_DotsData.resizeColumnsToContents()
+        self.window.ui.tableWidget_imageDotsCreator_DotsData.resizeRowsToContents()
 
     def __connect_buttons(self):
         self.connect_button(
             # NEXT IMAGE
-            self.ui.pushButton_imageDotsCreator_getNextImage,
+            self.window.ui.pushButton_imageDotsCreator_getNextImage,
             self.__on_get_next_image_clicked,
         )
         self.connect_button(
             # PREVIOUS IMAGE
-            self.ui.pushButton_imageDotsCreator_getPreviousImage,
+            self.window.ui.pushButton_imageDotsCreator_getPreviousImage,
             self.__on_get_previous_image_clicked,
         )
 

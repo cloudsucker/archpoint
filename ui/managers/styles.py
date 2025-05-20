@@ -4,11 +4,11 @@ from PySide6.QtWidgets import QMainWindow, QMessageBox
 
 
 class StylesManager:
-    def __init__(self, main_window: QMainWindow):
-        self.main_window = main_window
+    def __init__(self, window: QMainWindow):
+        self.window = window
         self.theme = "light"
 
-        self.main_window.adjustSize()
+        self.window.adjustSize()
 
     def switch_theme(self) -> None:
         self.theme = "dark" if self.theme == "light" else "light"
@@ -19,11 +19,11 @@ class StylesManager:
 
         if not os.path.exists(path):
             QMessageBox.critical(
-                self.main_window,
+                self.window,
                 "Ошибка",
                 f"Файл стилей {path} не найден.",
             )
             return
 
         with open(path, "r") as f:
-            self.main_window.window().setStyleSheet(f.read())
+            self.window.window().setStyleSheet(f.read())

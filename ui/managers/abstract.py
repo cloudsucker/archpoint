@@ -1,14 +1,18 @@
 from abc import abstractmethod
 from typing import Callable, Union
-from PySide6.QtWidgets import QPushButton, QWidget
+from PySide6.QtWidgets import QMainWindow, QPushButton, QWidget
 
 from ui.forms.ui_form import Ui_Widget
 
 
-class AbstractGUIManager:
-    def __init__(self, ui: Ui_Widget, main_window: QWidget):
-        self.main_window = main_window
+class AbstractWindow(QMainWindow):
+    def __init__(self, ui: Ui_Widget):
         self.ui = ui
+
+
+class AbstractGUIManager:
+    def __init__(self, window: QWidget):
+        self.window: AbstractWindow = window
 
     @abstractmethod
     def __connect_buttons(self) -> None:
@@ -24,6 +28,6 @@ class AbstractGUIManager:
         if callable(target):
             button.clicked.connect(target)
         elif isinstance(target, QWidget):
-            sw = getattr(self.ui, "stackedWidget_workSpace", None)
+            sw = getattr(self.window.ui, "stackedWidget_workSpace", None)
             if sw:
                 button.clicked.connect(lambda: sw.setCurrentWidget(target))
