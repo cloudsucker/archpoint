@@ -15,7 +15,7 @@ class StylesManager:
         self.__apply_styles()
 
     def __apply_styles(self):
-        path = f"static/styles/{self.theme}.css"
+        path = f"static/styles/{self.theme}.qss"
 
         if not os.path.exists(path):
             QMessageBox.critical(
