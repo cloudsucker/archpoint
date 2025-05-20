@@ -13,15 +13,19 @@ class HistoryEntry(TypedDict):
 
     Attributes:
         id (str): Уникальный идентификатор точки.
-        method (str): Тип операции "add", "edit", "remove".
-        old_point (tuple[float, float] | None): Старые координаты точки на изображении.
-        new_point (tuple[float, float] | None): Новые координаты точки на изображении.
+        method (str): Тип операции "add", "edit", "remove", "rename".
+        old_point (tuple[float, float] | None): Старые координаты точки на изображении (для edit).
+        new_point (tuple[float, float] | None): Новые координаты точки на изображении (для edit).
+        old_id (str | None): Старый ID точки (для rename).
+        new_id (str | None): Новый ID точки (для rename).
     """
 
     id: str
     method: str
     old_point: tuple[float, float] | None
     new_point: tuple[float, float] | None
+    old_id: str | None
+    new_id: str | None
 
 
 class RoomCalibrationMethod(CalibrationMethodAbstract):
@@ -135,16 +139,12 @@ class RoomImageDotsEditor:
         self.image_path = image_path
         self.image_name = os.path.basename(image_path).split(".")[0]
         self.image_points: dict[str, tuple[float, float]] = {}
-
-        # TODO: У нас разве не трёхмерные точки должны быть в points_true_coords ???
-        # TODO: ⬇ ⬇ ⬇ ⬇ ⬇ ⬇ ⬇ ⬇ ⬇ ⬇ ⬇ ⬇ ⬇ ⬇ ⬇ ⬇ ⬇ ⬇ ⬇ ⬇ ⬇ ⬇ ⬇ ⬇ ⬇ ⬇ ⬇ ⬇ ⬇ ⬇ ⬇ ⬇ ⬇
-        self.points_true_coords: dict[str, tuple[float, float]] = {}  # ID: [x, y]
+        self.points_true_coords: dict[str, tuple[float, float, float]] = {}
         self.history: list[HistoryEntry] = []
 
     def is_completed(self) -> bool:
         if len(self.image_points) != len(self.points_true_coords):
             return False
-        # TODO: Прописать полную реализацию проверки завершенности
         return len(self.image_points) >= 4
 
     def __self_check(self) -> None:
@@ -157,11 +157,20 @@ class RoomImageDotsEditor:
         self,
         id: str,
         method: str,
-        old_point: tuple[float, float],
-        new_point: tuple[float, float],
+        old_point: tuple[float, float] | None = None,
+        new_point: tuple[float, float] | None = None,
+        old_id: str | None = None,
+        new_id: str | None = None,
     ) -> None:
         self.history.append(
-            {"id": id, "method": method, "old_point": old_point, "new_point": new_point}
+            {
+                "id": id,
+                "method": method,
+                "old_point": old_point,
+                "new_point": new_point,
+                "old_id": old_id,
+                "new_id": new_id,
+            }
         )
 
     def __validate_dot(self, id: str, point: tuple[float, float]) -> None:
@@ -176,13 +185,16 @@ class RoomImageDotsEditor:
                 "Координаты точки не могут быть отрицательными."
             )
 
+    def __validate_id(self, id: str) -> None:
+        if not id or not id.strip():
+            raise InvalidDotId("Идентификатор точки не может быть пустым.")
+
     def add_point(self, id: str, point: tuple[float, float]) -> None:
         self.__validate_dot(id, point)
         if id in self.image_points.keys():
             raise DotWithTheSameIdAlreadyExists(
                 f"Точка с указанным идентификатором {id} уже существует."
             )
-
         self.__update_history(id, "add", None, point)
         self.image_points[id] = point
 
@@ -192,9 +204,25 @@ class RoomImageDotsEditor:
             raise DotWithCurrentIdNotFound(
                 f"Точка с указанным идентификатором {id} не найдена."
             )
-
         self.__update_history(id, "edit", self.image_points[id], point)
         self.image_points[id] = point
+
+    def edit_point_id(self, old_id: str, new_id: str) -> None:
+        self.__validate_id(old_id)
+        self.__validate_id(new_id)
+
+        if old_id not in self.image_points.keys():
+            raise DotWithCurrentIdNotFound(
+                f"Точка с указанным идентификатором {old_id} не найдена."
+            )
+
+        if new_id in self.image_points.keys():
+            raise DotWithTheSameIdAlreadyExists(
+                f"Точка с указанным идентификатором {new_id} уже существует."
+            )
+
+        self.__update_history(old_id, "rename", old_id=old_id, new_id=new_id)
+        self.image_points[new_id] = self.image_points.pop(old_id)
 
     def remove_point(self, id: str) -> None:
         if id not in self.image_points.keys():
@@ -209,11 +237,18 @@ class RoomImageDotsEditor:
             raise DotsHistoryIsEmpty("В истории нет операций.")
         operation = self.history.pop()
         if operation["method"] == "add":
-            self.image_points.pop(operation["id"])
+            self.image_points.pop(operation["id"], None)
         elif operation["method"] == "edit":
-            self.image_points[operation["id"]] = operation["old_point"]
+            if operation["old_point"] is not None:
+                self.image_points[operation["id"]] = operation["old_point"]
         elif operation["method"] == "remove":
-            self.image_points[operation["id"]] = operation["new_point"]
+            if operation["old_point"] is not None:
+                self.image_points[operation["id"]] = operation["old_point"]
+        elif operation["method"] == "rename":
+            if operation["old_id"] and operation["new_id"]:
+                point = self.image_points.pop(operation["new_id"], None)
+                if point:
+                    self.image_points[operation["old_id"]] = point
         else:
             raise InvalidHistoryOperationType(
                 f"Недопустимый тип операции {operation['method']} в истории."
@@ -236,29 +271,28 @@ class RoomImageDotsEditor:
     def get_points_list(self) -> list[tuple[float, float]]:
         return list(self.image_points.values())
 
-    def get_points_true_coords_dict(self) -> dict[str, tuple[float, float]]:
+    def get_points_true_coords_dict(self) -> dict[str, tuple[float, float, float]]:
         return self.points_true_coords
 
-    def get_points_true_coords_list(self) -> list[tuple[float, float]]:
+    def get_points_true_coords_list(self) -> list[tuple[float, float, float]]:
         return list(self.points_true_coords.values())
 
-    def set_points_true_coords(self, points: dict[str, tuple[float, float]]) -> None:
+    def set_points_true_coords(
+        self, points: dict[str, tuple[float, float, float]]
+    ) -> None:
         self.points_true_coords = points
 
     def save_points_to_file(self) -> None:
         filename = f"{os.path.basename(self.image_path).split(".")[0]}.json"
         filepath = os.path.join(os.path.dirname(self.image_path), filename)
-
         with open(filepath, "w") as file:
             json.dump(self.image_points, file)
 
     def load_points_from_file(self) -> None:
         filename = f"{os.path.basename(self.image_path).split('.')[0]}.json"
         filepath = os.path.join(os.path.dirname(self.image_path), filename)
-
         if not os.path.exists(filepath):
             return
-
         with open(filepath, "r") as file:
             self.image_points = json.load(file)
 
