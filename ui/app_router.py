@@ -1,8 +1,8 @@
 import os
 from PySide6.QtWidgets import QMainWindow, QMessageBox, QFileDialog
 
-from ui.forms.ui_form import Ui_Widget
 from ui.managers import (
+    AbstractWindow,
     AbstractGUIManager,
     CalibrationManager,
     DotsCreatorManager,
@@ -21,8 +21,7 @@ class AppRouter(AbstractGUIManager):
 
     def __init__(
         self,
-        ui: Ui_Widget,
-        window: QMainWindow,
+        window: AbstractWindow,
         calibration_manager: CalibrationManager,
         dots_creator_manager: DotsCreatorManager,
         images_manager: ImagesManager,
@@ -31,7 +30,6 @@ class AppRouter(AbstractGUIManager):
         settings_manager: SettingsManager,
         styles_manager: StylesManager,
     ):
-        self.ui = ui
         self.window = window
         self.calibration_manager = calibration_manager
         self.dots_creator_manager = dots_creator_manager
@@ -42,8 +40,8 @@ class AppRouter(AbstractGUIManager):
         self.styles_manager = styles_manager
 
         # УСТАНОВКА НАЧАЛЬНОГО ВИДЖЕТА
-        self.ui.stackedWidget_workSpace.setCurrentWidget(
-            self.ui.page_calibrationInitialChoice
+        self.window.ui.stackedWidget_workSpace.setCurrentWidget(
+            self.window.ui.page_calibrationInitialChoice
         )
 
         self.__connect_buttons()
@@ -53,33 +51,35 @@ class AppRouter(AbstractGUIManager):
         Проверяет состояние калибровки и переходит к соответствующему виджету."""
         self.calibration_manager.update_calibration_done_page()
         if self.calibration_manager.handler.is_completed():
-            self.ui.stackedWidget_workSpace.setCurrentWidget(
-                self.ui.page_calibrationSteps_5_done
+            self.window.ui.stackedWidget_workSpace.setCurrentWidget(
+                self.window.ui.page_calibrationSteps_5_done
             )
             return
-        self.ui.stackedWidget_workSpace.setCurrentWidget(
-            self.ui.page_calibrationInitialChoice
+        self.window.ui.stackedWidget_workSpace.setCurrentWidget(
+            self.window.ui.page_calibrationInitialChoice
         )
 
     def go_to_processing(self) -> None:
         if self.project_manager.handler.is_project_initialized:
-            self.ui.stackedWidget_workSpace.setCurrentWidget(
-                self.ui.page_processingProcess
+            self.window.ui.stackedWidget_workSpace.setCurrentWidget(
+                self.window.ui.page_processingProcess
             )
             if self.calibration_manager.handler.is_completed():
-                self.ui.checkBox_preprocessingImages.setChecked(True)
-                self.ui.checkBox_preprocessingImages.setHidden(False)
+                self.window.ui.checkBox_preprocessingImages.setChecked(True)
+                self.window.ui.checkBox_preprocessingImages.setHidden(False)
             else:
-                self.ui.checkBox_preprocessingImages.setChecked(False)
-                self.ui.checkBox_preprocessingImages.setHidden(True)
+                self.window.ui.checkBox_preprocessingImages.setChecked(False)
+                self.window.ui.checkBox_preprocessingImages.setHidden(True)
             return
-        self.ui.stackedWidget_workSpace.setCurrentWidget(
-            self.ui.page_processingChoiceProject
+        self.window.ui.stackedWidget_workSpace.setCurrentWidget(
+            self.window.ui.page_processingChoiceProject
         )
-        self.ui.pushButton_pageProcess.setChecked(True)
+        self.window.ui.pushButton_pageProcess.setChecked(True)
 
     def go_to_settings(self) -> None:
-        self.ui.stackedWidget_workSpace.setCurrentWidget(self.ui.page_settings)
+        self.window.ui.stackedWidget_workSpace.setCurrentWidget(
+            self.window.ui.page_settings
+        )
 
     def go_to_dots_creator(
         self, images_path: str, second_camera_images_path: str | None = None
@@ -95,8 +95,8 @@ class AppRouter(AbstractGUIManager):
             self.calibration_manager.handler.calibration_method.images_handler
         )
         if not self.dots_creator_manager.is_completed():
-            self.ui.stackedWidget_workSpace.setCurrentWidget(
-                self.ui.page_calibrationSteps_5_ImageDotsCreating
+            self.window.ui.stackedWidget_workSpace.setCurrentWidget(
+                self.window.ui.page_calibrationSteps_5_ImageDotsCreating
             )
         # else:
         #    TODO: ЗАПУСКАТЬ КАЛИБРОВКУ ЕСЛИ РАЗМЕТКА ИЗОБРАЖЕНИЙ ЗАВЕРШЕНА
@@ -104,46 +104,50 @@ class AppRouter(AbstractGUIManager):
 
     def __connect_buttons(self) -> None:
         # LEFT MENU BUTTONS
-        self.ui.pushButton_pageCalibration.clicked.connect(self.go_to_calibration)
-        self.ui.pushButton_pageProcess.clicked.connect(self.go_to_processing)
-        self.ui.pushButton_settings.clicked.connect(self.go_to_settings)
-        self.ui.pushButton_themeToggle.clicked.connect(self.__on_theme_toggle_clicked)
+        self.window.ui.pushButton_pageCalibration.clicked.connect(
+            self.go_to_calibration
+        )
+        self.window.ui.pushButton_pageProcess.clicked.connect(self.go_to_processing)
+        self.window.ui.pushButton_settings.clicked.connect(self.go_to_settings)
+        self.window.ui.pushButton_themeToggle.clicked.connect(
+            self.__on_theme_toggle_clicked
+        )
 
         # CALIBRATION INITIAL OPTIONS
-        self.ui.pushButton_page_calibrationFromFileOptionButton.clicked.connect(
+        self.window.ui.pushButton_page_calibrationFromFileOptionButton.clicked.connect(
             # FROM FILE
             self.__on_calibration_from_file_option_button_clicked
         )
         self.connect_button(
             # START
-            self.ui.pushButton_page_calibrationStartOptionButton,
-            self.ui.page_calibrationSteps_0_MethodSelection,
+            self.window.ui.pushButton_page_calibrationStartOptionButton,
+            self.window.ui.page_calibrationSteps_0_MethodSelection,
         )
-        self.ui.pushButton_page_calibrationSkipOptionButton.clicked.connect(
+        self.window.ui.pushButton_page_calibrationSkipOptionButton.clicked.connect(
             # SKIP
             self.go_to_processing
         )
 
         # CALIBRATION START (STARTS PROCESSING)
-        self.ui.pushButton_calibrationProcessStart.clicked.connect(
+        self.window.ui.pushButton_calibrationProcessStart.clicked.connect(
             self.__on_calibration_process_start_clicked
         )
         # CALIBRATION CANCEL (ABORTING)
-        self.ui.pushButton_cancelCalibration.clicked.connect(
+        self.window.ui.pushButton_cancelCalibration.clicked.connect(
             self.__on_cancel_calibration_clicked
         )
 
         # PROJECT INITIAL OPTIONS PAGE (CHOOSING DIRECTORY) -> PROCESSING MAIN PAGE
-        self.ui.pushButton_chooseProject.clicked.connect(
+        self.window.ui.pushButton_chooseProject.clicked.connect(
             self.__on_choose_project_clicked
         )
         # PROJECT CREATING PAGE (SUBMITING FORM) -> PROCESSING MAIN PAGE
-        self.ui.pushButton_newProjectCreatingSubmit.clicked.connect(
+        self.window.ui.pushButton_newProjectCreatingSubmit.clicked.connect(
             self.__on_new_project_creating_submit_clicked
         )
 
         # PROCESSING START -> PROCESSING STARTING
-        self.ui.pushButton_processingStart.clicked.connect(
+        self.window.ui.pushButton_processingStart.clicked.connect(
             self.__on_processing_start_clicked
         )
 
@@ -187,7 +191,7 @@ class AppRouter(AbstractGUIManager):
                 )
 
     def __on_calibration_process_start_clicked(self) -> None:
-        images_directory = self.ui.lineEdit_calibrationImagesDirectory.text()
+        images_directory = self.window.ui.lineEdit_calibrationImagesDirectory.text()
 
         if not images_directory:
             QMessageBox.critical(
@@ -205,9 +209,11 @@ class AppRouter(AbstractGUIManager):
             )
             return
 
-        if self.ui.groupBox_calibrationImagesDirectoryFieldSecondCamera.isChecked():
+        if (
+            self.window.ui.groupBox_calibrationImagesDirectoryFieldSecondCamera.isChecked()
+        ):
             images_directory_second_camera = (
-                self.ui.lineEdit_calibrationImagesDirectorySecondCamera.text()
+                self.window.ui.lineEdit_calibrationImagesDirectorySecondCamera.text()
             )
 
             if not images_directory_second_camera:
@@ -255,7 +261,14 @@ class AppRouter(AbstractGUIManager):
                     return
 
         elif self.calibration_manager.handler.get_calibration_method_name() == "room":
-            self.go_to_dots_creator(images_directory)
+            try:
+                self.go_to_dots_creator(images_directory)
+            except ValueError as e:
+                QMessageBox.critical(
+                    self.window,
+                    "Ошибка",
+                    f"{e}",
+                )
             return
         elif (
             self.calibration_manager.handler.get_calibration_method_name()
@@ -293,8 +306,8 @@ class AppRouter(AbstractGUIManager):
                 )
 
     def __on_new_project_creating_submit_clicked(self) -> None:
-        project_name = self.ui.lineEdit_newProjectCreatingNameField.text()
-        project_path = self.ui.lineEdit_newProjectCreatingPathField.text()
+        project_name = self.window.ui.lineEdit_newProjectCreatingNameField.text()
+        project_path = self.window.ui.lineEdit_newProjectCreatingPathField.text()
 
         if not project_name or not project_path:
             QMessageBox.critical(
@@ -308,7 +321,7 @@ class AppRouter(AbstractGUIManager):
             QMessageBox.critical(self.window, "Ошибка", f"Ошибка создания проекта: {e}")
 
     def __on_processing_start_clicked(self) -> None:
-        images_directory = self.ui.lineEdit_imagesDirectoryField.text()
+        images_directory = self.window.ui.lineEdit_imagesDirectoryField.text()
         if not images_directory or not os.path.isdir(images_directory):
             QMessageBox.critical(
                 self.window,
@@ -318,12 +331,12 @@ class AppRouter(AbstractGUIManager):
             return
 
         if (
-            not self.ui.checkBox_preprocessingImages.isHidden()
-            and self.ui.checkBox_preprocessingImages.isChecked()
+            not self.window.ui.checkBox_preprocessingImages.isHidden()
+            and self.window.ui.checkBox_preprocessingImages.isChecked()
         ):
-            if self.ui.groupBox_secondCameraProcessingField.isEnabled():
+            if self.window.ui.groupBox_secondCameraProcessingField.isEnabled():
                 images_directory_second_camera = (
-                    self.ui.lineEdit_secondCameraProcessingImagesDirectory.text()
+                    self.window.ui.lineEdit_secondCameraProcessingImagesDirectory.text()
                 )
                 if not os.path.isdir(images_directory_second_camera):
                     QMessageBox.critical(

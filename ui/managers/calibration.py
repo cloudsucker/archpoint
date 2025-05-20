@@ -2,7 +2,7 @@ import os
 
 from PySide6.QtWidgets import QFileDialog, QMessageBox
 
-from ui.managers.abstract import AbstractWindow, AbstractGUIManager
+from ui.managers import AbstractWindow, AbstractGUIManager
 from archpoint.handlers import CalibrationHandler
 
 

@@ -43,7 +43,6 @@ class MainWindow(QMainWindow):
 
         # APP ROUTER
         self.app_router = AppRouter(
-            self.ui,
             self,
             self.calibration_manager,
             self.dots_creator_manager,

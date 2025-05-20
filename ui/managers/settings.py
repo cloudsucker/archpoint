@@ -1,4 +1,4 @@
-from ui.managers.abstract import AbstractWindow, AbstractGUIManager
+from ui.managers import AbstractWindow, AbstractGUIManager
 
 
 class SettingsManager(AbstractGUIManager):

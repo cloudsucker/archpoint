@@ -19,7 +19,7 @@ from archpoint.calibration_methods.room import (
 )
 
 from ui.custom_widgets.custom_view import CustomGraphicsView
-from ui.managers.abstract import AbstractWindow, AbstractGUIManager
+from ui.managers import AbstractWindow, AbstractGUIManager
 
 
 class CustomGraphicsScene(QGraphicsScene):

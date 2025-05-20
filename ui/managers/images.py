@@ -3,7 +3,7 @@ from PySide6.QtGui import QIcon, QPixmap
 # TODO: ADD THE TRAY ICON OR DELETE THIS
 # from PySide6.QtWidgets import QSystemTrayIcon
 
-from ui.managers.abstract import AbstractWindow, AbstractGUIManager
+from ui.managers import AbstractWindow, AbstractGUIManager
 
 
 class ImagesManager(AbstractGUIManager):
