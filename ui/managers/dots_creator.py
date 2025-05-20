@@ -88,7 +88,11 @@ class DotsCreatorManager(AbstractGUIManager):
         self.view._point_items.clear()
         self.view._text_items.clear()
         self.__current_image_pixmap = QPixmap(self.current_image.image_path)
-        self.scene.addItem(QGraphicsPixmapItem(self.__current_image_pixmap))
+        pixmap_item = QGraphicsPixmapItem(self.__current_image_pixmap)
+        self.scene.addItem(pixmap_item)
+        self.view.fitInView(pixmap_item, Qt.KeepAspectRatio)
+        self.view._current_zoom = self.view.transform().m11()
+        self.view.update_point_sizes()
 
         for dot_id, (x, y) in self.current_image.image_points.items():
             if x is not None and y is not None:
@@ -276,7 +280,6 @@ class DotsCreatorManager(AbstractGUIManager):
                             new_id, *self.current_image.image_points[new_id]
                         )
                         table.item(row, 0).setData(Qt.UserRole, new_id)
-                        self.update()
                     except (InvalidDotId, DotWithTheSameIdAlreadyExists) as e:
                         item.setText(old_id)
                 else:

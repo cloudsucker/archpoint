@@ -18,6 +18,8 @@ class CalibrationHandler:
             "room": RoomCalibrationMethod,
         }
 
+        self.image_extensions = (".jpg", ".jpeg", ".png", ".JPG", ".JPEG", ".PNG")
+
     def is_completed(self) -> bool:
         """
         Метод для проверки завершенности калибровки.
@@ -78,6 +80,13 @@ class CalibrationHandler:
 
     def __get_image_paths_sorted(self, images_dir: str) -> list:
         image_names = sorted(os.listdir(images_dir), key=len)
+        image_names = [
+            name for name in image_names if name.endswith(self.image_extensions)
+        ]
+
+        if not image_names:
+            raise ValueError("В директории нет допустимых изображений.")
+
         return [os.path.join(images_dir, name) for name in image_names]
 
     def set_calibration_method(self, calibration_method: str) -> None:

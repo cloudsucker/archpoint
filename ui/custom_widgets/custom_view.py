@@ -63,8 +63,9 @@ class CustomGraphicsView(QGraphicsView):
 
             if point_id in self._text_items:
                 font = self._text_items[point_id].font()
-                font.setPixelSize(self._base_font_size / self._current_zoom)
-
+                font.setPixelSize(
+                    max(1, int(self._base_font_size / self._current_zoom))
+                )
                 self._text_items[point_id].setFont(font)
                 self._text_items[point_id].setPos(
                     center_x + 5 / self._current_zoom,
@@ -224,7 +225,7 @@ class CustomGraphicsView(QGraphicsView):
         self._point_items[point_id] = item
         text = self.scene().addText(point_id)
         font = QFont()
-        font.setPixelSize(self._base_font_size / self._current_zoom)
+        font.setPixelSize(max(1, int(self._base_font_size / self._current_zoom)))
         font.setBold(True)
         text.setFont(font)
         text.setPos(x + 5 / self._current_zoom, y - 10 / self._current_zoom)
@@ -239,7 +240,9 @@ class CustomGraphicsView(QGraphicsView):
 
             if point_id in self._text_items:
                 font = self._text_items[point_id].font()
-                font.setPixelSize(self._base_font_size / self._current_zoom)
+                font.setPixelSize(
+                    max(1, int(self._base_font_size / self._current_zoom))
+                )
                 font.setBold(True)
                 self._text_items[point_id].setFont(font)
                 self._text_items[point_id].setPos(

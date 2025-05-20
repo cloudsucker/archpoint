@@ -14,18 +14,18 @@ class HistoryEntry(TypedDict):
     Attributes:
         id (str): Уникальный идентификатор точки.
         method (str): Тип операции "add", "edit", "remove", "rename".
-        old_point (tuple[float, float] | None): Старые координаты точки на изображении (для edit).
-        new_point (tuple[float, float] | None): Новые координаты точки на изображении (для edit).
         old_id (str | None): Старый ID точки (для rename).
         new_id (str | None): Новый ID точки (для rename).
+        old_point (tuple[float, float] | None): Старые координаты точки на изображении (для edit).
+        new_point (tuple[float, float] | None): Новые координаты точки на изображении (для edit).
     """
 
     id: str
     method: str
-    old_point: tuple[float, float] | None
-    new_point: tuple[float, float] | None
     old_id: str | None
     new_id: str | None
+    old_point: tuple[float, float] | None
+    new_point: tuple[float, float] | None
 
 
 class RoomCalibrationMethod(CalibrationMethodAbstract):
@@ -86,6 +86,10 @@ class RoomImagesHandler:
         self.current_image_index = 0
 
     def initialize(self, image_paths: list[str]) -> None:
+        if not image_paths:
+            raise NoImagesInDirectoryError(
+                "Нет изобрважений для инициализации метода калибровки."
+            )
         for image_path in image_paths:
             self.images.append(RoomImageDotsEditor(image_path))
 
@@ -99,7 +103,7 @@ class RoomImagesHandler:
         self.__self_check()
         return index >= 0 and index < len(self.images)
 
-    def get_previous_image(self) -> RoomImageDotsEditor:
+    def get_previous_image(self) -> RoomImageDotsEditor | None:
         if self.__is_index_valid(self.current_image_index - 1):
             self.current_image_index -= 1
             return self.images[self.current_image_index]
@@ -138,7 +142,10 @@ class RoomImageDotsEditor:
             )
         self.image_path = image_path
         self.image_name = os.path.basename(image_path).split(".")[0]
-        self.image_points: dict[str, tuple[float, float]] = {}
+        if self.is_dots_file_exist():
+            self.load_points_from_file()
+        else:
+            self.image_points: dict[str, tuple[float, float]] = {}
         self.points_true_coords: dict[str, tuple[float, float, float]] = {}
         self.history: list[HistoryEntry] = []
 
@@ -172,6 +179,10 @@ class RoomImageDotsEditor:
                 "new_id": new_id,
             }
         )
+        if self.image_points:
+            self.save_points_to_file()
+        elif self.is_dots_file_exist():
+            self.delete_dots_file()
 
     def __validate_dot(self, id: str, point: tuple[float, float]) -> None:
         if not id:
@@ -195,8 +206,8 @@ class RoomImageDotsEditor:
             raise DotWithTheSameIdAlreadyExists(
                 f"Точка с указанным идентификатором {id} уже существует."
             )
-        self.__update_history(id, "add", None, point)
         self.image_points[id] = point
+        self.__update_history(id, "add", None, point)
 
     def edit_point(self, id: str, point: tuple[float, float]) -> None:
         self.__validate_dot(id, point)
@@ -204,8 +215,9 @@ class RoomImageDotsEditor:
             raise DotWithCurrentIdNotFound(
                 f"Точка с указанным идентификатором {id} не найдена."
             )
-        self.__update_history(id, "edit", self.image_points[id], point)
+        previous_point = self.image_points[id]
         self.image_points[id] = point
+        self.__update_history(id, "edit", previous_point, point)
 
     def edit_point_id(self, old_id: str, new_id: str) -> None:
         self.__validate_id(old_id)
@@ -221,16 +233,16 @@ class RoomImageDotsEditor:
                 f"Точка с указанным идентификатором {new_id} уже существует."
             )
 
-        self.__update_history(old_id, "rename", old_id=old_id, new_id=new_id)
         self.image_points[new_id] = self.image_points.pop(old_id)
+        self.__update_history(old_id, "rename", old_id=old_id, new_id=new_id)
 
     def remove_point(self, id: str) -> None:
         if id not in self.image_points.keys():
             raise DotWithCurrentIdNotFound(
                 f"Точка с указанным идентификатором {id} не найдена."
             )
-        self.__update_history(id, "remove", self.image_points[id], None)
         self.image_points.pop(id)
+        self.__update_history(id, "remove", self.image_points[id], None)
 
     def undo(self) -> None:
         if not self.history:
@@ -283,18 +295,31 @@ class RoomImageDotsEditor:
         self.points_true_coords = points
 
     def save_points_to_file(self) -> None:
-        filename = f"{os.path.basename(self.image_path).split(".")[0]}.json"
+        if self.image_points:
+            filename = f"{os.path.basename(self.image_path).split(".")[0]}.json"
+            filepath = os.path.join(os.path.dirname(self.image_path), filename)
+            with open(filepath, "w", encoding="utf-8") as file:
+                json.dump(self.image_points, file)
+
+    def is_dots_file_exist(self) -> bool:
+        filename = f"{os.path.basename(self.image_path).split('.')[0]}.json"
         filepath = os.path.join(os.path.dirname(self.image_path), filename)
-        with open(filepath, "w") as file:
-            json.dump(self.image_points, file)
+        return os.path.exists(filepath)
 
     def load_points_from_file(self) -> None:
         filename = f"{os.path.basename(self.image_path).split('.')[0]}.json"
         filepath = os.path.join(os.path.dirname(self.image_path), filename)
         if not os.path.exists(filepath):
             return
-        with open(filepath, "r") as file:
-            self.image_points = json.load(file)
+        with open(filepath, "r", encoding="utf-8") as file:
+            data = json.load(file)
+            self.image_points = {k: tuple(v) for k, v in data.items()}
+
+    def delete_dots_file(self) -> None:
+        filename = f"{os.path.basename(self.image_path).split('.')[0]}.json"
+        filepath = os.path.join(os.path.dirname(self.image_path), filename)
+        if os.path.exists(filepath):
+            os.remove(filepath)
 
 
 class DotsHistoryIsEmpty(Exception):
@@ -334,6 +359,10 @@ class RoomImagesManagerSelfCheckError(Exception):
 
 
 class RoomImageDotsEditorSelfCheckError(Exception):
+    pass
+
+
+class NoImagesInDirectoryError(Exception):
     pass
 
 
