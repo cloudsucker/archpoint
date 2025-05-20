@@ -32,6 +32,9 @@ class RoomCalibrationMethod(CalibrationMethodAbstract):
     def __init__(self):
         self.images_handler = RoomImagesHandler()
 
+    def __eq__(self, value):
+        return isinstance(value, str) and value == "room"
+
     def initialize(self, image_paths: list[str]) -> None:
         self.images_handler.initialize(image_paths)
 
@@ -84,6 +87,7 @@ class RoomImagesHandler:
     def __init__(self):
         self.images: list[RoomImageDotsEditor] = []
         self.current_image_index = 0
+        self.is_initialized = False
 
     def initialize(self, image_paths: list[str]) -> None:
         if not image_paths:
@@ -92,6 +96,7 @@ class RoomImagesHandler:
             )
         for image_path in image_paths:
             self.images.append(RoomImageDotsEditor(image_path))
+        self.is_initialized = True
 
     def __self_check(self) -> None:
         if len(self.images) == 0:
@@ -241,8 +246,9 @@ class RoomImageDotsEditor:
             raise DotWithCurrentIdNotFound(
                 f"Точка с указанным идентификатором {id} не найдена."
             )
+        removed_point = self.image_points[id]
         self.image_points.pop(id)
-        self.__update_history(id, "remove", self.image_points[id], None)
+        self.__update_history(id, "remove", removed_point, None)
 
     def undo(self) -> None:
         if not self.history:

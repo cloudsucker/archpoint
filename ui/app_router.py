@@ -50,14 +50,23 @@ class AppRouter(AbstractGUIManager):
         """Метод для корректного перехода к этапу калибровки.
         Проверяет состояние калибровки и переходит к соответствующему виджету."""
         self.calibration_manager.update_calibration_done_page()
+
         if self.calibration_manager.handler.is_completed():
             self.window.ui.stackedWidget_workSpace.setCurrentWidget(
                 self.window.ui.page_calibrationSteps_5_done
             )
             return
-        self.window.ui.stackedWidget_workSpace.setCurrentWidget(
-            self.window.ui.page_calibrationInitialChoice
-        )
+        elif (
+            self.calibration_manager.handler.method == "room"
+            and self.calibration_manager.handler.method.images_handler.is_initialized
+        ):
+            self.window.ui.stackedWidget_workSpace.setCurrentWidget(
+                self.window.ui.page_calibrationSteps_5_ImageDotsCreating
+            )
+        else:
+            self.window.ui.stackedWidget_workSpace.setCurrentWidget(
+                self.window.ui.page_calibrationInitialChoice
+            )
 
     def go_to_processing(self) -> None:
         if self.project_manager.handler.is_project_initialized:
@@ -92,7 +101,7 @@ class AppRouter(AbstractGUIManager):
             self.calibration_manager.handler.initialize_room_images_handler(images_path)
 
         self.dots_creator_manager.preprocess_dots_creator_page(
-            self.calibration_manager.handler.calibration_method.images_handler
+            self.calibration_manager.handler.method.images_handler
         )
         if not self.dots_creator_manager.is_completed():
             self.window.ui.stackedWidget_workSpace.setCurrentWidget(
@@ -245,7 +254,7 @@ class AppRouter(AbstractGUIManager):
                     self.window.ui.spinBox_chessboardSize_Setting_HeightInput.value(),
                     self.window.ui.spinBox_chessboardSize_Setting_WidthInput.value(),
                 )
-                self.calibration_manager.handler.calibration_method.set_chessboard_sizes(
+                self.calibration_manager.handler.method.set_chessboard_sizes(
                     board_size=board_sizes
                 )
                 try:
@@ -278,7 +287,7 @@ class AppRouter(AbstractGUIManager):
                 self.window.ui.spinBox_chessboardSize_Setting_HeightInput.value(),
                 self.window.ui.spinBox_chessboardSize_Setting_WidthInput.value(),
             )
-            self.calibration_manager.handler.calibration_method.set_chessboard_sizes(
+            self.calibration_manager.handler.method.set_chessboard_sizes(
                 board_size=board_sizes
             )
             self.calibration_manager.handler.calibrate(images_directory)

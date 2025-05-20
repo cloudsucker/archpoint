@@ -14,6 +14,9 @@ class ChessboardCalibrationMethod(CalibrationMethodAbstract):
         # для каждой камеры в режиме стерео-калибровки.
         self.__global_parameters = ["square_size", "board_size"]
 
+    def __eq__(self, other):
+        return isinstance(other, str) and other == "chessboard"
+
     def set_chessboard_sizes(
         self, square_size: int | None = None, board_size: tuple | None = None
     ) -> None:
