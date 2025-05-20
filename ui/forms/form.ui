@@ -296,7 +296,7 @@
             <number>0</number>
            </property>
            <property name="currentIndex">
-            <number>9</number>
+            <number>8</number>
            </property>
            <widget class="QWidget" name="page_calibrationInitialChoice">
             <layout class="QGridLayout" name="gridLayout_3">
@@ -1901,6 +1901,109 @@ li.checked::marker { content: &quot;\2612&quot;; }
                     </widget>
                    </item>
                   </layout>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QGroupBox" name="groupBox_chessboardSize_Setting">
+                  <property name="font">
+                   <font>
+                    <family>Rubik</family>
+                    <pointsize>12</pointsize>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="title">
+                   <string>Размер шахматной доски</string>
+                  </property>
+                  <property name="flat">
+                   <bool>true</bool>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_22">
+                   <item>
+                    <widget class="QLabel" name="label_chessboardSize_Setting_WidthTitle">
+                     <property name="font">
+                      <font>
+                       <family>Rubik</family>
+                       <pointsize>11</pointsize>
+                       <bold>false</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Ширина</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QSpinBox" name="spinBox_chessboardSize_Setting_WidthInput">
+                     <property name="font">
+                      <font>
+                       <family>Rubik</family>
+                       <pointsize>10</pointsize>
+                       <bold>false</bold>
+                      </font>
+                     </property>
+                     <property name="value">
+                      <number>11</number>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="label_chessboardSize_Setting_HeightTitle">
+                     <property name="font">
+                      <font>
+                       <family>Rubik</family>
+                       <pointsize>11</pointsize>
+                       <bold>false</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Высота</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QSpinBox" name="spinBox_chessboardSize_Setting_HeightInput">
+                     <property name="font">
+                      <font>
+                       <family>Rubik</family>
+                       <pointsize>10</pointsize>
+                       <bold>false</bold>
+                      </font>
+                     </property>
+                     <property name="value">
+                      <number>7</number>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <spacer name="horizontalSpacer_chessboardSize_Setting">
+                     <property name="orientation">
+                      <enum>Qt::Orientation::Horizontal</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>40</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                  </layout>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_3">
+                  <property name="font">
+                   <font>
+                    <family>Rubik</family>
+                    <pointsize>10</pointsize>
+                    <italic>true</italic>
+                    <bold>false</bold>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Примечение: в размере шахматной доски укажите кол-во перекрестий по ширине и высоте соответственно</string>
+                  </property>
                  </widget>
                 </item>
                 <item>

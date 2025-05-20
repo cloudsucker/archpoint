@@ -12,6 +12,7 @@ from ui.managers import (
     SettingsManager,
     StylesManager,
 )
+from archpoint.calibration_methods.chessboard import ChessboardSizeIsIncorrect
 
 
 class AppRouter(AbstractGUIManager):
@@ -234,9 +235,25 @@ class AppRouter(AbstractGUIManager):
                 self.calibration_manager.handler.get_calibration_method_name()
                 == "chessboard"
             ):
-                self.calibration_manager.handler.calibrate_stereo(
-                    images_directory, images_directory_second_camera
+                board_sizes = (
+                    self.window.ui.spinBox_chessboardSize_Setting_HeightInput.value(),
+                    self.window.ui.spinBox_chessboardSize_Setting_WidthInput.value(),
                 )
+                self.calibration_manager.handler.calibration_method.set_chessboard_sizes(
+                    board_size=board_sizes
+                )
+                try:
+                    self.calibration_manager.handler.calibrate_stereo(
+                        images_directory, images_directory_second_camera
+                    )
+                except ChessboardSizeIsIncorrect as e:
+                    QMessageBox.critical(
+                        self.window,
+                        "Ошибка",
+                        f"Укажите корректные размеры шахматного поля: {e}",
+                    )
+                    return
+
         elif self.calibration_manager.handler.get_calibration_method_name() == "room":
             self.go_to_dots_creator(images_directory)
             return
@@ -244,6 +261,13 @@ class AppRouter(AbstractGUIManager):
             self.calibration_manager.handler.get_calibration_method_name()
             == "chessboard"
         ):
+            board_sizes = (
+                self.window.ui.spinBox_chessboardSize_Setting_HeightInput.value(),
+                self.window.ui.spinBox_chessboardSize_Setting_WidthInput.value(),
+            )
+            self.calibration_manager.handler.calibration_method.set_chessboard_sizes(
+                board_size=board_sizes
+            )
             self.calibration_manager.handler.calibrate(images_directory)
 
         # TODO: ADD CALIBRATION LOGGING LOGIC

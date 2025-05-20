@@ -18,8 +18,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QCheckBox, QGraphicsView, QGridLayout,
     QGroupBox, QHBoxLayout, QHeaderView, QLabel,
     QLineEdit, QProgressBar, QPushButton, QSizePolicy,
-    QSpacerItem, QStackedWidget, QTableWidget, QTableWidgetItem,
-    QTextBrowser, QVBoxLayout, QWidget)
+    QSpacerItem, QSpinBox, QStackedWidget, QTableWidget,
+    QTableWidgetItem, QTextBrowser, QVBoxLayout, QWidget)
 
 class Ui_Widget(object):
     def setupUi(self, Widget):
@@ -916,6 +916,60 @@ class Ui_Widget(object):
 
         self.verticalLayout_14.addWidget(self.groupBox_calibrationImagesDirectoryFieldSecondCamera)
 
+        self.groupBox_chessboardSize_Setting = QGroupBox(self.groupBox_calibrationSteps_4)
+        self.groupBox_chessboardSize_Setting.setObjectName(u"groupBox_chessboardSize_Setting")
+        self.groupBox_chessboardSize_Setting.setFont(font3)
+        self.groupBox_chessboardSize_Setting.setFlat(True)
+        self.horizontalLayout_22 = QHBoxLayout(self.groupBox_chessboardSize_Setting)
+        self.horizontalLayout_22.setObjectName(u"horizontalLayout_22")
+        self.label_chessboardSize_Setting_WidthTitle = QLabel(self.groupBox_chessboardSize_Setting)
+        self.label_chessboardSize_Setting_WidthTitle.setObjectName(u"label_chessboardSize_Setting_WidthTitle")
+        font13 = QFont()
+        font13.setFamilies([u"Rubik"])
+        font13.setPointSize(11)
+        font13.setBold(False)
+        self.label_chessboardSize_Setting_WidthTitle.setFont(font13)
+
+        self.horizontalLayout_22.addWidget(self.label_chessboardSize_Setting_WidthTitle)
+
+        self.spinBox_chessboardSize_Setting_WidthInput = QSpinBox(self.groupBox_chessboardSize_Setting)
+        self.spinBox_chessboardSize_Setting_WidthInput.setObjectName(u"spinBox_chessboardSize_Setting_WidthInput")
+        self.spinBox_chessboardSize_Setting_WidthInput.setFont(font12)
+        self.spinBox_chessboardSize_Setting_WidthInput.setValue(11)
+
+        self.horizontalLayout_22.addWidget(self.spinBox_chessboardSize_Setting_WidthInput)
+
+        self.label_chessboardSize_Setting_HeightTitle = QLabel(self.groupBox_chessboardSize_Setting)
+        self.label_chessboardSize_Setting_HeightTitle.setObjectName(u"label_chessboardSize_Setting_HeightTitle")
+        self.label_chessboardSize_Setting_HeightTitle.setFont(font13)
+
+        self.horizontalLayout_22.addWidget(self.label_chessboardSize_Setting_HeightTitle)
+
+        self.spinBox_chessboardSize_Setting_HeightInput = QSpinBox(self.groupBox_chessboardSize_Setting)
+        self.spinBox_chessboardSize_Setting_HeightInput.setObjectName(u"spinBox_chessboardSize_Setting_HeightInput")
+        self.spinBox_chessboardSize_Setting_HeightInput.setFont(font12)
+        self.spinBox_chessboardSize_Setting_HeightInput.setValue(7)
+
+        self.horizontalLayout_22.addWidget(self.spinBox_chessboardSize_Setting_HeightInput)
+
+        self.horizontalSpacer_chessboardSize_Setting = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_22.addItem(self.horizontalSpacer_chessboardSize_Setting)
+
+
+        self.verticalLayout_14.addWidget(self.groupBox_chessboardSize_Setting)
+
+        self.label_3 = QLabel(self.groupBox_calibrationSteps_4)
+        self.label_3.setObjectName(u"label_3")
+        font14 = QFont()
+        font14.setFamilies([u"Rubik"])
+        font14.setPointSize(10)
+        font14.setBold(False)
+        font14.setItalic(True)
+        self.label_3.setFont(font14)
+
+        self.verticalLayout_14.addWidget(self.label_3)
+
         self.pushButton_calibrationProcessStart = QPushButton(self.groupBox_calibrationSteps_4)
         self.pushButton_calibrationProcessStart.setObjectName(u"pushButton_calibrationProcessStart")
         self.pushButton_calibrationProcessStart.setFont(font3)
@@ -1098,7 +1152,7 @@ class Ui_Widget(object):
         self.retranslateUi(Widget)
 
         self.pushButton_pageCalibration.setDefault(False)
-        self.stackedWidget_workSpace.setCurrentIndex(9)
+        self.stackedWidget_workSpace.setCurrentIndex(8)
 
 
         QMetaObject.connectSlotsByName(Widget)
@@ -1212,6 +1266,10 @@ class Ui_Widget(object):
         self.pushButton_setCalibrationImagesDirectory.setText(QCoreApplication.translate("Widget", u"\u0412\u044b\u0431\u0440\u0430\u0442\u044c", None))
         self.groupBox_calibrationImagesDirectoryFieldSecondCamera.setTitle(QCoreApplication.translate("Widget", u"\u041f\u0443\u0442\u044c \u043a \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u044f\u043c \u0441\u043e \u0432\u0442\u043e\u0440\u043e\u0439 \u043a\u0430\u043c\u0435\u0440\u044b (\u0441\u0442\u0435\u0440\u0435\u043e\u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0430)", None))
         self.pushButton_setCalibrationImagesDirectorySecondCamera.setText(QCoreApplication.translate("Widget", u"\u0412\u044b\u0431\u0440\u0430\u0442\u044c", None))
+        self.groupBox_chessboardSize_Setting.setTitle(QCoreApplication.translate("Widget", u"\u0420\u0430\u0437\u043c\u0435\u0440 \u0448\u0430\u0445\u043c\u0430\u0442\u043d\u043e\u0439 \u0434\u043e\u0441\u043a\u0438", None))
+        self.label_chessboardSize_Setting_WidthTitle.setText(QCoreApplication.translate("Widget", u"\u0428\u0438\u0440\u0438\u043d\u0430", None))
+        self.label_chessboardSize_Setting_HeightTitle.setText(QCoreApplication.translate("Widget", u"\u0412\u044b\u0441\u043e\u0442\u0430", None))
+        self.label_3.setText(QCoreApplication.translate("Widget", u"\u041f\u0440\u0438\u043c\u0435\u0447\u0435\u043d\u0438\u0435: \u0432 \u0440\u0430\u0437\u043c\u0435\u0440\u0435 \u0448\u0430\u0445\u043c\u0430\u0442\u043d\u043e\u0439 \u0434\u043e\u0441\u043a\u0438 \u0443\u043a\u0430\u0436\u0438\u0442\u0435 \u043a\u043e\u043b-\u0432\u043e \u043f\u0435\u0440\u0435\u043a\u0440\u0435\u0441\u0442\u0438\u0439 \u043f\u043e \u0448\u0438\u0440\u0438\u043d\u0435 \u0438 \u0432\u044b\u0441\u043e\u0442\u0435 \u0441\u043e\u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0435\u043d\u043d\u043e", None))
         self.pushButton_calibrationProcessStart.setText(QCoreApplication.translate("Widget", u"\u0417\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u044c \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0443", None))
         self.textBrowser_calibrationProcessLogs.setHtml(QCoreApplication.translate("Widget", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
