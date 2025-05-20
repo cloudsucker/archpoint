@@ -1992,7 +1992,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLabel" name="label_3">
+                 <widget class="QLabel" name="label_chessboardSize_Setting_Tips">
                   <property name="font">
                    <font>
                     <family>Rubik</family>

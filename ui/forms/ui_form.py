@@ -959,16 +959,16 @@ class Ui_Widget(object):
 
         self.verticalLayout_14.addWidget(self.groupBox_chessboardSize_Setting)
 
-        self.label_3 = QLabel(self.groupBox_calibrationSteps_4)
-        self.label_3.setObjectName(u"label_3")
+        self.label_chessboardSize_Setting_Tips = QLabel(self.groupBox_calibrationSteps_4)
+        self.label_chessboardSize_Setting_Tips.setObjectName(u"label_chessboardSize_Setting_Tips")
         font14 = QFont()
         font14.setFamilies([u"Rubik"])
         font14.setPointSize(10)
         font14.setBold(False)
         font14.setItalic(True)
-        self.label_3.setFont(font14)
+        self.label_chessboardSize_Setting_Tips.setFont(font14)
 
-        self.verticalLayout_14.addWidget(self.label_3)
+        self.verticalLayout_14.addWidget(self.label_chessboardSize_Setting_Tips)
 
         self.pushButton_calibrationProcessStart = QPushButton(self.groupBox_calibrationSteps_4)
         self.pushButton_calibrationProcessStart.setObjectName(u"pushButton_calibrationProcessStart")
@@ -1269,7 +1269,7 @@ class Ui_Widget(object):
         self.groupBox_chessboardSize_Setting.setTitle(QCoreApplication.translate("Widget", u"\u0420\u0430\u0437\u043c\u0435\u0440 \u0448\u0430\u0445\u043c\u0430\u0442\u043d\u043e\u0439 \u0434\u043e\u0441\u043a\u0438", None))
         self.label_chessboardSize_Setting_WidthTitle.setText(QCoreApplication.translate("Widget", u"\u0428\u0438\u0440\u0438\u043d\u0430", None))
         self.label_chessboardSize_Setting_HeightTitle.setText(QCoreApplication.translate("Widget", u"\u0412\u044b\u0441\u043e\u0442\u0430", None))
-        self.label_3.setText(QCoreApplication.translate("Widget", u"\u041f\u0440\u0438\u043c\u0435\u0447\u0435\u043d\u0438\u0435: \u0432 \u0440\u0430\u0437\u043c\u0435\u0440\u0435 \u0448\u0430\u0445\u043c\u0430\u0442\u043d\u043e\u0439 \u0434\u043e\u0441\u043a\u0438 \u0443\u043a\u0430\u0436\u0438\u0442\u0435 \u043a\u043e\u043b-\u0432\u043e \u043f\u0435\u0440\u0435\u043a\u0440\u0435\u0441\u0442\u0438\u0439 \u043f\u043e \u0448\u0438\u0440\u0438\u043d\u0435 \u0438 \u0432\u044b\u0441\u043e\u0442\u0435 \u0441\u043e\u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0435\u043d\u043d\u043e", None))
+        self.label_chessboardSize_Setting_Tips.setText(QCoreApplication.translate("Widget", u"\u041f\u0440\u0438\u043c\u0435\u0447\u0435\u043d\u0438\u0435: \u0432 \u0440\u0430\u0437\u043c\u0435\u0440\u0435 \u0448\u0430\u0445\u043c\u0430\u0442\u043d\u043e\u0439 \u0434\u043e\u0441\u043a\u0438 \u0443\u043a\u0430\u0436\u0438\u0442\u0435 \u043a\u043e\u043b-\u0432\u043e \u043f\u0435\u0440\u0435\u043a\u0440\u0435\u0441\u0442\u0438\u0439 \u043f\u043e \u0448\u0438\u0440\u0438\u043d\u0435 \u0438 \u0432\u044b\u0441\u043e\u0442\u0435 \u0441\u043e\u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0435\u043d\u043d\u043e", None))
         self.pushButton_calibrationProcessStart.setText(QCoreApplication.translate("Widget", u"\u0417\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u044c \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0443", None))
         self.textBrowser_calibrationProcessLogs.setHtml(QCoreApplication.translate("Widget", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
