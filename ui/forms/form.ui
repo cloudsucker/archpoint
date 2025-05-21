@@ -296,7 +296,7 @@
             <number>0</number>
            </property>
            <property name="currentIndex">
-            <number>8</number>
+            <number>9</number>
            </property>
            <widget class="QWidget" name="page_calibrationInitialChoice">
             <layout class="QGridLayout" name="gridLayout_3">
@@ -1929,7 +1929,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                       </font>
                      </property>
                      <property name="text">
-                      <string>Ширина</string>
+                      <string>Ширина:</string>
                      </property>
                     </widget>
                    </item>
@@ -1957,7 +1957,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                       </font>
                      </property>
                      <property name="text">
-                      <string>Высота</string>
+                      <string>Высота:</string>
                      </property>
                     </widget>
                    </item>
@@ -1972,6 +1972,34 @@ li.checked::marker { content: &quot;\2612&quot;; }
                      </property>
                      <property name="value">
                       <number>7</number>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="label_chessboardSize_Setting_SquareSize">
+                     <property name="font">
+                      <font>
+                       <family>Rubik</family>
+                       <pointsize>11</pointsize>
+                       <bold>false</bold>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Размер шахматной клетки (мм):</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QDoubleSpinBox" name="doubleSpinBox_chessboardSize_Setting_SquareSizeInput">
+                     <property name="font">
+                      <font>
+                       <family>Rubik</family>
+                       <pointsize>10</pointsize>
+                       <bold>false</bold>
+                      </font>
+                     </property>
+                     <property name="decimals">
+                      <number>1</number>
                      </property>
                     </widget>
                    </item>
@@ -2197,6 +2225,22 @@ li.checked::marker { content: &quot;\2612&quot;; }
                      </layout>
                     </widget>
                    </item>
+                   <item>
+                    <widget class="QPushButton" name="pushButton_goToSettingRealCoordinates">
+                     <property name="enabled">
+                      <bool>false</bool>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Rubik</family>
+                       <pointsize>11</pointsize>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Завершить разметку</string>
+                     </property>
+                    </widget>
+                   </item>
                   </layout>
                  </widget>
                 </item>
@@ -2229,6 +2273,166 @@ li.checked::marker { content: &quot;\2612&quot;; }
                     <string>Y</string>
                    </property>
                   </column>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QWidget" name="page_calibrationSteps_5_ImageDotsCreating_SetCoords">
+            <layout class="QVBoxLayout" name="verticalLayout_35">
+             <item>
+              <widget class="QGroupBox" name="groupBox_settingRealCoordinates_main">
+               <property name="title">
+                <string>Добавление внутренних координат</string>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_28">
+                <item>
+                 <widget class="QLabel" name="label_setRealCoordinates_PageInfo">
+                  <property name="font">
+                   <font>
+                    <family>Rubik</family>
+                    <pointsize>10</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Для запуска калибровки укажите внутренние координаты точек.</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QTableWidget" name="tableWidget_imageDotsAndRealCoordinates">
+                  <property name="sortingEnabled">
+                   <bool>true</bool>
+                  </property>
+                  <column>
+                   <property name="text">
+                    <string>ID</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>X</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>Y</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>REAL X</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>REAL Y</string>
+                   </property>
+                  </column>
+                  <column>
+                   <property name="text">
+                    <string>REAL Z</string>
+                   </property>
+                  </column>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLabel" name="label_setRealCoordinates_tips">
+                  <property name="font">
+                   <font>
+                    <family>Rubik</family>
+                    <pointsize>10</pointsize>
+                    <italic>true</italic>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Примечание: внутренние (настоящие) координаты - это трёхмерные координаты точек внутри помещения. Вы также можете загрузить их из файла. Поддерживаемые форматы: .txt, .csv. Структура файла: ID, X, Y, Z.</string>
+                  </property>
+                  <property name="scaledContents">
+                   <bool>false</bool>
+                  </property>
+                  <property name="wordWrap">
+                   <bool>true</bool>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QGroupBox" name="groupBox_setRealCoordinatesPage_buttons">
+                  <property name="title">
+                   <string/>
+                  </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_23">
+                   <item>
+                    <widget class="QPushButton" name="pushButton_returnToDotsCreator">
+                     <property name="font">
+                      <font>
+                       <family>Rubik</family>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Назад</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <spacer name="horizontalSpacer_setRealCoordinatesPage_betweenButtons_left">
+                     <property name="orientation">
+                      <enum>Qt::Orientation::Horizontal</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>40</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="pushButton_loadRealCoordinatesFromFile">
+                     <property name="font">
+                      <font>
+                       <family>Rubik</family>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Загрузить из файла</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <spacer name="horizontalSpacer_setRealCoordinatesPage_betweenButtons_right">
+                     <property name="orientation">
+                      <enum>Qt::Orientation::Horizontal</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>40</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="pushButton_startCalibrationProcessFromSettingRealCoordinates">
+                     <property name="enabled">
+                      <bool>false</bool>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Rubik</family>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Запустить калибровку</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
                  </widget>
                 </item>
                </layout>
