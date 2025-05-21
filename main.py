@@ -26,6 +26,7 @@ class MainWindow(QMainWindow):
 
         # APP PREPROCESS
         self.setWindowTitle("Archpoint")
+        self.setMinimumSize(950, 750)
 
         # HANDLERS
         self.calibration_handler = CalibrationHandler()
