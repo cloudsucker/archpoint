@@ -666,7 +666,7 @@ class Ui_Widget(object):
         self.verticalLayout_13.setObjectName(u"verticalLayout_13")
         self.groupBox_calibrationSteps_1_3_PreparingChessboardTipsMain = QGroupBox(self.page_calibrationSteps_1_3_PreparingChessboardTips)
         self.groupBox_calibrationSteps_1_3_PreparingChessboardTipsMain.setObjectName(u"groupBox_calibrationSteps_1_3_PreparingChessboardTipsMain")
-        self.groupBox_calibrationSteps_1_3_PreparingChessboardTipsMain.setFont(font6)
+        self.groupBox_calibrationSteps_1_3_PreparingChessboardTipsMain.setFont(font5)
         self.verticalLayout_9 = QVBoxLayout(self.groupBox_calibrationSteps_1_3_PreparingChessboardTipsMain)
         self.verticalLayout_9.setObjectName(u"verticalLayout_9")
         self.groupBox_calibrationPreparingStep1 = QGroupBox(self.groupBox_calibrationSteps_1_3_PreparingChessboardTipsMain)
@@ -1260,7 +1260,7 @@ class Ui_Widget(object):
         self.retranslateUi(Widget)
 
         self.pushButton_pageCalibration.setDefault(False)
-        self.stackedWidget_workSpace.setCurrentIndex(9)
+        self.stackedWidget_workSpace.setCurrentIndex(10)
 
 
         QMetaObject.connectSlotsByName(Widget)
