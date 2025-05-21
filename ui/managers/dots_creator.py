@@ -7,9 +7,11 @@ from PySide6.QtWidgets import (
     QTableWidget,
     QLineEdit,
     QInputDialog,
+    QHeaderView,
+    QMessageBox,
 )
 from PySide6.QtWidgets import QGraphicsPixmapItem
-from PySide6.QtGui import QDoubleValidator, QTransform
+from PySide6.QtGui import QDoubleValidator
 
 from archpoint.calibration_methods.room import (
     RoomImagesHandler,
@@ -80,11 +82,18 @@ class DotsCreatorManager(AbstractGUIManager):
         self.__show_current_image_name()
         self.__update_dots_table()
 
-    def is_completed(self) -> bool:
-        return self.images_handler.is_completed()
+        if self.are_all_images_dots_set():
+            self.window.ui.pushButton_goToSettingRealCoordinates.setEnabled(True)
+        else:
+            self.window.ui.pushButton_goToSettingRealCoordinates.setEnabled(False)
+
+    def are_all_images_dots_set(self) -> bool:
+        return self.images_handler.are_all_image_dots_set()
+
+    def are_real_coordinates_completed(self) -> bool:
+        return self.images_handler.are_all_real_coordinates_completed()
 
     def __render_current_image(self):
-        # Store current view transformation to preserve zoom and position
         current_transform = self.view.transform()
         current_scroll_x = self.view.horizontalScrollBar().value()
         current_scroll_y = self.view.verticalScrollBar().value()
@@ -122,6 +131,13 @@ class DotsCreatorManager(AbstractGUIManager):
         table.setEditTriggers(QTableWidget.DoubleClicked)
         table.setFocusPolicy(Qt.StrongFocus)
         table.keyPressEvent = self.__on_table_key_press
+        table.horizontalHeader().setSectionResizeMode(QHeaderView.Fixed)
+        table.verticalHeader().setSectionResizeMode(QHeaderView.Fixed)
+        table.setFixedWidth(280)
+        table.verticalHeader().setFixedWidth(30)
+        table.setColumnWidth(0, 70)
+        table.setColumnWidth(1, 90)
+        table.setColumnWidth(2, 90)
 
     def __update_dots_table(self):
         points = self.current_image.image_points
@@ -156,8 +172,6 @@ class DotsCreatorManager(AbstractGUIManager):
             table.setItem(row, 2, y_item)
             row += 1
 
-        table.resizeColumnsToContents()
-        table.resizeRowsToContents()
         table.blockSignals(False)
 
     def __connect_buttons(self):
@@ -168,6 +182,14 @@ class DotsCreatorManager(AbstractGUIManager):
         self.connect_button(
             self.window.ui.pushButton_imageDotsCreator_getPreviousImage,
             self.__on_get_previous_image_clicked,
+        )
+        self.connect_button(
+            self.window.ui.pushButton_goToSettingRealCoordinates,
+            self.__on_go_to_setting_real_coordinates_clicked,
+        )
+        self.connect_button(
+            self.window.ui.pushButton_returnToDotsCreator,
+            self.__on_return_to_dots_creator_clicked,
         )
 
     def __is_dot_valid(self, x: float, y: float) -> bool:
@@ -189,6 +211,22 @@ class DotsCreatorManager(AbstractGUIManager):
             self.redo_stack.clear()
             self.view.deselect_point()
             self.update()
+
+    def __on_go_to_setting_real_coordinates_clicked(self):
+        if not self.are_all_images_dots_set():
+            QMessageBox.critical(
+                self.window,
+                "Ошибка",
+                "Завершите разметку изображений для перехода к следующему этапу.",
+            )
+        self.window.ui.stackedWidget_workSpace.setCurrentWidget(
+            self.window.ui.page_calibrationSteps_5_ImageDotsCreating_SetCoords
+        )
+
+    def __on_return_to_dots_creator_clicked(self):
+        self.window.ui.stackedWidget_workSpace.setCurrentWidget(
+            self.window.ui.page_calibrationSteps_5_ImageDotsCreating
+        )
 
     def __generate_unique_id(self) -> str:
         existing_ids = set(self.current_image.image_points.keys())
@@ -327,9 +365,9 @@ class DotsCreatorManager(AbstractGUIManager):
     def __on_table_key_press(self, event):
         table = self.window.ui.tableWidget_imageDotsCreator_DotsData
         if event.key() == Qt.Key_Delete:
-            selected_rows = table.selectedRows()
-            if selected_rows:
-                row = selected_rows[0]
+            selected_indexes = table.selectedIndexes()
+            if selected_indexes:
+                row = selected_indexes[0].row()
                 point_id = table.item(row, 0).text()
                 self.__on_point_removed(point_id)
         else:

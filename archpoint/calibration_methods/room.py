@@ -80,7 +80,9 @@ class RoomCalibrationMethod(CalibrationMethodAbstract):
         return imgpoints, np.array(objpoints)
 
     def is_completed(self) -> bool:
-        return all(image.is_completed() for image in self.images_handler.images)
+        return all(
+            image.are_all_image_dots_set() for image in self.images_handler.images
+        )
 
 
 class RoomImagesHandler:
@@ -130,9 +132,13 @@ class RoomImagesHandler:
         if self.__is_index_valid(index):
             return self.images[index]
 
-    def is_completed(self) -> bool:
+    def are_all_image_dots_set(self) -> bool:
         self.__self_check()
-        return all(image.is_completed() for image in self.images)
+        return all(image.are_all_image_dots_set() for image in self.images)
+
+    def are_all_real_coordinates_completed(self) -> bool:
+        self.__self_check()
+        return all(image.are_real_coordinates_completed() for image in self.images)
 
     def clear(self) -> None:
         self.images.clear()
@@ -154,10 +160,13 @@ class RoomImageDotsEditor:
         self.points_true_coords: dict[str, tuple[float, float, float]] = {}
         self.history: list[HistoryEntry] = []
 
-    def is_completed(self) -> bool:
+    def are_all_image_dots_set(self) -> bool:
+        return len(self.image_points) >= 4
+
+    def are_real_coordinates_completed(self) -> bool:
         if len(self.image_points) != len(self.points_true_coords):
             return False
-        return len(self.image_points) >= 4
+        return self.are_all_image_dots_set()
 
     def __self_check(self) -> None:
         if len(self.image_points) != len(self.points_true_coords):

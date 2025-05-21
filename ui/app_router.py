@@ -1,5 +1,5 @@
 import os
-from PySide6.QtWidgets import QMainWindow, QMessageBox, QFileDialog
+from PySide6.QtWidgets import QMessageBox, QFileDialog
 
 from ui.managers import (
     AbstractWindow,
@@ -103,13 +103,14 @@ class AppRouter(AbstractGUIManager):
         self.dots_creator_manager.preprocess_dots_creator_page(
             self.calibration_manager.handler.method.images_handler
         )
-        if not self.dots_creator_manager.is_completed():
+        if not self.dots_creator_manager.are_all_images_dots_set():
             self.window.ui.stackedWidget_workSpace.setCurrentWidget(
                 self.window.ui.page_calibrationSteps_5_ImageDotsCreating
             )
-        # else:
-        #    TODO: ЗАПУСКАТЬ КАЛИБРОВКУ ЕСЛИ РАЗМЕТКА ИЗОБРАЖЕНИЙ ЗАВЕРШЕНА
-        #    pass
+        else:
+            self.window.ui.stackedWidget_workSpace.setCurrentWidget(
+                self.window.ui.page_calibrationSteps_5_ImageDotsCreating_SetCoords
+            )
 
     def __connect_buttons(self) -> None:
         # LEFT MENU BUTTONS
