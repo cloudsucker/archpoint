@@ -2,54 +2,32 @@
 * {
     font-family: "Rubik", sans-serif;
     font-size: 16px;
-    color: #e0e0e0;
 }
 
 /* = = = = WIDGET STYLES = = = = */
 QWidget {
-    background-color: #1a1a1a;
     border: none;
 }
 
 /* QPushButton */
 QPushButton {
     text-align: center;
-    background-color: #2b2b2b;
     border-radius: 4px;
     padding: 6px 12px;
     font-size: 14px;
     font-weight: 400;
 }
 
-QPushButton:hover {
-    background-color: #3c3c3c;
-}
-
-QPushButton:pressed {
-    background-color: #4d4d4d;
-}
-
-QPushButton:disabled {
-    background-color: #2a2a2a;
-    color: #777777;
-}
-
 /* QLineEdit */
 QLineEdit {
-    background-color: #2a2a2a;
     border-radius: 3px;
     padding: 4px 10px;
     border: 1px solid transparent;
     font-size: 14px;
 }
 
-QLineEdit:focus {
-    border: 1px solid #7777aa;
-}
-
 /* QTextBrowser */
 QTextBrowser {
-    background-color: #2a2a2a;
     border-radius: 3px;
     padding: 6px 10px;
     border: 1px solid transparent;
@@ -69,7 +47,6 @@ QGroupBox {
     border: none;
     font-size: 16px;
     font-weight: 600;
-    color: #e0e0e0;
 }
 
 /* QCheckBox */
@@ -81,36 +58,18 @@ QCheckBox {
 QCheckBox::indicator {
     width: 14px;
     height: 14px;
-    border: 1px solid #7777aa;
     border-radius: 2px;
-    background-color: #1f1f1f;
-}
-
-QCheckBox::indicator:checked {
-    image: url("static/icons/check_white.png");
-}
-
-QCheckBox::indicator:hover {
-    border: 1px solid #8888bb;
 }
 
 /* QProgressBar */
 QProgressBar {
     text-align: center;
-    background-color: #2a2a2a;
     border-radius: 4px;
     border: none;
 }
 
-QProgressBar::chunk {
-    background-color: #7777aa;
-    border-radius: 4px;
-}
-
 /* QTableWidget */
 QTableWidget {
-    background-color: #2a2a2a;
-    border: 1px solid #33333b;
     border-radius: 3px;
     font-size: 14px;
 }
@@ -119,13 +78,7 @@ QTableWidget::item {
     padding: 4px;
 }
 
-QTableWidget::item:selected {
-    background-color: #3c3c3c;
-    color: #ffffff;
-}
-
 QHeaderView::section {
-    background-color: #2b2b2b;
     padding: 4px;
     border: none;
     font-size: 14px;
@@ -134,8 +87,6 @@ QHeaderView::section {
 
 /* QGraphicsView */
 QGraphicsView {
-    background-color: #2a2a2a;
-    border: 1px solid #33333b;
     border-radius: 3px;
 }
 
@@ -149,13 +100,7 @@ QScrollBar:horizontal {
 
 QScrollBar::handle:vertical,
 QScrollBar::handle:horizontal {
-    background-color: #55555d;
     border-radius: 4px;
-}
-
-QScrollBar::handle:vertical:hover,
-QScrollBar::handle:horizontal:hover {
-    background-color: #66666e;
 }
 
 QScrollBar::add-line,
@@ -165,11 +110,6 @@ QScrollBar::sub-line {
 }
 
 /* = = = = LEFT MENU = = = = = */
-#groupBox_pagesAndSettings {
-    border-right: 1px solid #33333b;
-}
-
-/* LOGO */
 #label_appLogo {
     padding: 10px;
     text-align: center;
@@ -179,36 +119,22 @@ QScrollBar::sub-line {
 #pushButton_settings,
 #pushButton_themeToggle {
     font-size: 12px;
-    color: #e0e0e0;
     background: none;
     margin-bottom: 10px;
-}
-
-#pushButton_settings:hover,
-#pushButton_themeToggle:hover {
-    color: #ffffff;
-    font-weight: 500;
 }
 
 /* PAGE NAVIGATION BUTTONS */
 #pushButton_pageCalibration,
 #pushButton_pageProcess {
     font-size: 14px;
-    color: #e0e0e0;
     background: none;
     text-align: left;
     padding: 8px 10px;
 }
 
-#pushButton_pageCalibration:hover,
-#pushButton_pageProcess:hover {
-    color: #ffffff;
-}
-
 #pushButton_pageCalibration:checked,
 #pushButton_pageProcess:checked {
     margin-left: 5px;
-    background-color: #3c3c44;
 }
 
 /* H1 */
@@ -266,7 +192,7 @@ QScrollBar::sub-line {
     padding: 0;
 }
 
-/* PATH INPIT LITTLE MARGIN */
+/* PATH INPUT LITTLE MARGIN */
 #lineEdit_imagesDirectoryField,
 #lineEdit_secondCameraProcessingImagesDirectory {
     margin-top: 5px;
@@ -288,13 +214,4 @@ QScrollBar::sub-line {
     font-size: 15px;
     font-weight: normal;
     padding-top: 10px;
-}
-
-/* LOGGING */
-#textBrowser_calibrationProcessLogs,
-#textBrowser_processingLogs,
-#textBrowser_calibrationResultsData {
-    color: #7777aa;
-    font-size: 11px;
-    background-color: #2a2a2a;
 }

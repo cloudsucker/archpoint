@@ -38,7 +38,7 @@ QPushButton:disabled {
 QLineEdit {
     background-color: #ebebeb;
     border-radius: 3px;
-    padding: 6px 10px;
+    padding: 4px 10px;
     border: 1px solid transparent;
     font-size: 14px;
 }
@@ -213,15 +213,9 @@ QScrollBar::sub-line {
 
 #pushButton_pageCalibration:checked,
 #pushButton_pageProcess:checked {
+    margin-left: 5px;
     background-color: #e3e3f7;
 }
-
-/* OPTIONS FIELDS */
-/* #groupBox_page_calibrationFromFileOptionField,
-#groupBox_page_0_calibrationStartOptionField,
-#groupBox_page_calibrationSkipOptionField {
-    
-} */
 
 /* OPTIONS TITLES */
 #label_page_calibrationFromFileOptionTitle,
@@ -229,4 +223,83 @@ QScrollBar::sub-line {
 #label_page_calibrationSkipOptionTitle {
     font-weight: 500;
     font-size: 15px;
+}
+
+/* H1 */
+#groupBox_calibrationSteps_0_MethodSelectionMain,
+#groupBox_newProjectCreatingMain,
+#groupBox_calibrationSteps_1_3_PreparingRoomTipsMain,
+#groupBox_calibrationSteps_1_3_PreparingChessboardTipsMain,
+#groupBox_calibrationSteps_4,
+#groupBox_processingProcessMain,
+#groupBox_calibrationSteps_5_doneMain {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* MAIN GROUP SPACING */
+#groupBox_calibrationSteps_1_3_PreparingRoomTipsMain,
+#groupBox_calibrationSteps_1_3_PreparingChessboardTipsMain,
+#groupBox_calibrationSteps_4,
+#groupBox_newProjectCreatingMain,
+#groupBox_processingProcessMain,
+#groupBox_calibrationSteps_5_doneMain {
+    padding-top: 40px;
+}
+
+/* INFO AND TIPS */
+#label_page_calibrationSkipOptionText,
+#label_calibrationPreparingStep1_info,
+#label_calibrationPreparingStep2_info,
+#label_calibrationPreparingStep3_info,
+#label_calibrationPreparingRoomTipsStep1_Info,
+#label_calibrationPreparingRoomTipsStep2_Info,
+#label_calibrationPreparingRoomTipsStep3_Info,
+#checkBox_preprocessingImages {
+    font-size: 13px;
+    font-weight: 400;
+    padding-top: 10px;
+}
+
+/* H2 */
+#label_page_calibrationFromFileOptionTitle,
+#label_page_calibrationStartOptionTitle,
+#label_page_calibrationSkipOptionTitle,
+#label_calibrationSteps_0_MethodAutoTitle,
+#label_calibrationSteps_0_MethodManualTitle,
+#label_chooseProjectTitle,
+#label_newProjectTitle {
+    font-size: 15px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+/* PATH INPUT PADDING REMOVE */
+#groupBox_newProjectCreatingPath {
+    padding: 0;
+}
+
+/* PATH INPIT LITTLE MARGIN */
+#lineEdit_imagesDirectoryField,
+#lineEdit_secondCameraProcessingImagesDirectory {
+    margin-top: 5px;
+}
+
+/* H3 */
+#groupBox_calibrationPreparingStep1,
+#groupBox_calibrationPreparingStep2,
+#groupBox_calibrationPreparingStep3,
+#groupBox_calibrationPreparingRoomTipsStep_1,
+#groupBox_calibrationPreparingRoomTipsStep_2,
+#groupBox_calibrationPreparingRoomTipsStep_3,
+#groupBox_calibrationImagesDirectoryField,
+#groupBox_calibrationImagesDirectoryFieldSecondCamera,
+#label_newProjectCreatingNameFieldTitle,
+#label_newProjectCreatingPathFieldTitle,
+#groupBox_processPathSetter_Field,
+#groupBox_secondCameraProcessingField {
+    font-size: 15px;
+    font-weight: normal;
+    padding-top: 10px;
 }

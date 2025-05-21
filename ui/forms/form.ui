@@ -296,7 +296,7 @@
             <number>0</number>
            </property>
            <property name="currentIndex">
-            <number>9</number>
+            <number>10</number>
            </property>
            <widget class="QWidget" name="page_calibrationInitialChoice">
             <layout class="QGridLayout" name="gridLayout_3">
@@ -1326,8 +1326,7 @@ li.checked::marker { content: &quot;\2612&quot;; }
                <property name="font">
                 <font>
                  <family>Rubik</family>
-                 <pointsize>14</pointsize>
-                 <bold>true</bold>
+                 <pointsize>12</pointsize>
                 </font>
                </property>
                <property name="title">
