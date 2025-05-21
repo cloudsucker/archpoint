@@ -17,10 +17,11 @@ class CustomGraphicsView(QGraphicsView):
 
     def __init__(self, parent=None):
         super().__init__(parent)
-        self._zoom_factor = 1.1
-        self._base_point_size = 9
-        self._base_font_size = 12
+        self._zoom_factor = 1.2
+        self._base_point_size = 10
+        self._base_font_size = 13
         self._current_zoom = 1.0
+        self._min_font_size = 3
         self.setTransformationAnchor(QGraphicsView.AnchorUnderMouse)
         self.setResizeAnchor(QGraphicsView.AnchorUnderMouse)
         self.setDragMode(QGraphicsView.NoDrag)
@@ -64,7 +65,10 @@ class CustomGraphicsView(QGraphicsView):
             if point_id in self._text_items:
                 font = self._text_items[point_id].font()
                 font.setPixelSize(
-                    max(1, int(self._base_font_size / self._current_zoom))
+                    max(
+                        self._min_font_size,
+                        int(self._base_font_size / self._current_zoom),
+                    )
                 )
                 self._text_items[point_id].setFont(font)
                 self._text_items[point_id].setPos(
@@ -225,7 +229,9 @@ class CustomGraphicsView(QGraphicsView):
         self._point_items[point_id] = item
         text = self.scene().addText(point_id)
         font = QFont()
-        font.setPixelSize(max(1, int(self._base_font_size / self._current_zoom)))
+        font.setPixelSize(
+            max(self._min_font_size, int(self._base_font_size / self._current_zoom))
+        )
         font.setBold(True)
         text.setFont(font)
         text.setPos(x + 5 / self._current_zoom, y - 10 / self._current_zoom)
@@ -241,7 +247,10 @@ class CustomGraphicsView(QGraphicsView):
             if point_id in self._text_items:
                 font = self._text_items[point_id].font()
                 font.setPixelSize(
-                    max(1, int(self._base_font_size / self._current_zoom))
+                    max(
+                        self._min_font_size,
+                        int(self._base_font_size / self._current_zoom),
+                    )
                 )
                 font.setBold(True)
                 self._text_items[point_id].setFont(font)

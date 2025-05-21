@@ -9,7 +9,7 @@ from PySide6.QtWidgets import (
     QInputDialog,
 )
 from PySide6.QtWidgets import QGraphicsPixmapItem
-from PySide6.QtGui import QDoubleValidator
+from PySide6.QtGui import QDoubleValidator, QTransform
 
 from archpoint.calibration_methods.room import (
     RoomImagesHandler,
@@ -84,14 +84,23 @@ class DotsCreatorManager(AbstractGUIManager):
         return self.images_handler.is_completed()
 
     def __render_current_image(self):
+        # Store current view transformation to preserve zoom and position
+        current_transform = self.view.transform()
+        current_scroll_x = self.view.horizontalScrollBar().value()
+        current_scroll_y = self.view.verticalScrollBar().value()
+
         self.scene.clear()
         self.view._point_items.clear()
         self.view._text_items.clear()
         self.__current_image_pixmap = QPixmap(self.current_image.image_path)
         pixmap_item = QGraphicsPixmapItem(self.__current_image_pixmap)
         self.scene.addItem(pixmap_item)
-        self.view.fitInView(pixmap_item, Qt.KeepAspectRatio)
-        self.view._current_zoom = self.view.transform().m11()
+
+        # Restore the view transformation
+        self.view.setTransform(current_transform)
+        self.view.horizontalScrollBar().setValue(current_scroll_x)
+        self.view.verticalScrollBar().setValue(current_scroll_y)
+        self.view._current_zoom = current_transform.m11()
         self.view.update_point_sizes()
 
         for dot_id, (x, y) in self.current_image.image_points.items():
@@ -111,6 +120,8 @@ class DotsCreatorManager(AbstractGUIManager):
         table.setSelectionMode(QTableWidget.SingleSelection)
         table.setSelectionBehavior(QTableWidget.SelectRows)
         table.setEditTriggers(QTableWidget.DoubleClicked)
+        table.setFocusPolicy(Qt.StrongFocus)
+        table.keyPressEvent = self.__on_table_key_press
 
     def __update_dots_table(self):
         points = self.current_image.image_points
@@ -312,6 +323,17 @@ class DotsCreatorManager(AbstractGUIManager):
         table = self.window.ui.tableWidget_imageDotsCreator_DotsData
         point_id = table.item(row, 0).text()
         self.view.select_point(point_id)
+
+    def __on_table_key_press(self, event):
+        table = self.window.ui.tableWidget_imageDotsCreator_DotsData
+        if event.key() == Qt.Key_Delete:
+            selected_rows = table.selectedRows()
+            if selected_rows:
+                row = selected_rows[0]
+                point_id = table.item(row, 0).text()
+                self.__on_point_removed(point_id)
+        else:
+            QTableWidget.keyPressEvent(table, event)
 
     def __on_undo(self):
         if self.current_image:
