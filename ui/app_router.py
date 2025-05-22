@@ -158,6 +158,10 @@ class AppRouter(AbstractGUIManager):
         self.window.ui.pushButton_calibrationProcessStart.clicked.connect(
             self.__on_calibration_process_start_clicked
         )
+        # CALIBRATION ROOM METHOD START (STARTS PROCESSING)
+        self.window.ui.pushButton_startCalibrationProcessFromSettingRealCoordinates.clicked.connect(
+            self.__on_start_calibration_process_from_setting_real_coordinates_clicked
+        )
         # CALIBRATION CANCEL (ABORTING)
         self.window.ui.pushButton_cancelCalibration.clicked.connect(
             self.__on_cancel_calibration_clicked
@@ -313,6 +317,25 @@ class AppRouter(AbstractGUIManager):
         # TODO: ADD PROCESSING IMAGES DISPLAYING
 
         self.go_to_calibration()
+
+    def __on_start_calibration_process_from_setting_real_coordinates_clicked(
+        self,
+    ) -> None:
+        first_images_directory = (
+            self.window.ui.lineEdit_calibrationImagesDirectory.text()
+        )
+        second_images_directory = (
+            self.window.ui.lineEdit_calibrationImagesDirectorySecondCamera.text()
+        )
+
+        if first_images_directory and second_images_directory:
+            self.calibration_manager.handler.calibrate_stereo(
+                first_images_directory, second_images_directory
+            )
+        elif first_images_directory:
+            self.calibration_manager.handler.calibrate(first_images_directory)
+        else:
+            raise ValueError("Директории с изображениями не указаны.")
 
     def __on_cancel_calibration_clicked(self) -> None:
         self.calibration_manager.handler.clear()

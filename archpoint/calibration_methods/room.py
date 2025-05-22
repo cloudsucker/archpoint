@@ -93,6 +93,7 @@ class RoomImagesHandler:
         self.unique_ids: set[str] = set()
         self.current_image_index = 0
         self.is_initialized = False
+        self.real_coords_file_extensions = (".txt", ".TXT", ".csv", ".CSV")
 
     def initialize(self, image_paths: list[str]) -> None:
         if not image_paths:
@@ -101,6 +102,7 @@ class RoomImagesHandler:
             )
         for image_path in image_paths:
             self.images.append(RoomImageDotsEditor(image_path))
+        self.__self_sync()
         self.is_initialized = True
 
     def __self_check(self) -> None:
@@ -112,10 +114,6 @@ class RoomImagesHandler:
     def __self_sync(self) -> None:
         self.__collect_all_images_points()
         self.__collect_all_unique_points_ids()
-
-    def __is_index_valid(self, index: int) -> bool:
-        self.__self_check()
-        return index >= 0 and index < len(self.images)
 
     def __collect_all_images_points(self) -> None:
         for image in self.images:
@@ -143,7 +141,7 @@ class RoomImagesHandler:
             return self.images[self.current_image_index]
 
     def get_current_image(self) -> RoomImageDotsEditor:
-        self.__self_sync()  # SYNC ALL IMAGES POINTS AND UNIQUE IDS
+        self.__self_sync()
         return self.images[self.current_image_index]
 
     def get_next_image(self) -> RoomImageDotsEditor | None:
@@ -156,28 +154,112 @@ class RoomImagesHandler:
             if image.image_path == image_path:
                 return image
 
+    def __is_index_valid(self, index: int) -> bool:
+        self.__self_check()
+        return index >= 0 and index < len(self.images)
+
     def get_image_by_index(self, index: int) -> RoomImageDotsEditor | None:
         if self.__is_index_valid(index):
             return self.images[index]
 
     def are_all_image_dots_set(self) -> bool:
         self.__self_check()
+        self.__self_sync()
         return all(image.are_all_image_dots_set() for image in self.images)
 
     def set_dot_real_coordinates(
         self, point_id: str, coords: tuple[float, float, float]
     ) -> None:
         self.__self_check()
+        self.__self_sync()
         self.__validate_point_real_coords(coords)
 
-        if point_id not in self.points_true_coords:
+        if point_id not in self.unique_ids:
             raise DotWithCurrentIdNotFound(f"Точка с id {point_id} не существует.")
 
         self.points_true_coords[point_id] = coords
 
+    def get_dot_real_coordinates(self, point_id: str) -> tuple[float, float, float]:
+        self.__self_check()
+        self.__self_sync()
+        return self.points_true_coords.get(point_id)
+
     def are_all_real_coordinates_completed(self) -> bool:
         self.__self_check()
-        return all(image.are_real_coordinates_completed() for image in self.images)
+        if not self.points_true_coords:
+            return False
+        if not self.points_true_coords.keys() == self.unique_ids:
+            return False
+        return all(self.points_true_coords.items())
+
+    def load_dots_real_coords_from_file(self, file_path: str) -> None:
+        if not file_path:
+            raise DotsRealCoordinatesLoadingFromFileError(
+                "Путь к файлу внутренних координат точек не указан."
+            )
+
+        if not os.path.exists(file_path):
+            raise DotsRealCoordinatesLoadingFromFileError(
+                "Указанный файл внутренних координат точек не существует."
+            )
+
+        try:
+            self.__load_dots_real_coords(file_path)
+        except Exception as e:
+            raise DotsRealCoordinatesLoadingFromFileError(
+                f"Ошибка загрузки координат: {e}"
+            )
+
+    def __load_dots_real_coords(self, file_path: str) -> None:
+        with open(file_path, "r", encoding="utf-8") as file:
+            lines = file.readlines()
+
+        parser = self.__detect_parser(lines)
+        if not parser:
+            raise DotsRealCoordinatesLoadingFromFileError(
+                "Не удалось определить структуру файла. Требуется 4 элемента на строку."
+            )
+
+        for line in lines:
+            parsed = parser(line)
+            if parsed is None:
+                raise DotsRealCoordinatesLoadingFromFileError(
+                    f"Строка не соответствует ожидаемой структуре: {line.strip()}"
+                )
+            point_id, x, y, z = parsed
+            if not point_id in self.unique_ids:
+                # TODO: ADD THIS THING INTO LOGS OR USER NOTIFICATION
+                continue
+            self.set_dot_real_coordinates(point_id, (float(x), float(y), float(z)))
+
+    def __detect_parser(self, lines: list[str]):
+        separators = [",", ";", "\t", "|"]
+        for sep in separators:
+            try:
+                if all(len(self.__try_parse_line(line, sep)) == 4 for line in lines):
+                    return lambda line: self.__try_parse_line(line, sep)
+            except Exception:
+                continue
+
+        try:
+            if all(len(self.__try_parse_line_auto(line)) == 4 for line in lines):
+                return self.__try_parse_line_auto
+        except Exception:
+            pass
+
+        return None
+
+    def __try_parse_line(self, line: str, sep: str) -> list[str]:
+        parts = line.strip().split(sep)
+        if len(parts) == 4:
+            return parts
+        raise ValueError("Неверное количество элементов.")
+
+    def __try_parse_line_auto(self, line: str) -> list[str]:
+        parts = line.strip().split()
+        if len(parts) == 4:
+            return parts
+        raise ValueError("Неверное количество элементов.")
 
     def clear(self) -> None:
         self.images.clear()
@@ -405,4 +487,8 @@ class NoImagesInDirectoryError(Exception):
 
 
 class InvalidHistoryOperationType(Exception):
+    pass
+
+
+class DotsRealCoordinatesLoadingFromFileError(Exception):
     pass
