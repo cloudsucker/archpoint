@@ -36,18 +36,25 @@ class DotsCreatorManager(AbstractGUIManager):
         self.images_handler: RoomImagesHandler | None = None
         self.current_image: RoomImageDotsEditor | None = None
         self.__current_image_pixmap: QPixmap | None = None
-        self.__initialize_dots_table()
+        self.__initialize_dots_creator_table()
         self.__replace_graphic_view_on_custom()
         self.__connect_buttons()
         self.redo_stack = []
         self._drag_start_pos = None
 
     def preprocess_dots_creator_page(self, images_handler: RoomImagesHandler) -> None:
+        """Метод для подготовки страницы разметки калибровочных изображений (добавления точек на изображения).
+
+        ### Parameters:
+            images_handler (RoomImagesHandler): Объект - обработчик ряда изображений.
+        """
         self.images_handler = images_handler
         self.current_image = self.images_handler.get_current_image()
         self.update()
 
     def __replace_graphic_view_on_custom(self) -> None:
+        """Метод для замены графического представления изображений на кастомное."""
+
         original_view = self.window.ui.graphicsView_imageDotsCreator_ImagePreview
         parent_layout: QLayout = original_view.parentWidget().layout()
 
@@ -80,7 +87,7 @@ class DotsCreatorManager(AbstractGUIManager):
     def update(self) -> None:
         self.__render_current_image()
         self.__show_current_image_name()
-        self.__update_dots_table()
+        self.__update_dots_creator_table()
 
         if self.are_all_images_dots_set():
             self.window.ui.pushButton_goToSettingRealCoordinates.setEnabled(True)
@@ -121,7 +128,7 @@ class DotsCreatorManager(AbstractGUIManager):
             self.current_image.image_name
         )
 
-    def __initialize_dots_table(self):
+    def __initialize_dots_creator_table(self):
         table = self.window.ui.tableWidget_imageDotsCreator_DotsData
         table.setRowCount(0)
         table.setColumnCount(3)
@@ -139,7 +146,7 @@ class DotsCreatorManager(AbstractGUIManager):
         table.setColumnWidth(1, 90)
         table.setColumnWidth(2, 90)
 
-    def __update_dots_table(self):
+    def __update_dots_creator_table(self):
         points = self.current_image.image_points
         table = self.window.ui.tableWidget_imageDotsCreator_DotsData
         table.blockSignals(True)
@@ -219,6 +226,7 @@ class DotsCreatorManager(AbstractGUIManager):
                 "Ошибка",
                 "Завершите разметку изображений для перехода к следующему этапу.",
             )
+        self.preprocess_real_coordinates_setter_page()
         self.window.ui.stackedWidget_workSpace.setCurrentWidget(
             self.window.ui.page_calibrationSteps_5_ImageDotsCreating_SetCoords
         )
@@ -267,14 +275,14 @@ class DotsCreatorManager(AbstractGUIManager):
 
             self.current_image.image_points[point_id] = (pos.x(), pos.y())
             self.view.update_point_position(point_id, pos.x(), pos.y())
-            self.__update_dots_table()
+            self.__update_dots_creator_table()
 
     def __on_point_moved_finished(self, point_id: str, pos: QPointF):
         if self.current_image and self.__is_dot_valid(pos.x(), pos.y()):
             if self._drag_start_pos is not None:
                 self.current_image.edit_point(point_id, (pos.x(), pos.y()))
                 self._drag_start_pos = None
-            self.__update_dots_table()
+            self.__update_dots_creator_table()
 
     def __on_point_removed(self, point_id: str):
         if self.current_image:
@@ -420,3 +428,69 @@ class DotsCreatorManager(AbstractGUIManager):
 
                 self.view.deselect_point()
                 self.update()
+
+    def preprocess_real_coordinates_setter_page(self) -> None:
+        self.__preprocess_real_coordinates_setter_table()
+
+    def __preprocess_real_coordinates_setter_table(self) -> None:
+        table = self.window.ui.tableWidget_imageDotsAndRealCoordinates
+        table.setRowCount(0)
+        table.setColumnCount(4)
+        table.setHorizontalHeaderLabels(["ID", "REAL X", "REAL Y", "REAL Z"])
+
+        table.horizontalHeader().setSectionResizeMode(QHeaderView.Fixed)
+        table.verticalHeader().setSectionResizeMode(QHeaderView.Fixed)
+        table.setFixedWidth(800)
+        table.setColumnWidth(0, 200)
+        table.setColumnWidth(1, 200)
+        table.setColumnWidth(2, 200)
+        table.setColumnWidth(3, 200)
+
+        def safe_int(x):
+            try:
+                return int(x)
+            except ValueError:
+                return float("inf")
+
+        unique_ids = sorted(self.images_handler.unique_ids, key=safe_int)
+        table.setRowCount(len(unique_ids))
+
+        validator = QDoubleValidator()
+        validator.setNotation(QDoubleValidator.StandardNotation)
+
+        for row, id_value in enumerate(unique_ids):
+            id_item = QTableWidgetItem(str(id_value))
+            id_item.setFlags(id_item.flags() & ~Qt.ItemIsEditable)
+            table.setItem(row, 0, id_item)
+
+            x_item = QTableWidgetItem("")
+            y_item = QTableWidgetItem("")
+            z_item = QTableWidgetItem("")
+            table.setItem(row, 1, x_item)
+            table.setItem(row, 2, y_item)
+            table.setItem(row, 3, z_item)
+
+            table.setCellWidget(row, 1, QLineEdit())
+            table.setCellWidget(row, 2, QLineEdit())
+            table.setCellWidget(row, 3, QLineEdit())
+            table.cellWidget(row, 1).setValidator(validator)
+            table.cellWidget(row, 2).setValidator(validator)
+            table.cellWidget(row, 3).setValidator(validator)
+
+        def cell_changed(row, col):
+            if col in (1, 2, 3):
+                id_value = table.item(row, 0).text()
+                x_text = table.cellWidget(row, 1).text()
+                y_text = table.cellWidget(row, 2).text()
+                z_text = table.cellWidget(row, 3).text()
+
+                try:
+                    x = float(x_text) if x_text else 0.0
+                    y = float(y_text) if y_text else 0.0
+                    z = float(z_text) if z_text else 0.0
+                    self.images_handler.set_dot_real_coordinates(id_value, (x, y, z))
+                except ValueError:
+                    pass
+
+        table.cellChanged.connect(cell_changed)
+        table.setSortingEnabled(True)

@@ -1127,8 +1127,8 @@ class Ui_Widget(object):
         self.verticalLayout_28.addWidget(self.label_setRealCoordinates_PageInfo)
 
         self.tableWidget_imageDotsAndRealCoordinates = QTableWidget(self.groupBox_settingRealCoordinates_main)
-        if (self.tableWidget_imageDotsAndRealCoordinates.columnCount() < 6):
-            self.tableWidget_imageDotsAndRealCoordinates.setColumnCount(6)
+        if (self.tableWidget_imageDotsAndRealCoordinates.columnCount() < 4):
+            self.tableWidget_imageDotsAndRealCoordinates.setColumnCount(4)
         __qtablewidgetitem3 = QTableWidgetItem()
         self.tableWidget_imageDotsAndRealCoordinates.setHorizontalHeaderItem(0, __qtablewidgetitem3)
         __qtablewidgetitem4 = QTableWidgetItem()
@@ -1137,10 +1137,6 @@ class Ui_Widget(object):
         self.tableWidget_imageDotsAndRealCoordinates.setHorizontalHeaderItem(2, __qtablewidgetitem5)
         __qtablewidgetitem6 = QTableWidgetItem()
         self.tableWidget_imageDotsAndRealCoordinates.setHorizontalHeaderItem(3, __qtablewidgetitem6)
-        __qtablewidgetitem7 = QTableWidgetItem()
-        self.tableWidget_imageDotsAndRealCoordinates.setHorizontalHeaderItem(4, __qtablewidgetitem7)
-        __qtablewidgetitem8 = QTableWidgetItem()
-        self.tableWidget_imageDotsAndRealCoordinates.setHorizontalHeaderItem(5, __qtablewidgetitem8)
         self.tableWidget_imageDotsAndRealCoordinates.setObjectName(u"tableWidget_imageDotsAndRealCoordinates")
         self.tableWidget_imageDotsAndRealCoordinates.setSortingEnabled(True)
 
@@ -1413,15 +1409,11 @@ class Ui_Widget(object):
         ___qtablewidgetitem3 = self.tableWidget_imageDotsAndRealCoordinates.horizontalHeaderItem(0)
         ___qtablewidgetitem3.setText(QCoreApplication.translate("Widget", u"ID", None));
         ___qtablewidgetitem4 = self.tableWidget_imageDotsAndRealCoordinates.horizontalHeaderItem(1)
-        ___qtablewidgetitem4.setText(QCoreApplication.translate("Widget", u"X", None));
+        ___qtablewidgetitem4.setText(QCoreApplication.translate("Widget", u"REAL X", None));
         ___qtablewidgetitem5 = self.tableWidget_imageDotsAndRealCoordinates.horizontalHeaderItem(2)
-        ___qtablewidgetitem5.setText(QCoreApplication.translate("Widget", u"Y", None));
+        ___qtablewidgetitem5.setText(QCoreApplication.translate("Widget", u"REAL Y", None));
         ___qtablewidgetitem6 = self.tableWidget_imageDotsAndRealCoordinates.horizontalHeaderItem(3)
-        ___qtablewidgetitem6.setText(QCoreApplication.translate("Widget", u"REAL X", None));
-        ___qtablewidgetitem7 = self.tableWidget_imageDotsAndRealCoordinates.horizontalHeaderItem(4)
-        ___qtablewidgetitem7.setText(QCoreApplication.translate("Widget", u"REAL Y", None));
-        ___qtablewidgetitem8 = self.tableWidget_imageDotsAndRealCoordinates.horizontalHeaderItem(5)
-        ___qtablewidgetitem8.setText(QCoreApplication.translate("Widget", u"REAL Z", None));
+        ___qtablewidgetitem6.setText(QCoreApplication.translate("Widget", u"REAL Z", None));
         self.label_setRealCoordinates_tips.setText(QCoreApplication.translate("Widget", u"\u041f\u0440\u0438\u043c\u0435\u0447\u0430\u043d\u0438\u0435: \u0432\u043d\u0443\u0442\u0440\u0435\u043d\u043d\u0438\u0435 (\u043d\u0430\u0441\u0442\u043e\u044f\u0449\u0438\u0435) \u043a\u043e\u043e\u0440\u0434\u0438\u043d\u0430\u0442\u044b - \u044d\u0442\u043e \u0442\u0440\u0451\u0445\u043c\u0435\u0440\u043d\u044b\u0435 \u043a\u043e\u043e\u0440\u0434\u0438\u043d\u0430\u0442\u044b \u0442\u043e\u0447\u0435\u043a \u0432\u043d\u0443\u0442\u0440\u0438 \u043f\u043e\u043c\u0435\u0449\u0435\u043d\u0438\u044f. \u0412\u044b \u0442\u0430\u043a\u0436\u0435 \u043c\u043e\u0436\u0435\u0442\u0435 \u0437\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044c \u0438\u0445 \u0438\u0437 \u0444\u0430\u0439\u043b\u0430. \u041f\u043e\u0434\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u0435\u043c\u044b\u0435 \u0444\u043e\u0440\u043c\u0430\u0442\u044b: .txt, .csv. \u0421\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u0430 \u0444\u0430\u0439\u043b\u0430: ID, X, Y, Z.", None))
         self.groupBox_setRealCoordinatesPage_buttons.setTitle("")
         self.pushButton_returnToDotsCreator.setText(QCoreApplication.translate("Widget", u"\u041d\u0430\u0437\u0430\u0434", None))

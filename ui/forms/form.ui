@@ -2312,16 +2312,6 @@ li.checked::marker { content: &quot;\2612&quot;; }
                   </column>
                   <column>
                    <property name="text">
-                    <string>X</string>
-                   </property>
-                  </column>
-                  <column>
-                   <property name="text">
-                    <string>Y</string>
-                   </property>
-                  </column>
-                  <column>
-                   <property name="text">
                     <string>REAL X</string>
                    </property>
                   </column>

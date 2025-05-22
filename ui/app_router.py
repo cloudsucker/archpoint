@@ -49,20 +49,35 @@ class AppRouter(AbstractGUIManager):
     def go_to_calibration(self) -> None:
         """Метод для корректного перехода к этапу калибровки.
         Проверяет состояние калибровки и переходит к соответствующему виджету."""
+
+        # CALIBRATION RESULTS PAGE SYNCING
         self.calibration_manager.update_calibration_done_page()
 
+        # CALIBRATION COMPLETED -> SHOWING RESULTS
         if self.calibration_manager.handler.is_completed():
             self.window.ui.stackedWidget_workSpace.setCurrentWidget(
                 self.window.ui.page_calibrationSteps_5_done
             )
             return
+
+        # NOT COMPLETED (ROOM METHOD)
         elif (
             self.calibration_manager.handler.method == "room"
             and self.calibration_manager.handler.method.images_handler.is_initialized
         ):
-            self.window.ui.stackedWidget_workSpace.setCurrentWidget(
-                self.window.ui.page_calibrationSteps_5_ImageDotsCreating
-            )
+            # DOTS NOT SET -> DOTS SETTING
+            if not self.dots_creator_manager.are_all_images_dots_set():
+                self.window.ui.stackedWidget_workSpace.setCurrentWidget(
+                    self.window.ui.page_calibrationSteps_5_ImageDotsCreating
+                )
+            # DOTS SET -> SET REAL COORDINATES
+            else:
+                self.dots_creator_manager.preprocess_real_coordinates_setter_page()
+                self.window.ui.stackedWidget_workSpace.setCurrentWidget(
+                    self.window.ui.page_calibrationSteps_5_ImageDotsCreating_SetCoords
+                )
+
+        # NO INFO -> INITIAL PAGE
         else:
             self.window.ui.stackedWidget_workSpace.setCurrentWidget(
                 self.window.ui.page_calibrationInitialChoice
@@ -108,6 +123,7 @@ class AppRouter(AbstractGUIManager):
                 self.window.ui.page_calibrationSteps_5_ImageDotsCreating
             )
         else:
+            self.dots_creator_manager.preprocess_real_coordinates_setter_page()
             self.window.ui.stackedWidget_workSpace.setCurrentWidget(
                 self.window.ui.page_calibrationSteps_5_ImageDotsCreating_SetCoords
             )

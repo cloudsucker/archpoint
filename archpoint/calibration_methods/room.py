@@ -88,6 +88,9 @@ class RoomCalibrationMethod(CalibrationMethodAbstract):
 class RoomImagesHandler:
     def __init__(self):
         self.images: list[RoomImageDotsEditor] = []
+        self.points: dict[str, dict[str, tuple[float, float]]] = {}
+        self.points_true_coords: dict[str, tuple[float, float, float]] = {}
+        self.unique_ids: set[str] = set()
         self.current_image_index = 0
         self.is_initialized = False
 
@@ -106,9 +109,33 @@ class RoomImagesHandler:
                 "Менеджер изображений не инициализирован."
             )
 
+    def __self_sync(self) -> None:
+        self.__collect_all_images_points()
+        self.__collect_all_unique_points_ids()
+
     def __is_index_valid(self, index: int) -> bool:
         self.__self_check()
         return index >= 0 and index < len(self.images)
+
+    def __collect_all_images_points(self) -> None:
+        for image in self.images:
+            if image.image_path not in self.points:
+                self.points[image.image_path] = {}
+            self.points[image.image_path].update(image.image_points)
+
+    def __collect_all_unique_points_ids(self) -> None:
+        self.unique_ids = set()
+        for image in self.images:
+            self.unique_ids.update(image.image_points.keys())
+
+    def __validate_point_real_coords(
+        self, real_coords: tuple[float, float, float]
+    ) -> None:
+        if not real_coords:
+            raise ValueError("Точка не имеет координат.")
+
+        if not isinstance(real_coords, tuple) or len(real_coords) != 3:
+            raise ValueError("Неккоректный формат координат.")
 
     def get_previous_image(self) -> RoomImageDotsEditor | None:
         if self.__is_index_valid(self.current_image_index - 1):
@@ -116,6 +143,7 @@ class RoomImagesHandler:
             return self.images[self.current_image_index]
 
     def get_current_image(self) -> RoomImageDotsEditor:
+        self.__self_sync()  # SYNC ALL IMAGES POINTS AND UNIQUE IDS
         return self.images[self.current_image_index]
 
     def get_next_image(self) -> RoomImageDotsEditor | None:
@@ -135,6 +163,17 @@ class RoomImagesHandler:
     def are_all_image_dots_set(self) -> bool:
         self.__self_check()
         return all(image.are_all_image_dots_set() for image in self.images)
+
+    def set_dot_real_coordinates(
+        self, point_id: str, coords: tuple[float, float, float]
+    ) -> None:
+        self.__self_check()
+        self.__validate_point_real_coords(coords)
+
+        if point_id not in self.points_true_coords:
+            raise DotWithCurrentIdNotFound(f"Точка с id {point_id} не существует.")
+
+        self.points_true_coords[point_id] = coords
 
     def are_all_real_coordinates_completed(self) -> bool:
         self.__self_check()
@@ -162,11 +201,6 @@ class RoomImageDotsEditor:
 
     def are_all_image_dots_set(self) -> bool:
         return len(self.image_points) >= 4
-
-    def are_real_coordinates_completed(self) -> bool:
-        if len(self.image_points) != len(self.points_true_coords):
-            return False
-        return self.are_all_image_dots_set()
 
     def __self_check(self) -> None:
         if len(self.image_points) != len(self.points_true_coords):
@@ -297,17 +331,6 @@ class RoomImageDotsEditor:
 
     def get_points_list(self) -> list[tuple[float, float]]:
         return list(self.image_points.values())
-
-    def get_points_true_coords_dict(self) -> dict[str, tuple[float, float, float]]:
-        return self.points_true_coords
-
-    def get_points_true_coords_list(self) -> list[tuple[float, float, float]]:
-        return list(self.points_true_coords.values())
-
-    def set_points_true_coords(
-        self, points: dict[str, tuple[float, float, float]]
-    ) -> None:
-        self.points_true_coords = points
 
     def save_points_to_file(self) -> None:
         if self.image_points:
