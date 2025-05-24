@@ -49,8 +49,6 @@ class ChessboardCalibrationMethod(CalibrationMethodAbstract):
         if image_paths is None or len(image_paths) < 1:
             raise ValueError("Недостаточно изображений для калибровки.")
 
-        print(self.board_size, self.square_size)
-
         camera_parameters = {}
         initial_imgpoints, initial_objpoints = self.__get_img_and_obj_points(
             image_paths
@@ -68,9 +66,7 @@ class ChessboardCalibrationMethod(CalibrationMethodAbstract):
         image_height, image_width = image.shape[:2]
         flags = 0
 
-        final_objpoints = []
-        for i in range(image_paths.__len__()):
-            final_objpoints.append(initial_objpoints)
+        final_objpoints = [initial_objpoints for _ in range(len(image_paths))]
         (
             retval,
             camera_matrix,

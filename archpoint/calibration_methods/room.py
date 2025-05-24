@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import os
+import cv2
 import json
 import numpy as np
 from typing import TypedDict
@@ -35,8 +36,10 @@ class RoomCalibrationMethod(CalibrationMethodAbstract):
     def __eq__(self, value):
         return isinstance(value, str) and value == "room"
 
-    def initialize(self, image_paths: list[str]) -> None:
-        self.images_handler.initialize(image_paths)
+    def initialize(
+        self, image_paths: list[str], second_image_paths: list[str] | None = None
+    ) -> None:
+        self.images_handler.initialize(image_paths, second_image_paths)
 
     def calibrate(self, image_paths: list) -> dict:
         if not image_paths:
@@ -44,44 +47,218 @@ class RoomCalibrationMethod(CalibrationMethodAbstract):
         if not self.is_completed():
             raise SomeImagesHaveNoDots("Не все изображения были размечены.")
 
-        # camera_parameters = {}
+        initial_imgpoints, initial_objpoints = self.__get_img_and_obj_points(
+            image_paths
+        )
 
-        # initial_imgpoints, initial_objpoints = self.__get_img_and_obj_points(image)
+        if len(initial_imgpoints) == 0 or len(initial_objpoints) == 0:
+            raise ValueError("Не удалось извлечь точки для калибровки.")
 
-        # if len(initial_imgpoints) == 0 or len(initial_objpoints) == 0:
-        #     raise ValueError("Не удалось извлечь точки для калибровки.")
+        image = cv2.imread(image_paths[0])
+        if image is None:
+            raise ValueError(
+                f"Ошибка калибровки: Не удалось загрузить изображение: {image_paths[0]}"
+            )
 
-        # image = cv2.imread(image_paths[0])
-        # if image is None:
-        #     raise ValueError(
-        #         f"Ошибка калибровки: Не удалось загрузить изображение: {image_paths[0]}"
-        #     )
+        image_height, image_width = image.shape[:2]
+        img_size = (image_width, image_height)
 
-        # TODO: Дописать логику калибровки для одной камеры.
-        pass
+        final_objpoints = [initial_objpoints[0]] * len(image_paths)
 
-    def calibrate_stereo(self, left_image_paths: list, right_image_paths: list) -> dict:
+        initial_camera_matrix = cv2.initCameraMatrix2D(
+            objectPoints=final_objpoints,
+            imagePoints=initial_imgpoints,
+            imageSize=img_size,
+            aspectRatio=1.0,
+        )
+
+        flags = cv2.CALIB_USE_INTRINSIC_GUESS
+
+        (
+            retval,
+            camera_matrix,
+            distortion_coeffs,
+            rotation_vectors,
+            translation_vectors,
+        ) = cv2.calibrateCamera(
+            objectPoints=final_objpoints,
+            imagePoints=initial_imgpoints,
+            imageSize=img_size,
+            cameraMatrix=initial_camera_matrix,
+            distCoeffs=None,
+            flags=flags,
+        )
+        if not retval:
+            raise RuntimeError("Калибровка камеры не удалась.")
+
+        rotation_matrices = []
+        transformation_matrices = []
+        for rvec, tvec in zip(rotation_vectors, translation_vectors):
+            R, _ = cv2.Rodrigues(rvec)
+            rotation_matrices.append(R)
+            RT = np.vstack((np.hstack((R, tvec)), [0, 0, 0, 1]))
+            transformation_matrices.append(RT)
+
+        new_matrix, roi = cv2.getOptimalNewCameraMatrix(
+            camera_matrix, distortion_coeffs, img_size, 1, img_size
+        )
+        if new_matrix is None or roi is None:
+            raise RuntimeError("Ошибка получения оптимальной новой матрицы камеры.")
+
+        if np.sum(roi) == 0:
+            roi = (0, 0, image_width - 1, image_height - 1)
+
+        return {
+            "object_points": initial_objpoints,
+            "camera_matrix": camera_matrix,
+            "distortion_coeffs": distortion_coeffs,
+            "roi": roi,
+            "new_camera_matrix": new_matrix,
+            "rotation_vectors": rotation_vectors,
+            "rotation_matrices": rotation_matrices,
+            "extrinsic_parameters": transformation_matrices,
+            "translation_vectors": translation_vectors,
+        }
+
+    def calibrate_stereo(
+        self, left_image_paths: list[str], right_image_paths: list[str]
+    ) -> dict:
         if not self.is_completed():
             raise SomeImagesHaveNoDots("Не все изображения были размечены.")
-        if len(left_image_paths) < 1 or len(right_image_paths) < 1:
-            raise ValueError("Недостаточно изображений для калибровки.")
+        if len(left_image_paths) != len(right_image_paths):
+            raise ValueError("Количество изображений слева и справа должно совпадать.")
+        if len(left_image_paths) < 1:
+            raise ValueError("Недостаточно изображений для стереокалибровки.")
 
-        # TODO: Реализовать логику калибровки для режима двух камер.
-        pass
+        left_imgpoints, left_objpoints = self.images_handler.get_img_and_obj_points(
+            left_image_paths
+        )
+        right_imgpoints, right_objpoints = self.images_handler.get_img_and_obj_points(
+            right_image_paths
+        )
 
-    def __get_img_and_obj_points(self) -> tuple[list, np.ndarray]:
+        if len(left_imgpoints) == 0 or len(right_imgpoints) == 0:
+            raise ValueError("Не удалось извлечь точки для калибровки.")
+
+        left_image = cv2.imread(left_image_paths[0])
+        right_image = cv2.imread(right_image_paths[0])
+        if left_image is None or right_image is None:
+            raise ValueError("Не удалось загрузить одно из изображений.")
+
+        img_size_left = left_image.shape[1], left_image.shape[0]
+        img_size_right = right_image.shape[1], right_image.shape[0]
+
+        if img_size_left != img_size_right:
+            raise ValueError(
+                "Изображения левого и правого каналов должны иметь одинаковый размер."
+            )
+
+        flags = cv2.CALIB_USE_INTRINSIC_GUESS
+
+        criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 30, 1e-6)
+
+        # Калибровка каждой камеры отдельно
+        mtx_left_init = cv2.initCameraMatrix2D(
+            objectPoints=left_objpoints,
+            imagePoints=left_imgpoints,
+            imageSize=img_size_left,
+            aspectRatio=1.0,
+        )
+
+        ret_left, mtx_left, dist_left, rvecs_left, tvecs_left = cv2.calibrateCamera(
+            left_objpoints,
+            left_imgpoints,
+            img_size_left,
+            cameraMatrix=mtx_left_init,
+            distCoeffs=None,
+            flags=cv2.CALIB_USE_INTRINSIC_GUESS,
+        )
+
+        mtx_right_init = cv2.initCameraMatrix2D(
+            objectPoints=right_objpoints,
+            imagePoints=right_imgpoints,
+            imageSize=img_size_right,
+            aspectRatio=1.0,
+        )
+
+        ret_right, mtx_right, dist_right, rvecs_right, tvecs_right = (
+            cv2.calibrateCamera(
+                right_objpoints,
+                right_imgpoints,
+                img_size_right,
+                cameraMatrix=mtx_right_init,
+                distCoeffs=None,
+                flags=cv2.CALIB_USE_INTRINSIC_GUESS,
+            )
+        )
+
+        if not (ret_left and ret_right):
+            raise RuntimeError("Не удалось выполнить калибровку отдельных камер.")
+
+        # Стереокалибровка
+        ret_stereo, mtx_left, dist_left, mtx_right, dist_right, R, T, E, F = (
+            cv2.stereoCalibrate(
+                left_objpoints,
+                left_imgpoints,
+                right_imgpoints,
+                mtx_left,
+                dist_left,
+                mtx_right,
+                dist_right,
+                img_size_left,
+                criteria=criteria,
+                flags=cv2.CALIB_USE_INTRINSIC_GUESS,
+            )
+        )
+
+        if not ret_stereo:
+            raise RuntimeError("Стереокалибровка не удалась.")
+
+        # Получение карт смещения (rectification maps)
+        R1, R2, P1, P2, Q, roi1, roi2 = cv2.stereoRectify(
+            mtx_left,
+            dist_left,
+            mtx_right,
+            dist_right,
+            img_size_left,
+            R,
+            T,
+            flags=0,
+            alpha=0,
+        )
+
+        stereo_params = {
+            "left_camera_matrix": mtx_left,
+            "left_distortion_coeffs": dist_left,
+            "right_camera_matrix": mtx_right,
+            "right_distortion_coeffs": dist_right,
+            "rotation_between_cameras": R,
+            "translation_between_cameras": T,
+            "essential_matrix": E,
+            "fundamental_matrix": F,
+            "rectification_transform_left": R1,
+            "rectification_transform_right": R2,
+            "projection_matrix_left": P1,
+            "projection_matrix_right": P2,
+            "disparity_to_depth_map": Q,
+            "roi_left": roi1,
+            "roi_right": roi2,
+        }
+
+        return stereo_params
+
+    def __get_img_and_obj_points(
+        self, image_paths: list[str]
+    ) -> tuple[list, np.ndarray]:
         imgpoints = []
         objpoints = []
-
-        for image in self.images_handler.images:
-            imgpoints.append(image.get_points_list())
-            objpoints.append(image.get_points_true_coords_list())
-
-        return imgpoints, np.array(objpoints)
+        imgpoints, objpoints = self.images_handler.get_img_and_obj_points(image_paths)
+        return imgpoints, objpoints
 
     def is_completed(self) -> bool:
-        return all(
-            image.are_all_image_dots_set() for image in self.images_handler.images
+        return (
+            self.images_handler.are_all_image_dots_set()
+            and self.images_handler.are_all_real_coordinates_completed()
         )
 
 
@@ -93,15 +270,26 @@ class RoomImagesHandler:
         self.unique_ids: set[str] = set()
         self.current_image_index = 0
         self.is_initialized = False
+        self.stereo_mode = False
         self.real_coords_file_extensions = (".txt", ".TXT", ".csv", ".CSV")
 
-    def initialize(self, image_paths: list[str]) -> None:
+    def initialize(
+        self, image_paths: list[str], second_image_paths: list[str] | None = None
+    ) -> None:
         if not image_paths:
             raise NoImagesInDirectoryError(
                 "Нет изобрважений для инициализации метода калибровки."
             )
-        for image_path in image_paths:
+
+        all_image_paths = image_paths
+
+        if second_image_paths:
+            self.stereo_mode = True
+            all_image_paths += second_image_paths
+
+        for image_path in all_image_paths:
             self.images.append(RoomImageDotsEditor(image_path))
+
         self.__self_sync()
         self.is_initialized = True
 
@@ -190,7 +378,10 @@ class RoomImagesHandler:
             return False
         if not self.points_true_coords.keys() == self.unique_ids:
             return False
-        return all(self.points_true_coords.items())
+        return all(
+            isinstance(coords, tuple) and len(coords) == 3
+            for coords in self.points_true_coords.values()
+        )
 
     def load_dots_real_coords_from_file(self, file_path: str) -> None:
         if not file_path:
@@ -260,6 +451,28 @@ class RoomImagesHandler:
         if len(parts) == 4:
             return parts
         raise ValueError("Неверное количество элементов.")
+
+    def get_img_and_obj_points(self, image_paths: list[str]) -> tuple[list, np.ndarray]:
+        processing_images = self.images
+
+        if self.stereo_mode:
+            processing_images = [
+                self.get_image_by_image_path(image_path) for image_path in image_paths
+            ]
+
+        imgpoints = []
+        for image in processing_images:
+            pts = np.array(image.get_points_list(), dtype=np.float32)
+            if pts.ndim == 2 and pts.shape[1] == 2:
+                pts = pts.reshape(-1, 1, 2)
+            imgpoints.append(pts)
+
+        obj_single = np.array(list(self.points_true_coords.values()), dtype=np.float32)
+        if obj_single.ndim == 2 and obj_single.shape[1] == 2:
+            obj_single = obj_single.reshape(-1, 1, 2)
+
+        objpoints = [obj_single for _ in processing_images]
+        return imgpoints, objpoints
 
     def clear(self) -> None:
         self.images.clear()

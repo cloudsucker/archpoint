@@ -111,7 +111,7 @@ class CalibrationHandler:
         if second_camera_images_path:
             first_images = self.__get_image_paths_sorted(images_path)
             second_images = self.__get_image_paths_sorted(second_camera_images_path)
-            self.method.initialize(first_images + second_images)
+            self.method.initialize(first_images, second_images)
             return
         image_paths = self.__get_image_paths_sorted(images_path)
         self.method.initialize(image_paths)

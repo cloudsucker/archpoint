@@ -337,6 +337,8 @@ class AppRouter(AbstractGUIManager):
         else:
             raise ValueError("Директории с изображениями не указаны.")
 
+        self.go_to_calibration()
+
     def __on_cancel_calibration_clicked(self) -> None:
         self.calibration_manager.handler.clear()
         self.go_to_calibration()
