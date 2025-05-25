@@ -4,7 +4,15 @@ from PySide6.QtWidgets import (
     QGraphicsEllipseItem,
     QMenu,
 )
-from PySide6.QtGui import QWheelEvent, QMouseEvent, QPen, QBrush, QColor, QFont
+from PySide6.QtGui import (
+    QWheelEvent,
+    QMouseEvent,
+    QKeyEvent,
+    QPen,
+    QBrush,
+    QColor,
+    QFont,
+)
 
 
 class CustomGraphicsView(QGraphicsView):
@@ -39,7 +47,7 @@ class CustomGraphicsView(QGraphicsView):
         self._last_click_time = 0
         self._double_click_threshold = 300
 
-    def wheelEvent(self, event: QWheelEvent):
+    def wheelEvent(self, event: QWheelEvent) -> None:
         if event.modifiers() == Qt.ControlModifier:
             if event.angleDelta().y() > 0:
                 zoom = self._zoom_factor
@@ -54,7 +62,7 @@ class CustomGraphicsView(QGraphicsView):
         else:
             super().wheelEvent(event)
 
-    def update_point_sizes(self):
+    def update_point_sizes(self) -> None:
         for point_id, item in self._point_items.items():
             center_x = item.rect().center().x()
             center_y = item.rect().center().y()
@@ -120,7 +128,7 @@ class CustomGraphicsView(QGraphicsView):
                 if point_id:
                     self.select_point(point_id)
                     self.point_selected.emit(point_id)
-                    self._show_context_menu(point_id, event.pos())
+                    self.__show_context_menu(point_id, event.pos())
 
         super().mousePressEvent(event)
 
@@ -178,7 +186,7 @@ class CustomGraphicsView(QGraphicsView):
 
         super().mouseReleaseEvent(event)
 
-    def keyPressEvent(self, event):
+    def keyPressEvent(self, event: QKeyEvent):
         if event.key() == Qt.Key_Z and event.modifiers() == Qt.ControlModifier:
             self.undo_action()
 
@@ -191,13 +199,13 @@ class CustomGraphicsView(QGraphicsView):
             self.deselect_point()
         super().keyPressEvent(event)
 
-    def undo_action(self):
+    def undo_action(self) -> None:
         self.scene().undo_action.emit()
 
-    def redo_action(self):
+    def redo_action(self) -> None:
         self.scene().redo_action.emit()
 
-    def select_point(self, point_id):
+    def select_point(self, point_id: str) -> None:
         if self._selected_point_id and self._selected_point_id in self._point_items:
             self._point_items[self._selected_point_id].setBrush(QBrush(QColor("red")))
 
@@ -206,14 +214,14 @@ class CustomGraphicsView(QGraphicsView):
             self._point_items[point_id].setBrush(QBrush(QColor("blue")))
             self._is_dragging = False
 
-    def deselect_point(self):
+    def deselect_point(self) -> None:
         if self._selected_point_id and self._selected_point_id in self._point_items:
             self._point_items[self._selected_point_id].setBrush(QBrush(QColor("red")))
 
         self._selected_point_id = None
         self._is_dragging = False
 
-    def add_point_item(self, point_id, x, y):
+    def add_point_item(self, point_id: str, x: float, y: float) -> None:
         size = self._base_point_size / self._current_zoom
         pen = QPen(QColor("black"), 2 / self._current_zoom)
 
@@ -237,7 +245,7 @@ class CustomGraphicsView(QGraphicsView):
         text.setPos(x + 5 / self._current_zoom, y - 10 / self._current_zoom)
         self._text_items[point_id] = text
 
-    def update_point_position(self, point_id, x, y):
+    def update_point_position(self, point_id: str, x: float, y: float) -> None:
         if point_id in self._point_items:
             size = self._base_point_size / self._current_zoom
             pen = QPen(QColor("black"), 2 / self._current_zoom)
@@ -258,7 +266,7 @@ class CustomGraphicsView(QGraphicsView):
                     x + 5 / self._current_zoom, y - 10 / self._current_zoom
                 )
 
-    def remove_point_item(self, point_id):
+    def remove_point_item(self, point_id: str) -> None:
         if point_id in self._point_items:
             self.scene().removeItem(self._point_items[point_id])
             del self._point_items[point_id]
@@ -267,7 +275,7 @@ class CustomGraphicsView(QGraphicsView):
             self.scene().removeItem(self._text_items[point_id])
             del self._text_items[point_id]
 
-    def _show_context_menu(self, point_id: str, pos: QPoint):
+    def __show_context_menu(self, point_id: str, pos: QPoint) -> None:
         menu = QMenu(self)
         delete_action = menu.addAction("Удалить")
         change_id_action = menu.addAction("Изменить ID")

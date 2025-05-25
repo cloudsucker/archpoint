@@ -1,10 +1,12 @@
 import os
 
-from PySide6.QtWidgets import QMainWindow, QMessageBox
+from PySide6.QtWidgets import QMessageBox
+
+from ui.managers import AbstractWindow
 
 
 class StylesManager:
-    def __init__(self, window: QMainWindow):
+    def __init__(self, window: AbstractWindow):
         self.window = window
         self.theme = "light"
 

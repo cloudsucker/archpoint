@@ -481,27 +481,25 @@ class RoomImagesHandler:
 
 class RoomImageDotsEditor:
     def __init__(self, image_path: str):
-        if not os.path.exists(image_path):
-            raise RoomImageDotsEditorCreatingError(
-                f"Изображение по указанному пути {image_path} не существует."
-            )
         self.image_path = image_path
         self.image_name = os.path.basename(image_path).split(".")[0]
-        if self.is_dots_file_exist():
-            self.load_points_from_file()
-        else:
-            self.image_points: dict[str, tuple[float, float]] = {}
-        self.points_true_coords: dict[str, tuple[float, float, float]] = {}
+        self.image_points: dict[str, tuple[float, float]] = {}
         self.history: list[HistoryEntry] = []
+        self.__self_preprocess()
 
     def are_all_image_dots_set(self) -> bool:
         return len(self.image_points) >= 4
 
     def __self_check(self) -> None:
-        if len(self.image_points) != len(self.points_true_coords):
-            raise RoomImageDotsEditorSelfCheckError(
-                f"Количество точек в image_points ({len(self.image_points)}) и points_true_coords ({len(self.points_true_coords)}) не совпадает."
+        if not os.path.exists(self.image_path):
+            raise RoomImageDotsEditorCreatingError(
+                f"Изображение по указанному пути {self.image_path} не существует."
             )
+
+    def __self_preprocess(self) -> None:
+        self.__self_check()
+        if self.is_dots_file_exist():
+            self.load_points_from_file()
 
     def __update_history(
         self,
@@ -615,7 +613,6 @@ class RoomImageDotsEditor:
 
     def clear(self) -> None:
         self.image_points.clear()
-        self.points_true_coords.clear()
         self.clear_history()
 
     def get_history(self) -> list[HistoryEntry]:
