@@ -148,6 +148,7 @@ class AppRouter(AbstractGUIManager):
 
     def __on_theme_toggle_clicked(self):
         self.styles_manager.switch_theme()
+        self.images_manager.switch_theme()
 
     def __on_calibration_from_file_option_button_clicked(self):
         calibration_file_path, _ = QFileDialog.getOpenFileName(
