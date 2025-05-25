@@ -29,20 +29,30 @@ class ImagesManager(AbstractGUIManager):
 
     def __get_label_icon_objects(self):
         # APP LOGO
-        self.__label_icon_objects.add(self.ui.label_appLogo)
+        self.__label_icon_objects.add(self.window.ui.label_appLogo)
 
         # CALIBRATION OPTIONS
-        self.__label_icon_objects.add(self.ui.label_page_calibrationFromFileOptionIcon)
-        self.__label_icon_objects.add(self.ui.label_page_calibrationStartOptionIcon)
-        self.__label_icon_objects.add(self.ui.label_page_calibrationSkipOptionIcon)
+        self.__label_icon_objects.add(
+            self.window.ui.label_page_calibrationFromFileOptionIcon
+        )
+        self.__label_icon_objects.add(
+            self.window.ui.label_page_calibrationStartOptionIcon
+        )
+        self.__label_icon_objects.add(
+            self.window.ui.label_page_calibrationSkipOptionIcon
+        )
 
         # CALIBRATION STEPS
-        self.__label_icon_objects.add(self.ui.label_calibrationSteps_0_MethodAutoIcon)
-        self.__label_icon_objects.add(self.ui.label_calibrationSteps_0_MethodManualIcon)
+        self.__label_icon_objects.add(
+            self.window.ui.label_calibrationSteps_0_MethodAutoIcon
+        )
+        self.__label_icon_objects.add(
+            self.window.ui.label_calibrationSteps_0_MethodManualIcon
+        )
 
         # PROJECT OPTIONS
-        self.__label_icon_objects.add(self.ui.label_newProjectIcon)
-        self.__label_icon_objects.add(self.ui.label_chooseProjectIcon)
+        self.__label_icon_objects.add(self.window.ui.label_newProjectIcon)
+        self.__label_icon_objects.add(self.window.ui.label_chooseProjectIcon)
 
     def __hide_labels_without_icons(self):
         for label in self.__label_icon_objects:
@@ -59,12 +69,12 @@ class ImagesManager(AbstractGUIManager):
         self.__get_label_icon_objects()
 
         if self.theme == "light":
-            self.main_window.setWindowIcon(self.app_logo_black_icon)
-            self.ui.label_appLogo.setPixmap(
+            self.window.setWindowIcon(self.app_logo_black_icon)
+            self.window.ui.label_appLogo.setPixmap(
                 self.app_logo_black_pixmap.scaledToHeight(155)
             )
         elif self.theme == "dark":
-            self.ui.label_appLogo.setPixmap(
+            self.window.ui.label_appLogo.setPixmap(
                 self.app_logo_white_pixmap.scaledToHeight(155)
             )
 
@@ -80,7 +90,7 @@ class ImagesManager(AbstractGUIManager):
         self.__hide_labels_without_icons()
 
     # def __preprocess_calibration_images(self):
-    #     self.ui.label_page_calibrationFromFileOptionIcon.setPixmap(
+    #     self.window.ui.label_page_calibrationFromFileOptionIcon.setPixmap(
     #         QPixmap("static/file/file-black.png").scaledToHeight(self.DEFAULT_ICON_SIZE)
     #     )
     #     self.__load_calibration_from_file_gif()
@@ -89,12 +99,12 @@ class ImagesManager(AbstractGUIManager):
 
     # def __load_calibration_from_file_gif(self):
     #     calibration_from_file_path = "static/gifs/calibration_from_file.gif"
-    #     calibration_from_file_label = self.ui.label_page_calibrationFromFileOptionIcon
+    #     calibration_from_file_label = self.window.ui.label_page_calibrationFromFileOptionIcon
     #     self.__load_gif(calibration_from_file_path, calibration_from_file_label)
 
     # def __load_calibration_skip_gif(self):
     #     calibration_skip_path = "static/gifs/calibration_skip.gif"
-    #     calibration_skip_label = self.ui.label_page_calibrationSkipOptionIcon
+    #     calibration_skip_label = self.window.ui.label_page_calibrationSkipOptionIcon
     #     self.__load_gif(calibration_skip_path, calibration_skip_label)
 
     # def __preprocess_project_images(self):
@@ -103,12 +113,12 @@ class ImagesManager(AbstractGUIManager):
 
     # def __load_new_project_gif(self):
     #     new_project_path = "static/gifs/new_project.gif"
-    #     new_project_label = self.ui.label_newProjectIcon
+    #     new_project_label = self.window.ui.label_newProjectIcon
     #     self.__load_gif(new_project_path, new_project_label)
 
     # def __load_choose_project_gif(self):
     #     choose_project_path = "static/gifs/choose_project.gif"
-    #     choose_project_label = self.ui.label_chooseProjectIcon
+    #     choose_project_label = self.window.ui.label_chooseProjectIcon
     #     self.__load_gif(choose_project_path, choose_project_label)
 
     # def __load_gif(self, path: str, label: QLabel):
