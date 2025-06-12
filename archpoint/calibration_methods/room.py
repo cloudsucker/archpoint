@@ -376,7 +376,7 @@ class RoomImagesHandler:
         self.__self_check()
         if not self.points_true_coords:
             return False
-        if not self.points_true_coords.keys() == self.unique_ids:
+        if self.points_true_coords.keys() != self.unique_ids:
             return False
         return all(
             isinstance(coords, tuple) and len(coords) == 3
