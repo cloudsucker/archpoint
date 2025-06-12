@@ -81,7 +81,11 @@ class CalibrationHandler:
     def __get_image_paths_sorted(self, images_dir: str) -> list:
         image_names = sorted(os.listdir(images_dir), key=len)
         image_names = [
-            name for name in image_names if name.endswith(self.image_extensions)
+            name
+            for name in image_names
+            if name.lower().endswith(
+                tuple(ext.lower() for ext in self.image_extensions)
+            )
         ]
 
         if not image_names:

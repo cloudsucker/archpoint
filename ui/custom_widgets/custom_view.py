@@ -48,7 +48,7 @@ class CustomGraphicsView(QGraphicsView):
         self._double_click_threshold = 300
 
     def wheelEvent(self, event: QWheelEvent) -> None:
-        if event.modifiers() == Qt.ControlModifier:
+        if event.modifiers() & Qt.ControlModifier:
             if event.angleDelta().y() > 0:
                 zoom = self._zoom_factor
 
@@ -116,7 +116,8 @@ class CustomGraphicsView(QGraphicsView):
 
         elif event.button() == Qt.RightButton:
             item = self.itemAt(event.pos())
-
+            if item is None:
+                self.deselect_point()
             if isinstance(item, QGraphicsEllipseItem):
                 point_id = None
 
@@ -195,7 +196,7 @@ class CustomGraphicsView(QGraphicsView):
         ):
             self.redo_action()
 
-        elif event.key() == Qt.Key_Return or event.key() == Qt.Key_Enter:
+        elif event.key() in [Qt.Key_Return, Qt.Key_Enter]:
             self.deselect_point()
         super().keyPressEvent(event)
 

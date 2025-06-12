@@ -28,6 +28,5 @@ class AbstractGUIManager:
         if callable(target):
             button.clicked.connect(target)
         elif isinstance(target, QWidget):
-            sw = getattr(self.window.ui, "stackedWidget_workSpace", None)
-            if sw:
+            if sw := getattr(self.window.ui, "stackedWidget_workSpace", None):
                 button.clicked.connect(lambda: sw.setCurrentWidget(target))

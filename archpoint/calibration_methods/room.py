@@ -376,7 +376,7 @@ class RoomImagesHandler:
         self.__self_check()
         if not self.points_true_coords:
             return False
-        if not self.points_true_coords.keys() == self.unique_ids:
+        if self.points_true_coords.keys() != self.unique_ids:
             return False
         return all(
             isinstance(coords, tuple) and len(coords) == 3
@@ -399,7 +399,7 @@ class RoomImagesHandler:
         except Exception as e:
             raise DotsRealCoordinatesLoadingFromFileError(
                 f"Ошибка загрузки координат: {e}"
-            )
+            ) from e
 
     def __load_dots_real_coords(self, file_path: str) -> None:
         with open(file_path, "r", encoding="utf-8") as file:
@@ -418,7 +418,7 @@ class RoomImagesHandler:
                     f"Строка не соответствует ожидаемой структуре: {line.strip()}"
                 )
             point_id, x, y, z = parsed
-            if not point_id in self.unique_ids:
+            if point_id not in self.unique_ids:
                 # TODO: ADD THIS THING INTO LOGS OR USER NOTIFICATION
                 continue
             self.set_dot_real_coordinates(point_id, (float(x), float(y), float(z)))
@@ -600,8 +600,7 @@ class RoomImageDotsEditor:
                 self.image_points[operation["id"]] = operation["old_point"]
         elif operation["method"] == "rename":
             if operation["old_id"] and operation["new_id"]:
-                point = self.image_points.pop(operation["new_id"], None)
-                if point:
+                if point := self.image_points.pop(operation["new_id"], None):
                     self.image_points[operation["old_id"]] = point
         else:
             raise InvalidHistoryOperationType(
