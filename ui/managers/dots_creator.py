@@ -465,8 +465,7 @@ class DotsCreatorManager(AbstractGUIManager):
     def __on_dots_table_key_press(self, event):
         """Обработка нажатия клавиши в таблице точек."""
         if event.key() == Qt.Key_Delete:
-            selected_indexes = self.dots_table.selectedIndexes()
-            if selected_indexes:
+            if selected_indexes := self.dots_table.selectedIndexes():
                 row = selected_indexes[0].row()
                 point_id = self.dots_table.item(row, 0).text()
                 self.__on_point_removed(point_id)
