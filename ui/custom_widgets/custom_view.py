@@ -195,7 +195,7 @@ class CustomGraphicsView(QGraphicsView):
         ):
             self.redo_action()
 
-        elif event.key() == Qt.Key_Return or event.key() == Qt.Key_Enter:
+        elif event.key() in [Qt.Key_Return, Qt.Key_Enter]:
             self.deselect_point()
         super().keyPressEvent(event)
 
