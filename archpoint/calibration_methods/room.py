@@ -600,8 +600,7 @@ class RoomImageDotsEditor:
                 self.image_points[operation["id"]] = operation["old_point"]
         elif operation["method"] == "rename":
             if operation["old_id"] and operation["new_id"]:
-                point = self.image_points.pop(operation["new_id"], None)
-                if point:
+                if point := self.image_points.pop(operation["new_id"], None):
                     self.image_points[operation["old_id"]] = point
         else:
             raise InvalidHistoryOperationType(
