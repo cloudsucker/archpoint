@@ -418,7 +418,7 @@ class RoomImagesHandler:
                     f"Строка не соответствует ожидаемой структуре: {line.strip()}"
                 )
             point_id, x, y, z = parsed
-            if not point_id in self.unique_ids:
+            if point_id not in self.unique_ids:
                 # TODO: ADD THIS THING INTO LOGS OR USER NOTIFICATION
                 continue
             self.set_dot_real_coordinates(point_id, (float(x), float(y), float(z)))
