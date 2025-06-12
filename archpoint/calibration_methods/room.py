@@ -399,7 +399,7 @@ class RoomImagesHandler:
         except Exception as e:
             raise DotsRealCoordinatesLoadingFromFileError(
                 f"Ошибка загрузки координат: {e}"
-            )
+            ) from e
 
     def __load_dots_real_coords(self, file_path: str) -> None:
         with open(file_path, "r", encoding="utf-8") as file:
