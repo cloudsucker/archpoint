@@ -1,6 +1,6 @@
-from ui.managers.abstract import AbstractGUIManager
+from ui.managers import AbstractWindow, AbstractGUIManager
 
 
 class SettingsManager(AbstractGUIManager):
-    def __init__(self, ui):
-        self.ui = ui
+    def __init__(self, window: AbstractWindow):
+        self.window = window

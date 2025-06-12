@@ -14,9 +14,23 @@ class ChessboardCalibrationMethod(CalibrationMethodAbstract):
         # для каждой камеры в режиме стерео-калибровки.
         self.__global_parameters = ["square_size", "board_size"]
 
-    def set_chessboard_sizes(self, square_size: int, board_size: tuple) -> None:
-        self.square_size = square_size
-        self.board_size = board_size
+    def __eq__(self, other):
+        return isinstance(other, str) and other == "chessboard"
+
+    def set_chessboard_sizes(
+        self, square_size: int | None = None, board_size: tuple | None = None
+    ) -> None:
+        print(
+            f"[ CHESSBOARD ] Setting chessboard sizes: square_size = {square_size}, board_size = {board_size}"
+        )
+        if square_size is not None:
+            self.square_size = square_size
+        if board_size is not None:
+            self.board_size = board_size
+
+        print(
+            f"[ CHESSBOARD ] Chessboard sizes: square_size = {self.square_size}, board_size = {self.board_size}"
+        )
 
     def is_chessboard_size_correct(self, test_image_filepath: str) -> None:
         if not os.path.exists(test_image_filepath):
@@ -52,9 +66,7 @@ class ChessboardCalibrationMethod(CalibrationMethodAbstract):
         image_height, image_width = image.shape[:2]
         flags = 0
 
-        final_objpoints = []
-        for i in range(20):
-            final_objpoints.append(initial_objpoints)
+        final_objpoints = [initial_objpoints for _ in range(len(image_paths))]
         (
             retval,
             camera_matrix,

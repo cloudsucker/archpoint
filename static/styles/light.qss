@@ -1,0 +1,305 @@
+/* = = = = GLOBAL STYLES = = = = */
+* {
+    font-family: "Rubik", sans-serif;
+    font-size: 16px;
+    color: #2a2a2a;
+}
+
+/* = = = = WIDGET STYLES = = = = */
+QWidget {
+    background-color: #fafafa;
+    border: none;
+}
+
+/* QPushButton */
+QPushButton {
+    text-align: center;
+    background-color: #dddddd;
+    border-radius: 4px;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+QPushButton:hover {
+    background-color: #cccccc;
+}
+
+QPushButton:pressed {
+    background-color: #bbbbbb;
+}
+
+QPushButton:disabled {
+    background-color: #eaeaea;
+    color: #aaaaaa;
+}
+
+/* QLineEdit */
+QLineEdit {
+    background-color: #ebebeb;
+    border-radius: 3px;
+    padding: 4px 10px;
+    border: 1px solid transparent;
+    font-size: 14px;
+}
+
+QLineEdit:focus {
+    border: 1px solid #8888cc;
+}
+
+/* QTextBrowser */
+QTextBrowser {
+    background-color: #ffffff;
+    border-radius: 3px;
+    padding: 6px 10px;
+    border: 1px solid transparent;
+    font-size: 14px;
+}
+
+/* QLabel */
+QLabel {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+/* QGroupBox */
+QGroupBox {
+    margin: 0;
+    padding: 12px 0 0 0;
+    border: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+/* QCheckBox */
+QCheckBox {
+    padding: 4px;
+    font-size: 14px;
+}
+
+QCheckBox::indicator {
+    width: 14px;
+    height: 14px;
+    border: 1px solid #8888cc;
+    border-radius: 2px;
+    background-color: #ffffff;
+}
+
+QCheckBox::indicator:checked {
+    image: url("static/icons/check_black.png");
+}
+
+QCheckBox::indicator:hover {
+    border: 1px solid #9999dd;
+}
+
+/* QProgressBar */
+QProgressBar {
+    text-align: center;
+    background-color: #e5e5e5;
+    border-radius: 4px;
+    border: none;
+}
+
+QProgressBar::chunk {
+    background-color: #8888cc;
+    border-radius: 4px;
+}
+
+/* QTableWidget */
+QTableWidget {
+    background-color: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+QTableWidget::item {
+    padding: 4px;
+}
+
+QTableWidget::item:selected {
+    background-color: #cccccc;
+    color: #000000;
+}
+
+QHeaderView::section {
+    background-color: #dddddd;
+    padding: 4px;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* QGraphicsView */
+QGraphicsView {
+    background-color: #ffffff;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+}
+
+/* QScrollBar */
+QScrollBar:vertical,
+QScrollBar:horizontal {
+    background: transparent;
+    width: 8px;
+    height: 8px;
+}
+
+QScrollBar::handle:vertical,
+QScrollBar::handle:horizontal {
+    background-color: #cccccc;
+    border-radius: 4px;
+}
+
+QScrollBar::handle:vertical:hover,
+QScrollBar::handle:horizontal:hover {
+    background-color: #bbbbbb;
+}
+
+QScrollBar::add-line,
+QScrollBar::sub-line {
+    background: none;
+    border: none;
+}
+
+#textBrowser_calibrationProcessLogs {
+    color: #8888cc;
+    font-size: 11px;
+    background-color: #ebebeb;
+}
+
+/* = = = = LEFT MENU = = = = = */
+#groupBox_pagesAndSettings {
+    border-right: 1px solid #e5e5e5;
+}
+
+/* LOGO */
+#label_appLogo {
+    padding: 10px;
+    text-align: center;
+}
+
+/* SETTINGS AND THEME BUTTONS */
+#pushButton_settings,
+#pushButton_themeToggle {
+    font-size: 12px;
+    color: #1a1a1a;
+    background: none;
+    margin-bottom: 10px;
+}
+
+#pushButton_settings:hover,
+#pushButton_themeToggle:hover {
+    color: #000000;
+    font-weight: 500;
+}
+
+/* PAGE NAVIGATION BUTTONS */
+#pushButton_pageCalibration,
+#pushButton_pageProcess {
+    font-size: 14px;
+    color: #1a1a1a;
+    background: none;
+    text-align: left;
+    padding: 8px 10px;
+}
+
+#pushButton_pageCalibration:hover,
+#pushButton_pageProcess:hover {
+    color: #000000;
+}
+
+#pushButton_pageCalibration:checked,
+#pushButton_pageProcess:checked {
+    margin-left: 5px;
+    background-color: #e3e3f7;
+}
+
+/* OPTIONS TITLES */
+#label_page_calibrationFromFileOptionTitle,
+#label_page_calibrationStartOptionTitle,
+#label_page_calibrationSkipOptionTitle {
+    font-weight: 500;
+    font-size: 15px;
+}
+
+/* H1 */
+#groupBox_calibrationSteps_0_MethodSelectionMain,
+#groupBox_newProjectCreatingMain,
+#groupBox_calibrationSteps_1_3_PreparingRoomTipsMain,
+#groupBox_calibrationSteps_1_3_PreparingChessboardTipsMain,
+#groupBox_calibrationSteps_4,
+#groupBox_processingProcessMain,
+#groupBox_calibrationSteps_5_doneMain {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* MAIN GROUP SPACING */
+#groupBox_calibrationSteps_1_3_PreparingRoomTipsMain,
+#groupBox_calibrationSteps_1_3_PreparingChessboardTipsMain,
+#groupBox_calibrationSteps_4,
+#groupBox_newProjectCreatingMain,
+#groupBox_processingProcessMain,
+#groupBox_calibrationSteps_5_doneMain {
+    padding-top: 40px;
+}
+
+/* INFO AND TIPS */
+#label_page_calibrationSkipOptionText,
+#label_calibrationPreparingStep1_info,
+#label_calibrationPreparingStep2_info,
+#label_calibrationPreparingStep3_info,
+#label_calibrationPreparingRoomTipsStep1_Info,
+#label_calibrationPreparingRoomTipsStep2_Info,
+#label_calibrationPreparingRoomTipsStep3_Info,
+#checkBox_preprocessingImages {
+    font-size: 13px;
+    font-weight: 400;
+    padding-top: 10px;
+}
+
+/* H2 */
+#label_page_calibrationFromFileOptionTitle,
+#label_page_calibrationStartOptionTitle,
+#label_page_calibrationSkipOptionTitle,
+#label_calibrationSteps_0_MethodAutoTitle,
+#label_calibrationSteps_0_MethodManualTitle,
+#label_chooseProjectTitle,
+#label_newProjectTitle {
+    font-size: 15px;
+    font-weight: bold;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+/* PATH INPUT PADDING REMOVE */
+#groupBox_newProjectCreatingPath {
+    padding: 0;
+}
+
+/* PATH INPIT LITTLE MARGIN */
+#lineEdit_imagesDirectoryField,
+#lineEdit_secondCameraProcessingImagesDirectory {
+    margin-top: 5px;
+}
+
+/* H3 */
+#groupBox_calibrationPreparingStep1,
+#groupBox_calibrationPreparingStep2,
+#groupBox_calibrationPreparingStep3,
+#groupBox_calibrationPreparingRoomTipsStep_1,
+#groupBox_calibrationPreparingRoomTipsStep_2,
+#groupBox_calibrationPreparingRoomTipsStep_3,
+#groupBox_calibrationImagesDirectoryField,
+#groupBox_calibrationImagesDirectoryFieldSecondCamera,
+#label_newProjectCreatingNameFieldTitle,
+#label_newProjectCreatingPathFieldTitle,
+#groupBox_processPathSetter_Field,
+#groupBox_secondCameraProcessingField {
+    font-size: 15px;
+    font-weight: normal;
+    padding-top: 10px;
+}

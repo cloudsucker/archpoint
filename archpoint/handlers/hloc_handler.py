@@ -34,12 +34,12 @@ class HLOC_Handler:
         if not os.path.exists(images_path):
             raise FileNotFoundError("Директория с изображениями не найдена.")
 
+        os.makedirs(outputs_path, exist_ok=True)
+
         if not os.path.isdir(outputs_path):
             raise FileNotFoundError(
                 "Некорректная директория для сохранения результатов."
             )
-
-        os.makedirs(outputs_path, exist_ok=True)
 
         self.images_path = Path(images_path)
         self.outputs_path = Path(outputs_path)

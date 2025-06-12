@@ -15,11 +15,12 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QCheckBox, QGraphicsView, QGridLayout,
-    QGroupBox, QHBoxLayout, QHeaderView, QLabel,
-    QLineEdit, QProgressBar, QPushButton, QSizePolicy,
-    QSpacerItem, QStackedWidget, QTableWidget, QTableWidgetItem,
-    QTextBrowser, QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QApplication, QCheckBox, QDoubleSpinBox, QGraphicsView,
+    QGridLayout, QGroupBox, QHBoxLayout, QHeaderView,
+    QLabel, QLineEdit, QProgressBar, QPushButton,
+    QSizePolicy, QSpacerItem, QSpinBox, QStackedWidget,
+    QTableWidget, QTableWidgetItem, QTextBrowser, QVBoxLayout,
+    QWidget)
 
 class Ui_Widget(object):
     def setupUi(self, Widget):
@@ -665,7 +666,7 @@ class Ui_Widget(object):
         self.verticalLayout_13.setObjectName(u"verticalLayout_13")
         self.groupBox_calibrationSteps_1_3_PreparingChessboardTipsMain = QGroupBox(self.page_calibrationSteps_1_3_PreparingChessboardTips)
         self.groupBox_calibrationSteps_1_3_PreparingChessboardTipsMain.setObjectName(u"groupBox_calibrationSteps_1_3_PreparingChessboardTipsMain")
-        self.groupBox_calibrationSteps_1_3_PreparingChessboardTipsMain.setFont(font6)
+        self.groupBox_calibrationSteps_1_3_PreparingChessboardTipsMain.setFont(font5)
         self.verticalLayout_9 = QVBoxLayout(self.groupBox_calibrationSteps_1_3_PreparingChessboardTipsMain)
         self.verticalLayout_9.setObjectName(u"verticalLayout_9")
         self.groupBox_calibrationPreparingStep1 = QGroupBox(self.groupBox_calibrationSteps_1_3_PreparingChessboardTipsMain)
@@ -916,6 +917,73 @@ class Ui_Widget(object):
 
         self.verticalLayout_14.addWidget(self.groupBox_calibrationImagesDirectoryFieldSecondCamera)
 
+        self.groupBox_chessboardSize_Setting = QGroupBox(self.groupBox_calibrationSteps_4)
+        self.groupBox_chessboardSize_Setting.setObjectName(u"groupBox_chessboardSize_Setting")
+        self.groupBox_chessboardSize_Setting.setFont(font3)
+        self.groupBox_chessboardSize_Setting.setFlat(True)
+        self.horizontalLayout_22 = QHBoxLayout(self.groupBox_chessboardSize_Setting)
+        self.horizontalLayout_22.setObjectName(u"horizontalLayout_22")
+        self.label_chessboardSize_Setting_WidthTitle = QLabel(self.groupBox_chessboardSize_Setting)
+        self.label_chessboardSize_Setting_WidthTitle.setObjectName(u"label_chessboardSize_Setting_WidthTitle")
+        font13 = QFont()
+        font13.setFamilies([u"Rubik"])
+        font13.setPointSize(11)
+        font13.setBold(False)
+        self.label_chessboardSize_Setting_WidthTitle.setFont(font13)
+
+        self.horizontalLayout_22.addWidget(self.label_chessboardSize_Setting_WidthTitle)
+
+        self.spinBox_chessboardSize_Setting_WidthInput = QSpinBox(self.groupBox_chessboardSize_Setting)
+        self.spinBox_chessboardSize_Setting_WidthInput.setObjectName(u"spinBox_chessboardSize_Setting_WidthInput")
+        self.spinBox_chessboardSize_Setting_WidthInput.setFont(font12)
+        self.spinBox_chessboardSize_Setting_WidthInput.setValue(11)
+
+        self.horizontalLayout_22.addWidget(self.spinBox_chessboardSize_Setting_WidthInput)
+
+        self.label_chessboardSize_Setting_HeightTitle = QLabel(self.groupBox_chessboardSize_Setting)
+        self.label_chessboardSize_Setting_HeightTitle.setObjectName(u"label_chessboardSize_Setting_HeightTitle")
+        self.label_chessboardSize_Setting_HeightTitle.setFont(font13)
+
+        self.horizontalLayout_22.addWidget(self.label_chessboardSize_Setting_HeightTitle)
+
+        self.spinBox_chessboardSize_Setting_HeightInput = QSpinBox(self.groupBox_chessboardSize_Setting)
+        self.spinBox_chessboardSize_Setting_HeightInput.setObjectName(u"spinBox_chessboardSize_Setting_HeightInput")
+        self.spinBox_chessboardSize_Setting_HeightInput.setFont(font12)
+        self.spinBox_chessboardSize_Setting_HeightInput.setValue(7)
+
+        self.horizontalLayout_22.addWidget(self.spinBox_chessboardSize_Setting_HeightInput)
+
+        self.label_chessboardSize_Setting_SquareSize = QLabel(self.groupBox_chessboardSize_Setting)
+        self.label_chessboardSize_Setting_SquareSize.setObjectName(u"label_chessboardSize_Setting_SquareSize")
+        self.label_chessboardSize_Setting_SquareSize.setFont(font13)
+
+        self.horizontalLayout_22.addWidget(self.label_chessboardSize_Setting_SquareSize)
+
+        self.doubleSpinBox_chessboardSize_Setting_SquareSizeInput = QDoubleSpinBox(self.groupBox_chessboardSize_Setting)
+        self.doubleSpinBox_chessboardSize_Setting_SquareSizeInput.setObjectName(u"doubleSpinBox_chessboardSize_Setting_SquareSizeInput")
+        self.doubleSpinBox_chessboardSize_Setting_SquareSizeInput.setFont(font12)
+        self.doubleSpinBox_chessboardSize_Setting_SquareSizeInput.setDecimals(1)
+
+        self.horizontalLayout_22.addWidget(self.doubleSpinBox_chessboardSize_Setting_SquareSizeInput)
+
+        self.horizontalSpacer_chessboardSize_Setting = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_22.addItem(self.horizontalSpacer_chessboardSize_Setting)
+
+
+        self.verticalLayout_14.addWidget(self.groupBox_chessboardSize_Setting)
+
+        self.label_chessboardSize_Setting_Tips = QLabel(self.groupBox_calibrationSteps_4)
+        self.label_chessboardSize_Setting_Tips.setObjectName(u"label_chessboardSize_Setting_Tips")
+        font14 = QFont()
+        font14.setFamilies([u"Rubik"])
+        font14.setPointSize(10)
+        font14.setBold(False)
+        font14.setItalic(True)
+        self.label_chessboardSize_Setting_Tips.setFont(font14)
+
+        self.verticalLayout_14.addWidget(self.label_chessboardSize_Setting_Tips)
+
         self.pushButton_calibrationProcessStart = QPushButton(self.groupBox_calibrationSteps_4)
         self.pushButton_calibrationProcessStart.setObjectName(u"pushButton_calibrationProcessStart")
         self.pushButton_calibrationProcessStart.setFont(font3)
@@ -970,19 +1038,24 @@ class Ui_Widget(object):
         self.verticalLayout_27.setObjectName(u"verticalLayout_27")
         self.groupBox_ImageDotsCreatorField = QGroupBox(self.page_calibrationSteps_5_ImageDotsCreating)
         self.groupBox_ImageDotsCreatorField.setObjectName(u"groupBox_ImageDotsCreatorField")
-        self.verticalLayout_28 = QVBoxLayout(self.groupBox_ImageDotsCreatorField)
-        self.verticalLayout_28.setObjectName(u"verticalLayout_28")
-        self.label_imageDotsCreator_ImageName = QLabel(self.groupBox_ImageDotsCreatorField)
+        self.horizontalLayout_21 = QHBoxLayout(self.groupBox_ImageDotsCreatorField)
+        self.horizontalLayout_21.setObjectName(u"horizontalLayout_21")
+        self.groupBox_dotsCreatorImagePreviewField = QGroupBox(self.groupBox_ImageDotsCreatorField)
+        self.groupBox_dotsCreatorImagePreviewField.setObjectName(u"groupBox_dotsCreatorImagePreviewField")
+        self.groupBox_dotsCreatorImagePreviewField.setFlat(True)
+        self.verticalLayout_34 = QVBoxLayout(self.groupBox_dotsCreatorImagePreviewField)
+        self.verticalLayout_34.setObjectName(u"verticalLayout_34")
+        self.label_imageDotsCreator_ImageName = QLabel(self.groupBox_dotsCreatorImagePreviewField)
         self.label_imageDotsCreator_ImageName.setObjectName(u"label_imageDotsCreator_ImageName")
 
-        self.verticalLayout_28.addWidget(self.label_imageDotsCreator_ImageName)
+        self.verticalLayout_34.addWidget(self.label_imageDotsCreator_ImageName)
 
-        self.graphicsView_imageDotsCreator_ImagePreview = QGraphicsView(self.groupBox_ImageDotsCreatorField)
+        self.graphicsView_imageDotsCreator_ImagePreview = QGraphicsView(self.groupBox_dotsCreatorImagePreviewField)
         self.graphicsView_imageDotsCreator_ImagePreview.setObjectName(u"graphicsView_imageDotsCreator_ImagePreview")
 
-        self.verticalLayout_28.addWidget(self.graphicsView_imageDotsCreator_ImagePreview)
+        self.verticalLayout_34.addWidget(self.graphicsView_imageDotsCreator_ImagePreview)
 
-        self.groupBox_imageDotsCreator_ButtonsField = QGroupBox(self.groupBox_ImageDotsCreatorField)
+        self.groupBox_imageDotsCreator_ButtonsField = QGroupBox(self.groupBox_dotsCreatorImagePreviewField)
         self.groupBox_imageDotsCreator_ButtonsField.setObjectName(u"groupBox_imageDotsCreator_ButtonsField")
         self.groupBox_imageDotsCreator_ButtonsField.setFlat(True)
         self.horizontalLayout_20 = QHBoxLayout(self.groupBox_imageDotsCreator_ButtonsField)
@@ -1004,7 +1077,20 @@ class Ui_Widget(object):
         self.horizontalLayout_20.addWidget(self.pushButton_imageDotsCreator_getNextImage)
 
 
-        self.verticalLayout_28.addWidget(self.groupBox_imageDotsCreator_ButtonsField)
+        self.verticalLayout_34.addWidget(self.groupBox_imageDotsCreator_ButtonsField)
+
+        self.pushButton_goToSettingRealCoordinates = QPushButton(self.groupBox_dotsCreatorImagePreviewField)
+        self.pushButton_goToSettingRealCoordinates.setObjectName(u"pushButton_goToSettingRealCoordinates")
+        self.pushButton_goToSettingRealCoordinates.setEnabled(False)
+        font15 = QFont()
+        font15.setFamilies([u"Rubik"])
+        font15.setPointSize(11)
+        self.pushButton_goToSettingRealCoordinates.setFont(font15)
+
+        self.verticalLayout_34.addWidget(self.pushButton_goToSettingRealCoordinates)
+
+
+        self.horizontalLayout_21.addWidget(self.groupBox_dotsCreatorImagePreviewField)
 
         self.tableWidget_imageDotsCreator_DotsData = QTableWidget(self.groupBox_ImageDotsCreatorField)
         if (self.tableWidget_imageDotsCreator_DotsData.columnCount() < 3):
@@ -1016,14 +1102,96 @@ class Ui_Widget(object):
         __qtablewidgetitem2 = QTableWidgetItem()
         self.tableWidget_imageDotsCreator_DotsData.setHorizontalHeaderItem(2, __qtablewidgetitem2)
         self.tableWidget_imageDotsCreator_DotsData.setObjectName(u"tableWidget_imageDotsCreator_DotsData")
-        self.tableWidget_imageDotsCreator_DotsData.setMaximumSize(QSize(16777215, 150))
+        self.tableWidget_imageDotsCreator_DotsData.setFont(font)
+        self.tableWidget_imageDotsCreator_DotsData.horizontalHeader().setDefaultSectionSize(40)
+        self.tableWidget_imageDotsCreator_DotsData.verticalHeader().setDefaultSectionSize(20)
 
-        self.verticalLayout_28.addWidget(self.tableWidget_imageDotsCreator_DotsData)
+        self.horizontalLayout_21.addWidget(self.tableWidget_imageDotsCreator_DotsData)
 
 
         self.verticalLayout_27.addWidget(self.groupBox_ImageDotsCreatorField)
 
         self.stackedWidget_workSpace.addWidget(self.page_calibrationSteps_5_ImageDotsCreating)
+        self.page_calibrationSteps_5_ImageDotsCreating_SetCoords = QWidget()
+        self.page_calibrationSteps_5_ImageDotsCreating_SetCoords.setObjectName(u"page_calibrationSteps_5_ImageDotsCreating_SetCoords")
+        self.verticalLayout_35 = QVBoxLayout(self.page_calibrationSteps_5_ImageDotsCreating_SetCoords)
+        self.verticalLayout_35.setObjectName(u"verticalLayout_35")
+        self.groupBox_settingRealCoordinates_main = QGroupBox(self.page_calibrationSteps_5_ImageDotsCreating_SetCoords)
+        self.groupBox_settingRealCoordinates_main.setObjectName(u"groupBox_settingRealCoordinates_main")
+        self.verticalLayout_28 = QVBoxLayout(self.groupBox_settingRealCoordinates_main)
+        self.verticalLayout_28.setObjectName(u"verticalLayout_28")
+        self.label_setRealCoordinates_PageInfo = QLabel(self.groupBox_settingRealCoordinates_main)
+        self.label_setRealCoordinates_PageInfo.setObjectName(u"label_setRealCoordinates_PageInfo")
+        self.label_setRealCoordinates_PageInfo.setFont(font)
+
+        self.verticalLayout_28.addWidget(self.label_setRealCoordinates_PageInfo)
+
+        self.tableWidget_imageDotsAndRealCoordinates = QTableWidget(self.groupBox_settingRealCoordinates_main)
+        if (self.tableWidget_imageDotsAndRealCoordinates.columnCount() < 4):
+            self.tableWidget_imageDotsAndRealCoordinates.setColumnCount(4)
+        __qtablewidgetitem3 = QTableWidgetItem()
+        self.tableWidget_imageDotsAndRealCoordinates.setHorizontalHeaderItem(0, __qtablewidgetitem3)
+        __qtablewidgetitem4 = QTableWidgetItem()
+        self.tableWidget_imageDotsAndRealCoordinates.setHorizontalHeaderItem(1, __qtablewidgetitem4)
+        __qtablewidgetitem5 = QTableWidgetItem()
+        self.tableWidget_imageDotsAndRealCoordinates.setHorizontalHeaderItem(2, __qtablewidgetitem5)
+        __qtablewidgetitem6 = QTableWidgetItem()
+        self.tableWidget_imageDotsAndRealCoordinates.setHorizontalHeaderItem(3, __qtablewidgetitem6)
+        self.tableWidget_imageDotsAndRealCoordinates.setObjectName(u"tableWidget_imageDotsAndRealCoordinates")
+        self.tableWidget_imageDotsAndRealCoordinates.setSortingEnabled(True)
+
+        self.verticalLayout_28.addWidget(self.tableWidget_imageDotsAndRealCoordinates)
+
+        self.label_setRealCoordinates_tips = QLabel(self.groupBox_settingRealCoordinates_main)
+        self.label_setRealCoordinates_tips.setObjectName(u"label_setRealCoordinates_tips")
+        font16 = QFont()
+        font16.setFamilies([u"Rubik"])
+        font16.setPointSize(10)
+        font16.setItalic(True)
+        self.label_setRealCoordinates_tips.setFont(font16)
+        self.label_setRealCoordinates_tips.setScaledContents(False)
+        self.label_setRealCoordinates_tips.setWordWrap(True)
+
+        self.verticalLayout_28.addWidget(self.label_setRealCoordinates_tips)
+
+        self.groupBox_setRealCoordinatesPage_buttons = QGroupBox(self.groupBox_settingRealCoordinates_main)
+        self.groupBox_setRealCoordinatesPage_buttons.setObjectName(u"groupBox_setRealCoordinatesPage_buttons")
+        self.horizontalLayout_23 = QHBoxLayout(self.groupBox_setRealCoordinatesPage_buttons)
+        self.horizontalLayout_23.setObjectName(u"horizontalLayout_23")
+        self.pushButton_returnToDotsCreator = QPushButton(self.groupBox_setRealCoordinatesPage_buttons)
+        self.pushButton_returnToDotsCreator.setObjectName(u"pushButton_returnToDotsCreator")
+        self.pushButton_returnToDotsCreator.setFont(font)
+
+        self.horizontalLayout_23.addWidget(self.pushButton_returnToDotsCreator)
+
+        self.horizontalSpacer_setRealCoordinatesPage_betweenButtons_left = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_23.addItem(self.horizontalSpacer_setRealCoordinatesPage_betweenButtons_left)
+
+        self.pushButton_loadRealCoordinatesFromFile = QPushButton(self.groupBox_setRealCoordinatesPage_buttons)
+        self.pushButton_loadRealCoordinatesFromFile.setObjectName(u"pushButton_loadRealCoordinatesFromFile")
+        self.pushButton_loadRealCoordinatesFromFile.setFont(font)
+
+        self.horizontalLayout_23.addWidget(self.pushButton_loadRealCoordinatesFromFile)
+
+        self.horizontalSpacer_setRealCoordinatesPage_betweenButtons_right = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_23.addItem(self.horizontalSpacer_setRealCoordinatesPage_betweenButtons_right)
+
+        self.pushButton_startCalibrationProcessFromSettingRealCoordinates = QPushButton(self.groupBox_setRealCoordinatesPage_buttons)
+        self.pushButton_startCalibrationProcessFromSettingRealCoordinates.setObjectName(u"pushButton_startCalibrationProcessFromSettingRealCoordinates")
+        self.pushButton_startCalibrationProcessFromSettingRealCoordinates.setEnabled(False)
+        self.pushButton_startCalibrationProcessFromSettingRealCoordinates.setFont(font)
+
+        self.horizontalLayout_23.addWidget(self.pushButton_startCalibrationProcessFromSettingRealCoordinates)
+
+
+        self.verticalLayout_28.addWidget(self.groupBox_setRealCoordinatesPage_buttons)
+
+
+        self.verticalLayout_35.addWidget(self.groupBox_settingRealCoordinates_main)
+
+        self.stackedWidget_workSpace.addWidget(self.page_calibrationSteps_5_ImageDotsCreating_SetCoords)
         self.page_calibrationSteps_5_done = QWidget()
         self.page_calibrationSteps_5_done.setObjectName(u"page_calibrationSteps_5_done")
         self.verticalLayout_17 = QVBoxLayout(self.page_calibrationSteps_5_done)
@@ -1088,7 +1256,7 @@ class Ui_Widget(object):
         self.retranslateUi(Widget)
 
         self.pushButton_pageCalibration.setDefault(False)
-        self.stackedWidget_workSpace.setCurrentIndex(9)
+        self.stackedWidget_workSpace.setCurrentIndex(10)
 
 
         QMetaObject.connectSlotsByName(Widget)
@@ -1202,6 +1370,11 @@ class Ui_Widget(object):
         self.pushButton_setCalibrationImagesDirectory.setText(QCoreApplication.translate("Widget", u"\u0412\u044b\u0431\u0440\u0430\u0442\u044c", None))
         self.groupBox_calibrationImagesDirectoryFieldSecondCamera.setTitle(QCoreApplication.translate("Widget", u"\u041f\u0443\u0442\u044c \u043a \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u044f\u043c \u0441\u043e \u0432\u0442\u043e\u0440\u043e\u0439 \u043a\u0430\u043c\u0435\u0440\u044b (\u0441\u0442\u0435\u0440\u0435\u043e\u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0430)", None))
         self.pushButton_setCalibrationImagesDirectorySecondCamera.setText(QCoreApplication.translate("Widget", u"\u0412\u044b\u0431\u0440\u0430\u0442\u044c", None))
+        self.groupBox_chessboardSize_Setting.setTitle(QCoreApplication.translate("Widget", u"\u0420\u0430\u0437\u043c\u0435\u0440 \u0448\u0430\u0445\u043c\u0430\u0442\u043d\u043e\u0439 \u0434\u043e\u0441\u043a\u0438", None))
+        self.label_chessboardSize_Setting_WidthTitle.setText(QCoreApplication.translate("Widget", u"\u0428\u0438\u0440\u0438\u043d\u0430:", None))
+        self.label_chessboardSize_Setting_HeightTitle.setText(QCoreApplication.translate("Widget", u"\u0412\u044b\u0441\u043e\u0442\u0430:", None))
+        self.label_chessboardSize_Setting_SquareSize.setText(QCoreApplication.translate("Widget", u"\u0420\u0430\u0437\u043c\u0435\u0440 \u0448\u0430\u0445\u043c\u0430\u0442\u043d\u043e\u0439 \u043a\u043b\u0435\u0442\u043a\u0438 (\u043c\u043c):", None))
+        self.label_chessboardSize_Setting_Tips.setText(QCoreApplication.translate("Widget", u"\u041f\u0440\u0438\u043c\u0435\u0447\u0435\u043d\u0438\u0435: \u0432 \u0440\u0430\u0437\u043c\u0435\u0440\u0435 \u0448\u0430\u0445\u043c\u0430\u0442\u043d\u043e\u0439 \u0434\u043e\u0441\u043a\u0438 \u0443\u043a\u0430\u0436\u0438\u0442\u0435 \u043a\u043e\u043b-\u0432\u043e \u043f\u0435\u0440\u0435\u043a\u0440\u0435\u0441\u0442\u0438\u0439 \u043f\u043e \u0448\u0438\u0440\u0438\u043d\u0435 \u0438 \u0432\u044b\u0441\u043e\u0442\u0435 \u0441\u043e\u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0435\u043d\u043d\u043e", None))
         self.pushButton_calibrationProcessStart.setText(QCoreApplication.translate("Widget", u"\u0417\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u044c \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0443", None))
         self.textBrowser_calibrationProcessLogs.setHtml(QCoreApplication.translate("Widget", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><meta charset=\"utf-8\" /><style type=\"text/css\">\n"
@@ -1219,16 +1392,33 @@ class Ui_Widget(object):
         self.groupBox_calibrationSteps_4_ButtonField.setTitle("")
         self.pushButton_calibrationSteps_4_returnToTipsButton.setText(QCoreApplication.translate("Widget", u"\u041d\u0430\u0437\u0430\u0434", None))
         self.groupBox_ImageDotsCreatorField.setTitle(QCoreApplication.translate("Widget", u"\u0420\u0430\u0437\u043c\u0435\u0442\u043a\u0430 \u0438\u0437\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u0439", None))
+        self.groupBox_dotsCreatorImagePreviewField.setTitle("")
         self.label_imageDotsCreator_ImageName.setText(QCoreApplication.translate("Widget", u"<<image name>>", None))
         self.groupBox_imageDotsCreator_ButtonsField.setTitle("")
         self.pushButton_imageDotsCreator_getPreviousImage.setText(QCoreApplication.translate("Widget", u"\u041f\u0440\u0435\u0434\u044b\u0434\u0443\u0449\u0435\u0435", None))
         self.pushButton_imageDotsCreator_getNextImage.setText(QCoreApplication.translate("Widget", u"\u0421\u043b\u0435\u0434\u0443\u044e\u0449\u0435\u0435", None))
+        self.pushButton_goToSettingRealCoordinates.setText(QCoreApplication.translate("Widget", u"\u0417\u0430\u0432\u0435\u0440\u0448\u0438\u0442\u044c \u0440\u0430\u0437\u043c\u0435\u0442\u043a\u0443", None))
         ___qtablewidgetitem = self.tableWidget_imageDotsCreator_DotsData.horizontalHeaderItem(0)
-        ___qtablewidgetitem.setText(QCoreApplication.translate("Widget", u"ID \u0442\u043e\u0447\u043a\u0438", None));
+        ___qtablewidgetitem.setText(QCoreApplication.translate("Widget", u"ID", None));
         ___qtablewidgetitem1 = self.tableWidget_imageDotsCreator_DotsData.horizontalHeaderItem(1)
         ___qtablewidgetitem1.setText(QCoreApplication.translate("Widget", u"X", None));
         ___qtablewidgetitem2 = self.tableWidget_imageDotsCreator_DotsData.horizontalHeaderItem(2)
         ___qtablewidgetitem2.setText(QCoreApplication.translate("Widget", u"Y", None));
+        self.groupBox_settingRealCoordinates_main.setTitle(QCoreApplication.translate("Widget", u"\u0414\u043e\u0431\u0430\u0432\u043b\u0435\u043d\u0438\u0435 \u0432\u043d\u0443\u0442\u0440\u0435\u043d\u043d\u0438\u0445 \u043a\u043e\u043e\u0440\u0434\u0438\u043d\u0430\u0442", None))
+        self.label_setRealCoordinates_PageInfo.setText(QCoreApplication.translate("Widget", u"\u0414\u043b\u044f \u0437\u0430\u043f\u0443\u0441\u043a\u0430 \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0438 \u0443\u043a\u0430\u0436\u0438\u0442\u0435 \u0432\u043d\u0443\u0442\u0440\u0435\u043d\u043d\u0438\u0435 \u043a\u043e\u043e\u0440\u0434\u0438\u043d\u0430\u0442\u044b \u0442\u043e\u0447\u0435\u043a.", None))
+        ___qtablewidgetitem3 = self.tableWidget_imageDotsAndRealCoordinates.horizontalHeaderItem(0)
+        ___qtablewidgetitem3.setText(QCoreApplication.translate("Widget", u"ID", None));
+        ___qtablewidgetitem4 = self.tableWidget_imageDotsAndRealCoordinates.horizontalHeaderItem(1)
+        ___qtablewidgetitem4.setText(QCoreApplication.translate("Widget", u"REAL X", None));
+        ___qtablewidgetitem5 = self.tableWidget_imageDotsAndRealCoordinates.horizontalHeaderItem(2)
+        ___qtablewidgetitem5.setText(QCoreApplication.translate("Widget", u"REAL Y", None));
+        ___qtablewidgetitem6 = self.tableWidget_imageDotsAndRealCoordinates.horizontalHeaderItem(3)
+        ___qtablewidgetitem6.setText(QCoreApplication.translate("Widget", u"REAL Z", None));
+        self.label_setRealCoordinates_tips.setText(QCoreApplication.translate("Widget", u"\u041f\u0440\u0438\u043c\u0435\u0447\u0430\u043d\u0438\u0435: \u0432\u043d\u0443\u0442\u0440\u0435\u043d\u043d\u0438\u0435 (\u043d\u0430\u0441\u0442\u043e\u044f\u0449\u0438\u0435) \u043a\u043e\u043e\u0440\u0434\u0438\u043d\u0430\u0442\u044b - \u044d\u0442\u043e \u0442\u0440\u0451\u0445\u043c\u0435\u0440\u043d\u044b\u0435 \u043a\u043e\u043e\u0440\u0434\u0438\u043d\u0430\u0442\u044b \u0442\u043e\u0447\u0435\u043a \u0432\u043d\u0443\u0442\u0440\u0438 \u043f\u043e\u043c\u0435\u0449\u0435\u043d\u0438\u044f. \u0412\u044b \u0442\u0430\u043a\u0436\u0435 \u043c\u043e\u0436\u0435\u0442\u0435 \u0437\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044c \u0438\u0445 \u0438\u0437 \u0444\u0430\u0439\u043b\u0430. \u041f\u043e\u0434\u0434\u0435\u0440\u0436\u0438\u0432\u0430\u0435\u043c\u044b\u0435 \u0444\u043e\u0440\u043c\u0430\u0442\u044b: .txt, .csv. \u0421\u0442\u0440\u0443\u043a\u0442\u0443\u0440\u0430 \u0444\u0430\u0439\u043b\u0430: ID, X, Y, Z.", None))
+        self.groupBox_setRealCoordinatesPage_buttons.setTitle("")
+        self.pushButton_returnToDotsCreator.setText(QCoreApplication.translate("Widget", u"\u041d\u0430\u0437\u0430\u0434", None))
+        self.pushButton_loadRealCoordinatesFromFile.setText(QCoreApplication.translate("Widget", u"\u0417\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u044c \u0438\u0437 \u0444\u0430\u0439\u043b\u0430", None))
+        self.pushButton_startCalibrationProcessFromSettingRealCoordinates.setText(QCoreApplication.translate("Widget", u"\u0417\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u044c \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0443", None))
         self.groupBox_calibrationSteps_5_doneMain.setTitle(QCoreApplication.translate("Widget", u"\u041a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0430 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u0430!", None))
         self.label_calibrationSteps_5_done_resultsTitle.setText(QCoreApplication.translate("Widget", u"\u041f\u043e\u043b\u0443\u0447\u0435\u043d\u043d\u0430\u044f \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u044f:", None))
         self.textBrowser_calibrationResultsData.setHtml(QCoreApplication.translate("Widget", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"

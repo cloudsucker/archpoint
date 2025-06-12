@@ -9,7 +9,7 @@ from archpoint.calibration_methods.room import RoomCalibrationMethod
 class CalibrationHandler:
     def __init__(self):
         self.calibration_data = {}
-        self.calibration_method: ChessboardCalibrationMethod | RoomCalibrationMethod = (
+        self.method: ChessboardCalibrationMethod | RoomCalibrationMethod = (
             ChessboardCalibrationMethod()
         )
 
@@ -17,6 +17,8 @@ class CalibrationHandler:
             "chessboard": ChessboardCalibrationMethod,
             "room": RoomCalibrationMethod,
         }
+
+        self.image_extensions = (".jpg", ".jpeg", ".png", ".JPG", ".JPEG", ".PNG")
 
     def is_completed(self) -> bool:
         """
@@ -78,6 +80,14 @@ class CalibrationHandler:
 
     def __get_image_paths_sorted(self, images_dir: str) -> list:
         image_names = sorted(os.listdir(images_dir), key=len)
+        image_names = [
+            name for name in image_names
+            if name.lower().endswith(tuple(ext.lower() for ext in self.image_extensions))
+        ]
+
+        if not image_names:
+            raise ValueError("В директории нет допустимых изображений.")
+
         return [os.path.join(images_dir, name) for name in image_names]
 
     def set_calibration_method(self, calibration_method: str) -> None:
@@ -85,49 +95,45 @@ class CalibrationHandler:
             raise CalibrationMethodDoesNotExist(
                 f"Недопустимый метод калибровки: {calibration_method}"
             )
-        self.calibration_method = self.calibration_methods[calibration_method]()
+        self.method = self.calibration_methods[calibration_method]()
         self.clear()
 
     def get_calibration_method_name(self) -> str:
         return list(self.calibration_methods.keys())[
-            list(self.calibration_methods.values()).index(
-                self.calibration_method.__class__
-            )
+            list(self.calibration_methods.values()).index(self.method.__class__)
         ]
 
-    def initialize_dots_creator(
-        self, images_path: list, second_camera_images_path: str | None = None
+    def initialize_room_images_handler(
+        self, images_path: str, second_camera_images_path: str | None = None
     ):
-        if not isinstance(self.calibration_method, RoomCalibrationMethod):
+        if not isinstance(self.method, RoomCalibrationMethod):
             raise ValueError("Метод калибровки не поддерживает создание точек.")
 
         if second_camera_images_path:
             first_images = self.__get_image_paths_sorted(images_path)
             second_images = self.__get_image_paths_sorted(second_camera_images_path)
-            self.calibration_method.initialize(first_images + second_images)
+            self.method.initialize(first_images, second_images)
             return
         image_paths = self.__get_image_paths_sorted(images_path)
-        self.calibration_method.initialize(image_paths)
+        self.method.initialize(image_paths)
 
     def calibrate(self, images_path: str) -> None:
         self.__init_calibration_data(stereo_mode=False)
         image_paths = self.__get_image_paths_sorted(images_path)
-        self.calibration_data.update(self.calibration_method.calibrate(image_paths))
+        self.calibration_data.update(self.method.calibrate(image_paths))
 
     def calibrate_stereo(self, left_images_path: str, right_images_path: str) -> None:
         self.__init_calibration_data(stereo_mode=True)
         left_image_paths = self.__get_image_paths_sorted(left_images_path)
         right_image_paths = self.__get_image_paths_sorted(right_images_path)
         self.calibration_data.update(
-            self.calibration_method.calibrate_stereo(
-                left_image_paths, right_image_paths
-            )
+            self.method.calibrate_stereo(left_image_paths, right_image_paths)
         )
 
     def __init_calibration_data(self, stereo_mode: bool) -> None:
         self.calibration_data = {
             "stereo_mode": stereo_mode,
-            "calibration_method": self.calibration_method.__class__.__name__,
+            "calibration_method": self.method.__class__.__name__,
         }
 
     def __fix_image_distortion(self, image_path: str) -> None:

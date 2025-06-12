@@ -1,3 +1,4 @@
+from ui.managers.abstract import AbstractWindow
 from ui.managers.abstract import AbstractGUIManager
 from ui.managers.calibration import CalibrationManager
 from ui.managers.dots_creator import DotsCreatorManager
