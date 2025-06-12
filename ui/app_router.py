@@ -409,7 +409,6 @@ class AppRouter(AbstractGUIManager):
                     self.project_manager.handler.path + "/processed_images",
                 )
 
-        # TODO: UNCOMMENT THIS CODE AFTER TESTING
-        # self.hloc_handler.process_images(
-        #     self.project.path + "/processed_images", self.project.path
-        # )
+        self.processing_manager.handler.process_images(
+            images_directory, self.project_manager.handler.path + "/process_output"
+        )
