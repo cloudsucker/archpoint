@@ -48,7 +48,7 @@ class CustomGraphicsView(QGraphicsView):
         self._double_click_threshold = 300
 
     def wheelEvent(self, event: QWheelEvent) -> None:
-        if event.modifiers() == Qt.ControlModifier:
+        if event.modifiers() & Qt.ControlModifier:
             if event.angleDelta().y() > 0:
                 zoom = self._zoom_factor
 
