@@ -116,7 +116,8 @@ class CustomGraphicsView(QGraphicsView):
 
         elif event.button() == Qt.RightButton:
             item = self.itemAt(event.pos())
-
+            if item is None:
+                self.deselect_point()
             if isinstance(item, QGraphicsEllipseItem):
                 point_id = None
 
