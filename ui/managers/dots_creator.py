@@ -541,8 +541,7 @@ class DotsCreatorManager(AbstractGUIManager):
     def __on_real_coords_table_key_press(self, event):
         """Обработка нажатия клавиши в таблице реальных координат."""
         if event.key() == Qt.Key_Delete:
-            selected_indexes = self.real_coords_table.selectedIndexes()
-            if selected_indexes:
+            if selected_indexes := self.real_coords_table.selectedIndexes():
                 row = selected_indexes[0].row()
                 id_value = self.real_coords_table.item(row, 0).text()
                 self.images_handler.set_dot_real_coordinates(id_value, (0.0, 0.0, 0.0))
