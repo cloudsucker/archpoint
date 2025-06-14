@@ -22,7 +22,7 @@
   <a href="https://github.com/cloudsucker/archpoint/issues">
     <img src="https://img.shields.io/github/issues/cloudsucker/archpoint?label=Issues&logo=github&style=for-the-badge" alt="Issues">
   </a>
-  <a href="LICENSE.md">
+  <a href="LICENSE">
     <img src="https://img.shields.io/badge/license-MIT-white?style=for-the-badge" alt="License">
   </a>
   </br>
