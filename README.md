@@ -10,23 +10,24 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/🖥️%20Windows-blue?style=flat" alt="Windows">
-  <img src="https://img.shields.io/badge/🐧%20Linux-blue?style=flat" alt="Linux">
-  <img src="https://img.shields.io/badge/🍎%20macOS-blue?style=flat" alt="macOS">
+  <img src="https://img.shields.io/badge/🖥️%20Windows-blue?style=for-the-badge" alt="Windows">
+  <img src="https://img.shields.io/badge/🐧%20Linux-blue?style=for-the-badge" alt="Linux">
+  <img src="https://img.shields.io/badge/🍎%20macOS-blue?style=for-the-badge" alt="macOS">
 </p>
 
 <p align="center">
   <a href="https://github.com/cloudsucker/archpoint/commits/main/">
-    <img src="https://img.shields.io/badge/status-active-brightgreen" alt="Status">
+    <img src="https://img.shields.io/badge/status-active-darkgreen?style=for-the-badge" alt="Status">
   </a>
   <a href="https://github.com/cloudsucker/archpoint/issues">
-    <img src="https://img.shields.io/github/issues/cloudsucker/archpoint?label=Issues&logo=github" alt="Issues">
-  </a>
-  <a href="https://github.com/users/cloudsucker/projects/3">
-    <img src="https://img.shields.io/badge/Project_Board-blueviolet?logo=github" alt="Project Board">
+    <img src="https://img.shields.io/github/issues/cloudsucker/archpoint?label=Issues&logo=github&style=for-the-badge" alt="Issues">
   </a>
   <a href="LICENSE.md">
-    <img src="https://img.shields.io/badge/license-MIT-lightgrey" alt="License">
+    <img src="https://img.shields.io/badge/license-MIT-white?style=for-the-badge" alt="License">
+  </a>
+  </br>
+    <a href="https://github.com/users/cloudsucker/projects/3">
+    <img src="https://img.shields.io/badge/Project_Board-blueviolet?logo=github&style=for-the-badge" alt="Project Board">
   </a>
 </p>
 
