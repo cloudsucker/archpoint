@@ -128,7 +128,7 @@ class CalibrationManager(AbstractGUIManager):
     def __on_calibration_steps_0_method_manual_select_button_clicked(self) -> None:
         self.handler.set_calibration_method("room")
 
-        # Hiding chessboard size settings and tips:
+        # HIDING CHESSBOARD SIZE SETTINGS AND TIPS:
         self.window.ui.groupBox_chessboardSize_Setting.hide()
         self.window.ui.label_chessboardSize_Setting_Tips.hide()
 
@@ -139,7 +139,7 @@ class CalibrationManager(AbstractGUIManager):
     def __on_calibration_steps_0_method_auto_select_button_clicked(self) -> None:
         self.handler.set_calibration_method("chessboard")
 
-        # Showing chessboard size settings and tips:
+        # SHOWING CHESSBOARD SIZE SETTINGS AND TIPS:
         self.window.ui.groupBox_chessboardSize_Setting.show()
         self.window.ui.label_chessboardSize_Setting_Tips.show()
 
