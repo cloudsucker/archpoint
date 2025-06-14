@@ -16,9 +16,9 @@ from PySide6.QtWidgets import (
 from PySide6.QtWidgets import QGraphicsPixmapItem
 from PySide6.QtGui import QDoubleValidator
 
-from archpoint.calibration_methods.room import (
-    RoomImagesHandler,
-    RoomImageDotsEditor,
+from archpoint.calibration.manual import RoomImageCollection, RoomImageAnnotation
+
+from archpoint.calibration.manual.exceptions import (
     InvalidDotId,
     DotWithTheSameIdAlreadyExists,
 )
@@ -36,8 +36,8 @@ class DotsCreatorManager(AbstractGUIManager):
     def __init__(self, window: AbstractWindow):
         super().__init__(window)
         self.window: AbstractWindow = window
-        self.images_handler: RoomImagesHandler | None = None
-        self.current_image: RoomImageDotsEditor | None = None
+        self.images_handler: RoomImageCollection | None = None
+        self.current_image: RoomImageAnnotation | None = None
         self.__current_image_pixmap: QPixmap | None = None
         self.dots_table = self.window.ui.tableWidget_imageDotsCreator_DotsData
         self.real_coords_table = self.window.ui.tableWidget_imageDotsAndRealCoordinates
@@ -49,7 +49,7 @@ class DotsCreatorManager(AbstractGUIManager):
         self.__replace_graphic_view_on_custom()
         self.__connect_buttons()
 
-    def preprocess_dots_creator_page(self, images_handler: RoomImagesHandler) -> None:
+    def preprocess_dots_creator_page(self, images_handler: RoomImageCollection) -> None:
         """Подготовка страницы разметки калибровочных изображений."""
         self.images_handler = images_handler
         self.current_image = self.images_handler.get_current_image()

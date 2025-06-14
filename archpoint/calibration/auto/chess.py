@@ -2,7 +2,8 @@ import os
 import cv2
 import numpy as np
 
-from archpoint.calibration_methods import CalibrationMethodAbstract
+from archpoint.calibration import CalibrationMethodAbstract
+from archpoint.calibration.auto.exceptions import ChessboardSizeIsIncorrect
 
 
 class ChessboardCalibrationMethod(CalibrationMethodAbstract):
@@ -264,7 +265,3 @@ class ChessboardCalibrationMethod(CalibrationMethodAbstract):
                 imgpoints.append(refined)
 
         return imgpoints
-
-
-class ChessboardSizeIsIncorrect(Exception):
-    pass

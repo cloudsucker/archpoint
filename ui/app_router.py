@@ -12,7 +12,9 @@ from ui.managers import (
     SettingsManager,
     StylesManager,
 )
-from archpoint.calibration_methods.chessboard import ChessboardSizeIsIncorrect
+from archpoint.calibration.auto.exceptions import (
+    ChessboardSizeIsIncorrect,
+)
 
 
 class AppRouter(AbstractGUIManager):

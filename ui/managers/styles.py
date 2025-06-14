@@ -8,8 +8,8 @@ from ui.managers import AbstractWindow
 class StylesManager:
     def __init__(self, window: AbstractWindow):
         self.window = window
-        self.theme = "light"
-
+        self.theme = "dark"
+        self.__apply_styles()
         self.window.adjustSize()
 
     def switch_theme(self) -> None:

@@ -2,8 +2,8 @@ import os
 import cv2
 import numpy as np
 
-from archpoint.calibration_methods.chessboard import ChessboardCalibrationMethod
-from archpoint.calibration_methods.room import RoomCalibrationMethod
+from archpoint.calibration.auto import ChessboardCalibrationMethod
+from archpoint.calibration.manual import RoomCalibrationMethod
 
 
 class CalibrationHandler:
@@ -18,7 +18,7 @@ class CalibrationHandler:
             "room": RoomCalibrationMethod,
         }
 
-        self.image_extensions = (".jpg", ".jpeg", ".png", ".JPG", ".JPEG", ".PNG")
+        self.image_extensions = (".jpg", ".jpeg", ".png")
 
     def is_completed(self) -> bool:
         """

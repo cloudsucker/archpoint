@@ -1,0 +1,2 @@
+class ChessboardSizeIsIncorrect(Exception):
+    pass

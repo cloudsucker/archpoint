@@ -23,8 +23,7 @@ class ImagesManager(AbstractGUIManager):
         self.DEFAULT_ICON_HEIGHT = 70
         self.DEFAULT_ICON_SIZE = 70
 
-        self.theme = "light"
-
+        self.theme = "dark"
         self.preprocess_app_images()
 
     def __get_label_icon_objects(self):
