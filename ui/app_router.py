@@ -41,10 +41,23 @@ class AppRouter(AbstractGUIManager):
         self.settings_manager = settings_manager
         self.styles_manager = styles_manager
 
-        # УСТАНОВКА НАЧАЛЬНОГО ВИДЖЕТА
+        # SETTING INITIAL WIDGET
         self.window.ui.stackedWidget_workSpace.setCurrentWidget(
             self.window.ui.page_calibrationInitialChoice
         )
+
+        # TEMPORARY HIDE PROGRESS BAR, LOGGING AND PREVIEW WIDGETS
+        # TODO: ADD PROGRESS BAR, LOGGING AND PREVIEW FUNCTIONALITY AND SHOW THIS WIDGETS
+        self.window.ui.progressBar_calibrationProcessProgress.setVisible(False)
+        self.window.ui.progressBar_processingProgressBar.setVisible(False)
+        self.window.ui.textBrowser_calibrationProcessLogs.setVisible(False)
+        self.window.ui.textBrowser_processingLogs.setVisible(False)
+        self.window.ui.graphicsView_calibrationProcessView.setVisible(False)
+        self.window.ui.graphicsView_dotsVisualization.setVisible(False)
+
+        # TEMPORARY HIDE OBJECT FILE EXPORT BUTTON
+        # TODO: ADD OBJECT FILE EXPORT FUNCTIONALITY AND SHOW THIS BUTTON
+        self.window.ui.pushButton_exportAsObjectFile.setVisible(False)
 
         self.__connect_buttons()
 
@@ -65,7 +78,7 @@ class AppRouter(AbstractGUIManager):
         # NOT COMPLETED (ROOM METHOD)
         elif (
             self.calibration_manager.handler.method == "room"
-            and self.calibration_manager.handler.method.images_handler.is_initialized
+            and self.calibration_manager.handler.method.image_collection.is_initialized
         ):
             # DOTS NOT SET -> DOTS SETTING
             if not self.dots_creator_manager.are_all_images_dots_set():
@@ -79,7 +92,13 @@ class AppRouter(AbstractGUIManager):
                     self.window.ui.page_calibrationSteps_5_ImageDotsCreating_SetCoords
                 )
 
-        # NO INFO -> INITIAL PAGE
+        # METHOD WAS SELECTED, BUT NOT INITIALIZED (ROOM METHOD)
+        elif self.calibration_manager.handler.method is not None:
+            self.window.ui.stackedWidget_workSpace.setCurrentWidget(
+                self.window.ui.page_calibrationSteps_4_MainPage
+            )
+
+        # NO INFO -> INITIAL CHOICE PAGE
         else:
             self.window.ui.stackedWidget_workSpace.setCurrentWidget(
                 self.window.ui.page_calibrationInitialChoice
@@ -118,7 +137,7 @@ class AppRouter(AbstractGUIManager):
             self.calibration_manager.handler.initialize_room_images_handler(images_path)
 
         self.dots_creator_manager.preprocess_dots_creator_page(
-            self.calibration_manager.handler.method.images_handler
+            self.calibration_manager.handler.method.image_collection
         )
         if not self.dots_creator_manager.are_all_images_dots_set():
             self.window.ui.stackedWidget_workSpace.setCurrentWidget(

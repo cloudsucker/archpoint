@@ -8,7 +8,7 @@ from archpoint.calibration.manual.exceptions import SomeImagesHaveNoDots
 
 class RoomCalibrationMethod(CalibrationMethodAbstract):
     def __init__(self):
-        self.images_handler = RoomImageCollection()
+        self.image_collection = RoomImageCollection()
 
     def __eq__(self, value):
         return isinstance(value, str) and value == "room"
@@ -16,7 +16,7 @@ class RoomCalibrationMethod(CalibrationMethodAbstract):
     def initialize(
         self, image_paths: list[str], second_image_paths: list[str] | None = None
     ) -> None:
-        self.images_handler.initialize(image_paths, second_image_paths)
+        self.image_collection.initialize(image_paths, second_image_paths)
 
     def calibrate(self, image_paths: list) -> dict:
         if not image_paths:
@@ -107,10 +107,10 @@ class RoomCalibrationMethod(CalibrationMethodAbstract):
         if len(left_image_paths) < 1:
             raise ValueError("Недостаточно изображений для стереокалибровки.")
 
-        left_imgpoints, left_objpoints = self.images_handler.get_img_and_obj_points(
+        left_imgpoints, left_objpoints = self.image_collection.get_img_and_obj_points(
             left_image_paths
         )
-        right_imgpoints, right_objpoints = self.images_handler.get_img_and_obj_points(
+        right_imgpoints, right_objpoints = self.image_collection.get_img_and_obj_points(
             right_image_paths
         )
 
@@ -229,11 +229,11 @@ class RoomCalibrationMethod(CalibrationMethodAbstract):
     ) -> tuple[list, np.ndarray]:
         imgpoints = []
         objpoints = []
-        imgpoints, objpoints = self.images_handler.get_img_and_obj_points(image_paths)
+        imgpoints, objpoints = self.image_collection.get_img_and_obj_points(image_paths)
         return imgpoints, objpoints
 
     def is_completed(self) -> bool:
         return (
-            self.images_handler.are_all_image_dots_set()
-            and self.images_handler.are_all_real_coordinates_completed()
+            self.image_collection.are_all_image_dots_set()
+            and self.image_collection.are_all_real_coordinates_completed()
         )

@@ -378,4 +378,9 @@ class RoomImageCollection:
     def clear(self) -> None:
         """Метод для полного сброса объекта класса."""
         self.images.clear()
+        self.points.clear()
+        self.points_true_coords.clear()
+        self.unique_ids.clear()
         self.current_image_index = 0
+        self.stereo_mode = False
+        self.is_initialized = False

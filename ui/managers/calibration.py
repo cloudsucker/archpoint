@@ -36,7 +36,7 @@ class CalibrationManager(AbstractGUIManager):
         self.connect_button(
             # RETURN -> TO CALIBRATION INITIAL OPTIONS CHOICE
             self.window.ui.pushButton_returnToCalibrationChoice,
-            self.window.ui.page_calibrationInitialChoice,
+            self.__on_return_to_calibration_choice_clicked,
         )
 
         self.connect_button(
@@ -47,7 +47,7 @@ class CalibrationManager(AbstractGUIManager):
         self.connect_button(
             # FROM (CHESSBOARD METHOD) -> RETURN TO METHOD SELECTION
             self.window.ui.pushButton_calibrationChessboardSteps_1_3_ReturnToMethodSelection,
-            self.window.ui.page_calibrationSteps_0_MethodSelection,
+            self.__on_calibration_chessboard_steps_1_3_return_to_method_selection_clicked,
         )
 
         self.connect_button(
@@ -58,7 +58,7 @@ class CalibrationManager(AbstractGUIManager):
         self.connect_button(
             # FROM (ROOM METHOD) -> RETURN TO METHOD SELECTION
             self.window.ui.pushButton_calibrationRoomSteps_1_3_ReturnToMethodSelection,
-            self.window.ui.page_calibrationSteps_0_MethodSelection,
+            self.__on_calibration_room_steps_1_3_return_to_method_selection_clicked,
         )
 
         self.connect_button(
@@ -82,6 +82,12 @@ class CalibrationManager(AbstractGUIManager):
             # METHOD SELECTION (CHESSBOARD METHOD CHOOSED)
             self.window.ui.pushButton_calibrationSteps_0_MethodAutoSelectButton,
             self.__on_calibration_steps_0_method_auto_select_button_clicked,
+        )
+
+        self.connect_button(
+            # RETURN TO MAIN PAGE FROM DOTS EDITOR
+            self.window.ui.pushButton_returnToCalibrationMainPageFromDotsEditor,
+            self.__on_return_to_calibration_main_page_from_dots_editor_clicked,
         )
 
     def __on_set_calibration_images_directory_clicked(self) -> None:
@@ -156,3 +162,32 @@ class CalibrationManager(AbstractGUIManager):
             self.window.ui.stackedWidget_workSpace.setCurrentWidget(
                 self.window.ui.page_calibrationSteps_1_3_PreparingChessboardTips
             )
+
+    def __on_return_to_calibration_main_page_from_dots_editor_clicked(self) -> None:
+        self.handler.method.image_collection.clear()
+        self.window.ui.stackedWidget_workSpace.setCurrentWidget(
+            self.window.ui.page_calibrationSteps_4_MainPage
+        )
+
+    def __on_return_to_calibration_choice_clicked(self) -> None:
+        # SETTING DEFAULT CALIBRATION METHOD
+        self.handler.set_calibration_method("chessboard")
+        self.window.ui.stackedWidget_workSpace.setCurrentWidget(
+            self.window.ui.page_calibrationInitialChoice
+        )
+
+    def __on_calibration_chessboard_steps_1_3_return_to_method_selection_clicked(
+        self,
+    ) -> None:
+        self.handler.clear()
+        self.window.ui.stackedWidget_workSpace.setCurrentWidget(
+            self.window.ui.page_calibrationSteps_0_MethodSelection
+        )
+
+    def __on_calibration_room_steps_1_3_return_to_method_selection_clicked(
+        self,
+    ) -> None:
+        self.handler.clear()
+        self.window.ui.stackedWidget_workSpace.setCurrentWidget(
+            self.window.ui.page_calibrationSteps_0_MethodSelection
+        )

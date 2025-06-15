@@ -9,9 +9,7 @@ from archpoint.calibration.manual import RoomCalibrationMethod
 class CalibrationHandler:
     def __init__(self):
         self.calibration_data = {}
-        self.method: ChessboardCalibrationMethod | RoomCalibrationMethod = (
-            ChessboardCalibrationMethod()
-        )
+        self.method: ChessboardCalibrationMethod | RoomCalibrationMethod | None = None
 
         self.calibration_methods = {
             "chessboard": ChessboardCalibrationMethod,
@@ -26,7 +24,8 @@ class CalibrationHandler:
         Возвращает True, если калибровка завершена и содержит данные, иначе False.
         """
         if (
-            self.calibration_data
+            self.method is not None
+            and self.calibration_data
             and self.calibration_data.get("stereo_mode", None) is not None
         ):
             # TODO: ADD MORE DATA CHECKING
@@ -38,7 +37,7 @@ class CalibrationHandler:
         Метод для корректной очистки данных калибровки.
         Используется для сброса данных калибровки в начальное состояние.
         """
-        self.calibration_data = {}
+        self.method = None
 
     def get_calibration_data_as_string(self) -> str:
         calibration_data_str = ""
@@ -57,6 +56,22 @@ class CalibrationHandler:
         if not filepath.endswith(".npz"):
             raise ValueError("Имя файла калибровки должно заканчиваться на '.npz'.")
         self.calibration_data = dict(np.load(filepath))
+
+        print(str(self.calibration_data["calibration_method"].item()))
+        print(str(self.calibration_data["stereo_mode"].item()))
+
+        # SETTING ATTRIBUTES
+        # TODO: REFACTOR METHODS NAMING
+        if (
+            str(self.calibration_data["calibration_method"].item())
+            == "ChessboardCalibrationMethod"
+        ):
+            self.set_calibration_method("chessboard")
+        elif (
+            str(self.calibration_data["calibration_method"].item())
+            == "RoomCalibrationMethod"
+        ):
+            self.set_calibration_method("room")
 
     def save_calibration_data(self, filepath: str) -> None:
         if not os.path.exists(os.path.dirname(filepath)):
@@ -94,12 +109,17 @@ class CalibrationHandler:
         return [os.path.join(images_dir, name) for name in image_names]
 
     def set_calibration_method(self, calibration_method: str) -> None:
+        """
+        Метод для установки метода калибровки.
+
+        Parameters:
+            calibration_method (str): Название метода калибровки ('room' или 'chessboard').
+        """
         if calibration_method not in self.calibration_methods:
             raise CalibrationMethodDoesNotExist(
                 f"Недопустимый метод калибровки: {calibration_method}"
             )
         self.method = self.calibration_methods[calibration_method]()
-        self.clear()
 
     def get_calibration_method_name(self) -> str:
         return list(self.calibration_methods.keys())[
@@ -136,7 +156,7 @@ class CalibrationHandler:
     def __init_calibration_data(self, stereo_mode: bool) -> None:
         self.calibration_data = {
             "stereo_mode": stereo_mode,
-            "calibration_method": self.method.__class__.__name__,
+            "calibration_method": str(self.method),
         }
 
     def __fix_image_distortion(self, image_path: str) -> None:
