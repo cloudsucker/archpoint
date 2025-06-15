@@ -307,12 +307,15 @@ class AppRouter(AbstractGUIManager):
             self.calibration_manager.handler.get_calibration_method_name()
             == "chessboard"
         ):
+            square_size = (
+                self.window.ui.doubleSpinBox_chessboardSize_Setting_SquareSizeInput.value()
+            )
             board_sizes = (
                 self.window.ui.spinBox_chessboardSize_Setting_HeightInput.value(),
                 self.window.ui.spinBox_chessboardSize_Setting_WidthInput.value(),
             )
             self.calibration_manager.handler.method.set_chessboard_sizes(
-                board_size=board_sizes
+                square_size, board_sizes
             )
             self.calibration_manager.handler.calibrate(images_directory)
 

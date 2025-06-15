@@ -73,6 +73,7 @@ class ImagesManager(AbstractGUIManager):
                 self.app_logo_black_pixmap.scaledToHeight(155)
             )
         elif self.theme == "dark":
+            self.window.setWindowIcon(self.app_logo_black_icon)
             self.window.ui.label_appLogo.setPixmap(
                 self.app_logo_white_pixmap.scaledToHeight(155)
             )
