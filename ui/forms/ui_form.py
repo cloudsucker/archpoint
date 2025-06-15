@@ -611,27 +611,33 @@ class Ui_Widget(object):
 
         self.verticalLayout_22.addWidget(self.textBrowser_processingLogs)
 
+        self.verticalSpacer_processingPage_main = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_22.addItem(self.verticalSpacer_processingPage_main)
+
         self.groupBox_exportOptions = QGroupBox(self.groupBox_processingProcessMain)
         self.groupBox_exportOptions.setObjectName(u"groupBox_exportOptions")
         self.groupBox_exportOptions.setFlat(True)
         self.horizontalLayout_10 = QHBoxLayout(self.groupBox_exportOptions)
         self.horizontalLayout_10.setObjectName(u"horizontalLayout_10")
         self.horizontalLayout_10.setContentsMargins(0, 0, 0, 0)
-        self.pushButton_exportAsDotsCloud = QPushButton(self.groupBox_exportOptions)
-        self.pushButton_exportAsDotsCloud.setObjectName(u"pushButton_exportAsDotsCloud")
-        self.pushButton_exportAsDotsCloud.setFont(font3)
+        self.pushButton_exportAsObjectFile = QPushButton(self.groupBox_exportOptions)
+        self.pushButton_exportAsObjectFile.setObjectName(u"pushButton_exportAsObjectFile")
+        self.pushButton_exportAsObjectFile.setEnabled(False)
+        self.pushButton_exportAsObjectFile.setFont(font3)
 
-        self.horizontalLayout_10.addWidget(self.pushButton_exportAsDotsCloud)
+        self.horizontalLayout_10.addWidget(self.pushButton_exportAsObjectFile)
 
         self.horizontalSpacer_exportOptions_buttonsBetween = QSpacerItem(374, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
 
         self.horizontalLayout_10.addItem(self.horizontalSpacer_exportOptions_buttonsBetween)
 
-        self.pushButton_exportAsObjectFile = QPushButton(self.groupBox_exportOptions)
-        self.pushButton_exportAsObjectFile.setObjectName(u"pushButton_exportAsObjectFile")
-        self.pushButton_exportAsObjectFile.setFont(font3)
+        self.pushButton_exportAsDotsCloud = QPushButton(self.groupBox_exportOptions)
+        self.pushButton_exportAsDotsCloud.setObjectName(u"pushButton_exportAsDotsCloud")
+        self.pushButton_exportAsDotsCloud.setEnabled(False)
+        self.pushButton_exportAsDotsCloud.setFont(font3)
 
-        self.horizontalLayout_10.addWidget(self.pushButton_exportAsObjectFile)
+        self.horizontalLayout_10.addWidget(self.pushButton_exportAsDotsCloud)
 
 
         self.verticalLayout_22.addWidget(self.groupBox_exportOptions)
@@ -1010,6 +1016,10 @@ class Ui_Widget(object):
 
         self.verticalLayout_14.addWidget(self.textBrowser_calibrationProcessLogs)
 
+        self.verticalSpacer_calibrationMainPage_main = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout_14.addItem(self.verticalSpacer_calibrationMainPage_main)
+
         self.groupBox_calibrationSteps_4_ButtonField = QGroupBox(self.groupBox_calibrationSteps_4)
         self.groupBox_calibrationSteps_4_ButtonField.setObjectName(u"groupBox_calibrationSteps_4_ButtonField")
         self.groupBox_calibrationSteps_4_ButtonField.setFlat(True)
@@ -1079,7 +1089,21 @@ class Ui_Widget(object):
 
         self.verticalLayout_34.addWidget(self.groupBox_imageDotsCreator_ButtonsField)
 
-        self.pushButton_goToSettingRealCoordinates = QPushButton(self.groupBox_dotsCreatorImagePreviewField)
+        self.groupBox_imageDotsCreator_NavigationButtonsField = QGroupBox(self.groupBox_dotsCreatorImagePreviewField)
+        self.groupBox_imageDotsCreator_NavigationButtonsField.setObjectName(u"groupBox_imageDotsCreator_NavigationButtonsField")
+        self.horizontalLayout_24 = QHBoxLayout(self.groupBox_imageDotsCreator_NavigationButtonsField)
+        self.horizontalLayout_24.setObjectName(u"horizontalLayout_24")
+        self.pushButton_returnToCalibrationMainPageFromDotsEditor = QPushButton(self.groupBox_imageDotsCreator_NavigationButtonsField)
+        self.pushButton_returnToCalibrationMainPageFromDotsEditor.setObjectName(u"pushButton_returnToCalibrationMainPageFromDotsEditor")
+        self.pushButton_returnToCalibrationMainPageFromDotsEditor.setFont(font)
+
+        self.horizontalLayout_24.addWidget(self.pushButton_returnToCalibrationMainPageFromDotsEditor)
+
+        self.horizontalSpacer_imageDotsCreator_BetweenNavigationButtons = QSpacerItem(40, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.horizontalLayout_24.addItem(self.horizontalSpacer_imageDotsCreator_BetweenNavigationButtons)
+
+        self.pushButton_goToSettingRealCoordinates = QPushButton(self.groupBox_imageDotsCreator_NavigationButtonsField)
         self.pushButton_goToSettingRealCoordinates.setObjectName(u"pushButton_goToSettingRealCoordinates")
         self.pushButton_goToSettingRealCoordinates.setEnabled(False)
         font15 = QFont()
@@ -1087,7 +1111,10 @@ class Ui_Widget(object):
         font15.setPointSize(11)
         self.pushButton_goToSettingRealCoordinates.setFont(font15)
 
-        self.verticalLayout_34.addWidget(self.pushButton_goToSettingRealCoordinates)
+        self.horizontalLayout_24.addWidget(self.pushButton_goToSettingRealCoordinates)
+
+
+        self.verticalLayout_34.addWidget(self.groupBox_imageDotsCreator_NavigationButtonsField)
 
 
         self.horizontalLayout_21.addWidget(self.groupBox_dotsCreatorImagePreviewField)
@@ -1256,7 +1283,7 @@ class Ui_Widget(object):
         self.retranslateUi(Widget)
 
         self.pushButton_pageCalibration.setDefault(False)
-        self.stackedWidget_workSpace.setCurrentIndex(10)
+        self.stackedWidget_workSpace.setCurrentIndex(9)
 
 
         QMetaObject.connectSlotsByName(Widget)
@@ -1337,8 +1364,8 @@ class Ui_Widget(object):
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:"
                         "9pt;\">fatal error, 404 not found :)</span></p></body></html>", None))
         self.groupBox_exportOptions.setTitle("")
-        self.pushButton_exportAsDotsCloud.setText(QCoreApplication.translate("Widget", u"\u042d\u043a\u0441\u043f\u043e\u0440\u0442 \u043e\u0431\u043b\u0430\u043a\u0430 \u0442\u043e\u0447\u0435\u043a", None))
         self.pushButton_exportAsObjectFile.setText(QCoreApplication.translate("Widget", u"\u042d\u043a\u0441\u043f\u043e\u0440\u0442 \u043e\u0431\u044a\u0435\u043a\u0442\u0430", None))
+        self.pushButton_exportAsDotsCloud.setText(QCoreApplication.translate("Widget", u"\u042d\u043a\u0441\u043f\u043e\u0440\u0442 \u043e\u0431\u043b\u0430\u043a\u0430 \u0442\u043e\u0447\u0435\u043a", None))
         self.groupBox_settingsMain.setTitle(QCoreApplication.translate("Widget", u"\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438", None))
         self.label_settingsTempText.setText(QCoreApplication.translate("Widget", u"\u0422\u0443\u0442 \u043a\u043e\u0433\u0434\u0430-\u0442\u043e \u043f\u043e\u044f\u0432\u044f\u0442\u0441\u044f \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u0441 \u0441\u043e\u0445\u0440\u0430\u043d\u0435\u043d\u0438\u0435\u043c", None))
         self.groupBox_calibrationSteps_1_3_PreparingChessboardTipsMain.setTitle(QCoreApplication.translate("Widget", u"\u041f\u043e\u0434\u0433\u043e\u0442\u043e\u0432\u043a\u0430 \u043a \u0430\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u043e\u0439 \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0435", None))
@@ -1397,6 +1424,8 @@ class Ui_Widget(object):
         self.groupBox_imageDotsCreator_ButtonsField.setTitle("")
         self.pushButton_imageDotsCreator_getPreviousImage.setText(QCoreApplication.translate("Widget", u"\u041f\u0440\u0435\u0434\u044b\u0434\u0443\u0449\u0435\u0435", None))
         self.pushButton_imageDotsCreator_getNextImage.setText(QCoreApplication.translate("Widget", u"\u0421\u043b\u0435\u0434\u0443\u044e\u0449\u0435\u0435", None))
+        self.groupBox_imageDotsCreator_NavigationButtonsField.setTitle("")
+        self.pushButton_returnToCalibrationMainPageFromDotsEditor.setText(QCoreApplication.translate("Widget", u"\u041d\u0430\u0437\u0430\u0434", None))
         self.pushButton_goToSettingRealCoordinates.setText(QCoreApplication.translate("Widget", u"\u0417\u0430\u0432\u0435\u0440\u0448\u0438\u0442\u044c \u0440\u0430\u0437\u043c\u0435\u0442\u043a\u0443", None))
         ___qtablewidgetitem = self.tableWidget_imageDotsCreator_DotsData.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("Widget", u"ID", None));
