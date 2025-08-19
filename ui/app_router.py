@@ -410,7 +410,7 @@ class AppRouter(AbstractGUIManager):
             not self.window.ui.checkBox_preprocessingImages.isHidden()
             and self.window.ui.checkBox_preprocessingImages.isChecked()
         ):
-            if self.window.ui.groupBox_secondCameraProcessingField.isEnabled():
+            if self.window.ui.groupBox_secondCameraProcessingField.isChecked():
                 images_directory_second_camera = (
                     self.window.ui.lineEdit_secondCameraProcessingImagesDirectory.text()
                 )

@@ -179,15 +179,15 @@ class CalibrationHandler:
             intrinsic = self.calibration_data.get("camera_matrix", None)
             new_camera_matrix = self.calibration_data.get("new_camera_matrix", None)
 
-        if not dist_coeffs:
+        if dist_coeffs is None:
             raise CalibrationParameterNotFound(
                 "Коэффициенты искажений камеры не найдены."
             )
-        if not intrinsic:
+        if intrinsic is None:
             raise CalibrationParameterNotFound(
                 "Матрица внутренних параметров не найдена."
             )
-        if not new_camera_matrix:
+        if new_camera_matrix is None:
             raise CalibrationParameterNotFound(
                 "Новая матрица внутренних параметров искажений не найдена."
             )
